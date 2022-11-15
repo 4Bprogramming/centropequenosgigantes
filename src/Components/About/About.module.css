@@ -1,0 +1,133 @@
+.AboutBody {
+  display: flex;
+  flex-direction: row;
+  padding: 0px 3.5rem 0 0.5rem;
+  min-height: 100%;
+  height: fit-content;
+  padding-bottom: 7rem;
+  position: relative;
+}
+
+
+@media screen and (max-width: 768px) {
+  .AboutBody:before {
+    margin-top: -0.5em;
+    margin-left: 0;
+    left: 0.5em;
+  }
+}
+.AboutBody:after {
+  font-family: "La Belle Aurore", cursive;
+  color: #515152;
+  font-size: 1.8rem;
+  position: absolute;
+  bottom: 0px;
+  right: 0.5em;
+}
+@media screen and (max-width: 768px) {
+  .AboutBody:after {
+    left: 0.5em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .AboutBody {
+    flex-direction: column;
+    padding: 0px 1rem 0 1rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.AboutContainer {
+  padding-top: 3em;
+  padding-left: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+}
+@media screen and (max-width: 768px) {
+  .AboutContainer {
+    padding-top: 1em;
+    padding-left: 0;
+    align-self: center;
+    width: auto;
+  }
+}
+.StyledHeading {
+  display: flex;
+  font-size: 2em;
+  align-items: center;
+  color: yellowgreen;
+}
+@media screen and (max-width: 768px) {
+  .StyledHeading {
+    align-self: center;
+    font-size: 2.5em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .StyledHeading {
+    padding-top: 1em;
+    padding-left: 0;
+    align-self: center;
+    width: auto;
+  }
+  .StyledHeading:after {
+    content: "";
+    flex: 1;
+    background-color: #fff;
+    margin-left: 0.8em;
+    height: 1px;
+  }
+}
+
+.TextSection {
+  font-size: 1em;
+  padding-top: 1.3em;
+  line-height: 1.4em;
+  color: black;
+}
+.Photo {
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 400px;
+  border-radius: 12%;
+  transition: 0.3s ease-in;
+  align-self: center;
+  margin-top: 6.6em;
+
+ /*  filter: grayscale(100%); */
+}
+.Photo:hover {
+  filter: grayscale(0%);
+  transform: scale(1.2);
+}
+
+@media screen and (max-width: 768px) {
+  .Photo {
+    filter: none;
+    margin-top: 0;
+
+  }
+  .Photo:hover {
+    filter: none;
+    transform: none;
+  }
+}
+
+@media screen and (max-width: 400px) {
+    .Photo {
+      filter: none;
+      margin-top: 0;
+        width: 200px;
+        height: 200px;
+    }
+    .Photo:hover {
+      filter: none;
+      transform: none;
+    }
+  }
+  
