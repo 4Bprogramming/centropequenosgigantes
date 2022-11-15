@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth,signInWithEmailAndPassword, GoogleAuthProvider,
+  signInWithPopup, } from "firebase/auth";
 import { auth } from "../../Firebase/Firebase";
 import styles from "./Login.module.css";
 import InputControl from "../ImputControl/InputControl";
 
 function Login() {
+  const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const [values, setValues] = useState({
     email: "",
@@ -59,6 +61,15 @@ function Login() {
           <button disabled={submitButtonDisabled} onClick={handleSubmission}>
             Inicia Sesión
           </button>
+          <Link to='/user' >
+          <button style={{backgroundColor:'blue'}} 
+          variant="info"
+          size="sm"
+          type="submit"
+          onClick={() => signInWithPopup(auth, googleProvider)}>
+            Inicia con Google
+          </button>
+          </Link>
           <p>
             ¿No Tienes cuenta?{" "}
             <span>

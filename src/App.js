@@ -14,6 +14,7 @@ import Login from './Components/Login/Login'
 import Navbar from "./Components/Navbar/Navbar";
 import Register from './Components/Register/Register'
 import User from "./Components/User/User";
+import About from "./Components/About/About";
 
 
 
@@ -37,6 +38,7 @@ function App() {
     <Route exact path="/login" element={<Login />} />
     <Route exact path="/register" element={<Register />} />
     <Route exact path="/user" element={<User name={userName} />} />
+    <Route exact path="/nosotros" element={<About />} />
   
     </Routes>
     <Footer />
