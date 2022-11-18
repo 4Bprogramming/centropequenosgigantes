@@ -5,34 +5,22 @@ function SliderBar() {
     const images = [
 		{
 			id: '1',
-			title: 'Awesome forest',
+			title: 'Centro de Terapias Pequeños Gigantes.',
 			image:
-				'https://cdn.pixabay.com/photo/2020/11/09/15/12/trail-5726987_960_720.jpg',
+				'https://firebasestorage.googleapis.com/v0/b/ecommerce-597b3.appspot.com/o/Images%2F1668723927468-PNG.jpg?alt=media&token=6c19d09e-7dab-4030-8a8a-9e79d675c1d0',
 		},
 		{
 			id: '2',
-			title: 'A litle bird.',
+			title: 'Con profesionales enfocados en el crecimiento Integral de tu pequeño.',
 			image:
-				'https://cdn.pixabay.com/photo/2011/09/27/18/52/bird-9950_960_720.jpg',
+				'https://firebasestorage.googleapis.com/v0/b/ecommerce-597b3.appspot.com/o/Images%2F1668725293722-servicios_terapias.jpg?alt=media&token=c3343d2b-1135-4395-a6d5-e2e68037660a',
 		},
 		{
 			id: '3',
-			title: 'The best friend.',
+			title: 'Comprometidos al 100% con cada paciente.',
 			image:
-				'https://cdn.pixabay.com/photo/2017/12/27/14/02/friends-3042751_960_720.jpg',
-		},
-		{
-			id: '4',
-			title: 'Beautiful desert.',
-			image:
-				'https://cdn.pixabay.com/photo/2016/11/21/17/44/arches-national-park-1846759_960_720.jpg',
-		},
-		{
-			id: '5',
-			title: 'Harley Davidson motorcycle.',
-			image:
-				'https://cdn.pixabay.com/photo/2018/10/26/22/55/harley-davidson-3775527_960_720.jpg',
-		},
+				'https://firebasestorage.googleapis.com/v0/b/ecommerce-597b3.appspot.com/o/Images%2F1668725614798-contacto_terapias.jpg?alt=media&token=5b76148d-7a67-4d4d-8840-09dfde835a6a',
+		}
 	]
 
   return (
