@@ -8,10 +8,9 @@
 	position: absolute;
 	width: 100%;
 	text-align: center;
-	top: 4rem;
 	color: #fff;
 	text-transform: uppercase;
-	padding: 0 4rem;
+	padding: 0rem 5rem;
 	z-index: 100;
 	text-shadow: 0 0 0.5rem rgb(9, 9, 34);
 }

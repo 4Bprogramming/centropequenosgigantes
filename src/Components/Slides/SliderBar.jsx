@@ -24,7 +24,7 @@ function SliderBar() {
 	]
 
   return (
-    <div className='App'>
+    <div >
 			<Slides images={images} />
 		</div>
   )

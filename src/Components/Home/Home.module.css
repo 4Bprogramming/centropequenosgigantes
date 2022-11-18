@@ -1,0 +1,29 @@
+.btnFlotante {
+	border-radius: 200px; 
+	position: fixed;
+	bottom: 40px;
+	right: 40px;
+	transition: all 300ms ease 0ms;
+	z-index: 99;
+	width: 80px;
+	height: 80px;
+}
+.btnFlotante:hover {
+	background-color: #eeeeee; 
+	transform: translateY(-7px);
+}
+@media only screen and (max-width: 600px) {
+    .btnFlotante {
+       font-size: 14px;
+       padding: 12px 20px;
+       bottom: 20px;
+       right: 20px;
+   }
+   .img-chat{
+       margin-top:10px;
+       /* border-radius: 100px; */
+       width: 70px;
+   height: 70px;
+   margin-left: -15px;
+   }
+}
