@@ -10,7 +10,7 @@ function Navbar() {
     <div className="contuner">
        <div className="logo-box">
          <a href="#">
-         <img src={logo} width="130px" />
+         <img src={logo} width="110px" />
             </a>
        </div>
        <nav>
