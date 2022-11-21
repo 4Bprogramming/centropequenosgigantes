@@ -19,7 +19,7 @@ import {
 
 function Footer() {
   return (
-    <CDBFooter className="shadow" style={{ backgroundColor: "#0d6efd" }}>
+    <CDBFooter className="shadow" style={{ backgroundColor: "rgb(93, 230, 178)" }}>
       <CDBBox
         display="flex"
         flex="column"

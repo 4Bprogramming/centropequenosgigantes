@@ -14,6 +14,7 @@ import Register from "./Components/Register/Register";
 import User from "./Components/User/User";
 import About from "./Components/About/About";
 import Contact from "./Components/Contact/Contact";
+import Services from "./Components/Services/Services";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -35,6 +36,8 @@ function App() {
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/user" element={<User name={userName} />} />
         <Route exact path="/nosotros" element={<About />} />
+        <Route exact path="/servicios" element={<Services />} />
+        <Route exact path="/reserva" element={<Services />} />
         <Route exact path="/contacto" element={<Contact />} />
       </Routes>
       <Footer />

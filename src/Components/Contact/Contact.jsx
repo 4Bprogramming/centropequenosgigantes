@@ -1,8 +1,10 @@
 import React from "react";
 import emailjs from "@emailjs/browser";
 import "./Contact.css";
+import { useNavigate } from "react-router-dom";
 
 function Contact() {
+  const navigate = useNavigate();
   //mail aqui
   function sendEmail(e) {
     e.preventDefault();
@@ -12,10 +14,12 @@ function Contact() {
         "service_d4n8uu8",
         "template_b91p3lr",
         e.target,
-        "m161GBw_7jaymvDc3"
+        "m161GBw_7jaymvDc3",
+        alert("Su mensaje ha sido enviado, pronto te responderemos")
       )
       .then((res) => console.log(res))
       .catch((e) => console.log(e));
+      navigate("/");
   }
 
   return (
@@ -143,7 +147,7 @@ function Contact() {
                   </li>
                   <li className="d-flex">
                     <span className="wrap-icon icon-phone mr-3"></span>
-                    <span className="text">991 341 292</span>
+                    <span className="text">Teléfono: 991 341 292</span>
                   </li>
                   <li className="d-flex">
                     <span className="wrap-icon icon-envelope mr-3"></span>
