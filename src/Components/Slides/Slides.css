@@ -37,3 +37,16 @@
 	padding: 0rem 4rem;
 	background-color: rgba(255, 85, 85, 0.5);
 }
+
+@media only screen and (max-width: 400px) {
+	.slider-description { 
+		position: absolute;
+		bottom: 5rem;
+		width: 100%;
+		text-align: center;
+		font-size: 1rem;
+		font-weight: bold;
+		padding: 0rem 4rem;
+		background-color: rgba(255, 85, 85, 0.5);
+	}
+}

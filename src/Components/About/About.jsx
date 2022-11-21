@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./About.module.css";
 import pict from "../../assets/seguimos.jpg";
 import Image from "./Image";
+import AbouText from "./AbouText";
+import ImageFooter from "./ImageFooter";
 
 function About() {
   return (
@@ -30,6 +32,8 @@ function About() {
           <img className={styles.Photo} src={pict} />
         </div>
       </div>
+      <AbouText />
+      <ImageFooter />
     </div>
   );
 }

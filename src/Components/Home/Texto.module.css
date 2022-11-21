@@ -1,0 +1,16 @@
+.sliderDescription { 
+	bottom: 5rem;
+	width: 100%;
+	text-align: center;
+	font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 400px) {
+	.sliderDescription { 
+		bottom: 5rem;
+		width: 100%;
+		text-align: center;
+		font-size: 1.5rem;
+
+	}
+}

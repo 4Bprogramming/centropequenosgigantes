@@ -20,7 +20,7 @@ function Navbar() {
          <li><NavLink className="a" to="/servicios" exact>Servicios</NavLink></li>
          <li><NavLink className="a" to="/user" exact>Blog</NavLink></li>
          <li><NavLink className="a" to="/contacto" exact>contacto</NavLink></li>
-         <li><NavLink className="button-contact" to="/Reserva" exact>Reserva tu cita</NavLink></li>
+         <li><NavLink className="button-contact" to="/reserva" exact>Reserva tu cita</NavLink></li>
       </ul>
      </nav>
      </div> 
