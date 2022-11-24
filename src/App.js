@@ -15,6 +15,8 @@ import User from "./Components/User/User";
 import About from "./Components/About/About";
 import Contact from "./Components/Contact/Contact";
 import Services from "./Components/Services/Services";
+import NavScroll from "./Components/Navbar/NavScroll";
+import Admin from "./Components/Admin/Admin";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -29,7 +31,8 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar /> */}
+      <NavScroll />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
@@ -39,6 +42,7 @@ function App() {
         <Route exact path="/servicios" element={<Services />} />
         <Route exact path="/reserva" element={<Services />} />
         <Route exact path="/contacto" element={<Contact />} />
+        <Route exact path="/admin" element={<Admin />} />
       </Routes>
       <Footer />
     </div>

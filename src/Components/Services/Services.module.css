@@ -1,0 +1,70 @@
+.blog img {
+    width: 100%;
+    height: 100%;
+  }
+  .blog .text {
+    padding: 40px 30px;
+  }
+  .blog h1 {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 30px;
+    margin: 20px 0;
+    transition: 0.5s;
+  }
+  .blog h1:hover {
+    color: #1eb2a6;
+    cursor: pointer;
+  }
+  .blog span {
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #1eb2a6;
+  }
+  .blog span label {
+    margin-left: 10px;
+    color: grey;
+    font-size: 14px;
+  }
+  .blog span:nth-last-child(1) label {
+    color: #1eb2a6;
+  }
+  .blog p {
+    color: grey;
+  }
+  .container {
+    max-width: 85%;
+    margin: auto;
+  }
+  .grid2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+  }
+
+  .padding {
+    padding: 80px 0;
+  }
+  @media screen and (max-width: 768px) {
+    .grid2{
+      grid-template-columns: repeat(2, 1fr);
+      background-position: center;
+    padding-top: 50%;
+    /* height: 80vh; */
+    width: 100%;
+    height: 100%;
+    }
+    
+  }
+
+  @media screen and (max-width: 500px) {
+    .grid2{
+      grid-template-columns: repeat(1, 1fr);
+      background-position: center;
+    padding-top: 50%;
+    /* height: 80vh; */
+    width: 100%;
+    height: 100%;
+    }
+    
+  }
