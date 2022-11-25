@@ -9,7 +9,6 @@ import "./App.css";
 import Footer from "./Components/Footer/Footer";
 import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
-import Navbar from "./Components/Navbar/Navbar";
 import Register from "./Components/Register/Register";
 import User from "./Components/User/User";
 import About from "./Components/About/About";
@@ -17,6 +16,9 @@ import Contact from "./Components/Contact/Contact";
 import Services from "./Components/Services/Services";
 import NavScroll from "./Components/Navbar/NavScroll";
 import Admin from "./Components/Admin/Admin";
+import Psicologia from "./Components/Psicologia/Psicologia";
+import TerapiaLenguaje from "./Components/TerapiaLenguaje/TerapiaLenguaje";
+
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -31,7 +33,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Navbar /> */}
+  
       <NavScroll />
       <Routes>
         <Route exact path="/" element={<Home />} />
@@ -43,6 +45,9 @@ function App() {
         <Route exact path="/reserva" element={<Services />} />
         <Route exact path="/contacto" element={<Contact />} />
         <Route exact path="/admin" element={<Admin />} />
+        <Route exact path="/Psicología" element={<Psicologia />} />
+        <Route exact path="/Terapia de lenguaje" element={<TerapiaLenguaje />} />
+        
       </Routes>
       <Footer />
     </div>
