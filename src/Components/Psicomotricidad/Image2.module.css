@@ -1,0 +1,12 @@
+.ImageTopFooter{
+    background-image: url("../../assets/Psicomotricidad/psicomotricidad.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+   /*  position: absolute;
+    bottom: 192px; */
+}
+.ImageTopFooter img{
+    width: 100%;
+    height:100%;
+}
