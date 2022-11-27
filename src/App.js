@@ -15,7 +15,8 @@ import About from "./Components/About/About";
 import Contact from "./Components/Contact/Contact";
 import Services from "./Components/Services/Services";
 import NavScroll from "./Components/Navbar/NavScroll";
-import Admin from "./Components/Admin/Admin";
+import Admin from "./Components/Profiles/Admin/Admin";
+import AddProfessional from "./Components/Profiles/Admin/Components/AddProfessional/AddProfessional";
 import Psicologia from "./Components/Psicologia/Psicologia";
 import TerapiaLenguaje from "./Components/TerapiaLenguaje/TerapiaLenguaje";
 import TerapiAprendizaje from "./Components/TerapiAprendizaje/TerapiAprendizaje";
@@ -53,6 +54,7 @@ function App() {
         <Route exact path="/reserva" element={<Services />} />
         <Route exact path="/contacto" element={<Contact />} />
         <Route exact path="/admin" element={<Admin />} />
+        <Route exact path="/addProfessional" element={<AddProfessional />} />
         <Route exact path="/Psicología" element={<Psicologia />} />
         <Route exact path="/Terapia de lenguaje" element={<TerapiaLenguaje />} />
         <Route exact path="/Terapia de aprendizaje" element={<TerapiAprendizaje />} />

@@ -1,0 +1,9 @@
+.orderedList{
+    font-size: 20px;
+    font-family: system-ui;
+    font-style: italic;
+}
+.orderedList span{
+    font-weight: bold;
+    font-style: normal;
+}
