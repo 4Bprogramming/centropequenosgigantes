@@ -16,7 +16,9 @@ import About from "./Components/About/About";
 import Contact from "./Components/Contact/Contact";
 import Services from "./Components/Services/Services";
 import NavScroll from "./Components/Navbar/NavScroll";
-import Admin from "./Components/Admin/Admin";
+import Admin from "./Components/Profiles/Admin/Admin";
+import AddProfessional from "./Components/Profiles/Admin/Components/AddProfessional/AddProfessional";
+
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -43,6 +45,7 @@ function App() {
         <Route exact path="/reserva" element={<Services />} />
         <Route exact path="/contacto" element={<Contact />} />
         <Route exact path="/admin" element={<Admin />} />
+        <Route exact path="/addProfessional" element={<AddProfessional />} />
       </Routes>
       <Footer />
     </div>
