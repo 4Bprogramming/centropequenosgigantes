@@ -7,8 +7,10 @@ function Services() {
   return (
 
     <>
-    <h1>Servicios</h1>
+    <br></br>
+    <h1 style={{color: 'yellowgreen'}}>Servicios</h1>
     <section className={styles.blog} >
+      <p>Acá encontrarás todos los servicios que ofrecemos en el centro Pequeños Gigantes los cuales son:</p>
     <div className={styles.padding} >
       <div className={styles.container}>
       <div className={styles.grid2}>

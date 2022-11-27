@@ -9,7 +9,6 @@ import "./App.css";
 import Footer from "./Components/Footer/Footer";
 import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
-import Navbar from "./Components/Navbar/Navbar";
 import Register from "./Components/Register/Register";
 import User from "./Components/User/User";
 import About from "./Components/About/About";
@@ -18,7 +17,17 @@ import Services from "./Components/Services/Services";
 import NavScroll from "./Components/Navbar/NavScroll";
 import Admin from "./Components/Profiles/Admin/Admin";
 import AddProfessional from "./Components/Profiles/Admin/Components/AddProfessional/AddProfessional";
-
+import Psicologia from "./Components/Psicologia/Psicologia";
+import TerapiaLenguaje from "./Components/TerapiaLenguaje/TerapiaLenguaje";
+import TerapiAprendizaje from "./Components/TerapiAprendizaje/TerapiAprendizaje";
+import AsesoramientoPsicologico from "./Components/AsesoramientoPsicologico/AsesoramientoPsicologico";
+import TerapiaOcupacional from "./Components/TerapiaOcupacional/TerapiaOcupacional";
+import ModificacionConducta from './Components/ModificacionConducta/ModificacionConducta'
+import TerapiaFisica from './Components/TerapiaFisica/TerapiaFisica'
+import IntegracionSensorial from './Components/IntegracionSensorial/IntegracionSensorial'
+import TerapiaFamiliar from './Components/TerapiaFamiliar/TerapiaFamiliar'
+import Psicomotricidad from './Components/Psicomotricidad/Psicomotricidad'
+import EstimulacionTemprana from './Components/EstimulacionTemprana/EstimulacionTemprana'
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -33,7 +42,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Navbar /> */}
+  
       <NavScroll />
       <Routes>
         <Route exact path="/" element={<Home />} />
@@ -46,6 +55,17 @@ function App() {
         <Route exact path="/contacto" element={<Contact />} />
         <Route exact path="/admin" element={<Admin />} />
         <Route exact path="/addProfessional" element={<AddProfessional />} />
+        <Route exact path="/Psicología" element={<Psicologia />} />
+        <Route exact path="/Terapia de lenguaje" element={<TerapiaLenguaje />} />
+        <Route exact path="/Terapia de aprendizaje" element={<TerapiAprendizaje />} />
+        <Route exact path="/Asesoramiento psicológico en el aula" element={<AsesoramientoPsicologico />} />
+        <Route exact path="/Terapia ocupacional" element={<TerapiaOcupacional />} />
+        <Route exact path="/Modificación de conducta" element={<ModificacionConducta />} />
+        <Route exact path="/Terapia física" element={<TerapiaFisica />} />
+        <Route exact path="/Integración sensorial" element={<IntegracionSensorial />} />
+        <Route exact path="/Terapia de familia" element={<TerapiaFamiliar />} />
+        <Route exact path="/Psicomotricidad" element={<Psicomotricidad />} />
+        <Route exact path="/Estimulación temprana" element={<EstimulacionTemprana/>} />
       </Routes>
       <Footer />
     </div>

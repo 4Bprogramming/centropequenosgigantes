@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "./Services.module.css";
+import { Link } from 'react-router-dom'
 import foto1 from '../../assets/servicios/p13.jpg'
 import foto2 from '../../assets/servicios/terapia_lenguaje.jpg'
 import foto3 from '../../assets/servicios/terapia_aprendizaje.jpeg'
@@ -121,8 +121,10 @@ function SevicesCard() {
     <>
       {blog.map((val) => (
         <div className='items shadow'>
-          <div className='img'>
+          <div className='img'> 
+          <Link  to={`/${val.title}`}>
             <img src={val.cover} alt='' />
+            </Link>
           </div>
           <div className='text'>
              <div className='admin flexSB'>
@@ -139,7 +141,9 @@ function SevicesCard() {
                 <label htmlFor=''>{val.com}</label> */}
               </span>
             </div> 
+            <Link  to={`/${val.title}`}>
             <h1>{val.title}</h1>
+            </Link>
             <p>{val.desc}</p>
           </div>
         </div>
