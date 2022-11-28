@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/esm/Navbar'
 import { NavLink } from 'react-router-dom';
 import Container from "react-bootstrap/Container"
 import AddProfessional from './Components/AddProfessional/AddProfessional';
+import SelectEspecialidades from './Components/SelectMultipleEspecialidades/SelectEspecialidades';
 
 function Admin() { 
     const [select, setSelect]=useState("hola")

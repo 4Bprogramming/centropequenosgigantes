@@ -13,7 +13,7 @@ import foto10 from '../../assets/servicios/psicomotricidad.jpeg'
 import foto11 from '../../assets/servicios/estimulacion_temprana.jpeg'
 
 
-const blog = [
+export const blog = [
     {
       id: 1,
       type: "admin",
