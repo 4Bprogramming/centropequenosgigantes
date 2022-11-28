@@ -68,6 +68,7 @@
   .listNavBar {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
   .navBarLinks {
     margin-left: -2rem;

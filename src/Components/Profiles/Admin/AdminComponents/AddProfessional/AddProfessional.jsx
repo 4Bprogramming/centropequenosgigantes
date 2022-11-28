@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
-
 import FormAddProfessional from "./FormAddProfessional";
 import { validate } from "./Validate";
 //Alert notifications
@@ -13,51 +12,47 @@ import {
 import "react-notifications/lib/notifications.css";
 import { uploadFile } from "../../../../../Firebase/Firebase";
 
-
-// function validate(post){    
+// function validate(post){
 //   let erros = {};
 //   if (!post.email) erros.email = alert("email is required");
-  
+
 //   return erros;
 // }
- 
 
 function AddProfessional() {
-  // const dispatch = useDispatch();
-  // let namePeritos1 = useSelector((state) => state.peritosByName);
-  // let peritos = useSelector((state) => state.peritos);
-  const [created, setCreated]= useState('')
-  const [show,setShow]=useState(false)
-  const [showE, setShowE]=useState(false)
-  const [err, setErr]=useState({})
+
+  const [created, setCreated] = useState("");
+  const [show, setShow] = useState(false);
+  const [showE, setShowE] = useState(false);
+  const [err, setErr] = useState({});
   const [errors, setErrors] = useState({});
   const [imageId, setImageId] = useState({});
 
   const [post, setPost] = useState({
-    idProfesional:"",
+    idProfesional: "",
     nombre: "",
-    apellido:"",
+    apellido: "",
     celular: "",
     email: "",
-    password:"",
-    matricula:"",
+    password: "",
+    matricula: "",
     especialidad: "",
-    imagenProfesional:""
+    imagenProfesional: "",
   });
 
   // //======= HANDLE SELECT ==================
-  const handleSelelect= seletedOptions=>{
-    const selection=seletedOptions.map(e=>e.value).toString()
-          setPost({...post, especialidad:selection })
-          // console.log('Options selected', seletedOptions);
-          console.log('Options selections======>', selection);
-          // console.log('Options selections2', selection.toString().split(','));
-  }
+  const handleSelelect = (seletedOptions) => {
+    const selection = seletedOptions.map((e) => e.value).toString();
+    setPost({ ...post, especialidad: selection });
+    // console.log('Options selected', seletedOptions);
+    console.log("Options selections======>", selection);
+    // console.log('Options selections2', selection.toString().split(','));
+  };
 
   // // ===================HANDLE IMAGE===============================================
 
   const handleImageId = async (e) => {
-    console.log(e)
+    console.log(e);
     //e.preventDefault();
     try {
       let url = await uploadFile(e);
@@ -74,18 +69,21 @@ function AddProfessional() {
       ...post,
       [e.target.name]: e.target.value,
     });
-    setErrors(validate({                 
-      ...post,                        
-    }));
+    setErrors(
+      validate({
+        ...post,
+      })
+    );
   };
   // //===============================================================
   let newProfesional = {
-     
-    idProfesional:"",
-    nombre: post.nombre?.split(' ')
-       .map((el) => el.charAt(0).toUpperCase() + el.toLowerCase().slice(1))
+    idProfesional: "",
+    nombre: post.nombre
+      ?.split(" ")
+      .map((el) => el.charAt(0).toUpperCase() + el.toLowerCase().slice(1))
       .join(" "),
-    apellido:post.apellido?.split(' ')
+    apellido: post.apellido
+      ?.split(" ")
       .map((el) => el.charAt(0).toUpperCase() + el.toLowerCase().slice(1))
       .join(" "),
     celular: post.celular,
@@ -93,37 +91,26 @@ function AddProfessional() {
     password: post.password,
     matricula: post.matricula,
     especialidad: post.especialidad,
-    imagenProfesional: imageId
-    
- 
+    imagenProfesional: imageId,
   };
   let profesional = Object.values(newProfesional);
-  console.log('profesional', newProfesional.nombre)
+  console.log("profesional", newProfesional.nombre);
   // //==========================================================================
 
-let body;
-if (
-  profesional[0] !== "" &&
-  profesional[1] !== "" &&
-  profesional[2] !== "" &&
-  profesional[3] !== ""
-) {
-  body = [
-   `idProfesional:"",`
-   `nombre: "",`
-   `apellido:"",`
-   `celular: "",`
-   `email: "",`
-   `password:"",`
-   `matricula:"",`
-   `especialidad: "",`
-   `imagenProfesional:""`
-     
-  ];
-} else {
-  body = ["Faltan completar Datos"];
-}
- 
+  let body;
+  if (
+    profesional[0] !== "" &&
+    profesional[1] !== "" &&
+    profesional[2] !== "" &&
+    profesional[3] !== ""
+  ) {
+    body = [
+      `idProfesional:"",``nombre: "",``apellido:"",``celular: "",``email: "",``password:"",``matricula:"",``especialidad: "",``imagenProfesional:""`,
+    ];
+  } else {
+    body = ["Faltan completar Datos"];
+  }
+
   // //=========================== HANDLE SUBMIT====================================
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -132,12 +119,9 @@ if (
 
     if (Object.keys(error).length === 0) {
       try {
-        // await createPer(newProfesional);
+        setShow(true);
 
-        setShow(true)
- 
-      
-        NotificationManager.success('Bien Hecho!', 'Profesional Añadido',3000);
+        NotificationManager.success("Bien Hecho!", "Profesional Añadido", 3000);
         setPost({
           nombre: "",
           celular: "",
@@ -149,44 +133,43 @@ if (
       }
     } else {
       let errorA = Object.values(error);
-      //console.log('errorA',errorA)
-      setShowE(true)
-      setErr(errorA)
-    //   alert(`No se puede guardar el caso presenta el/los siguiente/s error/s:
-    //        ${errorA}    
-    // `);
+
+      setShowE(true);
+      setErr(errorA);
     }
   };
 
-
-  return(
-  <div style={{ paddingTop: "0%" }}>
-    <h1>Añadir Profesional</h1>
-
-{
-        showE &&
-        <div style={{     paddingRight: '10%',
-            paddingLeft: '25%',
-            marginTop: '10px',
-            fontSize: '20px',
-            display: 'flex',
-            justifyContent: 'space-between'}}>
-        <Alert variant="danger" onClose={() => setShowE(false)} dismissible style={{ paddingRight: "8%", paddingLeft: "5%" }}>
-        <Alert.Heading>
-            <p style={{color:'black', fontSize:'15px'}}>No se puede guardar el caso presenta el/los siguiente/s error/s:</p>
-                 {
-                 err?.map(el=>{
-                    return <ol style={{fontSize:'15px'}}>{el}</ol>
-                 })
-                 }
-            
-    </Alert.Heading>
-        
-      </Alert>
+  return (
+    <>
+      {/* {showE && (
+        <div
+          style={{
+            paddingRight: "10%",
+            paddingLeft: "25%",
+            marginTop: "10px",
+            fontSize: "20px",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Alert
+            variant="danger"
+            onClose={() => setShowE(false)}
+            dismissible
+            style={{ paddingRight: "8%", paddingLeft: "5%" }}
+          >
+            <Alert.Heading>
+              <p style={{ color: "black", fontSize: "15px" }}>
+                No se puede guardar el caso presenta el/los siguiente/s error/s:
+              </p>
+              {err?.map((el) => {
+                return <ol style={{ fontSize: "15px" }}>{el}</ol>;
+              })}
+            </Alert.Heading>
+          </Alert>
         </div>
+      )} */}
 
-}
-     
       <FormAddProfessional
         handleChange={handleChange}
         handleSubmit={handleSubmit}
@@ -195,13 +178,10 @@ if (
         post={post}
         errors={errors}
         profesional={body}
-        style={{ paddingRight: "30%", paddingLeft: "25%", marginTop: "20px" }}
       />
-      <NotificationContainer/> 
-    </div>
-
-
-  )
+      <NotificationContainer />
+    </>
+  );
 }
 
 export default AddProfessional;

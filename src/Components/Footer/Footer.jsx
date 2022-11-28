@@ -17,7 +17,9 @@ import {
   MDBBtn,
 } from "mdb-react-ui-kit";
 
-function Footer() {
+
+
+function  Footer() {
   return (
     <CDBFooter className="shadow" style={{ backgroundColor: "rgb(93, 230, 178)" }}>
       <CDBBox
@@ -46,21 +48,7 @@ function Footer() {
             style={{ width: "50%" }}
             justifyContent="between"
           >
-          {/*  {<CDBBox>
-              <p className="h5 mb-4" style={{ fontWeight: "600" }}>
-                Información
-              </p>
-              <CDBBox
-                flex="column"
-                display="flex"
-                style={{ cursor: "pointer", padding: "0" }}
-              >
-                <CDBFooterLink href="/">Nosotros</CDBFooterLink>
-                <CDBFooterLink href="/">Servicios</CDBFooterLink>
-                <CDBFooterLink href="/">Contacto</CDBFooterLink>
-                  <CDBFooterLink href="/">Blog</CDBFooterLink>
-              </CDBBox>
-            </CDBBox> } */}
+        
             <CDBBox>
               <p className="h5 mb-4" style={{ fontWeight: "600" }}>
                 Novedades
