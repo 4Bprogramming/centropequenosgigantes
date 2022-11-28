@@ -1,62 +1,50 @@
 import React, { useState } from 'react'
-import Nav from 'react-bootstrap/esm/Nav'
-import Navbar from 'react-bootstrap/esm/Navbar'
-import { NavLink } from 'react-router-dom';
-import Container from "react-bootstrap/Container"
-import AddProfessional from './Components/AddProfessional/AddProfessional';
+import AddProfessional from './AdminComponents/AddProfessional/AddProfessional';
+import TodosTurnos from './AdminComponents/TodosLosTurnos/TodosTurnos';
+import ReservaTurnos from './AdminComponents/ReservaDeTurnos/ReservaTurnos';
+import TurnosPendientes from './AdminComponents/TurnosPendientes/TurnosPendientes';
+import TurnosDisponibles from './AdminComponents/TurnosDisponibles/TurnosDisponibles';
+import TurnosCancelados from './AdminComponents/TurnosCancelados/TurnosCancelados';
+
+
+import styles from './Admin.module.css';
 
 function Admin() { 
-    const [select, setSelect]=useState("hola")
+    const [select, setSelect]=useState("");
+
     const handleClick=(value)=>{
-        console.log('value',value)
-        if(value==='profesional'){
-            setSelect(value)
-        }
+            setSelect(value);
     }
+
   return (
-    <div>Admin
-         <Navbar >
-    <Container fluid>
+    <div className={styles.mainAdminContainer}>
+      <div className={styles.menuAdmin}>
+        <div className={styles.options} onClick={()=>handleClick('profesional')}>Añadir Profesional</div>
+        <div className={styles.options} onClick={()=>handleClick('todosTurnos')}>Todos Los turnos</div>
+        <div className={styles.options} onClick={()=>handleClick('reservarTurnos')}>Reservar Turnos</div>
+        <div className={styles.options} onClick={()=>handleClick('TurnosPendientes')}>Turnos Pendientes</div>
+        <div className={styles.options} onClick={()=>handleClick('TurnosDisponibles')}>Turnos Disponibles</div>
+        <div className={styles.options} onClick={()=>handleClick('TurnosCancelados')}>Turnos cancelados</div>
+      </div>
 
-      <Navbar.Toggle  />
-      <Navbar.Collapse id="navbarScroll">
-        <Nav
-         
-        //navbarScroll
-        >
-          <div  >
-            
-            <div  >
-              <button onClick={()=>handleClick('profesional')} >Añadir Profesional</button>
-            </div>
-            <div  >
-              <NavLink to="/Turnos">Todos Los turnos</NavLink>
-            </div>
-            {/* <div className="navBarLinks">
-              <NavLink to="/servicios">Servicios</NavLink>
-            </div> */}
-            <div  >
-              <NavLink to="/reserva">Reservar Turnos</NavLink>
-            </div>
-            <div  >
-              <NavLink  to="/pending">Turnos Pendientes</NavLink>
-            </div>
-            <div>
-            <NavLink  to="/avaibles" exact>Turnos Disponibles</NavLink>
-            </div>
-            <div  >
-              <NavLink to="/cancel">Turnos cancelados</NavLink>
-            </div>
 
-            
-          </div>
-        </Nav>
-      </Navbar.Collapse>
-    </Container>
-  </Navbar>
+
+
+
   {
     select==="profesional" &&
-  <AddProfessional/>
+    <AddProfessional/> ||
+    select === "todosTurnos" &&
+    <TodosTurnos/> ||
+    select==="reservarTurnos" &&
+    <ReservaTurnos/> ||
+    select === "TurnosPendientes" &&
+    <TurnosPendientes/> ||
+    select === "TurnosDisponibles" &&
+    <TurnosDisponibles/> ||
+    select === "TurnosCancelados" &&
+    <TurnosCancelados/>
+    
   }
     </div>
   )
