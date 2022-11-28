@@ -1,8 +1,6 @@
 import React from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
-import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import AddModals from "../Modals/AddModals";
 
 import SelectEspecialidades from "../SelectMultipleEspecialidades/SelectEspecialidades";
@@ -17,23 +15,16 @@ function FormAddProfessional({
   professional,
   errors,
 }) {
-  console.log('especialidades===>', especialidades);
-  let style = { display: "flex", alignItems: "flex-end" };
+
+  
   return (
     <div>
-      <Link to="/user">
-        {/* <Button variant="secondary" style={{ display: "flex" }}>
-          Volver
-        </Button> */}
-      </Link>
-      <div style={{ paddingRight: "30%", paddingLeft: "25%" }}>
+      <div>
         <h2>AÑADIR PROFESIONAL</h2>
       </div>
 
-      <Form
-        style={{ paddingRight: "30%", paddingLeft: "25%", marginTop: "5%" }}
-      >
-        {/* Nombre */}
+      <Form>
+        
         <FloatingLabel
           controlId="floatingInput"
           label="Dni"
@@ -47,12 +38,11 @@ function FormAddProfessional({
             name={"id"}
           />
         </FloatingLabel>
-        
+
         <FloatingLabel
           controlId="floatingInput"
           label="Nombre"
           className="mb-3"
-         
         >
           <Form.Control
             onChange={handleChange}
@@ -65,7 +55,6 @@ function FormAddProfessional({
           controlId="floatingInput"
           label="Apellido"
           className="mb-3"
-         
         >
           <Form.Control
             onChange={handleChange}
@@ -74,8 +63,7 @@ function FormAddProfessional({
             name={"apellido"}
           />
         </FloatingLabel>
-       
-   
+
         <FloatingLabel
           controlId="floatingInput"
           label="celular"
@@ -118,12 +106,11 @@ function FormAddProfessional({
           />
         </FloatingLabel>
         <Form.Label>Imagen de Perfil: </Form.Label>
-                <Form.Control
-                  type="file"
-                  name="idImage"
-                  onChange={(e) => handleImageId(e.target.files[0])}
-                 
-                />
+        <Form.Control
+          type="file"
+          name="idImage"
+          onChange={(e) => handleImageId(e.target.files[0])}
+        />
         <FloatingLabel
           controlId="floatingInput"
           label="matricula"
@@ -137,13 +124,13 @@ function FormAddProfessional({
             name="matricula"
           />
         </FloatingLabel>
- 
 
         <Form.Group>
-              <Form.Label>Especialidad: </Form.Label> 
-              <SelectEspecialidades handleSelelect={handleSelelect} options={especialidades}/>         
-            
-  
+          <Form.Label>Especialidad: </Form.Label>
+          <SelectEspecialidades
+            handleSelelect={handleSelelect}
+            options={especialidades}
+          />
         </Form.Group>
 
         <AddModals
@@ -153,7 +140,7 @@ function FormAddProfessional({
           title={"Verifique si la información del profesional es correcta"}
           type={"submit"}
           titleBotton={"Guardar"}
-          style={style}
+         
         />
       </Form>
     </div>
