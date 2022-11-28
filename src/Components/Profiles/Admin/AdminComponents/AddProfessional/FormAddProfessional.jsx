@@ -1,28 +1,30 @@
 import React from "react";
-// import FloatingLabel from "react-bootstrap/FloatingLabel";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
-import Select from "react-select";
 import AddModals from "../Modals/AddModals";
-import { especialidades } from "./Validate";
 
-function FormAddPeritos({
+import SelectEspecialidades from "../SelectMultipleEspecialidades/SelectEspecialidades";
+import { especialidades } from "../SelectMultipleEspecialidades/Controllers";
+
+function FormAddProfessional({
   handleChange,
   handleSubmit,
-  handleSelect,
+  handleSelelect,
+  handleImageId,
   post,
-  perito,
+  professional,
   errors,
 }) {
+  console.log('especialidades===>', especialidades);
   let style = { display: "flex", alignItems: "flex-end" };
   return (
     <div>
       <Link to="/user">
-        <Button variant="secondary" style={{ display: "flex" }}>
+        {/* <Button variant="secondary" style={{ display: "flex" }}>
           Volver
-        </Button>
+        </Button> */}
       </Link>
       <div style={{ paddingRight: "30%", paddingLeft: "25%" }}>
         <h2>AÑADIR PROFESIONAL</h2>
@@ -32,7 +34,7 @@ function FormAddPeritos({
         style={{ paddingRight: "30%", paddingLeft: "25%", marginTop: "5%" }}
       >
         {/* Nombre */}
-        {/* <FloatingLabel
+        <FloatingLabel
           controlId="floatingInput"
           label="Dni"
           className="mb-3"
@@ -115,6 +117,13 @@ function FormAddPeritos({
             name="password"
           />
         </FloatingLabel>
+        <Form.Label>Imagen de Perfil: </Form.Label>
+                <Form.Control
+                  type="file"
+                  name="idImage"
+                  onChange={(e) => handleImageId(e.target.files[0])}
+                 
+                />
         <FloatingLabel
           controlId="floatingInput"
           label="matricula"
@@ -131,29 +140,24 @@ function FormAddPeritos({
  
 
         <Form.Group>
-              <Form.Label>Especialidad: </Form.Label>          
-            <Select
-              onChange={handleSelect}
-              name={"especialidad"}
-              options={especialidades}
-              placeholder="Seleccione una especialidad"
-              
-            />
+              <Form.Label>Especialidad: </Form.Label> 
+              <SelectEspecialidades handleSelelect={handleSelelect} options={especialidades}/>         
+            
   
         </Form.Group>
 
         <AddModals
-          body={perito}
+          body={professional}
           agreeBotton={handleSubmit}
           nameBottom={"Confirmar"}
-          title={"Verifique si la información del perito es correcta"}
+          title={"Verifique si la información del profesional es correcta"}
           type={"submit"}
           titleBotton={"Guardar"}
           style={style}
-        /> */}
+        />
       </Form>
     </div>
   );
 }
 
-export default FormAddPeritos;
+export default FormAddProfessional;

@@ -36,4 +36,4 @@ export function validate(input) {
   return errors;
 }
 
-export const especialidades=[]
+

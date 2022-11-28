@@ -1,26 +1,26 @@
-import React, { MouseEventHandler } from 'react';
+import React from 'react';
+import Select from 'react-select';
+import makeAnimates from 'react-select/animated'
+const animatedComponents= makeAnimates()
 
-// import Select, {
-//   components,
-//   MultiValueGenericProps,
-//   MultiValueProps,
-//   OnChangeValue,
-//   Props,
-// } from 'react-select';
-// import {
-//   SortableContainer,
-//   SortableContainerProps,
-//   SortableElement,
-//   SortEndHandler,
-//   SortableHandle,
-// } from 'react-sortable-hoc';
-import { especialidades } from '../AddProfessional/Validate';
 
-function SelectEspecialidades() {
-   
-  return (
-    <div>SelectEspecialidades</div>
-  )
+function SelectEspecialidades({handleSelelect, options}) {
+    
+  console.log('options', options);
+  
+
+    return (
+      <>
+    <Select 
+      closeMenuOnSelect={false}
+      components={animatedComponents}
+      defaultValue={[]}
+      isMulti
+      options={options}
+      onChange={handleSelelect}
+    />
+      </>
+    )
 }
 
 export default SelectEspecialidades

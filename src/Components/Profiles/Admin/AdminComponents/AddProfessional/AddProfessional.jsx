@@ -3,10 +3,15 @@ import { Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
 
-// import FormAddProfessional from "./FormAddProfessional";
+import FormAddProfessional from "./FormAddProfessional";
 import { validate } from "./Validate";
 //Alert notifications
-
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import "react-notifications/lib/notifications.css";
+import { uploadFile } from "../../../../../Firebase/Firebase";
 
 
 // function validate(post){    
@@ -21,116 +26,143 @@ function AddProfessional() {
   // const dispatch = useDispatch();
   // let namePeritos1 = useSelector((state) => state.peritosByName);
   // let peritos = useSelector((state) => state.peritos);
-  // const [created, setCreated]= useState('')
-  // const [show,setShow]=useState(false)
-  // const [showE, setShowE]=useState(false)
-  // const [err, setErr]=useState({})
-  // const [errors, setErrors] = useState({});
+  const [created, setCreated]= useState('')
+  const [show,setShow]=useState(false)
+  const [showE, setShowE]=useState(false)
+  const [err, setErr]=useState({})
+  const [errors, setErrors] = useState({});
+  const [imageId, setImageId] = useState({});
 
-  // const [post, setPost] = useState({
-  //   nombre: "",
-  //   celular: "",
-  //   email: "",
-  //   rol: "",
-  // });
+  const [post, setPost] = useState({
+    idProfesional:"",
+    nombre: "",
+    apellido:"",
+    celular: "",
+    email: "",
+    password:"",
+    matricula:"",
+    especialidad: "",
+    imagenProfesional:""
+  });
 
   // //======= HANDLE SELECT ==================
-  // let handleSelect = (value, action) => {
-  //   if (action.name === "rol") {
-  //     setPost({
-  //       ...post,
-  //       rol: value.value,
-  //     });
-  //   }
-  // }
-  // //================================================================
-  // const handleChange = (e) => {
-  //   e.preventDefault();
-  //   setPost({
-  //     ...post,
-  //     [e.target.name]: e.target.value,
-  //   });
-  //   setErrors(validate({                 
-  //     ...post,                        
-  //   }));
-  // };
+  const handleSelelect= seletedOptions=>{
+    const selection=seletedOptions.map(e=>e.value).toString()
+          setPost({...post, especialidad:selection })
+          // console.log('Options selected', seletedOptions);
+          console.log('Options selections======>', selection);
+          // console.log('Options selections2', selection.toString().split(','));
+  }
+
+  // // ===================HANDLE IMAGE===============================================
+
+  const handleImageId = async (e) => {
+    console.log(e)
+    //e.preventDefault();
+    try {
+      let url = await uploadFile(e);
+      setImageId(url);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // //======================= HANDLE CHANGE=========================================
+  const handleChange = (e) => {
+    e.preventDefault();
+    setPost({
+      ...post,
+      [e.target.name]: e.target.value,
+    });
+    setErrors(validate({                 
+      ...post,                        
+    }));
+  };
   // //===============================================================
-  // let newPerito = {
-  //   nombre: post.nombre?.split(' ')
-  //     .map((el) => el.charAt(0).toUpperCase() + el.toLowerCase().slice(1))
-  //     .join(" "),
-  //   celular: "+54" + post.celular,
-  //   email: post.email,
-  //   rol: post.rol,
-  // };
-  // let perito = Object.values(newPerito);
-  // //console.log('perito', newPerito.nombre)
+  let newProfesional = {
+     
+    idProfesional:"",
+    nombre: post.nombre?.split(' ')
+       .map((el) => el.charAt(0).toUpperCase() + el.toLowerCase().slice(1))
+      .join(" "),
+    apellido:post.apellido?.split(' ')
+      .map((el) => el.charAt(0).toUpperCase() + el.toLowerCase().slice(1))
+      .join(" "),
+    celular: post.celular,
+    email: post.email,
+    password: post.password,
+    matricula: post.matricula,
+    especialidad: post.especialidad,
+    imagenProfesional: imageId
+    
+ 
+  };
+  let profesional = Object.values(newProfesional);
+  console.log('profesional', newProfesional.nombre)
   // //==========================================================================
 
-  // let body;
-  // if (
-  //   perito[0] !== "" &&
-  //   perito[1] !== "" &&
-  //   perito[2] !== "" &&
-  //   perito[3] !== ""
-  // ) {
-  //   body = [
-  //     `Apellido y Nombre : ${perito[0]}`,
-  //     `Número de Contacto: ${perito[1]}`,
-  //     `Email: ${perito[2]}`,
-  //     `Rol Asignado: ${perito[3]}`,
-  //   ];
-  // } else {
-  //   body = ["Faltan completar Datos"];
-  // }
+let body;
+if (
+  profesional[0] !== "" &&
+  profesional[1] !== "" &&
+  profesional[2] !== "" &&
+  profesional[3] !== ""
+) {
+  body = [
+   `idProfesional:"",`
+   `nombre: "",`
+   `apellido:"",`
+   `celular: "",`
+   `email: "",`
+   `password:"",`
+   `matricula:"",`
+   `especialidad: "",`
+   `imagenProfesional:""`
+     
+  ];
+} else {
+  body = ["Faltan completar Datos"];
+}
+ 
+  // //=========================== HANDLE SUBMIT====================================
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  // //================================================================
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
+    let error = await validate(post);
 
-  //   let error = await validate(post);
+    if (Object.keys(error).length === 0) {
+      try {
+        // await createPer(newProfesional);
 
-  //   if (Object.keys(error).length === 0) {
-  //     try {
-  //       await createPer(newPerito);
-  //       let peritoWhatsap = newPerito;
-  //       let body = {
-  //         token: "ppxsdnbulhx73mnv",
-  //         to: `${peritoWhatsap.celular}`,
-  //         body: `${peritoWhatsap.nombre} ya puedes registrarte en el sistema`,
-  //         priority: "10",
-  //       };
-  //        dispatch(postWhatsapp(body)); 
-  //       setCreated(peritoWhatsap.nombre)
-  //       setShow(true)
-  //       const message= peritoWhatsap.nombre + 'Fue añadido correctamente'
+        setShow(true)
+ 
       
-  //       NotificationManager.success('Bien Hecho!', 'Perito Añadido',3000);
-  //       setPost({
-  //         nombre: "",
-  //         celular: "",
-  //         email: "",
-  //         rol: "",
-  //       });
-  //     } catch (e) {
-  //       console.log("error de firebase", error);
-  //     }
-  //   } else {
-  //     let errorA = Object.values(error);
-  //     //console.log('errorA',errorA)
-  //     setShowE(true)
-  //     setErr(errorA)
-  //   //   alert(`No se puede guardar el caso presenta el/los siguiente/s error/s:
-  //   //        ${errorA}    
-  //   // `);
-  //   }
-  // };
-  // //console.log('created', created);
+        NotificationManager.success('Bien Hecho!', 'Profesional Añadido',3000);
+        setPost({
+          nombre: "",
+          celular: "",
+          email: "",
+          rol: "",
+        });
+      } catch (e) {
+        console.log("error de firebase", error);
+      }
+    } else {
+      let errorA = Object.values(error);
+      //console.log('errorA',errorA)
+      setShowE(true)
+      setErr(errorA)
+    //   alert(`No se puede guardar el caso presenta el/los siguiente/s error/s:
+    //        ${errorA}    
+    // `);
+    }
+  };
+
 
   return(
   <div style={{ paddingTop: "0%" }}>
     <h1>Añadir Profesional</h1>
-{/*     
+
 {
         showE &&
         <div style={{     paddingRight: '10%',
@@ -158,13 +190,14 @@ function AddProfessional() {
       <FormAddProfessional
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        handleSelect={handleSelect}
+        handleSelelect={handleSelelect}
+        handleImageId={handleImageId}
         post={post}
         errors={errors}
-        perito={body}
+        profesional={body}
         style={{ paddingRight: "30%", paddingLeft: "25%", marginTop: "20px" }}
       />
-      <NotificationContainer/>  */}
+      <NotificationContainer/> 
     </div>
 
 
