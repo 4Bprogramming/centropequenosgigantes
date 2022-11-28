@@ -20,9 +20,7 @@ import { uploadFile } from "../../../../../Firebase/Firebase";
 // }
 
 function AddProfessional() {
-  // const dispatch = useDispatch();
-  // let namePeritos1 = useSelector((state) => state.peritosByName);
-  // let peritos = useSelector((state) => state.peritos);
+
   const [created, setCreated] = useState("");
   const [show, setShow] = useState(false);
   const [showE, setShowE] = useState(false);
@@ -121,8 +119,6 @@ function AddProfessional() {
 
     if (Object.keys(error).length === 0) {
       try {
-        
-
         setShow(true);
 
         NotificationManager.success("Bien Hecho!", "Profesional Añadido", 3000);
@@ -137,15 +133,14 @@ function AddProfessional() {
       }
     } else {
       let errorA = Object.values(error);
-      
+
       setShowE(true);
       setErr(errorA);
-      
     }
   };
 
   return (
-    <div>
+    <>
       {/* {showE && (
         <div
           style={{
@@ -183,10 +178,9 @@ function AddProfessional() {
         post={post}
         errors={errors}
         profesional={body}
-       
       />
       <NotificationContainer />
-    </div>
+    </>
   );
 }
 

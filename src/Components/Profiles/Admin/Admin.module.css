@@ -1,5 +1,5 @@
 .mainAdminContainer {
-  border: 1px solid rgb(32, 30, 187);
+  border: 5px solid rgb(32, 30, 187);
   display: flex;
 }
 
@@ -43,6 +43,20 @@
 
 
 @media screen and (max-width: 1080px) {
-    
+    .mainRenderAdmin {
+        width: 55%;
+        
+      }
 
+}
+
+@media screen and (max-width: 620px) {
+    .mainAdminContainer {
+        flex-direction: column;
+        align-items: center;
+      }
+      .mainRenderAdmin {
+        width: 90%;
+        
+      }
 }

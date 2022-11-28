@@ -18,7 +18,7 @@ function FormAddProfessional({
 
   
   return (
-    <div>
+    <>
       <div>
         <h2>AÑADIR PROFESIONAL</h2>
       </div>
@@ -143,7 +143,7 @@ function FormAddProfessional({
          
         />
       </Form>
-    </div>
+    </>
   );
 }
 
