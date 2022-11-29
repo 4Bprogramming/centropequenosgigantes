@@ -27,6 +27,7 @@ import IntegracionSensorial from './Components/IntegracionSensorial/IntegracionS
 import TerapiaFamiliar from './Components/TerapiaFamiliar/TerapiaFamiliar'
 import Psicomotricidad from './Components/Psicomotricidad/Psicomotricidad'
 import EstimulacionTemprana from './Components/EstimulacionTemprana/EstimulacionTemprana'
+import Footer2 from "./Components/Footer/Footer2";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -66,7 +67,7 @@ function App() {
         <Route exact path="/Psicomotricidad" element={<Psicomotricidad />} />
         <Route exact path="/Estimulación temprana" element={<EstimulacionTemprana/>} />
       </Routes>
-      <Footer />
+      <Footer2 />
     </div>
   );
 }
