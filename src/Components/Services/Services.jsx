@@ -4,55 +4,9 @@ import styles from "./Services.module.css";
 import SevicesCard from "./SevicesCard";
 import SelectSimple from "./SelectSimple";
 import { Link, useNavigate } from "react-router-dom";
+import { servicios } from "./NameServices";
 
 
-
-const servicios = [
-  {
-    id: 1,
-    name: "Psicología",
-  },
-  {
-    id: 2,
-    name: "Terapia de lenguaje",
-  },
-  {
-    id: 3,
-    name: "Terapia de aprendizaje",
-  },
-  {
-    id: 4,
-    name: "Asesoramiento psicológico en el aula",
-  },
-  {
-    id: 5,
-    name: "Terapia ocupacional",
-  },
-  {
-    id: 6,
-    name: "Modificación de conducta",
-  },
-  {
-    id: 7,
-    name: "Terapia física",
-  },
-  {
-    id: 8,
-    name: "Integración sensorial",
-  },
-  {
-    id: 9,
-    name: "Terapia de familia",
-  },
-  {
-    id: 10,
-    name: "Psicomotricidad",
-  },
-  {
-    id: 11,
-    name: "Estimulación temprana",
-  },
-];
 
 function Services() {
   const navigate = useNavigate();
@@ -66,7 +20,7 @@ function Services() {
   
 const newOptions = servicios.map(e => {
     return {
-     value : e.name,
+     value : e.path,
      label: e.name,
     };
 })
