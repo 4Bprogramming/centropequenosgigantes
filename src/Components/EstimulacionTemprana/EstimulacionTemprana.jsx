@@ -14,11 +14,11 @@ const aboutData = {
   description3: "En esta primera etapa, empezaremos por trabajar la motricidad gruesa, También actividades que ayuden a controlar la cabeza del bebé. Una manera de hacerlo es colocar al bebé acostado boca abajo, mostrando juguetes o estímulos llamativos que le inciten a mantener la cabeza levantada. En cuanto a su desarrollo social, podemos colocar al bebé delante de un espejo, con una postura cómoda. Este ejercicio facilita el autoconocimiento corporal, empezará a reconocerse. Podemos realizar movimientos con los brazos o manos para mantener su atención.",
   description4: "2. Segunda etapa: De 1 a 2 años:",
   description5: "En esta etapa puede trabajarse el equilibrio del niño o niña. Un buen ejercicio es sujetar al bebé por debajo de los brazos, moviéndolo de manera suave de un lado a otro, de delante hacia atrás. Esto le servirá para que se enderece por sí mismo.",
-  description6: "Tercera etapa: De 2 a 3 años:",
+  description6: "3. Tercera etapa: De 2 a 3 años:",
   description7: "A partir del segundo año, ya se pueden realizar actividades para favorecer el desarrollo del área cognitiva y de lenguaje. Algunas actividades interesantes son leer en voz alta cuentos infantiles que tengan ilustraciones para que las pueda ver. Después podemos hacerle preguntas sencillas sobre la historia e incluso dejar que nos cuente aquello que ha entendido.",
-  description8: "Cuarta etapa: De 3 a 4 años:",
+  description8: "4 .Cuarta etapa: De 3 a 4 años:",
   description9: "Cuando haya cumplido los 3 años, se empezará a trabajar el lenguaje y la motricidad fina. Para ello, puede hacer dibujos y pedirle que nos explique lo que va dibujando. Debemos dejar que fomente su propia creatividad y lo haga de manera libre. También podemos dibujar con el niño o la niña a la vez, preguntando cosas sobre el dibujo a la vez que se avanza.",
-  description10: "Quinta etapa: De 4 a 6 años:",
+  description10: "5. Quinta etapa: De 4 a 6 años:",
   description11: "Para estimular tanto su coordinación como su equilibrio, empezaremos a realizar ejercicios divertidos como por ejemplo bailar."
 }
 
@@ -35,7 +35,7 @@ function Psicologia() {
     <div className={styles.aboutBody}>
         <div className={styles.aboutDescription}>
             <h2 >{aboutData.title}</h2>
-            <p >{aboutData.description1}<br/></p>
+            <p style={{textAlign:"justify"}}>{aboutData.description1}<br/></p>
            
              <img 
                 src={dos}  
@@ -56,16 +56,16 @@ function Psicologia() {
         </div>
     </div>
 </div>
-<p><b>{aboutData.description2}</b><br/></p>
-<p>{aboutData.description3}<br/><br/></p>
-<p><b>{aboutData.description4}</b><br/></p>
-<p>{aboutData.description5}<br/><br/></p>
-<p><b>{aboutData.description6}</b><br/></p>
-<p>{aboutData.description7}<br/><br/></p>
-<p><b>{aboutData.description8}</b><br/></p>
-<p>{aboutData.description9}<br/><br/></p>
-<p><b>{aboutData.description10}</b><br/></p>
-<p>{aboutData.description11}<br/>
+<p style={{marginLeft: "10px"}}><b>{aboutData.description2}</b><br/></p>
+<p style={{textAlign:"justify", marginLeft: "15px", marginRight: "15px"}}>{aboutData.description3}<br/><br/></p>
+<p style={{marginLeft: "10px"}}><b>{aboutData.description4}</b><br/></p>
+<p style={{textAlign:"justify" , marginLeft: "15px", marginRight: "15px"}}>{aboutData.description5}<br/><br/></p>
+<p style={{marginLeft: "10px"}}><b>{aboutData.description6}</b><br/></p>
+<p style={{textAlign:"justify", marginLeft: "15px", marginRight: "15px"}}>{aboutData.description7}<br/><br/></p>
+<p style={{marginLeft: "10px"}}><b>{aboutData.description8}</b><br/></p>
+<p style={{textAlign:"justify", marginLeft: "15px", marginRight: "15px"}}>{aboutData.description9}<br/><br/></p>
+<p style={{marginLeft: "10px"}}><b>{aboutData.description10}</b><br/></p>
+<p style={{textAlign:"justify", marginLeft: "15px", marginRight: "15px"}}>{aboutData.description11}<br/>
 
 
 

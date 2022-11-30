@@ -5,7 +5,7 @@ function Texto() {
   return (
     <div>
      <h1>Centro de Terapias Pequeños Gigantes</h1><br /><br />
-     <p className={styles.sliderDescription} >Nos comprometemos en brindar los servicios de evaluación de salud ocupacional y 
+     <p className={styles.sliderDescription} style={{textAlign:"justify"}}>Nos comprometemos en brindar los servicios de evaluación de salud ocupacional y 
         chequeo preventivo de forma oportuna, segura y profesional, que satisfagan las 
         necesidades y expectativas de nuestras partes interesadas, mediante un equipo de 
         talento humano calificado y comprometido, basado en un proceso de mejora continua 
