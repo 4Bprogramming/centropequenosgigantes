@@ -1,8 +1,9 @@
-.slider {
-	width: 100%;
+/* .slider {
+	width: 80%;
 	height: 100vh;
 	overflow: hidden;
 	position: relative;
+	background-color: fuchsia;
 }
 .slider__title {
 	position: absolute;
@@ -49,4 +50,4 @@
 		padding: 0rem 4rem;
 		background-color: rgba(255, 85, 85, 0.5);
 	}
-}
+} */
