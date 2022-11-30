@@ -55,17 +55,17 @@ function App() {
         <Route exact path="/contacto" element={<Contact />} />
         <Route exact path="/admin" element={<Admin />} />
           
-        <Route exact path="/Psicología" element={<Psicologia />} />
-        <Route exact path="/Terapia de lenguaje" element={<TerapiaLenguaje />} />
-        <Route exact path="/Terapia de aprendizaje" element={<TerapiAprendizaje />} />
-        <Route exact path="/Asesoramiento psicológico en el aula" element={<AsesoramientoPsicologico />} />
-        <Route exact path="/Terapia ocupacional" element={<TerapiaOcupacional />} />
-        <Route exact path="/Modificación de conducta" element={<ModificacionConducta />} />
-        <Route exact path="/Terapia física" element={<TerapiaFisica />} />
-        <Route exact path="/Integración sensorial" element={<IntegracionSensorial />} />
-        <Route exact path="/Terapia de familia" element={<TerapiaFamiliar />} />
-        <Route exact path="/Psicomotricidad" element={<Psicomotricidad />} />
-        <Route exact path="/Estimulación temprana" element={<EstimulacionTemprana/>} />
+        <Route exact path="/psicologia" element={<Psicologia />} />
+        <Route exact path="/lenguaje" element={<TerapiaLenguaje />} />
+        <Route exact path="/aprendizaje" element={<TerapiAprendizaje />} />
+        <Route exact path="/asesoramiento" element={<AsesoramientoPsicologico />} />
+        <Route exact path="/ocupacional" element={<TerapiaOcupacional />} />
+        <Route exact path="/conducta" element={<ModificacionConducta />} />
+        <Route exact path="/fisica" element={<TerapiaFisica />} />
+        <Route exact path="/sensorial" element={<IntegracionSensorial />} />
+        <Route exact path="/familia" element={<TerapiaFamiliar />} />
+        <Route exact path="/psicomotricidad" element={<Psicomotricidad />} />
+        <Route exact path="/estimulacion_temprana" element={<EstimulacionTemprana/>} />
       </Routes>
       <Footer2 />
     </div>
