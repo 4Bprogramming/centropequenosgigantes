@@ -144,7 +144,7 @@ function SevicesCard() {
             <Link  to={`/${val.title}`}>
             <h1>{val.title}</h1>
             </Link>
-            <p>{val.desc}</p>
+            <p style={{textAlign:"justify"}}>{val.desc}</p>
           </div>
         </div>
       ))}

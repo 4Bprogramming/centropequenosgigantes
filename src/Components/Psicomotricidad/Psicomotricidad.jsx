@@ -26,7 +26,7 @@ function Psicomotricidad() {
     <div className={styles.aboutBody}>
         <div className={styles.aboutDescription}>
             <h2 >{aboutData.title}</h2>
-            <p >{aboutData.description1}<br/><br/>{aboutData.description2}</p>
+            <p style={{textAlign:"justify"}}>{aboutData.description1}<br/><br/>{aboutData.description2}</p>
            
              <img 
                 src={dos}  

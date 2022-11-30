@@ -121,7 +121,7 @@ function Contact() {
               <div className="contact-info h-100">
                 <h3>Información de Contacto </h3>
                 <p className="mb-5">
-                  Nuestro equipo de Asesores en Recuperación Física te
+                  Nuestro equipo de asesores te
                   contactará para ayudarte a resolver cualquier interrogante.
                 </p>
                 <p>
@@ -133,7 +133,7 @@ function Contact() {
                     <span className="wrap-icon icon-room mr-3"></span>
                     <span className="text">
                      
-                Nuestro Centro es la opción preferida para familias y parejas.
+                Nuestro centro es la opción preferida para familias y parejas.
                     </span>
                    
                   </li>
@@ -151,7 +151,7 @@ function Contact() {
                   </li>
                   <li className="d-flex">
                     <span className="wrap-icon icon-envelope mr-3"></span>
-                    <span className="text">info@mywebsite.com</span>
+                    <span className="text">informes@centropequenosgigantes.com</span>
                   </li>
                 </ul>
               </div>
