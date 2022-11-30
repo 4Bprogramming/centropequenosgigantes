@@ -26,7 +26,7 @@ function TerapiAprendizaje() {
     <div className={styles.aboutBody}>
         <div className={styles.aboutDescription}>
             <h2 >{aboutData.title}</h2>
-            <p >{aboutData.description1}<br/></p>
+            <p style={{textAlign:"justify"}}>{aboutData.description1}<br/></p>
            <ul>
             <li>Evaluación diagnóstica.</li>
             <li>Programa de atención personalizado.</li>

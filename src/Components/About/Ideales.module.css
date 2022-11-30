@@ -1,0 +1,190 @@
+.mainQuienesSOmos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* title */
+  .usMainTitle{
+    display: flex;
+    flex-direction: column;
+    background: #4855c5d1;
+    border-radius: 10px;
+    width: 50%;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    animation: fadeIn 5s; 
+    
+  }
+  /* title colour */
+  .usMainTitle > :nth-child(1) {
+    color:black;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  .usMainTitle > :nth-child(2) {
+    color:rgb(201, 39, 39);
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  
+  /* Grid container */
+  .mainAboustUs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    margin: auto 0;
+    gap:10px;
+    
+  }
+  
+  
+  /* each card cotainer */
+  .aboutUsContainer {
+    width: 500px;
+    height: 250px;
+    border-radius: 10px;
+    /* background: #dee2e6f2; */
+    border: solid 3px yellowgreen;
+    
+  }
+  
+  
+  
+  .first{
+    grid-column-start: 1;
+    grid-row-end: 1;
+    animation: leftSide 1s;
+  }
+  .second{
+    grid-column-start: 2;
+    grid-row-end: 1;
+    animation: rightSide 1s ;
+  }
+  .third{
+    grid-column-start: 1;
+    grid-row-end: 2;
+    animation: leftSide 2s;
+  }
+  .fourth{
+    grid-column-start: 2;
+    grid-row-end: 2; 
+    animation: rightSide 2s ; 
+  }
+  
+  
+  .usTitle{
+    margin-top: 12px;
+    background-color: #4855c5d1;
+  }
+  .usBody {
+    text-align:justify;
+    padding: 12px;
+    font-weight:500;
+  }
+  .fourth .usBody,.third .usBody {
+    text-align:justify;
+    padding: 0px 7px 0px 0px;
+  }
+  
+  
+  /* keyframes */
+  
+  @keyframes fadeIn {
+   
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes leftSide {
+   
+  
+    from{
+     
+      overflow: hidden;
+      margin-left: -125px;
+      opacity: 0;
+      background-color: blue;
+    }
+    to{
+      opacity: 1;
+    }
+   
+  }
+  @keyframes rightSide {
+   
+    from{
+      overflow: hidden;
+      margin-left: 80px;
+      opacity: 0;
+      background-color:red;
+    }
+    to{
+      opacity: 1;
+    }
+   
+  }
+  
+  @media screen and (max-width: 1260px) {
+    .mainAboustUs {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .aboutUsContainer {
+      width: 619px;
+      height: 250px;
+    }
+    .first{
+      grid-column-start: 1;
+      grid-row-end: 1;
+      animation: leftSide 1s;
+    }
+    .second{
+      grid-column-start: 1;
+      grid-row-end: 2;
+      animation: leftSide 2s;
+    }
+    .third{
+      grid-column-start: 1;
+      grid-row-end: 3;
+      animation: leftSide 3s;
+    }
+    .fourth{
+      grid-column-start: 1;
+      grid-row-end: 4; 
+      animation: leftSide 4s;
+    }
+    
+    .fifth{
+      grid-column-start: 1;
+      grid-row-end: 5;  
+      animation: leftSide 5s;
+    }
+    .sixth{
+      grid-column-start: 1;
+      grid-row-end: 6; 
+      animation: leftSide 6s;
+    }
+  
+  }
+  
+  
+  @media screen and (max-width: 620px) {  
+    .usMainTitle{
+      width: 90%;
+    }
+    .mainAboustUs{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .aboutUsContainer {
+      width: 90%;
+      height: fit-content;
+    }
+  }
+  

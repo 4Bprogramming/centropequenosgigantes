@@ -9,16 +9,12 @@ function Home2() {
        
         
         <div className={styles.AboutContainer}>
-          <h1 className={styles.StyledHeading}> Pequeños Gigantes</h1>
-          <div className={styles.TextSection}>
-          Centro de Terapias Pequeños Gigantes Rehabilitación Integral para el niño y la familia, 
-          atendemos a niños adolescentes y adultos en diversos diagnósticos.
-            <br />
-            <br />
-            
-            tiene como objetivo la promoción del bienestar físico, mental y social de los 
-            trabajadores de todas las profesiones promoviendo la adaptación del trabajo al 
-            hombre y del hombre a su trabajo.
+          <h1 className={styles.StyledHeading}>¡BIENVENIDOS!</h1>
+          <div className={styles.TextSection} style={{textAlign:"justify"}}>
+          Bienvenido a “Pequeños Gigantes” Nos especializamos en brindar atención a 
+          pacientes con diversos diagnósticos contamos con profesionales tecnólogos médicos 
+          y psicólogos los cuales tienen por misión brindar la mejor atención de calidad. 
+           
           </div>
         </div>
         <div className={styles.AboutContainer}>
