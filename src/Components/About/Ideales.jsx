@@ -5,10 +5,7 @@ function Ideales() {
   return (
     <>
       <div className={styles.mainQuienesSOmos}>
-        {/* <div className={styles.usMainTitle}>
-        <span>Somos</span>
-        <span>Grupo Águila</span>
-      </div> */}
+        
         <div className={styles.mainAboustUs}>
           <div className={styles.first}>
             <div className={styles.aboutUsContainer}>
