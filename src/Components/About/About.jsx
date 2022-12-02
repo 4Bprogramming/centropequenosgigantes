@@ -14,7 +14,7 @@ function About() {
         
         <div className={styles.AboutContainer}>
           <div className={styles.StyledHeading}> Nosotros Somos</div>
-          <div className={styles.TextSection} style={{textAlign:"justify"}}>
+          <div className={styles.TextSection}>
           Somos el centro de terapias “Pequeños Gigantes” estamos ubicados en la ciudad de Lima. 
           Ofrecemos un servicio profesional de primer nivel, desarrollado por un grupo de especialistas 
           en rehabilitación y otros profesionales de la salud. 
