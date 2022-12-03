@@ -1,0 +1,50 @@
+.mainCardContainer{
+    
+    box-shadow: 2px 3px 5px grey;
+    width: 350px;
+    height: auto;
+    
+}
+
+
+.imageServicioContainer {
+    width: 100%;
+    height: 250px;
+}
+.imageServicioContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+.cardContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    margin: 10px;
+    
+}
+.cardContent h4{
+    text-align: center;
+}
+.cardContent p{
+  
+    text-align: justify;
+    hyphens: auto;
+    color: gray;
+}
+
+
+  
+
+
+
+@media screen and (max-width: 400px) {
+ 
+    .mainCardContainer{
+        width: 95%;
+        height: auto;
+    }
+    
+  
+} 

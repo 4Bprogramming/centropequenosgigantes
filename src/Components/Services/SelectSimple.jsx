@@ -1,25 +1,23 @@
-import React from 'react';
-import Select from 'react-select';
-import makeAnimates from 'react-select/animated'
-const animatedComponents= makeAnimates()
+import React from "react";
+import Select from "react-select";
+import makeAnimates from "react-select/animated";
+const animatedComponents = makeAnimates();
 
+function SelectSimple({ onChange, options }) {
+  // console.log("options", options);
 
-function SelectSimple({onChange, options}) {
-    
-  console.log('options', options);
-  
-
-    return (
-      <>
-    <Select 
-      closeMenuOnSelect={false}
-      components={animatedComponents}
-      defaultValue={[]}
-      options={options}
-      onChange={onChange}
-    />
-      </>
-    )
+  return (
+    <>
+      <Select
+        closeMenuOnSelect={false}
+        components={animatedComponents}
+        defaultValue={[]}
+        options={options}
+        onChange={onChange}
+        placeholder="Nuestros servicios..."
+      />
+    </>
+  );
 }
 
 export default SelectSimple;
