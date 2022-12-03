@@ -126,7 +126,7 @@ function AddProfessional() {
     } else {
       let errorA = Object.values(error).join(', ');
 
-      NotificationManager.warning(`${errorA}`, "ATENCION!", 10000);
+      NotificationManager.error(`${errorA}`, "ATENCION!", 10000);
       // setShowE(true);
       // setErr(errorA);
     }
