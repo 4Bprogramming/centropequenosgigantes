@@ -4,6 +4,7 @@ import pict from "../../assets/seguimos.jpg";
 import Image from "./Image";
 import AbouText from "./AbouText";
 import ImageFooter from "./ImageFooter";
+import Ideales from "./Ideales";
 
 function About() {
   return (
@@ -14,25 +15,27 @@ function About() {
         <div className={styles.AboutContainer}>
           <div className={styles.StyledHeading}> Nosotros Somos</div>
           <div className={styles.TextSection}>
-            Centro de terapias Pequeños Gigantes EIRL. RUC: 20609237024.
+          Somos el centro de terapias “Pequeños Gigantes” estamos ubicados en la ciudad de Lima. 
+          Ofrecemos un servicio profesional de primer nivel, desarrollado por un grupo de especialistas 
+          en rehabilitación y otros profesionales de la salud. 
             <br />
             <br />
-            Somos una institución privada de salud con 10 de experiencia
-            tratando a niños, adolescentes, jóvenes y adultos con diversos
-            diagnósticos.
+            Contamos con más de 10 años de experiencia. En nuestros primeros años nos hemos fortalecido 
+            en el distrito de El Agustino con la aplicación de procesos terapéuticos planificados y monitoreados 
+            con el trabajo en equipo de nuestros especialistas con la finalidad de entregar un servicio de calidad.
             <br />
             <br />
-            Contamos con un equipo de profesionales de la salud mental que viene
-            trabajando juntos dando respuesta integral a diferentes desafíos que
-            intervienen en el proceso de desarrollo y aprendizaje en nuestros
-            pacientes.
+            Inicialmente nos consolidamos la atención exclusiva para niños y adolescentes en etapa escolar, 
+            luego incluimos el servicio de psicoterapia para adultos con resultados positivos reflejándose en 
+            nuestro crecimiento.
           </div>
         </div>
         <div className={styles.AboutContainer}>
           <img className={styles.Photo} src={pict} />
         </div>
       </div>
-      <AbouText />
+      <Ideales />
+    {/*   <AbouText /> */}
       <ImageFooter />
     </div>
   );

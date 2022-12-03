@@ -1,0 +1,147 @@
+.mainQuienesSOmos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+
+  
+  /* Grid container */
+  .mainAboustUs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    margin: auto 0;
+    gap:10px;
+    
+  }
+  
+  
+  /* each card cotainer */
+  .aboutUsContainer {
+    width: 500px;
+    height: 250px;
+    border-radius: 10px;
+    /* background: #dee2e6f2; */
+    border: solid 3px rgb(93, 230, 178);
+    
+  }
+  
+  .first{
+    grid-column-start: 1;
+    grid-row-end: 1;
+    animation: leftSide 3s;
+  }
+  .second{
+    grid-column-start: 2;
+    grid-row-end: 1;
+    animation: rightSide 3s ;
+  }
+  .third{
+    grid-column-start: 1;
+    grid-row-end: 2;
+    animation: leftSide 5s;
+  }
+  .fourth{
+    grid-column-start: 2;
+    grid-row-end: 2; 
+    animation: rightSide 5s ; 
+  }
+  
+  
+  .usTitle{
+    margin-top: 12px;
+    background-color: #4855c5d1;
+  }
+  .usBody {
+    text-align:justify;
+    padding: 12px;
+    font-weight:500;
+  }
+  
+  /* keyframes */
+  
+  @keyframes fadeIn {
+   
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes leftSide {
+   
+  
+    from{
+     
+      overflow: hidden;
+      margin-left: -125px;
+      opacity: 0;
+      
+    }
+    to{
+      opacity: 1;
+    }
+   
+  }
+  @keyframes rightSide {
+   
+    from{
+      overflow: hidden;
+      margin-left: 80px;
+      opacity: 0;
+      
+    }
+    to{
+      opacity: 1;
+    }
+   
+  }
+  
+  @media screen and (max-width: 1260px) {
+    .mainAboustUs {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .aboutUsContainer {
+      width: 619px;
+      height: 250px;
+    }
+    .first{
+      grid-column-start: 1;
+      grid-row-end: 1;
+      animation: leftSide 1s;
+    }
+    .second{
+      grid-column-start: 1;
+      grid-row-end: 2;
+      animation: leftSide 2s;
+    }
+    .third{
+      grid-column-start: 1;
+      grid-row-end: 3;
+      animation: leftSide 3s;
+    }
+    .fourth{
+      grid-column-start: 1;
+      grid-row-end: 4; 
+      animation: leftSide 4s;
+    }
+  }
+  
+  
+  @media screen and (max-width: 620px) {  
+   
+    .aboutUsContainer {
+      width: 319px;
+      height: fit-content;
+    }
+  }
+  @media screen and (max-width: 320px) { 
+    .aboutUsContainer {
+      width: 280px;
+      height: fit-content;
+    }
+  }

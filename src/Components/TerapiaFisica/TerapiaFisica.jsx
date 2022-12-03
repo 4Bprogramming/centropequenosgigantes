@@ -25,7 +25,7 @@ function Psicologia() {
     <div className={styles.aboutBody}>
         <div className={styles.aboutDescription}>
             <h2 >{aboutData.title}</h2>
-            <p >{aboutData.description1}<br/></p>
+            <p style={{textAlign:"justify"}}>{aboutData.description1}<br/></p>
            <ul>
             <li>Participar, cuando se le pida, en el equipo multidisciplinar del Centro para la realización de pruebas o valoraciones relacionadas con su especialidad profesional.</li>
             <li>Realizar los tratamientos y técnicas rehabilitadoras que se prescriban.</li>

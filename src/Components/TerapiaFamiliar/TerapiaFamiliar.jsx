@@ -26,7 +26,7 @@ function TerapiaFamiliar() {
     <div className={styles.aboutBody}>
         <div className={styles.aboutDescription}>
             <h2 >{aboutData.title}</h2>
-            <p >{aboutData.description1}<br/><br/>{aboutData.description2}</p>
+            <p style={{textAlign:"justify"}}>{aboutData.description1}<br/><br/>{aboutData.description2}</p>
            <ul>
             <li>Terapia estratégica.</li>
             <li>Terapia estructural.</li>
