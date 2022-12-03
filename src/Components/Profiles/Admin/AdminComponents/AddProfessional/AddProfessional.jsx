@@ -11,6 +11,7 @@ import {
 } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 import { uploadFile } from "../../../../../Firebase/Firebase";
+import { postProfesionales } from "../../../../../Redux/Action/Actions";
 
 // function validate(post){
 //   let erros = {};
@@ -21,13 +22,14 @@ import { uploadFile } from "../../../../../Firebase/Firebase";
 
 function AddProfessional() {
 
+  // const dispatch=useDispatch()
+
   const [created, setCreated] = useState("");
   const [show, setShow] = useState(false);
   const [showE, setShowE] = useState(false);
   const [err, setErr] = useState({});
   const [errors, setErrors] = useState({});
   const [imageId, setImageId] = useState({});
-
   const [post, setPost] = useState({
     idProfesional: "",
     nombre: "",
@@ -52,7 +54,7 @@ function AddProfessional() {
   // // ===================HANDLE IMAGE===============================================
 
   const handleImageId = async (e) => {
-    console.log(e);
+    console.log('evento imagen',e);
     //e.preventDefault();
     try {
       let url = await uploadFile(e);
@@ -61,6 +63,8 @@ function AddProfessional() {
       console.log(err);
     }
   };
+
+  console.log('imagen', imageId)
 
   // //======================= HANDLE CHANGE=========================================
   const handleChange = (e) => {
@@ -77,7 +81,7 @@ function AddProfessional() {
   };
   // //===============================================================
   let newProfesional = {
-    idProfesional: "",
+    idProfesional: post.idProfesional, 
     nombre: post.nombre
       ?.split(" ")
       .map((el) => el.charAt(0).toUpperCase() + el.toLowerCase().slice(1))
@@ -94,40 +98,51 @@ function AddProfessional() {
     imagenProfesional: imageId,
   };
   let profesional = Object.values(newProfesional);
-  console.log("profesional", newProfesional.nombre);
-  // //==========================================================================
+  console.log('newProfesional==>', newProfesional);
+//==========================================================================
 
   let body;
   if (
-    profesional[0] !== "" &&
-    profesional[1] !== "" &&
-    profesional[2] !== "" &&
-    profesional[3] !== ""
+    newProfesional.idProfesional !== "" &&
+    newProfesional.nombre !== "" &&
+    newProfesional.apellido !== "" &&
+    newProfesional.email !== ""  &&
+    newProfesional.celular !== ""  &&
+    newProfesional.password !== ""  &&
+    newProfesional.especialidad !== "" 
   ) {
     body = [
-      `idProfesional:"",``nombre: "",``apellido:"",``celular: "",``email: "",``password:"",``matricula:"",``especialidad: "",``imagenProfesional:""`,
+      `DNI:${newProfesional.idProfesional},`,`Nombre:${newProfesional.nombre},`,`Apellido:${newProfesional.apellido},`,`Celular: ${ newProfesional.celular},`,`Email: ${newProfesional.email},`,`Password:${newProfesional.password},`,`Matricula:${newProfesional.matricula},`,`Especialidad: "${newProfesional.especialidad},`
     ];
   } else {
     body = ["Faltan completar Datos"];
   }
 
   // //=========================== HANDLE SUBMIT====================================
-  const handleSubmit = async (e) => {
+  
+  //AGREGAR TOKEN PARA MANDAR A LA ACTION
+
+  async function handleSubmit (e) {
     e.preventDefault();
 
     let error = await validate(post);
+    // console.log('error de la validacion ==>', error);
+    // console.log('error de la validacion cantidad ==>', Object.keys(error).length);
+
 
     if (Object.keys(error).length === 0) {
       try {
-        setShow(true);
+        console.log('entre en el try del submit');
+       let doc= await postProfesionales(newProfesional)
+        // setShow(true);
 
         NotificationManager.success("Bien Hecho!", "Profesional Añadido", 3000);
-        setPost({
-          nombre: "",
-          celular: "",
-          email: "",
-          rol: "",
-        });
+        // setPost({
+        //   nombre: "",
+        //   celular: "",
+        //   email: "",
+        //   rol: "",
+        // });
       } catch (e) {
         console.log("error de firebase", error);
       }
