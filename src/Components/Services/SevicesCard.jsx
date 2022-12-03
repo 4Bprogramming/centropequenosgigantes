@@ -65,7 +65,7 @@ export const blog = [
     date: "JAN. 18, 2021",
     com: "12 COMMENTS ",
     title: "Modificación de conducta",
-    desc: "Crear mejores relaciones interpersonales.",
+    desc: "Crear mejores relaciones interpersonales como así también promover la confianza en sí mismo.",
     cover: foto6,
   },
   {
@@ -83,7 +83,7 @@ export const blog = [
     date: "JAN. 18, 2021",
     com: "12 COMMENTS ",
     title: "Integración sensorial",
-    desc: "expresión que se usa para describir los procesos del cerebro que nos permiten tomar la información que recibimos de nuestros 5 sentidos, organizarla y responder adecuadamente.",
+    desc: "Expresión que se usa para describir los procesos del cerebro que nos permiten tomar la información que recibimos de nuestros 5 sentidos, organizarla y responder adecuadamente.",
     cover: foto8,
   },
   {
@@ -101,7 +101,7 @@ export const blog = [
     date: "JAN. 18, 2021",
     com: "12 COMMENTS ",
     title: "Psicomotricidad",
-    desc: "técnica que ayuda a niños y bebés a dominar sus movimientos corporales de una forma sana, así como a mejorar su relación y comunicación con los demás.",
+    desc: "Técnica que ayuda a niños y bebés a dominar sus movimientos corporales de una forma sana, así como a mejorar su relación y comunicación con los demás.",
     cover: foto10,
   },
   {
@@ -121,17 +121,21 @@ function SevicesCard() {
       {blog.map((val) => (
 
         <div className={styles.mainCardContainer}>
+          
+
           <div className={styles.imageServicioContainer}>
             <Link to={`/${val.title}`}>
               <img src={val.cover} alt={val.title} />
             </Link>
           </div>
-          <div className="text">
+          <div className={styles.cardContent}>
             <Link to={`/${val.title}`}>
               <h4>{val.title}</h4>
             </Link>
             <p>{val.desc}</p>
           </div>
+          
+          
         </div>
       ))}
     </>

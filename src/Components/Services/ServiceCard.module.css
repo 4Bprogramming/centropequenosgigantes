@@ -1,8 +1,11 @@
 .mainCardContainer{
-    border: 2px solid fuchsia;
+    
+    box-shadow: 2px 3px 5px grey;
     width: 350px;
-    height: 450px;
+    height: auto;
+    
 }
+
 
 .imageServicioContainer {
     width: 100%;
@@ -14,24 +17,34 @@
     object-fit: cover;
   }
 
-
-
-.tituloPrincipalServicio{
-    width: 100%;
+.cardContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    margin: 10px;
+    
 }
+.cardContent h4{
+    text-align: center;
+}
+.cardContent p{
+  
+    text-align: justify;
+    hyphens: auto;
+    color: gray;
+}
+
+
   
 
-.selectSimpleContainer{
-    width: 100%;
-}
 
 
-
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 400px) {
  
     .mainCardContainer{
         width: 95%;
         height: auto;
     }
+    
   
 } 

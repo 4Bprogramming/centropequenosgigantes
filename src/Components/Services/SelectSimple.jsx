@@ -14,6 +14,7 @@ function SelectSimple({ onChange, options }) {
         defaultValue={[]}
         options={options}
         onChange={onChange}
+        placeholder="Nuestros servicios..."
       />
     </>
   );
