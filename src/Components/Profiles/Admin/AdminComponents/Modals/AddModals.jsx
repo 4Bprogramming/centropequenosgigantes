@@ -15,7 +15,7 @@ function AddModals({
   style,
 }) {
   const [show, setShow] = useState(false);
-  console.log('agreeBotton==>', agreeBotton)
+  
   let bodyA;
   if (body) {
     bodyA = Object.values(body);
@@ -44,7 +44,7 @@ function AddModals({
           {body?.map((el) => {
             return (
               <ol className="orderedList">
-                <span>{el.split(":")[0]}:</span>
+                <span>{el.split(":")[0]}: </span>
                 {el.split(":")[1]}
               </ol>
             );

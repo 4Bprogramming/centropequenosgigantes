@@ -6,7 +6,7 @@ const animatedComponents= makeAnimates()
 
 function SelectEspecialidades({handleSelelect, options}) {
     
-  console.log('options', options);
+  // console.log('options', options);
   
 
     return (
