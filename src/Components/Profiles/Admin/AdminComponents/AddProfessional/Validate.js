@@ -6,10 +6,13 @@ export function validate(input) {
     celular: /^\d{1,11}$/, // 1 a 11 numeros.
     email: /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
   }; 
-
+  if (input.idProfesional?.length < 3) {
+    errors.nombre = "Debe agregar D.N.I";
+  }
   if (input.nombre?.length < 3) {
     errors.nombre = "Debe agregar Nombre";
   }
+
   if (input.apellido?.length < 3) {
     errors.apellido = "Debe agregar Apellido";
   }
@@ -18,20 +21,20 @@ export function validate(input) {
     errors.celular = "Debe contener numero de teléfono";
   }
   if (!expresiones.celular.test(input.celular)) {
-    errors.celular = "debe contener solo números, entre 1 y 11 dígitos";
+    errors.celular = "Debe contener solo números, entre 1 y 11 dígitos";
   }
   if (!expresiones.email.test(input.email)) {
-    errors.email = "verifique email";
+    errors.email = "Verifique email";
   }
   
   if (input.email?.length < 1) {
-    errors.email = "agregue un email por favor";
+    errors.email = "Agregue un email por favor";
   }
-  if (input.matricula?.length < 1) {
-    errors.matrícula = "falta matrícula";
-  }
+  // if (input.matricula?.length < 1) {
+  //   errors.matrícula = "Falta matrícula";
+  // }
   if (input.especialidad?.length < 1) {
-    errors.especialidad = "agregue una o más especialidades por favor";
+    errors.especialidad = "Agregue una o más especialidades por favor";
   }
   return errors;
 }

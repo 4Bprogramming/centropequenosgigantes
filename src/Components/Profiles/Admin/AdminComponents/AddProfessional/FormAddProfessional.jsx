@@ -12,7 +12,7 @@ function FormAddProfessional({
   handleSelelect,
   handleImageId,
   post,
-  professional,
+  profesional,
   errors,
 }) {
 
@@ -134,7 +134,7 @@ function FormAddProfessional({
         </Form.Group>
 
         <AddModals
-          body={professional}
+          body={profesional}
           agreeBotton={handleSubmit}
           nameBottom={"Confirmar"}
           title={"Verifique si la información del profesional es correcta"}
