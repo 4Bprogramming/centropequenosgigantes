@@ -15,7 +15,7 @@ function AddModals({
   style,
 }) {
   const [show, setShow] = useState(false);
-
+  console.log('agreeBotton==>', agreeBotton)
   let bodyA;
   if (body) {
     bodyA = Object.values(body);

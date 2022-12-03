@@ -17,12 +17,13 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth();
 const firebaseApp = initializeApp(firebaseConfig);
-export const storage = getStorage(firebaseApp)
+export const storage = getStorage(app)
 
 export async function uploadFile (file){
   const storageRef = ref(storage , v4()) 
   await uploadBytes(storageRef , file)
   const url = await getDownloadURL(storageRef)
+  console.log('funcion uoloadFiles URL', url);
   return url
 }
 

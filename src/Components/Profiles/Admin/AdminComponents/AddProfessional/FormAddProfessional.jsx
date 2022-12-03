@@ -34,8 +34,8 @@ function FormAddProfessional({
           <Form.Control
             onChange={handleChange}
             type="text"
-            value={post.id}
-            name={"id"}
+            value={post.idProfesional}
+            name={"idProfesional"}
           />
         </FloatingLabel>
 
