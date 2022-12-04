@@ -8,6 +8,7 @@ import TurnosCancelados from './AdminComponents/TurnosCancelados/TurnosCancelado
 
 
 import styles from './Admin.module.css';
+import TodosProfesionales from './AdminComponents/TodosLosProfesionales/TodosLosProfesionales';
 
 function Admin() { 
     const [select, setSelect]=useState("");
@@ -21,6 +22,7 @@ function Admin() {
       <div className={styles.menuAdmin}>
       <h2 className={styles.adminMenuTitle}>Menu</h2>
         <div className={styles.options} onClick={()=>handleClick('profesional')}>Añadir Profesional</div>
+        <div className={styles.options} onClick={()=>handleClick('todosProfesionales')}>Lista Profesionales</div>
         <div className={styles.options} onClick={()=>handleClick('todosTurnos')}>Todos los turnos</div>
         <div className={styles.options} onClick={()=>handleClick('reservarTurnos')}>Reservar Turnos</div>
         <div className={styles.options} onClick={()=>handleClick('TurnosPendientes')}>Turnos Pendientes</div>
@@ -35,6 +37,8 @@ function Admin() {
     {
       select==="profesional" &&
       <AddProfessional/> ||
+      select==="todosProfesionales" &&
+      <TodosProfesionales/> ||
       select === "todosTurnos" &&
       <TodosTurnos/> ||
       select==="reservarTurnos" &&

@@ -32,14 +32,14 @@ function AddProfessional() {
     const selection = seletedOptions.map((e) => e.value).toString();
     setPost({ ...post, especialidad: selection });
     // console.log('Options selected', seletedOptions);
-    console.log("Options selections======>", selection);
+    // console.log("Options selections======>", selection);
     // console.log('Options selections2', selection.toString().split(','));
   };
 
   // // ===================HANDLE IMAGE===============================================
 
   const handleImageId = async (e) => {
-    console.log('evento imagen',e);
+    // console.log('evento imagen',e);
     //e.preventDefault();
     try {
       let url = await uploadFile(e);
