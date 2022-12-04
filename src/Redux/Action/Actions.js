@@ -10,7 +10,7 @@ export function postProfesionales(body){
     try {
         let res = await axios.post(`${BASE_URL}/profesionales`, body)  
         return res;
-        return dispatch({type:MESSAGE, payload: res.data})
+        // return dispatch({type:MESSAGE, payload: res.data})
         
     } catch (e) {
         console.log(e.response.data.message) 

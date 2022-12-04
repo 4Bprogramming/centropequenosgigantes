@@ -39,9 +39,21 @@ function Login() {
   const handleSubmit = async (e)=> {
     e.preventDefault();    
     const respuestaDBLogin = await loginAction(loginData);
+
     if(respuestaDBLogin.token){
       setToken(respuestaDBLogin.token);
-      setUsuarioDB(respuestaDBLogin.usuario);
+      
+      //usuario que viaja a localStorage
+      const usuario = {
+        fullName: respuestaDBLogin.usuario.fullName,
+        celular:respuestaDBLogin.usuario.celular,
+        email:respuestaDBLogin.usuario.email,
+        imagenProfesional:respuestaDBLogin.usuario.imagenProfesional,
+        matricula:respuestaDBLogin.usuario.matricula,
+        idProfesional:respuestaDBLogin.usuario.idProfesional
+      }
+
+      setUsuarioDB(usuario);
       navigate('/')//momentaneamente a HOME hasta que este el perfil de usuario
 
     }else{
