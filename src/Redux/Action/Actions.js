@@ -12,8 +12,8 @@ export function postProfesionales(body){
         return res;
         return dispatch({type:MESSAGE, payload: res.data})
         
-    } catch (error) {
-        console.log(error) 
+    } catch (e) {
+        console.log(e.response.data.message) 
     }        
 }
 }  
@@ -22,9 +22,9 @@ export function postProfesionales(body){
 export async function loginAction(loginData){
     try {
         let respuestaLogin = await axios.post(`${BASE_URL}/login`, loginData)
-        console.log('respuesta de login****',respuestaLogin)
+        return respuestaLogin.data
     } catch (e) {
-        console.log('el error de LOGIN',e)
+        return e.response.data.message
     }
 }
 
@@ -32,7 +32,7 @@ export async function loginAction(loginData){
 export function getProfesionales(){
     return async function(dispatch){
         try {
-            let res = await axios.get(`${BASE_URL}/profesionales`)  
+            let res = await axios.get(`${BASE_URL}/profesionales`)
             return dispatch({type:GET_PROFESIONALES, payload:res.data});
             
         } catch (error) {
