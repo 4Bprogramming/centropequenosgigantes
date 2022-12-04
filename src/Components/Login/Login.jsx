@@ -1,40 +1,68 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getAuth,signInWithEmailAndPassword, GoogleAuthProvider,
-  signInWithPopup, } from "firebase/auth";
-import { auth } from "../../Firebase/Firebase";
 import styles from "./Login.module.css";
 import InputControl from "../ImputControl/InputControl";
+import { loginAction } from "../../Redux/Action/Actions";
+import { useLocalStorage } from "../../customsHooks/useLocalStorage";
+import { NotificationContainer,NotificationManager,} from "react-notifications";
+import "react-notifications/lib/notifications.css";
+
 
 function Login() {
-  const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
-  const [values, setValues] = useState({
+ 
+
+  //TOKEN
+  const [token,setToken] = useLocalStorage("token","");
+
+  //usuario traido desde la DB
+  const [usuarioDB,setUsuarioDB] = useLocalStorage("usuarioDB",{});
+
+  //datos de la form
+  const [loginData, setLoginData] = useState({
     email: "",
-    pass: "",
+    password: "",
+    select: "usuario",
   });
-  const [errorMsg, setErrorMsg] = useState("");
-  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
 
-  const handleSubmission = () => {
-    if (!values.email || !values.pass) {
-      setErrorMsg("Fill all fields");
-      return;
-    }
-    setErrorMsg("");
-
-    setSubmitButtonDisabled(true);
-    signInWithEmailAndPassword(auth, values.email, values.pass)
-      .then(async (res) => {
-        setSubmitButtonDisabled(false);
-
-        navigate("/user");
-      })
-      .catch((err) => {
-        setSubmitButtonDisabled(false);
-        setErrorMsg(err.message);
-      });
+  //On Change
+  const handleOnChange = (e) => {
+    e.preventDefault();
+    setLoginData({
+      ...loginData,
+      [e.target.name]: e.target.value,
+    });
   };
+
+
+  //On Submit
+  const handleSubmit = async (e)=> {
+    e.preventDefault();    
+    const respuestaDBLogin = await loginAction(loginData);
+
+    if(respuestaDBLogin.token){
+      setToken(respuestaDBLogin.token);
+      
+      //usuario que viaja a localStorage
+      const usuario = {
+        fullName: respuestaDBLogin.usuario.fullName,
+        celular:respuestaDBLogin.usuario.celular,
+        email:respuestaDBLogin.usuario.email,
+        imagenProfesional:respuestaDBLogin.usuario.imagenProfesional,
+        matricula:respuestaDBLogin.usuario.matricula,
+        idProfesional:respuestaDBLogin.usuario.idProfesional
+      }
+
+      setUsuarioDB(usuario);
+      navigate('/')//momentaneamente a HOME hasta que este el perfil de usuario
+
+    }else{
+      NotificationManager.error(`${respuestaDBLogin}`, "ATENCION!", 7000);
+    }
+
+  };
+
+
   return (
     <div className={styles.container}>
       <div className={styles.innerBox}>
@@ -42,34 +70,34 @@ function Login() {
 
         <InputControl
           label="Email"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, email: event.target.value }))
-          }
-          placeholder="Correo"
+          name="email"
+          onChange={handleOnChange}
+          placeholder="Ingresá Correo"
+          
         />
         <InputControl
           label="Password"
           type="password"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, pass: event.target.value }))
-          }
-          placeholder="Enter Password"
+          name="password"
+          onChange={handleOnChange}
+          placeholder="Ingresá contraseña"
+          
         />
 
+        <div className={styles.selectLogin}>
+          <div className={styles.labelSelect}>Ingresa como:</div>
+          <select name="select" onChange={handleOnChange}>
+            <option value="usuario">Paciente</option>
+            <option value="profesional" >
+              Profesional
+            </option>
+            <option value="administrador">Administrador</option>
+          </select>
+        </div>
+
         <div className={styles.footer}>
-          <b className={styles.error}>{errorMsg}</b>
-          <button disabled={submitButtonDisabled} onClick={handleSubmission}>
-            Inicia Sesión
-          </button>
-          <Link to='/user' >
-          <button style={{backgroundColor:'blue'}} 
-          variant="info"
-          size="sm"
-          type="submit"
-          onClick={() => signInWithPopup(auth, googleProvider)}>
-            Inicia con Google
-          </button>
-          </Link>
+          <button onClick={handleSubmit} disabled={!loginData.email || !loginData.password ? true : false}>Inicia Sesión</button>
+
           <p>
             ¿No Tienes cuenta?{" "}
             <span>
@@ -78,8 +106,22 @@ function Login() {
           </p>
         </div>
       </div>
+      <NotificationContainer/> 
     </div>
   );
 }
 
 export default Login;
+
+// codigo que se puede reutilizar con google
+{
+  /* <Link to='/user' >
+          <button style={{backgroundColor:'blue'}} 
+          variant="info"
+          size="sm"
+          type="submit"
+          onClick={() => signInWithPopup(auth, googleProvider)}>
+            Inicia con Google
+          </button>
+          </Link> */
+}
