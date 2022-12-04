@@ -54,7 +54,7 @@ function Login() {
       }
 
       setUsuarioDB(usuario);
-      navigate('/')//momentaneamente a HOME hasta que este el perfil de usuario
+      navigate(`/${loginData.select}`)//me lleva al perfil en el cual me logueo segun el select.
 
     }else{
       NotificationManager.error(`${respuestaDBLogin}`, "ATENCION!", 7000);
