@@ -1,40 +1,40 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getAuth,signInWithEmailAndPassword, GoogleAuthProvider,
-  signInWithPopup, } from "firebase/auth";
-import { auth } from "../../Firebase/Firebase";
 import styles from "./Login.module.css";
 import InputControl from "../ImputControl/InputControl";
+import { loginAction } from "../../Redux/Action/Actions";
 
 function Login() {
-  const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
-  const [values, setValues] = useState({
+
+  //datos de la form
+  const [loginData, setLoginData] = useState({
     email: "",
-    pass: "",
+    password: "",
+    select: "usuario",
   });
-  const [errorMsg, setErrorMsg] = useState("");
-  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
 
-  const handleSubmission = () => {
-    if (!values.email || !values.pass) {
-      setErrorMsg("Fill all fields");
-      return;
-    }
-    setErrorMsg("");
-
-    setSubmitButtonDisabled(true);
-    signInWithEmailAndPassword(auth, values.email, values.pass)
-      .then(async (res) => {
-        setSubmitButtonDisabled(false);
-
-        navigate("/user");
-      })
-      .catch((err) => {
-        setSubmitButtonDisabled(false);
-        setErrorMsg(err.message);
-      });
+  //On Change
+  const handleOnChange = (e) => {
+    e.preventDefault();
+    setLoginData({
+      ...loginData,
+      [e.target.name]: e.target.value,
+    });
+     
+   
   };
+
+
+  //On Submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log("login DATA", loginData);
+    loginAction(loginData);
+
+  };
+
+
   return (
     <div className={styles.container}>
       <div className={styles.innerBox}>
@@ -42,34 +42,34 @@ function Login() {
 
         <InputControl
           label="Email"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, email: event.target.value }))
-          }
-          placeholder="Correo"
+          name="email"
+          onChange={handleOnChange}
+          placeholder="Ingresá Correo"
+          
         />
         <InputControl
           label="Password"
           type="password"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, pass: event.target.value }))
-          }
-          placeholder="Enter Password"
+          name="password"
+          onChange={handleOnChange}
+          placeholder="Ingresá contraseña"
+          
         />
 
+        <div className={styles.selectLogin}>
+          <div className={styles.labelSelect}>Elegí tu rol</div>
+          <select name="select" onChange={handleOnChange}>
+            <option value="usuario">Paciente</option>
+            <option value="profesional" >
+              Profesional
+            </option>
+            <option value="administrador">Administrador</option>
+          </select>
+        </div>
+
         <div className={styles.footer}>
-          <b className={styles.error}>{errorMsg}</b>
-          <button disabled={submitButtonDisabled} onClick={handleSubmission}>
-            Inicia Sesión
-          </button>
-          <Link to='/user' >
-          <button style={{backgroundColor:'blue'}} 
-          variant="info"
-          size="sm"
-          type="submit"
-          onClick={() => signInWithPopup(auth, googleProvider)}>
-            Inicia con Google
-          </button>
-          </Link>
+          <button onClick={handleSubmit} disabled={!loginData.email || !loginData.password ? true : false}>Inicia Sesión</button>
+
           <p>
             ¿No Tienes cuenta?{" "}
             <span>
@@ -83,3 +83,16 @@ function Login() {
 }
 
 export default Login;
+
+// codigo que se puede reutilizar con google
+{
+  /* <Link to='/user' >
+          <button style={{backgroundColor:'blue'}} 
+          variant="info"
+          size="sm"
+          type="submit"
+          onClick={() => signInWithPopup(auth, googleProvider)}>
+            Inicia con Google
+          </button>
+          </Link> */
+}
