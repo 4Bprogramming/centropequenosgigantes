@@ -1,17 +1,14 @@
 .container {
-    height: 100%;
-    min-height: 100vh;
     width: 100%;
     background: linear-gradient(to right, #9900ff, #cc80ff);
     display: flex;
     justify-content: center;
     align-items: center;
+  
   }
   
   .innerBox {
-    min-width: 480px;
-    height: fit-content;
-    width: fit-content;
+    width: 480px;
     background-color: #fff;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
     padding: 30px;
@@ -19,6 +16,12 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    
+  }
+  .heading{
+    font-family: monospace;
   }
   
   .footer {
@@ -27,13 +30,7 @@
     gap: 20px;
   }
   
-  .footer .error {
-    font-weight: bold;
-    font-size: 0.875rem;
-    color: #ff3300;
-    text-align: center;
-  }
-  
+
   .footer button {
     outline: none;
     border: none;
@@ -67,4 +64,38 @@
     letter-spacing: 1px;
     font-size: 1rem;
     text-decoration: none;
+  }
+
+
+
+  .selectLogin select{
+    margin-top: 0.5rem;
+    border: 3px solid #9900ff;;
+    padding: 0.5em;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #313131;
+    
+  }
+  .selectLogin select option{ 
+    font-weight: 500;
+    font-size: 1rem;
+    color: #313131;
+    border:none;
+  }
+  .labelSelect{
+    font-weight: 700;
+    font-size: 1rem;
+    color: #313131;
+  }
+
+  @media screen and (max-width: 620px) {
+    
+    .innerBox {
+      width: 98%;
+      padding: 10px;
+      
+      
+    }
   }

@@ -1,0 +1,61 @@
+.mainUsuarioContainer {
+    display: flex;
+  }
+  
+  .menuUsuario {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-around;
+    background-color: rgb(93, 230, 178);
+    border: 2px solid rgb(76, 201, 82);
+    border-radius: 15px;
+    width: 200px;
+    height: 280px;
+    margin: 2rem;
+    padding-bottom: 30px;
+  }
+  .usuarioTitle {
+    text-align: center;
+  
+  }
+  .options {
+    border-radius: 15px;
+    padding: 3px 15px;
+    color: #0d6efd;
+    font-weight: 600;
+    margin-left: 15px;
+    margin-right: 10px;
+  }
+  
+  .options:hover {
+    cursor: pointer;
+    background-color: rgb(146, 146, 146);
+    color: blanchedalmond;
+  }
+  
+  .mainRenderUsuario {
+    width: 75%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  
+  @media screen and (max-width: 1080px) {
+      .mainRenderUsuario {
+          width: 55%;
+          
+        }
+  
+  }
+  
+  @media screen and (max-width: 620px) {
+      .mainUsuarioContainer {
+          flex-direction: column;
+          align-items: center;
+        }
+        .mainRenderUsuario {
+          width: 90%;
+          
+        }
+  }

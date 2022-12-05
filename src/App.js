@@ -6,7 +6,7 @@ import { auth } from "./Firebase/Firebase";
 import "./App.css";
 
 //components
-import Footer from "./Components/Footer/Footer";
+// import Footer from "./Components/Footer/Footer";
 import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
@@ -28,6 +28,8 @@ import TerapiaFamiliar from './Components/TerapiaFamiliar/TerapiaFamiliar'
 import Psicomotricidad from './Components/Psicomotricidad/Psicomotricidad'
 import EstimulacionTemprana from './Components/EstimulacionTemprana/EstimulacionTemprana'
 import Footer2 from "./Components/Footer/Footer2";
+import UsuarioPaciente from "./Components/Profiles/UsuarioPaciente/UsuarioPaciente";
+import Profesional from "./Components/Profiles/Profesional/Profesional";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -53,7 +55,10 @@ function App() {
         <Route exact path="/servicios" element={<Services />} />
         <Route exact path="/reserva" element={<Services />} />
         <Route exact path="/contacto" element={<Contact />} />
-        <Route exact path="/admin" element={<Admin />} />
+        
+        <Route exact path="/administrador" element={<Admin />} />
+        <Route exact path="/usuario" element={<UsuarioPaciente />} />
+        <Route exact path="/profesional" element={<Profesional />} />
           
         <Route exact path="/psicologia" element={<Psicologia />} />
         <Route exact path="/lenguaje" element={<TerapiaLenguaje />} />

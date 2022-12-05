@@ -19,4 +19,4 @@ function TodosProfesionales() {
   )
 }
 
-export default TodosProfesionales
+export default TodosProfesionales;
