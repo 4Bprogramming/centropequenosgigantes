@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AddProfessional from './AdminComponents/AddProfessional/AddProfessional';
 import TodosTurnos from './AdminComponents/TodosLosTurnos/TodosTurnos';
 import ReservaTurnos from './AdminComponents/ReservaDeTurnos/ReservaTurnos';
@@ -9,8 +9,15 @@ import TurnosCancelados from './AdminComponents/TurnosCancelados/TurnosCancelado
 
 import styles from './Admin.module.css';
 import TodosProfesionales from './AdminComponents/TodosLosProfesionales/TodosLosProfesionales';
+import { getProfesionales, getTurnos } from '../../../Redux/Action/Actions';
+import { useDispatch } from 'react-redux';
 
 function Admin() { 
+  const dispatch=useDispatch()
+  useEffect(()=>{
+    dispatch(getProfesionales())
+    // dispatch(getTurnos())
+  },[])
     const [select, setSelect]=useState("");
 
     const handleClick=(value)=>{

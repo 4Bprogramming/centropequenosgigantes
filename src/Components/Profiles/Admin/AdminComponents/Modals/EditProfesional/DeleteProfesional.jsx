@@ -4,28 +4,29 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
 import { useDispatch, useSelector } from "react-redux";
-import "../EditCase/TableTestModal.css"
+
 
 //Alert notifications
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
+import { deleteProfesional } from "../../../../../../Redux/Action/Actions";
 
 
 
 function DeleteProfesional(props) {
   let profesionales = useSelector((state) => state.allProfesionales);
-
-  const profData = props.profesionalData[0];
+  console.log('props==>', props);
+  const profData = props?.profesionalData[0]
 
  
   const  [editFormInput, setEditFormInput] = useState({});
   const dispatch = useDispatch();
 useEffect(()=>{
       setEditFormInput({
-          nombre:profData?.nombre,
-          email:profData?.email,
-          celular:profData?.celular,
-          especialidad:profData?.especialidad,
+          // nombre:profData[]?.nombre,
+          // email:profData?.email,
+          // celular:profData?.celular,
+          // especialidad:profData?.especialidad,
       })
 },[props])
 
@@ -35,18 +36,19 @@ useEffect(()=>{
   /* console.log('editForm', editFormInput) */
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log('idPerito',props.profData[0].id )
     
     try {
-     
-      // let edit = await deleteProfesional(props.profData[0].id);    
+      let body={select:'profesional'}
+      console.log('idProfesional',profData.email )
+      console.log('body',body )
+     let edit = await deleteProfesional(profData.email, body);    
       
       //it closes the Modal after submit
       props.close()
       
       //this commando triggers the alert! 
-      NotificationManager.success('Bien Hecho!', 'Profesional eliminado!',3000);  
-      //actualiza el estado con el cambio
+    NotificationManager.success('Bien Hecho!', 'Profesional eliminado!',3000);  
+      // //actualiza el estado con el cambio
       props.actualizar()
       
      
@@ -65,13 +67,13 @@ return (
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
-         {`Apellido y Nombre: ${props.profData[0]?.nombre}`}
+         {`Apellido y Nombre: ${profData?.fullName}`}
            
           <br />
-          {`Email: ${props.profData[0]?.email}`}
+          {`Email: ${profData?.email}`}
            
           <br />
-          {`N° de contacto: ${props.profData[0]?.celular}`}
+          {`N° de contacto: ${profData?.celular}`}
           
           <br />
           

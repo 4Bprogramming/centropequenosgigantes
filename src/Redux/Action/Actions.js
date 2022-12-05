@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_PROFESIONALES, MESSAGE } from "../constants";
+import { GET_PROFESIONALES, GET_TURNOS, MESSAGE } from "../constants";
 
 const BASE_URL = 'http://localhost:3001'
 
@@ -23,6 +23,29 @@ export function getProfesionales(){
         try {
             let res = await axios.get(`${BASE_URL}/profesionales`)  
             return dispatch({type:GET_PROFESIONALES, payload:res.data});
+            
+        } catch (error) {
+            console.log(error) 
+        }        
+
+    }
+}
+export async function deleteProfesional(email, body){
+        try {
+            let res = await axios.put(`${BASE_URL}/altabaja/${email}`,body)
+            console.log('res delete', res);  
+            return res.data.message
+            
+        } catch (error) {
+            console.log(error) 
+        }        
+}
+//get Turnos
+export function getTurnos(){
+    return async function(dispatch){
+        try {
+            let res = await axios.get(`${BASE_URL}/turnos`)  
+            return dispatch({type:GET_TURNOS, payload:res.data});
             
         } catch (error) {
             console.log(error) 

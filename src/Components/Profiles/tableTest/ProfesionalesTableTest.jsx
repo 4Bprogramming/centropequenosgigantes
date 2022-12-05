@@ -6,7 +6,8 @@ import "./tabletest.css";
 import { TbEdit } from "react-icons/tb";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import EditModalProfesional from "../Admin/AdminComponents/Modals/EditProfesional/EditModalProfesional";
-import DeleteProfesional from "../Admin/AdminComponents/Modals/EditProfesional/DeletePerito";
+import DeleteProfesional from "../Admin/AdminComponents/Modals/EditProfesional/DeleteProfesional";
+import { getProfesionales } from "../../../Redux/Action/Actions";
 
 function ProfesionalesTableResponsive({ data, columns, detail, title }) {
 
@@ -14,7 +15,7 @@ function ProfesionalesTableResponsive({ data, columns, detail, title }) {
   let dispatch= useDispatch()
   function Actualizacion1(){
     console.log('entré en Actualizacion');
-      // dispatch(getProfesionales())
+      dispatch(getProfesionales())
       // dispatch(getTurnos())
       // setTimeout(()=>{ 
       //   dispatch(peritosByName())
@@ -42,11 +43,12 @@ function ProfesionalesTableResponsive({ data, columns, detail, title }) {
   const [showModalD, setShowModalD] = React.useState(false);
   //when Edit button is clicked
   function showModalEdit(id) {
-    setProfesionalData(data.length > 0 && data.filter((el) => el.id === id));//son los peritos
+    setProfesionalData(data.length > 0 && data.filter((el) => el.idProfesional === id));//son los peritos
     setShowModal(true);
   }
   function showModalDelete(id) {
-    setProfesionalData(data.length > 0 && data.filter((el) => el.id === id));//son los peritos
+    console.log('id==>', id);
+    setProfesionalData(data.length > 0 && data.filter((el) => el.idProfesional === id));//son los peritos
     setShowModalD(true);
   }
 
@@ -76,7 +78,7 @@ function ProfesionalesTableResponsive({ data, columns, detail, title }) {
         onChange={(e) => setFilter(e.target.value)}
       />
 
-      {profesionalFiltered?.length === 0 ? (
+      {dataFiltered?.length === 0 ? (
         <div className="noRegistersFound">No se encontraron registros...</div>
       ) : (
         <>
@@ -89,7 +91,7 @@ function ProfesionalesTableResponsive({ data, columns, detail, title }) {
               <Tr>
                 {columns1.map((e) => {
                   return <Th className="thEdit">{e}</Th>;
-                })}
+                })} 
 
                 <Th className="thEdit">Editar</Th>
                 <Th className="thEdit">Eliminar</Th>
@@ -97,7 +99,7 @@ function ProfesionalesTableResponsive({ data, columns, detail, title }) {
             </Thead>
 
             <Tbody>
-              {profesionalFiltered.map(
+              {dataFiltered.map(
                 (el) =>
                   // Patente is a notnull field meaning that an empty register won't be allowed.
 
@@ -106,24 +108,24 @@ function ProfesionalesTableResponsive({ data, columns, detail, title }) {
                       {columns2.map((c) => {
                         let y = el[c];
                         return (
-                          <Td className="tdEdit" key={el.id}>
+                          <Td className="tdEdit" key={el.idProfesional}>
                             {y ? y : "Sin Completar"}
                           </Td>
                         );
                       })}
 
-                      <Td className="tdEdit" key={el.id}>
+                      <Td className="tdEdit" key={el.idProfesional}>
                         <div
                           className="editBtn"
-                          onClick={() => showModalEdit(el.id)}
+                          onClick={() => showModalEdit(el.idProfesional)}
                         >
                           <TbEdit />
                         </div>
                       </Td>
-                      <Td className="tdEdit" key={el.id}>
+                      <Td className="tdEdit" key={el.idProfesional}>
                         <div
                           className="editBtn"
-                          onClick={() => showModalDelete(el.id)}
+                          onClick={() => showModalDelete(el.idProfesional)}
                         >
                           <RiDeleteBin6Line />
                         </div>
@@ -148,7 +150,8 @@ function ProfesionalesTableResponsive({ data, columns, detail, title }) {
       close={() => setShowModalD(false)}
       profesionalData={profesionalData}
       detail={detail}
-      actualizar={Actualizacion1}/>
+      actualizar={Actualizacion1}
+      />
     </>
   );
 }

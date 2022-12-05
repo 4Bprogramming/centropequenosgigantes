@@ -63,12 +63,10 @@ function TableResponsive({ data, columns, detail, title, rol }) {
   } else {
     casesFiltered = cases.filter(
       (dato) =>
-        dato.Nombre.toLowerCase().includes(filter.toLocaleLowerCase()) ||
-        dato.Numero.toLowerCase().includes(filter.toLocaleLowerCase()) ||
-        dato.perito.toLowerCase().includes(filter.toLocaleLowerCase()) ||
-        dato.localidad.toLowerCase().includes(filter.toLocaleLowerCase()) ||
-        dato.Compañia.toLowerCase().includes(filter.toLocaleLowerCase()) ||
-        dato.Patente.toLowerCase().includes(filter.toLocaleLowerCase())
+        dato.fullName.toLowerCase().includes(filter.toLocaleLowerCase()) ||
+        dato.idProfesional.toLowerCase().includes(filter.toLocaleLowerCase()) ||
+        dato.matricula.toLowerCase().includes(filter.toLocaleLowerCase()) ||
+        dato.especialidad.toLowerCase().includes(filter.toLocaleLowerCase()) 
     );
   }
 
