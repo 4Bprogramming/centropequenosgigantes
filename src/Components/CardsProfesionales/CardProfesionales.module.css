@@ -8,13 +8,13 @@
 }
 
 
-/* container general */
+/* container general de cartas de profesionales */
 .galeriaDeProfesionales{
     display: flex;
     flex-wrap: wrap;
 }
 
-/* contaner de la carda */
+/* container de la card individual */
 .mainCardContainer{
     display: flex;
     flex-direction: column;
