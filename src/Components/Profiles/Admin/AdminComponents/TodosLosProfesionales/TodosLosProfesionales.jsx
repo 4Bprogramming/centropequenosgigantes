@@ -6,13 +6,11 @@ import { columns } from '../../columsProfesional'
 
 function TodosProfesionales() {
   const dispatch=useDispatch()
-  // useEffect(()=>{
-  //   dispatch(getProfesionales())
-  // },[])
+ 
   
   let profesionales1=useSelector((state)=>state.allProfessional)
   let profesionales=profesionales1.filter(e=>e.active===true)
-  console.log('profesionales=>', profesionales1)
+  // console.log('profesionales=>', profesionales1)
 
   return (
     <ProfesionalesTableResponsive columns={columns} data={profesionales} title={'Lista de Profesionales'}/>

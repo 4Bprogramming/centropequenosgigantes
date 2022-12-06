@@ -9,12 +9,14 @@ import {
 } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 import { uploadFile } from "../../../../../Firebase/Firebase";
-import { postProfesionales } from "../../../../../Redux/Action/Actions";
+import { getProfesionales, getTurnos, postProfesionales } from "../../../../../Redux/Action/Actions";
+import { useDispatch } from "react-redux";
 
 
 function AddProfessional() {
   const [errors, setErrors] = useState({});
   const [imageId, setImageId] = useState({});
+  const dispatch=useDispatch()
   const [post, setPost] = useState({
     idProfesional: "",
     nombre: "",
@@ -27,7 +29,12 @@ function AddProfessional() {
     imagenProfesional: "",
   });
   const token= JSON.parse(window.localStorage.getItem('token'))
-  console.log('token', token)
+  // console.log('token', token)
+  async function Actualizar(token){
+    console.log('entro actualizar');
+   dispatch(getProfesionales(token));
+   dispatch(getTurnos(token));
+}
 
   // //======= HANDLE SELECT ==================
   const handleSelelect = (seletedOptions) => {
@@ -100,16 +107,14 @@ function AddProfessional() {
     e.preventDefault();
 
     let error = await validate(post);
-    // console.log('error de la validacion ==>', error);
-    // console.log('error de la validacion cantidad ==>', Object.keys(error).length);
-
 
     if (Object.keys(error).length === 0) {
       try {
-        console.log('entre en el try del submit');
+        // console.log('entre en el try del submit');
        let doc= await postProfesionales(newProfesional,token)
         // setShow(true);
        
+        Actualizar(token)
         NotificationManager.success("Bien Hecho!", "Profesional Añadido", 3000);
         // setPost({
         //     idProfesional: "",
@@ -146,6 +151,7 @@ function AddProfessional() {
         post={post}
         errors={errors}
         profesional={body}
+       
        
       />
       <NotificationContainer />

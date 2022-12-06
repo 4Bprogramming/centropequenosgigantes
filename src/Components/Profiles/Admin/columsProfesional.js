@@ -22,8 +22,8 @@ export const columns=[
         // grow:1.5
     },
     {
-        dataField:'Email',
-        text:'email',
+        dataField:'email',
+        text:'Email',
         sort:true,
        
     },

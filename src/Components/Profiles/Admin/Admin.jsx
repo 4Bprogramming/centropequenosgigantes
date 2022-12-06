@@ -9,6 +9,7 @@ import styles from './Admin.module.css';
 import TodosProfesionales from './AdminComponents/TodosLosProfesionales/TodosLosProfesionales';
 import { getProfesionales, getTurnos } from '../../../Redux/Action/Actions';
 import { useDispatch } from 'react-redux';
+import { Actualizar } from '../../../FuncionActualizar/FuncionActualizar';
 
 function Admin() { 
   const token= JSON.parse(window.localStorage.getItem('token'))
@@ -22,6 +23,7 @@ function Admin() {
     const handleClick=(value)=>{
             setSelect(value);
     }
+   
 
   return (
     <div className={styles.mainAdminContainer}>

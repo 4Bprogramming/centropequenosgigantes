@@ -17,6 +17,7 @@ export const rootReducer = (state = initialState, action) => {
             }
             }
             else{
+                console.log('entra else reducer');
                 return{
                     ...state,
                     allProfessional:action.payload
