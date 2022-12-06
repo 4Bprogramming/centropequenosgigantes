@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getProfesionales } from "../../../Redux/Action/Actions";
-import TodosProfesionales from "../Admin/AdminComponents/TodosLosProfesionales/TodosLosProfesionales";
+import CardsProfesionales from "../../CardsProfesionales/CardsProfesionales";
 import styles from "./UsuarioPaciente.module.css";
 
 function UsuarioPaciente() {
@@ -12,15 +12,20 @@ function UsuarioPaciente() {
   const { celular, email, fullName } = JSON.parse(data);
   const tokenSinComillas = JSON.parse(token);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
+  //traigo profesionales
+  // const profesionales = useSelector(state => state.allProfessional);
+  
+
+  
   //opciones seleccionadas
   const [select, setSelect] = useState("");
-
+  
   const handleClick = (value,tokenSinComillas) => {
-   
+    
     //llamo action y le paso token
-    getProfesionales(tokenSinComillas);
+    dispatch (getProfesionales(tokenSinComillas));
     //seteo el estado para renderizar el otro componente
     setSelect(value);
   };
@@ -46,7 +51,7 @@ function UsuarioPaciente() {
           <p>Tu email: {email}</p>
          
           {select === "todosProfesionales" && (
-            <TodosProfesionales/>
+            <CardsProfesionales />
           )}
         </div>
 
