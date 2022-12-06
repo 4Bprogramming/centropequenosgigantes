@@ -1,15 +1,16 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-function CardsProfesionales(props) {
+function CardsProfesionales() {
 
- 
+ //traigo profesionales
+  const profesionales = useSelector(state => state.allProfessional);
 
- console.log('profesionales',props.profesionales)
+ console.log('profesionales desde cartas profesionales',profesionales)
 
   return (
     <>
-    <h1>CardsProfesionales</h1>
+    <h1>Profesionales</h1>
     {/* {   
         !profesionales.length ? 'no hay nada':
         profesionales?.map(pro=> {

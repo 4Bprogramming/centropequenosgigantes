@@ -7,17 +7,17 @@ const initialState={
  
 export const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_PROFESIONALES:
-            console.log('action.payload', action.payload)
+
+        case GET_PROFESIONALES:  
          if(action.payload.message){
-            console.log('aca');
+            
             return{
                 ...state,
                  message:action.payload.message
             }
             }
             else{
-                console.log('entra else reducer');
+               
                 return{
                     ...state,
                     allProfessional:action.payload
