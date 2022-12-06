@@ -7,7 +7,7 @@ function CardsProfesionales() {
   //traigo profesionales
   const profesionales = useSelector((state) => state.allProfessional);
 
-  console.log("profesionales desde cartas profesionales", profesionales);
+ 
 
   return (
     <>
