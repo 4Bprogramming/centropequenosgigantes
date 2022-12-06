@@ -4,11 +4,10 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Select from "react-select"
 import { useDispatch, useSelector } from "react-redux";
-import {rol, customStyles, customStyles1} from '../AddCases/utilsFunctions'
 import PropTypes from "prop-types";
-import { postWhatsapp } from "../../../Store/Actions"; 
-import { updatePeritos } from "../../../Controller/llamados";
-import "../EditCase/TableTestModal.css"
+import { especialidades } from "../../SelectMultipleEspecialidades/Controllers";
+
+
 
 //Alert notifications
 import {NotificationContainer, NotificationManager} from 'react-notifications';
@@ -16,22 +15,18 @@ import 'react-notifications/lib/notifications.css';
 
 
 const EditModalProfesional = (props) => {
-    let peritos = useSelector((state) => state.peritos);
-    let namePeritos1 = useSelector((state) => state.peritosByName);
-    let namePeritos = namePeritos1.map((e) => {
-    return { value: e, label: e }; 
-  });
-    const caseData = props.caseData[0];
+    let profesional = useSelector((state) => state.allProfessional);
+    const profesionalData = props.profesionalData[0];
 
-   
+
     const  [editFormInput, setEditFormInput] = useState({});
     const dispatch = useDispatch();
   useEffect(()=>{
         setEditFormInput({
-            nombre:caseData?.nombre,
-            email:caseData?.email,
-            celular:caseData?.celular,
-            rol:caseData?.rol,
+            nombre:profesionalData?.nombre,
+            email:profesionalData?.email,
+            celular:profesionalData?.celular,
+            especialidades:profesionalData?.especialidades,
         })
   },[props])
   
@@ -46,28 +41,28 @@ const EditModalProfesional = (props) => {
         }
         else{
             let  nameL = e.target.name
-            setEditFormInput({...editFormInput,[e.target.name]:caseData[e.target.name]})
+            setEditFormInput({...editFormInput,[e.target.name]:profesionalData[e.target.name]})
         }
     }
 //========== HANDLE SELECT =======
     let handleSelect = (value, action) => {
      
-      if (action.name === "rol") {
+      if (action.name === "especialidades") {
         setEditFormInput({
           ...editFormInput,
-          rol: value.value,
+          especialidades: value.value,
         });
       }
       
   
     };
-    let newPerito = {
+    let newProfesional = {
       nombre: editFormInput.nombre?.split(' ')
         .map((el) => el.charAt(0).toUpperCase() + el.toLowerCase().slice(1))
         .join(" "),
       celular: editFormInput.celular,
       email: editFormInput.email,
-      rol: editFormInput.rol,
+      rol: editFormInput.especialidad,
     };
    
 
@@ -78,13 +73,13 @@ const EditModalProfesional = (props) => {
       
       try {
        
-        let edit = await updatePeritos(props.caseData[0].id, newPerito);
+        // let edit = await updatePeritos(props.caseData[0].id, newPerito);
         
       
       //  console.log('caseData[0].id',caseData[0].id)
-      let peritoWhatsap = peritos.find(
-        (el) => el.nombre === editFormInput.perito
-        );
+      // let peritoWhatsap = peritos.find(
+      //   (el) => el.nombre === editFormInput.perito
+      //   );
         
         // setTimeout(()=>{ props.actualizar()}, 2500)
        
@@ -98,13 +93,13 @@ const EditModalProfesional = (props) => {
         //actualiza el estado con el cambio
         props.actualizar()
         
-        let body = {
-          token: "ppxsdnbulhx73mnv",
-          to: `${peritoWhatsap.celular}`,
-          body: `${peritoWhatsap.nombre} sus datos han sido modificados ${editFormInput.Numero}`,
-          priority: "10",
-        };
-        dispatch(postWhatsapp(body));
+        // let body = {
+        //   token: "ppxsdnbulhx73mnv",
+        //   to: `${peritoWhatsap.celular}`,
+        //   body: `${peritoWhatsap.nombre} sus datos han sido modificados ${editFormInput.Numero}`,
+        //   priority: "10",
+        // };
+        // dispatch(postWhatsapp(body));
         
         
     } catch (error) {console.log('error de catch',e)}
@@ -116,13 +111,13 @@ const EditModalProfesional = (props) => {
       
       <Modal show={props.show} onHide={props.close}>
         <Modal.Header closeButton>
-          <Modal.Title>Edite la informacion del siniestro </Modal.Title>
+          <Modal.Title>Edite la informacion del Profesional </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Control
               type="text"
-              placeholder={`Apellido y Nombre: ${props.caseData[0]?.nombre}`}
+              placeholder={`Apellido y Nombre: ${props.profesionalData[0]?.nombre}`}
               name="nombre"
               value={editFormInput.nombre}
               onChange={handleOnChange}
@@ -130,7 +125,7 @@ const EditModalProfesional = (props) => {
             <br />
             <Form.Control
               type="text"
-              placeholder={`Email: ${props.caseData[0]?.email}`}
+              placeholder={`Email: ${props.profesionalData[0]?.email}`}
               name="email"
               value={editFormInput.email}
               onChange={handleOnChange}
@@ -138,19 +133,19 @@ const EditModalProfesional = (props) => {
             <br />
             <Form.Control
               type="text"
-              placeholder={`N° de contacto: ${props.caseData[0]?.celular}`}
+              placeholder={`N° de contacto: ${props.profesionalData[0]?.celular}`}
               name="celular"
               value={editFormInput.celular}
               onChange={handleOnChange}
             />
             <br />
             <Select
-            onChange={handleSelect}
-            name={"rol"}
-            options={rol}
-            placeholder="Seleccione un rol"
-            styles={customStyles1}
-            defaultValue={{ label:caseData?.rol,value:caseData?.rol }}
+            // onChange={handleSelect}
+            // name={"rol"}
+            // options={rol}
+            // placeholder="Seleccione un rol"
+            // styles={customStyles1}
+            // defaultValue={{ label:caseData?.rol,value:caseData?.rol }}
           />
              <Button
               variant="secondary"

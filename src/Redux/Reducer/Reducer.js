@@ -3,15 +3,26 @@ import { GET_PROFESIONALES } from "../constants"
 const initialState={
     allProfessional:[],
     message:''
-
 }
-
+ 
 export const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_PROFESIONALES:
-        return{
-            ...state,
-            allProfessional:action.payload
-        }
+            console.log('action.payload', action.payload)
+         if(action.payload.message){
+            console.log('aca');
+            return{
+                ...state,
+                 message:action.payload.message
+            }
+            }
+            else{
+                console.log('entra else reducer');
+                return{
+                    ...state,
+                    allProfessional:action.payload
+                }
+
+            }
     }
 }

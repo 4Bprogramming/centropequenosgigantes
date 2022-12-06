@@ -1,37 +1,20 @@
-import React, { useEffect } from "react";
-import {  useSelector } from "react-redux";
-
+import React, { useEffect, useMemo, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProfesionales } from '../../../../../Redux/Action/Actions'
+import ProfesionalesTableResponsive from '../../../tableTest/ProfesionalesTableTest'
+import { columns } from '../../columsProfesional'
 
 function TodosProfesionales() {
+  const dispatch=useDispatch()
+ 
   
-  // const profesionales = useSelector((state)=> state.allProfessional);  
- 
- 
+  let profesionales1=useSelector((state)=>state.allProfessional)
+  let profesionales=profesionales1.filter(e=>e.active===true)
+  // console.log('profesionales=>', profesionales1)
+
   return (
-    <>
-      {/* {
-      !profesionales.length ? 'Loading...' 
-        : 
-      <div>
-        {profesionales.map((profesional) => {
-          <div key={profesional.email}>
-            <div>{profesional?.fullName}</div>
-            <div>{profesional?.email}</div>
-            <div>{profesional?.matricula}</div>
-            <div>
-              <img
-                src={profesional?.imagenProfesional}
-                alt="imagen Profesional"
-              />
-            </div>
-            <div>{profesional?.especialidad}</div>
-            <div>{profesional?.turnos}</div>
-          </div>;
-        })}
-      </div>
-      } */}
-    </>
-  );
+    <ProfesionalesTableResponsive columns={columns} data={profesionales} title={'Lista de Profesionales'}/>
+  )
 }
 
 export default TodosProfesionales;
