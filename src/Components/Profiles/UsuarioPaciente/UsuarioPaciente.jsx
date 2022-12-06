@@ -14,18 +14,15 @@ function UsuarioPaciente() {
 
   const dispatch = useDispatch();
 
-  //traigo profesionales
-  // const profesionales = useSelector(state => state.allProfessional);
-  
+  useEffect(() => {
+    //llamo action y le paso token
+    dispatch(getProfesionales(tokenSinComillas));
+  }, []);
 
-  
   //opciones seleccionadas
   const [select, setSelect] = useState("");
-  
-  const handleClick = (value,tokenSinComillas) => {
-    
-    //llamo action y le paso token
-    dispatch (getProfesionales(tokenSinComillas));
+
+  const handleClick = (value) => {
     //seteo el estado para renderizar el otro componente
     setSelect(value);
   };
@@ -33,28 +30,34 @@ function UsuarioPaciente() {
   return (
     <>
       <div className={styles.mainUsuarioContainer}>
-       
+        <div className={styles.menuYdatosPaciente}>
+          <div className={styles.misDatosUsuarioPaciente}>
+            <h3>
+              <strong>¡Hola!</strong> {fullName}
+            </h3>
+            <p>
+              <strong>Tu teléfono:</strong> {celular}{" "}
+            </p>
+            <p>
+              <strong>Tu email:</strong> {email}
+            </p>
+          </div>
 
-        <div className={styles.menuUsuario}>
-          <h2 className={styles.usuarioTitle}>Menu</h2>
-          <div
-            className={styles.options}
-            onClick={() => handleClick("todosProfesionales",tokenSinComillas)}
-          >
-            Lista Profesionales
+          <div className={styles.menuUsuario}>
+            <h2 className={styles.usuarioTitle}>Menu</h2>
+            <div
+              className={styles.options}
+              onClick={() => handleClick("todosProfesionales")}
+            >
+              Lista Profesionales
+            </div>
           </div>
         </div>
 
+        {/* aca se renderizan otros componentes externos a usuario/paciente */}
         <div className={styles.mainRenderUsuario}>
-          <h3>Bienvenido {fullName}</h3>
-          <p>Tu teléfono:{celular} </p>
-          <p>Tu email: {email}</p>
-         
-          {select === "todosProfesionales" && (
-            <CardsProfesionales />
-          )}
+          {select === "todosProfesionales" && <CardsProfesionales />}
         </div>
-
       </div>
     </>
   );

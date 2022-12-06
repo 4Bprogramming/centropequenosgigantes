@@ -36,19 +36,19 @@ export async function loginAction(loginData){
 
 //get profesionales
 export function getProfesionales(token){
-    console.log('3==>', token);
+    
     //header sin pasarlo por parametro
     axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
     
     return async function(dispatch){
-        console.log('44');
+        
         try {
             let res = await axios.get(`${BASE_URL}/profesionales`)
-           console.log('47', res);
+           
             return dispatch({type:GET_PROFESIONALES, payload:res.data});
             
         } catch (e) {
-            console.log('51', e.response.data);
+            
             return dispatch({type:GET_PROFESIONALES, payload:e.response.data})
         }        
 
