@@ -26,6 +26,8 @@ function AddProfessional() {
     especialidad: "",
     imagenProfesional: "",
   });
+  const token= JSON.parse(window.localStorage.getItem('token'))
+  console.log('token', token)
 
   // //======= HANDLE SELECT ==================
   const handleSelelect = (seletedOptions) => {
@@ -104,22 +106,22 @@ function AddProfessional() {
 
     if (Object.keys(error).length === 0) {
       try {
-        // console.log('entre en el try del submit');
-       let doc= await postProfesionales(newProfesional)
+        console.log('entre en el try del submit');
+       let doc= await postProfesionales(newProfesional,token)
         // setShow(true);
        
         NotificationManager.success("Bien Hecho!", "Profesional Añadido", 3000);
-        setPost({
-            idProfesional: "",
-            nombre: "",
-            apellido: "",
-            celular: "",
-            email: "",
-            password: "",
-            matricula: "",
-            especialidad: "",
-            imagenProfesional: "",
-         });
+        // setPost({
+        //     idProfesional: "",
+        //     nombre: "",
+        //     apellido: "",
+        //     celular: "",
+        //     email: "",
+        //     password: "",
+        //     matricula: "",
+        //     especialidad: "",
+        //     imagenProfesional: "",
+        //  });
       } catch (e) {
         console.log("error de firebase", error);
       }
@@ -144,6 +146,7 @@ function AddProfessional() {
         post={post}
         errors={errors}
         profesional={body}
+       
       />
       <NotificationContainer />
     </>

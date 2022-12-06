@@ -5,17 +5,22 @@ import { GET_PROFESIONALES, GET_TURNOS, MESSAGE } from "../constants";
 const BASE_URL = 'http://localhost:3001'
 
 //post profesionales
-export function postProfesionales(body){
-    return async function(dispatch){
+export async function postProfesionales(body, token){
+    console.log('bodyAction==>', body)
+    console.log('tokenAction==>', token)
+    //header sin pasarlo por parametro
+    axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
+   
     try {
         let res = await axios.post(`${BASE_URL}/profesionales`, body)  
+        console.log('post prof res',res);
         return res;
         // return dispatch({type:MESSAGE, payload: res.data})
         
     } catch (e) {
         console.log(e.response.data.message) 
     }        
-}
+
 }  
 
 //LOGIN
@@ -29,16 +34,18 @@ export async function loginAction(loginData){
 }
 //get profesionales
 export function getProfesionales(token){
+    console.log('token==>', token);
     //header sin pasarlo por parametro
     axios.defaults.headers.common = {'Authorization': `Bearer ${token}`}
     
     return async function(dispatch){
         try {
             let res = await axios.get(`${BASE_URL}/profesionales`)
+           console.log('res get profesionales', res);
             return dispatch({type:GET_PROFESIONALES, payload:res.data});
             
         } catch (e) {
-            return e.response.data.message
+            return dispatch({type:GET_PROFESIONALES, payload:e.response.data})
         }        
 
     }

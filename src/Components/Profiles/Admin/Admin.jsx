@@ -5,17 +5,16 @@ import ReservaTurnos from './AdminComponents/ReservaDeTurnos/ReservaTurnos';
 import TurnosPendientes from './AdminComponents/TurnosPendientes/TurnosPendientes';
 import TurnosDisponibles from './AdminComponents/TurnosDisponibles/TurnosDisponibles';
 import TurnosCancelados from './AdminComponents/TurnosCancelados/TurnosCancelados';
-
-
 import styles from './Admin.module.css';
 import TodosProfesionales from './AdminComponents/TodosLosProfesionales/TodosLosProfesionales';
 import { getProfesionales, getTurnos } from '../../../Redux/Action/Actions';
 import { useDispatch } from 'react-redux';
 
 function Admin() { 
+  const token= JSON.parse(window.localStorage.getItem('token'))
   const dispatch=useDispatch()
   useEffect(()=>{
-    dispatch(getProfesionales())
+    dispatch(getProfesionales(token))
     // dispatch(getTurnos())
   },[])
     const [select, setSelect]=useState("");
