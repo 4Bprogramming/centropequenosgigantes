@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 
-import { getProfesionales } from "../../../../../Redux/Action/Actions";
 
 function TodosProfesionales() {
   
-
+  // const profesionales = useSelector((state)=> state.allProfessional);  
+ 
+ 
   return (
     <>
       {/* {
       !profesionales.length ? 'Loading...' 
-        :
+        : 
       <div>
         {profesionales.map((profesional) => {
           <div key={profesional.email}>

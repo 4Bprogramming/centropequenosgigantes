@@ -43,7 +43,7 @@ function NavScroll() {
             <NavLink className={styles.buttonContact} to="/reserva" exact>Reserva tu cita</NavLink>
             </div>
             <div className={styles.navBarLinks} >
-              <NavLink to="/admin">ADMIN</NavLink>
+              <NavLink to="/administrador">ADMIN</NavLink>
             </div>
             
           </div>
