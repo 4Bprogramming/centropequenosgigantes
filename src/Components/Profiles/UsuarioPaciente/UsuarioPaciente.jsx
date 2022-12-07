@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfesionales } from "../../../Redux/Action/Actions";
 import CardsProfesionales from "../../CardsProfesionales/CardsProfesionales";
+import GifDeEspera from "../../GifsDeEspera/GifDeEspera";
 import styles from "./UsuarioPaciente.module.css";
+import snoopy from "../../../assets/snoopyDoc.gif";
 
 function UsuarioPaciente() {
   //traigo data del Local Storage
@@ -56,6 +58,16 @@ function UsuarioPaciente() {
 
         {/* aca se renderizan otros componentes externos a usuario/paciente */}
         <div className={styles.mainRenderUsuario}>
+          {/* gif si no eligio opcion */}
+          {select === "" && 
+            <GifDeEspera 
+                titulo={'Elige nuestros profesionales desde el menú'}
+                gif={snoopy}
+                alt={'gif de Snoopy'}
+            />
+          }
+
+          {/* opciones elegidas */}
           {select === "todosProfesionales" && <CardsProfesionales />}
         </div>
       </div>

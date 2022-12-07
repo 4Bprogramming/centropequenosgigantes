@@ -65,7 +65,16 @@
 }
 
 
-
+/* Error message */
+.errorContainer{
+    width: 98%;
+    text-align: center;
+    
+}
+.errorContainer span{
+    font-style: italic;
+    color: rgb(204, 0, 0);
+}
 
 
 /* media queries */
