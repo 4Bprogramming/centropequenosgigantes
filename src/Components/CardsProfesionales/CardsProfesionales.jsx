@@ -6,12 +6,24 @@ import styles from "./CardProfesionales.module.css";
 function CardsProfesionales() {
   //traigo profesionales
   const profesionales = useSelector((state) => state.allProfessional);
+  const mensajeError = useSelector((state)=>state.message)
+
 
  
+
+
 
   return (
     <>
       <h1 className={styles.tituloProfesionalesH1}>Profesionales</h1>
+
+      {mensajeError && 
+        <div className={styles.errorContainer}>
+          <h3> ¡Tu sesión ha expirado! <span>{mensajeError}</span>
+          </h3>
+        </div>
+      } 
+      
       <div className={styles.galeriaDeProfesionales}>
         {profesionales.map((element) => (
 

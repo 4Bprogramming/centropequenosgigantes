@@ -59,6 +59,8 @@
     padding: 10px;
     width:300px
   }
+
+  /* media queries */
   
   @media screen and (max-width: 1080px) {
     .mainUsuarioContainer {
