@@ -9,7 +9,7 @@ function CardsProfesionales() {
   const mensajeError = useSelector((state)=>state.message)
 
 
-  console.log("profesionales desde cartas profesionales", profesionales);
+ 
 
 
 
