@@ -4,7 +4,7 @@ import { getProfesionales } from '../../../../../Redux/Action/Actions'
 import ProfesionalesTableResponsive from '../../../tableTest/ProfesionalesTableTest'
 import { columns } from '../../columsProfesional'
 
-function TodosProfesionales() {
+function TodosProfesionales({token}) {
   const dispatch=useDispatch()
  
   
@@ -13,7 +13,7 @@ function TodosProfesionales() {
   // console.log('profesionales=>', profesionales1)
 
   return (
-    <ProfesionalesTableResponsive columns={columns} data={profesionales} title={'Lista de Profesionales'}/>
+    <ProfesionalesTableResponsive columns={columns} data={profesionales} title={'Lista de Profesionales'} token={token}/>
   )
 }
 
