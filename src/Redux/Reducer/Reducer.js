@@ -1,13 +1,14 @@
-import { GET_PROFESIONALES } from "../constants"
+import { GET_PROFESIONALES,GET_PROFESIONAL_ID } from "../constants"
 
 const initialState={
     allProfessional:[],
+    profesionalPorID:{},
     message:''
 }
  
 export const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-
+        //todos los profesionales
         case GET_PROFESIONALES:  
          if(action.payload.message){
             
@@ -24,5 +25,19 @@ export const rootReducer = (state = initialState, action) => {
                 }
 
             }
+
+            //profesionales por ID
+            case   GET_PROFESIONAL_ID:
+                 return {
+                    ...state,
+                    profesionalPorID:action.payload
+                 }
+
+
+
+
+
+
+
     }
 }

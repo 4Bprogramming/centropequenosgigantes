@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import styles from "./Profesional.module.css";
 import GifDeEspera from "../../GifsDeEspera/GifDeEspera";
 import reloj from "../../../assets/gifReloj.gif";
+import TurnosDelProfesional from "./ComponentesProfesional/TurnosDelProfesional";
 
 function Profesional() {
+
   //traigo data del Local Storage para usarlos en las actions
+  //--> por ejemplo el ID del profesional. 
   const data = localStorage.getItem("usuarioDB");
   const token = localStorage.getItem("token");
   const {
@@ -18,8 +20,6 @@ function Profesional() {
   } = JSON.parse(data);
   const tokenSinComillas = JSON.parse(token);
 
-  //use dispatch
-  const dispatch = useDispatch();
 
   //opciones seleccionadas
   const [select, setSelect] = useState("");
@@ -68,7 +68,7 @@ function Profesional() {
           )}
 
           {/* opciones elegidas */}
-          {select === "todosTurnos" && "se busca profesional por ID y se traen los turnos que se guardan en REDUX"}
+          {select === "todosTurnos" && <TurnosDelProfesional token={tokenSinComillas} idProfesional={idProfesional}/>}
         </div>
       </div>
     </>
