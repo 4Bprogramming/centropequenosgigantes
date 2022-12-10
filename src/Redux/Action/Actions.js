@@ -82,8 +82,10 @@ export function getProfesionaPorId(idProfesional, token) {
         payload:res.data
       })
     } catch (e) {
-        console.log(e)
-    //   return dispatch({ type: GET_PROFESIONAL_ID, payload: e.response.data });
+        return dispatch({ 
+            type: GET_PROFESIONAL_ID, 
+            payload: e.response.data 
+        });
     }
   };
 }

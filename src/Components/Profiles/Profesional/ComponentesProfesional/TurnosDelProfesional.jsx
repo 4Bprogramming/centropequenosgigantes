@@ -1,19 +1,31 @@
-import React,{useEffect} from 'react'
-import { useDispatch } from 'react-redux'
-import { getProfesionaPorId } from '../../../../Redux/Action/Actions'
+import React from 'react'
+import { useState } from 'react';
+import { useSelector } from 'react-redux'
 
 
-function TurnosDelProfesional(props) {
 
-  const dispatch = useDispatch()
-  console.log(props.token)
-  useEffect(() => {
-    dispatch(getProfesionaPorId(props.idProfesional,props.token))
-    
-  }, [])
+function TurnosDelProfesional({selectTurnos}) {
+   
+  const profesionalPorId = useSelector((state)=> state.profesionalPorID);
   
+   
+  let arrayDeTurnos=null;
 
+  if(selectTurnos === 'todosTurnos'){
 
+    //todos los turnos
+    arrayDeTurnos = profesionalPorId.turnos;
+    
+  } 
+  else if(selectTurnos === 'disponible'){
+     arrayDeTurnos = profesionalPorId.turnos.filter((element)=> element.estado === selectTurnos);
+  }
+  else if(selectTurnos === 'pendiente'){
+    arrayDeTurnos = profesionalPorId.turnos.filter((element)=> element.estado === selectTurnos);
+ }
+
+  console.log('turnos infinitos',arrayDeTurnos)
+ 
   return (
     <div>TurnosDelProfesional</div>
   )
