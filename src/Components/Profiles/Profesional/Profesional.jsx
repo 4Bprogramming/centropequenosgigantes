@@ -1,11 +1,16 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState,useEffect } from "react";
 import styles from "./Profesional.module.css";
 import GifDeEspera from "../../GifsDeEspera/GifDeEspera";
 import reloj from "../../../assets/gifReloj.gif";
+import TurnosDelProfesional from "./ComponentesProfesional/TurnosDelProfesional";
+import { useDispatch } from "react-redux";
+import { getProfesionaPorId } from "../../../Redux/Action/Actions";
 
 function Profesional() {
+  const dispatch = useDispatch()
+
   //traigo data del Local Storage para usarlos en las actions
+  //--> por ejemplo el ID del profesional. 
   const data = localStorage.getItem("usuarioDB");
   const token = localStorage.getItem("token");
   const {
@@ -18,8 +23,6 @@ function Profesional() {
   } = JSON.parse(data);
   const tokenSinComillas = JSON.parse(token);
 
-  //use dispatch
-  const dispatch = useDispatch();
 
   //opciones seleccionadas
   const [select, setSelect] = useState("");
@@ -27,6 +30,12 @@ function Profesional() {
     //seteo el estado para renderizar el otro componente
     setSelect(value);
   };
+
+  //Busco profesional por ID y lo paso por props
+  useEffect(() => {
+    dispatch(getProfesionaPorId(idProfesional,tokenSinComillas))
+  }, [])
+
 
   return (
     <>
@@ -51,7 +60,19 @@ function Profesional() {
               className={styles.options}
               onClick={() => handleClick("todosTurnos")}
             >
-              Mis turnos
+              Todos mis turnos
+            </div>
+            <div
+              className={styles.options}
+              onClick={() => handleClick("turnos disponibles")}
+            >
+              Turnos disponibles
+            </div>
+            <div
+              className={styles.options}
+              onClick={() => handleClick("turnos por atender")}
+            >
+              Turnos por atender
             </div>
           </div>
         </div>
@@ -68,7 +89,9 @@ function Profesional() {
           )}
 
           {/* opciones elegidas */}
-          {select === "todosTurnos" && "se busca profesional por ID y se traen los turnos que se guardan en REDUX"}
+          {select === "todosTurnos" && <TurnosDelProfesional selectTurnos={'todosTurnos'}/>} 
+          {select === "turnos disponibles" && <TurnosDelProfesional selectTurnos={'disponible'}/>}
+          {select === "turnos por atender" && <TurnosDelProfesional selectTurnos={'pendiente'}/>}
         </div>
       </div>
     </>
