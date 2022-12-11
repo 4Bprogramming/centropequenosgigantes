@@ -26,7 +26,6 @@
     
     
 }
-
 .turnosMapContainer:hover{
     cursor:unset;
     box-shadow: 3px 2px 5px #ab9797;
@@ -37,10 +36,24 @@
     color:  rgb(0 78 149);
 }
 
+.profesionalPorIdError{
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 10rem;
+    
+}
+.profesionalPorIdError span{
+    color: red;
+    font-weight: 700;
+}
 
 @media screen and (max-width: 1080px) {
     .TurnoProfesionalMainContainer{
         margin: 0 auto;
+    }
+    .profesionalPorIdError{
+        margin-top: 0px; 
     }
 }
 
@@ -49,5 +62,12 @@
         margin: 0 auto;
         width: 280px;
      
+    }
+    .profesionalPorIdError{
+        margin-bottom: 5px;
+        width: 98%;
+        font-size: 20px;
+        
+        
     }
 }
