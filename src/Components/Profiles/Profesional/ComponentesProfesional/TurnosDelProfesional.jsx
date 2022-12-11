@@ -5,7 +5,8 @@ import styles from './TurnoDelProfesional.module.css';
 
 function TurnosDelProfesional({ selectTurnos }) {
   const profesionalPorId = useSelector((state) => state.profesionalPorID);
-  const mensajeDeError = useSelector((state) => state.message);
+  const mensajeError = useSelector((state) => state.message);
+  
 
   let arrayDeTurnos = null;
 
@@ -14,23 +15,25 @@ function TurnosDelProfesional({ selectTurnos }) {
     arrayDeTurnos = profesionalPorId.turnos;
   } else if (selectTurnos === "disponible") {
     //solo los disponibles
-    arrayDeTurnos = profesionalPorId.turnos.filter(
+    arrayDeTurnos = profesionalPorId?.turnos?.filter(
       (element) => element.estado === selectTurnos
     );
   } else if (selectTurnos === "pendiente") {
     //los penientes de atencion
-    arrayDeTurnos = profesionalPorId.turnos.filter(
+    arrayDeTurnos = profesionalPorId?.turnos?.filter(
       (element) => element.estado === selectTurnos
     );
   }
 
-  console.log("turnos infinitos", arrayDeTurnos);
+
 
   return (
     <>
-      {mensajeDeError ? (
-        <div>{mensajeDeError}</div>
+    {/* si turnos no está  o hubo error buscando en el servidor*/}
+      {!profesionalPorId?.turnos?.length || mensajeError ? (
+        <div className={styles.profesionalPorIdError}> <span>Oops!</span> No se encontraron los turnos. <strong>:S</strong></div>
       ) : (
+        // si se encontró la info renderizo todo.
         <div className={styles.TurnoProfesionalMainContainer}>
           <h3>Tus Turnos</h3>
 
