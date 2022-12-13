@@ -11,12 +11,18 @@ import "react-notifications/lib/notifications.css";
 import { uploadFile } from "../../../../../Firebase/Firebase";
 import { getProfesionales, getTurnos, postProfesionales } from "../../../../../Redux/Action/Actions";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 
-function AddProfessional() {
+function AddProfessional(props) {
+  console.log('token',props.token);
   const [errors, setErrors] = useState({});
   const [imageId, setImageId] = useState({});
   const dispatch=useDispatch()
+  // useEffect(()=>{
+  //   dispatch(getProfesionales(props.token))
+  //   // dispatch(getTurnos())
+  // },[dispatch])
   const [post, setPost] = useState({
     idProfesional: "",
     nombre: "",
@@ -111,10 +117,10 @@ function AddProfessional() {
     if (Object.keys(error).length === 0) {
       try {
         // console.log('entre en el try del submit');
-       let doc= await postProfesionales(newProfesional,token)
+       let doc= await postProfesionales(newProfesional,props.token)
         // setShow(true);
        
-        Actualizar(token)
+        Actualizar(props.token)
         NotificationManager.success("Bien Hecho!", "Profesional Añadido", 3000);
         // setPost({
         //     idProfesional: "",
