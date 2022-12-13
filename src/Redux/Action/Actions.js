@@ -102,7 +102,7 @@ export function horariosTurnosCreados(payload) {
     console.log('payload action', payload);
     return async function (dispatch) {
       try {
-        let json = await axios.post(`${BASE_URL}/turnos/horas`, payload);
+        var json = await axios.post(`${BASE_URL}/turnos/horas`, payload);
         console.log("recibo en action==>", json.data);
         return dispatch({
           type: HORAS_CREADAS,
@@ -123,7 +123,7 @@ export function horariosTurnosCreados(payload) {
     console.log('payload====>', payload);
     return async function (dispatch) {
         try {
-          let json = await axios.post(`${BASE_URL}/turnos`, payload);
+          var json = await axios.post(`${BASE_URL}/turnos`, payload);
           console.log("recibo en action==>", json.data);
           return dispatch({
             type: POST_TURNOS,
