@@ -18,7 +18,7 @@ export async function postProfesionales(body, token) {
 
   try {
     let res = await axios.post(`${BASE_URL}/profesionales`, body);
-
+    getProfesionales(token)
     return res;
     // return dispatch({type:MESSAGE, payload: res.data})
   } catch (e) {
@@ -102,7 +102,7 @@ export function horariosTurnosCreados(payload) {
     console.log('payload action', payload);
     return async function (dispatch) {
       try {
-        let json = await axios.post(`${BASE_URL}/turnos/horas`, payload);
+        var json = await axios.post(`${BASE_URL}/turnos/horas`, payload);
         console.log("recibo en action==>", json.data);
         return dispatch({
           type: HORAS_CREADAS,
@@ -123,8 +123,9 @@ export function horariosTurnosCreados(payload) {
     console.log('payload====>', payload);
     return async function (dispatch) {
         try {
-          let json = await axios.post(`${BASE_URL}/turnos`, payload);
+          var json = await axios.post(`${BASE_URL}/turnos`, payload);
           console.log("recibo en action==>", json.data);
+          //ACA LLAMO A getTurnos()
           return dispatch({
             type: POST_TURNOS,
             payload: json.data,
