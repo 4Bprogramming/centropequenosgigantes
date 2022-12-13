@@ -11,6 +11,7 @@ import { getProfesionales, getTurnos } from '../../../Redux/Action/Actions';
 import { useDispatch } from 'react-redux';
 import { Actualizar } from '../../../FuncionActualizar/FuncionActualizar';
 import CrearTurnos from './AdminComponents/CrearTurnos/CrearTurnos';
+import Prueba2 from './AdminComponents/CrearTurnos/Prueba2';
 
 function Admin() { 
   const token= JSON.parse(window.localStorage.getItem('token'))
@@ -19,7 +20,7 @@ function Admin() {
   useEffect(()=>{
     dispatch(getProfesionales(token))
     // dispatch(getTurnos())
-  },[dispatch])
+  },[])
     const [select, setSelect]=useState("");
 
     const handleClick=(value)=>{
@@ -61,7 +62,8 @@ function Admin() {
       select === "TurnosCancelados" &&
       <TurnosCancelados/>||
       select === "CrearTurnos" &&
-      <CrearTurnos/>
+      <Prueba2/>
+      // <CrearTurnos/>
       
     }
      </div>

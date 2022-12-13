@@ -1,6 +1,6 @@
 import { async } from "@firebase/util";
 import axios from "axios";
-import { GET_PROFESIONALES, GET_TURNOS, MESSAGE } from "../constants";
+import { GET_PROFESIONALES, GET_TURNOS, HORAS_CREADAS, MESSAGE, POST_TURNOS } from "../constants";
 
 const BASE_URL = 'http://localhost:3001'
 
@@ -48,6 +48,7 @@ export function getProfesionales(token){
             return dispatch({type:GET_PROFESIONALES, payload:res.data});
             
         } catch (e) {
+            console.log('error getPRofesionales===>', e);
             
             return dispatch({type:GET_PROFESIONALES, payload:e.response.data})
         }        
@@ -77,3 +78,45 @@ export function getTurnos(){
 
     }
 }
+
+//Muestra turnos creados
+export function horariosTurnosCreados(payload) {
+    console.log('payload action', payload);
+    return async function (dispatch) {
+      try {
+        var json = await axios.post(`${BASE_URL}/turnos/horas`, payload);
+        console.log("recibo en action==>", json.data);
+        return dispatch({
+          type: HORAS_CREADAS,
+          payload: json.data,
+        });
+      } catch (error) {
+        // console.log("no recibo en action por este error==>", error);
+        return dispatch({
+            type: HORAS_CREADAS,
+            payload: json.data,
+          });
+      }
+    };
+  }
+
+  //Guardar turnos en base de Datos
+  export function subirTurnos(payload){
+    console.log('payload====>', payload);
+    return async function (dispatch) {
+        try {
+          var json = await axios.post(`${BASE_URL}/turnos`, payload);
+          console.log("recibo en action==>", json.data);
+          return dispatch({
+            type: POST_TURNOS,
+            payload: json.data,
+          });
+        } catch (error) {
+          console.log("no recibo en action por este error==>", error);
+          return dispatch({
+              type: POST_TURNOS,
+              payload: json.data,
+            });
+        }
+      };
+  }

@@ -13,7 +13,7 @@ export default function myTime(sT, eT){
     
     let next= currentHr
     let numberHour=[]
-    let duration=parseFloat((30/60).toFixed(2))
+    let duration=parseFloat((1/60).toFixed(2))
    
     do {
         currentHr =next + duration
