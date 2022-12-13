@@ -1,0 +1,73 @@
+.TurnoProfesionalMainContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: monospace;
+   /* border: 1px solid fuchsia; */
+    border-radius: 15px;
+    padding: 15px;
+    width: 300px;
+    /* margin-top: 2rem; */
+    /* margin-bottom: 2rem; */
+}
+.TurnoProfesionalMainContainer h3{
+    text-shadow:  2px 1px 5px black;
+}
+.turnosMapContainer{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    background-color: rgba(97, 92, 92, 0.527);
+    border-radius: 15px;
+    margin: 2px;
+    width: 279px;
+    padding: 5px;
+    padding-left: 60px;
+    
+    
+}
+.turnosMapContainer:hover{
+    cursor:unset;
+    box-shadow: 3px 2px 5px #ab9797;
+    margin-left: 15px;
+}
+.turnosMapContainer span {
+    font-style: italic;
+    color:  rgb(0 78 149);
+}
+
+.profesionalPorIdError{
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 10rem;
+    
+}
+.profesionalPorIdError span{
+    color: red;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 1080px) {
+    .TurnoProfesionalMainContainer{
+        margin: 0 auto;
+    }
+    .profesionalPorIdError{
+        margin-top: 0px; 
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .TurnoProfesionalMainContainer{
+        margin: 0 auto;
+        width: 280px;
+     
+    }
+    .profesionalPorIdError{
+        margin-bottom: 5px;
+        width: 98%;
+        font-size: 20px;
+        
+        
+    }
+}
