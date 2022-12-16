@@ -4,20 +4,18 @@ import makeAnimates from 'react-select/animated'
 const animatedComponents= makeAnimates()
 
 
-function SelectEspecialidades({handleSelelect, options}) {
-    
-  // console.log('options', options);
-  
+function SelectEspecialidades({handleSelelect, options, defaultValue}) {
 
     return (
       <>
     <Select 
       closeMenuOnSelect={false}
       components={animatedComponents}
-      defaultValue={[]}
+      defaultValue={defaultValue}
       isMulti
       options={options}
       onChange={handleSelelect}
+      name={'especialidades'}
     />
       </>
     )

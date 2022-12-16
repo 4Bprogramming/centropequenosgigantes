@@ -11,7 +11,6 @@ import { getProfesionales, getTurnos } from '../../../Redux/Action/Actions';
 import { useDispatch } from 'react-redux';
 import { Actualizar } from '../../../FuncionActualizar/FuncionActualizar';
 import CrearTurnos from './AdminComponents/CrearTurnos/CrearTurnos';
-import Prueba2 from './AdminComponents/CrearTurnos/Prueba2';
 
 function Admin() { 
   const token= JSON.parse(window.localStorage.getItem('token'))
@@ -19,7 +18,7 @@ function Admin() {
   const dispatch=useDispatch()
   useEffect(()=>{
     dispatch(getProfesionales(token))
-    // dispatch(getTurnos())
+    dispatch(getTurnos(token))
   },[])
     const [select, setSelect]=useState("");
 
@@ -52,18 +51,18 @@ function Admin() {
       select==="todosProfesionales" &&
       <TodosProfesionales token={token}/> ||
       select === "todosTurnos" &&
-      <TodosTurnos/> ||
+      <TodosTurnos token={token}/> ||
       select==="reservarTurnos" &&
-      <ReservaTurnos/> ||
+      <ReservaTurnos token={token}/> ||
       select === "TurnosPendientes" &&
-      <TurnosPendientes/> ||
+      <TurnosPendientes token={token}/> ||
       select === "TurnosDisponibles" &&
-      <TurnosDisponibles/> ||
+      <TurnosDisponibles token={token}/> ||
       select === "TurnosCancelados" &&
-      <TurnosCancelados/>||
+      <TurnosCancelados token={token}/>||
       select === "CrearTurnos" &&
-      <Prueba2/>
-      // <CrearTurnos/>
+      <CrearTurnos token={token}/>
+      
       
     }
      </div>

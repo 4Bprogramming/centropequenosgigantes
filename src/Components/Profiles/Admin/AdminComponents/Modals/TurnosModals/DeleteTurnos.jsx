@@ -9,14 +9,14 @@ import { useDispatch, useSelector } from "react-redux";
 //Alert notifications
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
-import { deleteProfesional, getProfesionales, getTurnos } from "../../../../../../Redux/Action/Actions";
+import { deleteProfesional, getProfesionales } from "../../../../../../Redux/Action/Actions";
 
 
 
-function DeleteProfesional(props) {
+function DeleteTurnos(props) {
   let profesionales = useSelector((state) => state.allProfesionales);
   // console.log('props==>', props);
-  const profData = props?.profesionalData[0]
+  // const profData = props?.profesionalData[0]
 
  
   const  [editFormInput, setEditFormInput] = useState({});
@@ -42,9 +42,9 @@ useEffect(()=>{
       // console.log('idProfesional',profData.email )
       // console.log('body',body )
       let token= props.token
-     let edit = await dispatch(deleteProfesional(profData.email,body));
-     await dispatch(getProfesionales(token)   ) 
-      await dispatch(getTurnos(token))
+    //  let edit = await dispatch(deleteTurnos(profData.email,body));
+    //  await dispatch(getProfesionales(token)   ) 
+      
       //it closes the Modal after submit
       props.close()
       
@@ -66,14 +66,14 @@ return (
       </Modal.Header>
       <Modal.Body>
         <Form>
-         {`Apellido y Nombre: ${profData?.fullName}`}
+         {/* {`Apellido y Nombre: ${profData?.fullName}`}
            
           <br />
           {`Email: ${profData?.email}`}
            
           <br />
           {`N° de contacto: ${profData?.celular}`}
-          
+           */}
           <br />
           
            <Button
@@ -97,4 +97,4 @@ return (
 );
 }
 
-export default DeleteProfesional
+export default DeleteTurnos

@@ -5,16 +5,16 @@ import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import "./tabletest.css";
 import { TbEdit } from "react-icons/tb";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import EditModalProfesional from "../Admin/AdminComponents/Modals/EditProfesional/EditModalProfesional";
-import DeleteProfesional from "../Admin/AdminComponents/Modals/EditProfesional/DeleteProfesional";
-import { getProfesionales } from "../../../Redux/Action/Actions";
+// import EditModalProfesional from "../Admin/AdminComponents/Modals/EditProfesional/EditModalProfesional";
+import EditModalTurnoPendiente from "../Admin/AdminComponents/Modals/TurnosModals/EditModalTurnoPendiente";
+import DeleteTurnos from "../Admin/AdminComponents/Modals/TurnosModals/DeleteTurnos";
+// import { getProfesionales } from "../../../Redux/Action/Actions";
 
-function ProfesionalesTableResponsive({ data, columns, detail, title,token }) {
-
+function TableTurnos({ data, columns, detail, title,token, estado }) {
 
   let dispatch= useDispatch()
   useEffect(()=>{
-    dispatch(getProfesionales(token))
+    // dispatch(getProfesionales(token))
     // dispatch(getTurnos())
   },[dispatch])
 
@@ -23,29 +23,36 @@ function ProfesionalesTableResponsive({ data, columns, detail, title,token }) {
 
   //cases from Redux (store)
   // const cases = useSelector((state) => state.cases)
-  const columns1 = columns.map((el) => {
+  const columns1 = columns?.map((el) => {
     return el.text;
   });
   const columns2 = columns.map((el) => {
+    if(el.dataField.includes('.')){
+
+      return el.dataField.split('.')
+    }
+    // console.log('incluye punto?', el.dataField.includes('.'));
     return el.dataField;
   });
   // console.log("columns1", columns1);
   // console.log("columns2", columns2);
 
   //Modal Form data
-  const [profesionalData, setProfesionalData] = React.useState([]);
+  const [turnoData, setTurnoData] = React.useState([]);
 
   //modal state
   const [showModal, setShowModal] = React.useState(false);
+  const [showModalPendiente, setShowModalPendiente] = React.useState(false);
+  const [showModalDisponible, setShowModalDisponible] = React.useState(false);
   const [showModalD, setShowModalD] = React.useState(false);
   //when Edit button is clicked
   function showModalEdit(id) {
-    setProfesionalData(data.length > 0 && data.filter((el) => el.idProfesional === id));//son los peritos
-    setShowModal(true);
+      setTurnoData(data.length > 0 && data.filter((el) => el.id === id));//son los peritos
+      setShowModalPendiente(true);
   }
   function showModalDelete(id) {
-    console.log('id==>', id);
-    setProfesionalData(data.length > 0 && data.filter((el) => el.idProfesional === id));//son los peritos
+    // console.log('id==>', id);
+    setTurnoData(data.length > 0 && data.filter((el) => el.id === id));//son los peritos
     setShowModalD(true);
   }
 
@@ -62,7 +69,8 @@ function ProfesionalesTableResponsive({ data, columns, detail, title,token }) {
         dato.especialidad.toLowerCase().includes(filter.toLocaleLowerCase())         
     );
   }
-  // console.log('casesFiltered', casesFiltered)
+  console.log('dataFiltered', dataFiltered)
+  console.log('DATAAAA===>', data)
   return (
     <>
       <input
@@ -89,44 +97,56 @@ function ProfesionalesTableResponsive({ data, columns, detail, title,token }) {
                 {columns1.map((e) => {
                   return <Th className="thEdit">{e}</Th>;
                 })} 
-
+                  {
+                    estado==='pendiente' &&
+                    <>
                 <Th className="thEdit">Editar</Th>
                 <Th className="thEdit">Eliminar</Th>
+                    </>
+                  }
               </Tr>
             </Thead>
 
             <Tbody>
-              {dataFiltered.map(
+              {dataFiltered?.map(
                 (el) =>
                   // Patente is a notnull field meaning that an empty register won't be allowed.
 
-                  el.nombre&& (
+                  el.id && (
                     <Tr>
                       {columns2.map((c) => {
-                        let y = el[c];
+                        let y
+                       Array.isArray(c)?
+                          y = el[c[0]][c[1]]:
+                          y = el[c]
+
                         return (
-                          <Td className="tdEdit" key={el.idProfesional}>
+                          <Td className="tdEdit" key={el.id}>
                             {y ? y : "Sin Completar"}
                           </Td>
                         );
                       })}
 
-                      <Td className="tdEdit" key={el.idProfesional}>
+                      { 
+                      estado==='pendiente' && <>
+                       <Td className="tdEdit" key={el.id}>
                         <div
                           className="editBtn"
-                          onClick={() => showModalEdit(el.idProfesional)}
-                        >
+                          onClick={() => showModalEdit(el.id)}
+                          >
                           <TbEdit />
                         </div>
                       </Td>
-                      <Td className="tdEdit" key={el.idProfesional}>
+                      <Td className="tdEdit" key={el.id}>
                         <div
                           className="editBtn"
-                          onClick={() => showModalDelete(el.idProfesional)}
-                        >
+                          onClick={() => showModalDelete(el.id)}
+                          >
                           <RiDeleteBin6Line />
                         </div>
-                      </Td>
+                      </Td> 
+                          </>
+                      }
                     </Tr>
                   )
               )}
@@ -135,18 +155,19 @@ function ProfesionalesTableResponsive({ data, columns, detail, title,token }) {
         </>
       )}
       {/* Modal rendering */}
-      <EditModalProfesional 
-      show={showModal}
-      close={() => setShowModal(false)}
-      profesionalData={profesionalData}
+  
+     <EditModalTurnoPendiente
+      show={showModalPendiente}
+      close={() => setShowModalPendiente(false)}
+      turnoData={turnoData}
       token={token}
       detail={detail}/>
       
       
-      <DeleteProfesional 
+      <DeleteTurnos
       show={showModalD}
       close={() => setShowModalD(false)}
-      profesionalData={profesionalData}
+      turnoData={turnoData}
       token={token}
       detail={detail}
     
@@ -154,6 +175,6 @@ function ProfesionalesTableResponsive({ data, columns, detail, title,token }) {
     </>
   );
 }
-export default ProfesionalesTableResponsive;
+export default TableTurnos;
 
 

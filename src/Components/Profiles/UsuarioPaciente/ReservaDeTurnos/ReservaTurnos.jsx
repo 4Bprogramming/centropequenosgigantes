@@ -11,13 +11,12 @@ function ReservaTurnos() {
   const [habilitarCalendario, setHabilitarCalendario]=useState(false)
   const [cambioProfesional, setCambioProfesional]=useState(true)
   const [habilitarBoton, setHabilitarBoton]=useState(false)
-  const [show, setShow]=useState(false)
   const [post, setPost] = useState({
     date: '',
     profesionalIdProfesional: "",
     turnosMostrar: [],
     nombreProfesional: "",
-    turnoElegido: [],
+    duracion: "",
     horariosCreados: false,
   });
     //FUNCION PARA CREAR {VALUE, LABEL} DEL SELECT DE PROFESIONALES
@@ -47,13 +46,7 @@ function ReservaTurnos() {
         setCambioProfesional(true)
 
     }
-    function handleClick(e){
-      e.preventDefault()
-      let value=e.target.value
-      let miTurno= post.turnosMostrar.filter(turno=> turno.id===value)
-      setPost({ ...post, turnoElegido:miTurno});
-    }
-    console.log('turno elegido===>',post.turnoElegido);
+    function handleClick(e){console.log('evento turno elegido===>',e);}
     function handleChangeDate(e) {
       // console.log('me llamaron');
       let eleccion= `${e.day}-${e.month.number}-${e.year}`
@@ -71,7 +64,7 @@ function ReservaTurnos() {
       // console.log('TURNOS DISPONIBLES', turnosDisponibles);
       console.log('TurnosDiaElegido===>', TurnosDiaElegido);
     }
-    console.log('turnos mostrar===>', post.turnosMostrar);
+    console.log('NOMBRE PROFESIONL===>', post.nombreProfesional);
   return (
     <>
     <ReservaForm 
@@ -85,11 +78,17 @@ function ReservaTurnos() {
     cambioProfesional={cambioProfesional}
     handleClickChange={handleClickChange}
     nombreProfesional={post.nombreProfesional}
-    show={show}
-    turnos={post.turnosMostrar}
-    onClick={handleClick}
     />
-    
+    {
+      post.turnosMostrar.length>0 &&
+      post.turnosMostrar.map(e=>{
+        return(
+          <button onClick={handleClick}>
+            {e.startTime}
+          </button>
+        )
+      })
+    }
     </>
   )
 }
