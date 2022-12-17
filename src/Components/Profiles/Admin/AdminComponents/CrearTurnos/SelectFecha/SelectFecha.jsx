@@ -3,7 +3,15 @@ import DatePicker from "react-multi-date-picker";
 import DatePanel from "react-multi-date-picker/plugins/date_panel";
 
 
-
+//embedded style en el rango de fechas
+const rango={
+  backgroundColor:"darkcyan",
+  color: "white",
+  fontFamily:"monospace",
+  padding:"5px",
+  margin:"5px",
+  borderRadius:"10px",
+}
 
 const format = "DD/MM/YYYY";
 function SelectFecha({ date, setDate, onChange }) {
@@ -33,13 +41,17 @@ function SelectFecha({ date, setDate, onChange }) {
         plugins={[<DatePanel />]}
         
       />
-      <ul>
+      <div 
+      style={{
+          textAlign:"center",
+          width:"120px",
+        }}>
         {date.map((date, index) => (
-          <div>
-            <li key={index}>{date.format()}</li>
-          </div>
+          
+            <div style={rango} key={index}>{date.format()}</div>
+          
         ))}
-      </ul>
+      </div>
       {/* {date.length>0 && noDay.length===0?
                   <div>
                       <button className="button" onClick={newTimeRange1}>Seleccione rango horario de mañana para el/los dia/s seleccionados</button> 
