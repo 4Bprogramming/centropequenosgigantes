@@ -31,6 +31,9 @@ import Footer2 from "./Components/Footer/Footer2";
 import UsuarioPaciente from "./Components/Profiles/UsuarioPaciente/UsuarioPaciente";
 import Profesional from "./Components/Profiles/Profesional/Profesional";
 import DetalleDeProfesional from "./Components/DetalleDelProfesional/DetalleDeProfesional";
+import AñadirHistoria from "./Components/Profiles/HistoriaClinica/AñadirHistoria/AñadirHistoria";
+import TodosTurnos from "./Components/Profiles/Admin/AdminComponents/TodosLosTurnos/TodosTurnos";
+
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -61,6 +64,8 @@ function App() {
         <Route exact path="/usuario" element={<UsuarioPaciente />} />
         <Route exact path="/profesional" element={<Profesional />} />
         <Route exact path="/detalleProfesional/:idProfesional" element={<DetalleDeProfesional />} />
+        <Route exact path="/historia" element={<AñadirHistoria/>} />
+        {/* <Route exact path="/turnos" element={<TodosTurnos/>} /> */}
           
         <Route exact path="/psicologia" element={<Psicologia />} />
         <Route exact path="/lenguaje" element={<TerapiaLenguaje />} />

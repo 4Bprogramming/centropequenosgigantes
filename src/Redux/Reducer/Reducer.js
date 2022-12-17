@@ -3,6 +3,7 @@ import {
   HORAS_CREADAS,
   POST_TURNOS,
   GET_PROFESIONAL_ID,
+  GET_TURNOS,
 } from "../constants";
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   horasCreadas: [],
   horasCreadasParaMostar: [],
   turnosCreados: [],
+  todosTurnos: [],
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -80,5 +82,11 @@ export const rootReducer = (state = initialState, action) => {
           message: action.payload.message,
         };
       }
+      case GET_TURNOS:
+        return{
+          ...state,
+          todosTurnos: action.payload,
+        }
   }
+
 };

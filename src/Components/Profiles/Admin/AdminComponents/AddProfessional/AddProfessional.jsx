@@ -120,7 +120,7 @@ function AddProfessional(props) {
        let doc= await postProfesionales(newProfesional,props.token)
         // setShow(true);
        
-        Actualizar(props.token)
+        // Actualizar(props.token)
         NotificationManager.success("Bien Hecho!", "Profesional Añadido", 3000);
         // setPost({
         //     idProfesional: "",

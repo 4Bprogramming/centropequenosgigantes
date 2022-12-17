@@ -10,26 +10,26 @@ import ModalFormEdit from "./ModalFormEdit";
 import { editProfesionales, getProfesionales } from "../../../../../../Redux/Action/Actions";
 
 
-const EditModalProfesional = (props) => {
-    const profesionalData = props.profesionalData[0];
-    let especialidadTrae=profesionalData?.especialidad?.split(',')
-    let optionsDefault= especialidadTrae?.map(e=>{return({
-      label:e, value:e
-    })})
+const EditModalTurnoPendiente = (props) => {
+    // const TurnoData = props.TurnoData[0];
+    // let especialidadTrae=TurnoData?.especialidad?.split(',')
+    // let optionsDefault= especialidadTrae?.map(e=>{return({
+    //   label:e, value:e
+    // })})
     const token=props.token
 
     const  [editFormInput, setEditFormInput] = useState({});
     const dispatch = useDispatch();
   useEffect(()=>{
         setEditFormInput({
-           idProfesional:profesionalData?.idProfesional,
-            nombre:profesionalData?.nombre,
-            apellido:profesionalData?.apellido,
-            email:profesionalData?.email,
-            celular:profesionalData?.celular,
-            matricula:profesionalData?.matricula,
-            especialidades:optionsDefault,
-            imageId:profesionalData?.imagenProfesional
+          //  idProfesional:TurnoData?.idProfesional,
+          //   nombre:TurnoData?.nombre,
+          //   apellido:TurnoData?.apellido,
+          //   email:TurnoData?.email,
+          //   celular:TurnoData?.celular,
+          //   matricula:TurnoData?.matricula,
+          //   especialidades:optionsDefault,
+          //   imageId:TurnoData?.imagenProfesional
         })
   },[props])
   
@@ -41,7 +41,7 @@ const EditModalProfesional = (props) => {
       setEditFormInput({ ...editFormInput, [e.target.name]: e.target.value });
     }
     else{
-      setEditFormInput({...editFormInput,[e.target.name]:profesionalData[e.target.name]})
+      // setEditFormInput({...editFormInput,[e.target.name]:TurnoData[e.target.name]})
     }
   }
 
@@ -67,21 +67,21 @@ const EditModalProfesional = (props) => {
     setEditFormInput({ ...editFormInput, especialidades: especialidadesSinCambios })
   }
   let newProfesional = {
-    idProfesional: editFormInput.idProfesional, 
-    nombre: editFormInput.nombre
-    ?.split(" ")
-    .map((el) => el.charAt(0).toUpperCase() + el.toLowerCase().slice(1))
-    .join(" "),
-    apellido: editFormInput.apellido
-    ?.split(" ")
-    .map((el) => el.charAt(0).toUpperCase() + el.toLowerCase().slice(1))
-    .join(" "),
-    celular: editFormInput.celular,
-    email: editFormInput.email,
-    password: editFormInput.password,
-    matricula: editFormInput.matricula,
-    especialidad: editFormInput.especialidades,
-    imagenProfesional: editFormInput.imageId,
+    // idProfesional: editFormInput.idProfesional, 
+    // nombre: editFormInput.nombre
+    // ?.split(" ")
+    // .map((el) => el.charAt(0).toUpperCase() + el.toLowerCase().slice(1))
+    // .join(" "),
+    // apellido: editFormInput.apellido
+    // ?.split(" ")
+    // .map((el) => el.charAt(0).toUpperCase() + el.toLowerCase().slice(1))
+    // .join(" "),
+    // celular: editFormInput.celular,
+    // email: editFormInput.email,
+    // password: editFormInput.password,
+    // matricula: editFormInput.matricula,
+    // especialidad: editFormInput.especialidades,
+    // imagenProfesional: editFormInput.imageId,
   };
   
   // console.log('editForm Especialidades==>', editFormInput.especialidades);
@@ -94,9 +94,9 @@ const EditModalProfesional = (props) => {
         // console.log('newProfesional==>', newProfesional);
 
         //it closes the Modal after submit
-        await dispatch(editProfesionales(profesionalData.idProfesional, newProfesional, token)) 
+        // await dispatch(editProfesionales(TurnoData.idProfesional, newProfesional, token)) 
         //actualiza el estado con el cambio
-        await dispatch(getProfesionales(token)) 
+        // await dispatch(getProfesionales(token)) 
         //this commando triggers the alert! 
         NotificationManager.success('Profesional actualizado!','Bien Hecho!',3000);  
         props.close()
@@ -107,8 +107,8 @@ const EditModalProfesional = (props) => {
 
   return (
     <>
-      <ModalFormEdit editFormInput={editFormInput} optionsDefault={optionsDefault} especialidadTrae={especialidadTrae} handleOnChange={handleOnChange} handleImageId={handleImageId} handleSelect={handleSelect}
-       handleSubmit={handleSubmit} show={props.show} onHide={props.close} profesionalData={profesionalData} onClick={props.close}/>
+      <ModalFormEdit editFormInput={editFormInput} handleOnChange={handleOnChange}
+       handleSubmit={handleSubmit} show={props.show} onHide={props.close} TurnoData={props.TurnoData} onClick={props.close}/>
        
       {/* alert after submit */}
       <NotificationContainer/>
@@ -117,4 +117,4 @@ const EditModalProfesional = (props) => {
     </>
   );
 };
-export default EditModalProfesional;
+export default EditModalTurnoPendiente;
