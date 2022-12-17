@@ -15,7 +15,7 @@ function SelectProfesionales({onChange, options, idProfesional}) {
       defaultValue={''}
       options={options}
       onChange={onChange}
-      placeholder = "Elegí una opcion"
+      placeholder = "Elegí una opción"
       // value={idProfesional}
     />
       </div>

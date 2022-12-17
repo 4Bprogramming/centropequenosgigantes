@@ -20,7 +20,7 @@ function FormAddProfessional({
   return (
     <>
       <div>
-        <h2 className={styles.addProfesionalH2}>AÑADIR PROFESIONAL</h2>
+        <h2 className={styles.addProfesionalH2}>Añadir Profesionales</h2>
       </div>
 
       <Form>

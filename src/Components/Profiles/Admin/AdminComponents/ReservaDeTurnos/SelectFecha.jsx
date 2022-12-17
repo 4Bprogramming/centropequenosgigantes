@@ -16,8 +16,7 @@ function SelectFecha({ date, setDate, onChange }) {
           fontWeight: 600,
         }}
       >
-        Elegí <span style={{ color: "red" }}>cuándo</span> trabaja el
-        profesional
+        Elegí <span style={{ color: "red" }}>cuándo</span> queres tener cita
       </div>
       <Calendar name="date" value={date} onChange={onChange} />
     </div>
