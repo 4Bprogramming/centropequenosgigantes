@@ -63,20 +63,21 @@ return (
     
     <Modal show={props.show} onHide={props.close}>
       <Modal.Header closeButton>
-        <Modal.Title>¿Seguro de eliminar el siguiente profesional?</Modal.Title>
+        <Modal.Title>¿Seguro desea <span style={{"color":"red","fontStyle":"italic"}}>eliminar</span> el siguiente profesional?</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
-         {`Apellido y Nombre: ${profData?.fullName}`}
+          <div>
+             <strong >Apellido y Nombre:</strong> <span style={{"fontStyle":"italic"}}>{`${profData?.fullName}`}</span>
+          </div> 
            
-          <br />
-          {`Email: ${profData?.email}`}
-           
-          <br />
-          {`N° de contacto: ${profData?.celular}`}
+          <div>
+             <strong >Email:</strong> <span style={{"fontStyle":"italic"}}>{`${profData?.email}`}</span>
+          </div> 
           
-          <br />
-          
+          <div>
+             <strong >N° de contacto:</strong> <span style={{"fontStyle":"italic"}}>{`${profData?.celular}`}</span>
+          </div> 
            <Button
             variant="secondary"
             className="closeBtn " 
