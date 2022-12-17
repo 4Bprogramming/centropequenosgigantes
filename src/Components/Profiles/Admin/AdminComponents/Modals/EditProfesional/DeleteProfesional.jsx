@@ -57,6 +57,7 @@ useEffect(()=>{
 }
 
 
+
 return (
   <>
     
@@ -78,12 +79,13 @@ return (
           
            <Button
             variant="secondary"
-            className="closeBtn mt-2" 
+            className="closeBtn " 
             onClick={props.close}
+            style = {{"marginTop":10}}
           >
             Cerrar
           </Button>
-          <Button variant="success" className="submitBtn mt-2" onClick={handleClick}>
+          <Button variant="success" style = {{"marginLeft":3,"marginTop":10}} className="submitBtn" onClick={handleClick}>
             Eliminar
           </Button>
         </Form>
