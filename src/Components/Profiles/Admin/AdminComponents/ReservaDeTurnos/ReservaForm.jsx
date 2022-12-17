@@ -4,6 +4,8 @@ import SelectFecha from "./SelectFecha";
 import styles from "./RerservaTurno.module.css";
 
 function ReservaForm(props) {
+
+  // console.log('esto traer el props n click',props)
   return (
     <div className={styles.mainReservarTurnoContainer}>
       {props.cambioProfesional && (
@@ -19,7 +21,7 @@ function ReservaForm(props) {
             <strong>Profesional:</strong> <span>{props.nombreProfesional}</span>
           </div>
           <button
-            className={styles.botonCambiarProfesional}
+            className={styles.botonesReservarTurno}
             onClick={props.handleClickChange}
           >
             Otro Profesional
@@ -32,13 +34,16 @@ function ReservaForm(props) {
 
           <div className={styles.elegiTurno}>Elegir turnos</div>
           {props.turnos?.length > 0 &&
+            
             props.turnos?.map((e) => {
               return (
-                <button onClick={props.onClick} value={e.id} key={e.id}>
+                <button className={styles.botonesDeHorarios} onClick={props.onClick} value={e.id} key={e.id}>
                   {e.startTime}
                 </button>
               );
-            })}
+            
+            })
+          }
         </div>
       )}
     </div>

@@ -1,19 +1,24 @@
 import React from "react";
 import DatePicker, { Calendar } from "react-multi-date-picker";
 import DatePanel from "react-multi-date-picker/plugins/date_panel";
+import styles from "./RerservaTurno.module.css";
+
 
 const format = "DD/MM/YYYY";
 function SelectFecha({ date, setDate, onChange }) {
   return (
-    <div>
-      <div style={{
-        "fontFamily":"monospace",
-        "marginTop":"10px",
-        "marginBottom":"10px",
-        "fontWeight":600
-        
-        }}>
-          Elegí <span style={{"color":"red"}}>cuándo</span> trabaja el profesional</div> 
+    <div  className={styles.mainSelectFechaContainer}>
+      <div
+        style={{
+          fontFamily: "monospace",
+          marginTop: "10px",
+          marginBottom: "10px",
+          fontWeight: 600,
+        }}
+      >
+        Elegí <span style={{ color: "red" }}>cuándo</span> trabaja el
+        profesional
+      </div>
       <Calendar name="date" value={date} onChange={onChange} />
     </div>
   );
@@ -21,20 +26,7 @@ function SelectFecha({ date, setDate, onChange }) {
 
 export default SelectFecha;
 
-
-
-
-
-
-
-
-
-
-
-
-//codigo que puede servir 
-
-
+//codigo que puede servir
 
 // // single
 // sort
