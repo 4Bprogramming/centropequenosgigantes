@@ -14,7 +14,7 @@ import CrearTurnos from './AdminComponents/CrearTurnos/CrearTurnos';
 
 function Admin() { 
   const token= JSON.parse(window.localStorage.getItem('token'))
-  console.log('admin token', token);
+  // console.log('admin token', token);
   const dispatch=useDispatch()
   useEffect(()=>{
     dispatch(getProfesionales(token))
