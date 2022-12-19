@@ -17,7 +17,7 @@ export async function postProfesionales(body, token) {
   axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
 
   try {
-    let res = await axios.post(`${BASE_URL}/profesionales`, body);
+    var res = await axios.post(`${BASE_URL}/profesionales`, body);
     getProfesionales(token)
     return res;
     // return dispatch({type:MESSAGE, payload: res.data})
@@ -30,7 +30,7 @@ export function editProfesionales(id,body, token) {
   axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
 return async function(dispatch){
   try {
-    let res = await axios.put(`${BASE_URL}/editarprofesional/${id}`, body);
+    var res = await axios.put(`${BASE_URL}/editarprofesional/${id}`, body);
     // getProfesionales(token)
     // console.log('respuesta edit back=>', res);
     return res;
@@ -48,7 +48,7 @@ export  function deleteProfesional(email, body) {
   return async function(dispatch){
     try {
       // console.log('body', body);
-      let res = await axios.put(`${BASE_URL}/altabaja/${email}`, body);
+      var res = await axios.put(`${BASE_URL}/altabaja/${email}`, body);
           
           // console.log("res delete", res);
           return res.data.message;
@@ -86,7 +86,7 @@ export function getProfesionaPorId(idProfesional, token) {
   
   return async function (dispatch) {
     try {
-      let res = await axios.get(`${BASE_URL}/profesionales/${idProfesional}`);
+      var res = await axios.get(`${BASE_URL}/profesionales/${idProfesional}`);
       return dispatch({
         type:GET_PROFESIONAL_ID,
         payload:res.data
@@ -104,7 +104,7 @@ export function getTurnos(token) {
   axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
   return async function (dispatch) {
     try {
-      let res = await axios.get(`${BASE_URL}/turnos`);
+      var res = await axios.get(`${BASE_URL}/turnos`);
       console.log('respuesta get turnos', res);
       return dispatch({ type: GET_TURNOS, payload: res.data });
     } catch (error) {
@@ -160,7 +160,7 @@ export function horariosTurnosCreados(payload) {
     //LOGIN
     export async function loginAction(loginData) {
       try {
-        let respuestaLogin = await axios.post(`${BASE_URL}/login`, loginData);
+        var respuestaLogin = await axios.post(`${BASE_URL}/login`, loginData);
         return respuestaLogin.data;
       } catch (e) {
         return e.response.data.message;
