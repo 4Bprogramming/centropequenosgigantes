@@ -76,12 +76,12 @@ const ModalFormEdit = ({editFormInput, optionsDefault,  handleOnChange, handleIm
              defaultValue={optionsDefault}
             />
             <br/>
-            <Form.Label>Imagen de Perfil: </Form.Label>
+            <Form.Label style={{"marginRight":10}}>Imagen de Perfil:  </Form.Label>
             <a
             href={`${editFormInput.imageId}`}
             target="_blank"
           >
-            Haga Click para conocer la imagen actual
+             Ver imagen actual
           </a>
             <Form.Control
               type="file"
@@ -90,12 +90,14 @@ const ModalFormEdit = ({editFormInput, optionsDefault,  handleOnChange, handleIm
             />
              <Button
               variant="secondary"
-              className="closeBtn mt-2" 
+              className="closeBtn" 
               onClick={onClick}
+              style = {{"marginTop":10}}
+
             >
               Cerrar
             </Button>
-            <Button variant="success" className="submitBtn mt-2" type="submit">
+            <Button variant="success" style = {{"marginLeft":3,"marginTop":10}}  className="submitBtn" type="submit">
               Guardar
             </Button>
           </Form>

@@ -9,14 +9,16 @@ import EditModalProfesional from "../Admin/AdminComponents/Modals/EditProfesiona
 import DeleteProfesional from "../Admin/AdminComponents/Modals/EditProfesional/DeleteProfesional";
 import { getProfesionales } from "../../../Redux/Action/Actions";
 
+
 function ProfesionalesTableResponsive({ data, columns, detail, title,token }) {
 
 
   let dispatch= useDispatch()
   useEffect(()=>{ 
     dispatch(getProfesionales(token))
+
     // dispatch(getTurnos())
-  },[dispatch])
+  }, [dispatch]);
 
   //filter
   const [filter, setFilter] = React.useState("");
@@ -29,8 +31,6 @@ function ProfesionalesTableResponsive({ data, columns, detail, title,token }) {
   const columns2 = columns.map((el) => {
     return el.dataField;
   });
-  // console.log("columns1", columns1);
-  // console.log("columns2", columns2);
 
   //Modal Form data
   const [profesionalData, setProfesionalData] = React.useState([]);
@@ -40,12 +40,16 @@ function ProfesionalesTableResponsive({ data, columns, detail, title,token }) {
   const [showModalD, setShowModalD] = React.useState(false);
   //when Edit button is clicked
   function showModalEdit(id) {
-    setProfesionalData(data.length > 0 && data.filter((el) => el.idProfesional === id));//son los peritos
+    setProfesionalData(
+      data.length > 0 && data.filter((el) => el.idProfesional === id)
+    ); //son los peritos
     setShowModal(true);
   }
   function showModalDelete(id) {
-    console.log('id==>', id);
-    setProfesionalData(data.length > 0 && data.filter((el) => el.idProfesional === id));//son los peritos
+    console.log("id==>", id);
+    setProfesionalData(
+      data.length > 0 && data.filter((el) => el.idProfesional === id)
+    ); //son los peritos
     setShowModalD(true);
   }
 
@@ -59,10 +63,10 @@ function ProfesionalesTableResponsive({ data, columns, detail, title,token }) {
         dato.fullName.toLowerCase().includes(filter.toLocaleLowerCase()) ||
         dato.email.toLowerCase().includes(filter.toLocaleLowerCase()) ||
         dato.celular.toLowerCase().includes(filter.toLocaleLowerCase()) ||
-        dato.especialidad.toLowerCase().includes(filter.toLocaleLowerCase())         
+        dato.especialidad.toLowerCase().includes(filter.toLocaleLowerCase())
     );
   }
-  // console.log('casesFiltered', casesFiltered)
+
   return (
     <>
       <input
@@ -79,7 +83,7 @@ function ProfesionalesTableResponsive({ data, columns, detail, title,token }) {
         <div className="noRegistersFound">No se encontraron registros...</div>
       ) : (
         <>
-        {/* Tabler Title */}
+          {/* Tabler Title */}
           <h3 className="tableTitle">{title}</h3>
 
           {/* Table */}
@@ -88,7 +92,7 @@ function ProfesionalesTableResponsive({ data, columns, detail, title,token }) {
               <Tr>
                 {columns1.map((e) => {
                   return <Th className="thEdit">{e}</Th>;
-                })} 
+                })}
 
                 <Th className="thEdit">Editar</Th>
                 <Th className="thEdit">Eliminar</Th>
@@ -98,9 +102,7 @@ function ProfesionalesTableResponsive({ data, columns, detail, title,token }) {
             <Tbody>
               {dataFiltered.map(
                 (el) =>
-                  // Patente is a notnull field meaning that an empty register won't be allowed.
-
-                  el.nombre&& (
+                  el.nombre && (
                     <Tr>
                       {columns2.map((c) => {
                         let y = el[c];
@@ -135,25 +137,22 @@ function ProfesionalesTableResponsive({ data, columns, detail, title,token }) {
         </>
       )}
       {/* Modal rendering */}
-      <EditModalProfesional 
-      show={showModal}
-      close={() => setShowModal(false)}
-      profesionalData={profesionalData}
-      token={token}
-      detail={detail}/>
-      
-      
-      <DeleteProfesional 
-      show={showModalD}
-      close={() => setShowModalD(false)}
-      profesionalData={profesionalData}
-      token={token}
-      detail={detail}
-    
+      <EditModalProfesional
+        show={showModal}
+        close={() => setShowModal(false)}
+        profesionalData={profesionalData}
+        token={token}
+        detail={detail}
+      />
+
+      <DeleteProfesional
+        show={showModalD}
+        close={() => setShowModalD(false)}
+        profesionalData={profesionalData}
+        token={token}
+        detail={detail}
       />
     </>
   );
 }
 export default ProfesionalesTableResponsive;
-
-
