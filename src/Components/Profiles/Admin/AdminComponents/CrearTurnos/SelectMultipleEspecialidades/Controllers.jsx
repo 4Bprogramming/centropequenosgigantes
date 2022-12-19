@@ -3,5 +3,5 @@ import React from 'react';
 export function seleccionProfesional(lista){
     const seleccion =lista.map(e=>{return{value: e.idProfesional, label:e.fullName}})
         return seleccion
-}
+} 
   

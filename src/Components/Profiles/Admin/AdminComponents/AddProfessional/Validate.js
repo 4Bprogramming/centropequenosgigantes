@@ -7,7 +7,7 @@ export function validate(input) {
     email: /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
   }; 
   if (input.idProfesional?.length < 3) {
-    errors.nombre = "Debe agregar D.N.I"; 
+    errors.nombre = "Debe agregar D.N.I";  
   }
   if (input.nombre?.length < 3) {
     errors.nombre = "Debe agregar Nombre";

@@ -2,7 +2,7 @@ import React from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import AddModals from "../Modals/AddModals";
-
+import styles from './AddProfesional.module.css';
 import SelectEspecialidades from "../SelectMultipleEspecialidades/SelectEspecialidades";
 import { especialidades } from "../SelectMultipleEspecialidades/Controllers";
 
@@ -20,7 +20,7 @@ function FormAddProfessional({
   return (
     <>
       <div>
-        <h2>AÑADIR PROFESIONAL</h2>
+        <h2 className={styles.addProfesionalH2}>Añadir Profesionales</h2>
       </div>
 
       <Form>
@@ -60,13 +60,13 @@ function FormAddProfessional({
             onChange={handleChange}
             type="text"
             value={post.apellido}
-            name={"apellido"}
+            name="apellido"
           />
         </FloatingLabel>
 
         <FloatingLabel
           controlId="floatingInput"
-          label="celular"
+          label="Celular"
           className="mb-3"
           required
         >
@@ -74,7 +74,6 @@ function FormAddProfessional({
             type="text"
             value={post.celular}
             onChange={handleChange}
-            placeholder="name@example.com"
             name="celular"
           />
         </FloatingLabel>
@@ -88,13 +87,12 @@ function FormAddProfessional({
             type="text"
             value={post.email}
             onChange={handleChange}
-            placeholder="name@example.com"
             name="email"
           />
         </FloatingLabel>
         <FloatingLabel
           controlId="floatingInput"
-          label="password"
+          label="Password"
           className="mb-3"
           required
         >
@@ -105,15 +103,18 @@ function FormAddProfessional({
             name="password"
           />
         </FloatingLabel>
-        <Form.Label>Imagen de Perfil: </Form.Label>
-        <Form.Control
+
+        <Form.Control      
           type="file"
           name="idImage"
           onChange={(e) => handleImageId(e.target.files[0])}
+          className="mb-3"
+          
         />
+
         <FloatingLabel
           controlId="floatingInput"
-          label="matricula"
+          label="Matricula"
           className="mb-3"
           required
         >
@@ -126,7 +127,7 @@ function FormAddProfessional({
         </FloatingLabel>
 
         <Form.Group>
-          <Form.Label>Especialidad: </Form.Label>
+          
           <SelectEspecialidades
             handleSelelect={handleSelelect}
             options={especialidades}

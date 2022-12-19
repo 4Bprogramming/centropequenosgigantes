@@ -8,7 +8,7 @@ function TurnosDelProfesional({ selectTurnos }) {
   const mensajeError = useSelector((state) => state.message);
   
 
-  let arrayDeTurnos = null; 
+  let arrayDeTurnos = null;  
 
   if (selectTurnos === "todosTurnos") {
     //todos los turnos

@@ -8,7 +8,7 @@ import SelectEspecialidades from "../../SelectMultipleEspecialidades/SelectEspec
 const ModalFormEdit = ({editFormInput, optionsDefault,  handleOnChange, handleImageId,handleSelect, handleSubmit, show, onHide, TurnoData, onClick, title}) => {
 
   return (
-    <> 
+    <>  
       
       <Modal show={show} onHide={onHide}>
         <Modal.Header closeButton>

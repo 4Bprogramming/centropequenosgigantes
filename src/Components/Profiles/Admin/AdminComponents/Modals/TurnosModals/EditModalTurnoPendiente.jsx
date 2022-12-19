@@ -101,7 +101,7 @@ const EditModalTurnoPendiente = (props) => {
         NotificationManager.success('Profesional actualizado!','Bien Hecho!',3000);  
         props.close()
               
-        
+         
     } catch (error) {console.log('error de catch',e)}
   }
 

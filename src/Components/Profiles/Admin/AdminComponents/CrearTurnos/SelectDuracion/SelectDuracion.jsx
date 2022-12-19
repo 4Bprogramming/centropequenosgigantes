@@ -1,7 +1,8 @@
-import React from 'react'
+import React from "react";
 
-function SelectDuracion({onChange, duracion}) {
+function SelectDuracion({ onChange, duracion }) {
   return (
+
     <div><p>¿Cuánto dura cada turno?</p>
     <select value={duracion} onChange={onChange} name={'duracion'}>
       <option value='selected' hidden >Duracion del turno</option>
@@ -15,4 +16,4 @@ function SelectDuracion({onChange, duracion}) {
   )
 }
 
-export default SelectDuracion
+export default SelectDuracion;

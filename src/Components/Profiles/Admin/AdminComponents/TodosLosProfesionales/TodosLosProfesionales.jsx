@@ -6,7 +6,7 @@ import { columns } from '../../columsProfesional'
 
 function TodosProfesionales({token}) {
   const dispatch=useDispatch()
- 
+  
   
   let profesionales1=useSelector((state)=>state.allProfessional)
   let profesionales=profesionales1.filter(e=>e.active===true)

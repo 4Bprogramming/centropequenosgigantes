@@ -8,7 +8,7 @@ import { getProfesionaPorId } from "../../../Redux/Action/Actions";
 
 function Profesional() {
   const dispatch = useDispatch()
- 
+  
   //traigo data del Local Storage para usarlos en las actions
   //--> por ejemplo el ID del profesional. 
   const data = localStorage.getItem("usuarioDB");

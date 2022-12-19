@@ -130,7 +130,7 @@ export function horariosTurnosCreados(payload) {
           payload: json.data,
         });
       }
-    }; 
+    };  
   }
 
   //Guardar turnos en base de Datos

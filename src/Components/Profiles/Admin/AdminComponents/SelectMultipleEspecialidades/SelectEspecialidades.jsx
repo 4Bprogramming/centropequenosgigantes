@@ -1,7 +1,10 @@
+// import { style } from '@mui/system';
 import React from 'react';
 import Select from 'react-select';
 import makeAnimates from 'react-select/animated'
 const animatedComponents= makeAnimates()
+
+
 
 
 function SelectEspecialidades({handleSelelect, options, defaultValue}) {
@@ -16,6 +19,8 @@ function SelectEspecialidades({handleSelelect, options, defaultValue}) {
       options={options}
       onChange={handleSelelect}
       name={'especialidades'}
+      placeholder="Selecciona tu especialidad"
+      
     />
       </>
     )

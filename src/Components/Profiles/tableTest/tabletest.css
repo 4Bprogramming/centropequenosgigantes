@@ -1,9 +1,9 @@
 .thEdit {
-  background-color: rgb(62, 117, 219);
+  background-color: rgb(93, 230, 178);
   border: 1px rgb(0, 0, 0) solid;
   padding-left: 2px;
   padding-right: 2px;
-  color: whitesmoke;
+  color: rgb(0, 54, 116);
   text-align: center;
 }
 
@@ -54,8 +54,8 @@ tr:nth-child(odd) {
 }
 
 .tableTitle {
-  color: #4e5856;
-  font-family: revert;
+  font-family: monospace;
+  text-shadow: 3px 2px 5px grey;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }

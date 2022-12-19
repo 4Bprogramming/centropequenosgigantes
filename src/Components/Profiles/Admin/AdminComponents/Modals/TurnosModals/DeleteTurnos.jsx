@@ -12,7 +12,7 @@ import 'react-notifications/lib/notifications.css';
 import { deleteProfesional, getProfesionales } from "../../../../../../Redux/Action/Actions";
 
 
-
+ 
 function DeleteTurnos(props) { 
   let profesionales = useSelector((state) => state.allProfesionales);
   // console.log('props==>', props);

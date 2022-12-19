@@ -9,7 +9,7 @@ function TodosTurnos({token}) {
   return (
     <>
     <h1></h1>
-    <TableTurnos token={token} data={turnos}columns={columns} title={'TodosTurnos'}/>
+    <TableTurnos token={token} data={turnos}columns={columns} title={'Lista completa de turnos'}/>
     </>
   ) 
 }
