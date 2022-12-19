@@ -18,8 +18,14 @@ import {
   NotificationManager,
 } from "react-notifications";
 import "react-notifications/lib/notifications.css";
+import styles from './CrearTurnos.module.css';
+  
 
-function CrearTurnos({token}) {
+
+
+
+//comienza componente
+function CrearTurnos({ token }) {
   const dispatch = useDispatch();
   const profesionales = useSelector((state) => state.allProfessional);
   const horasCreadas = useSelector((state) => state.horasCreadas);
@@ -119,17 +125,16 @@ function CrearTurnos({token}) {
     let dayNext = new moment(
       `${date2[i].year}-${date2[i].month}-${date2[i].day}`
     );
-      console.log('dayNext');
+    console.log("dayNext");
     if (dayNext > dayCurrent) {
       dateArray.push(date2[i]);
     } else {
       noDay.push(post.date[i]);
     }
   }
-// console.log('Horas que envío al back==>', dateArray);
- async function submitAll(e) {
+  // console.log('Horas que envío al back==>', dateArray);
+  async function submitAll(e) {
     try {
-
       if (
         horasCreadas &&
         post.date.length > 0 &&
@@ -143,8 +148,8 @@ function CrearTurnos({token}) {
           profesionalIdProfesional: post.profesionalIdProfesional,
         };
         // console.log('TURNOS', turnosACrear);
-       await dispatch(subirTurnos(turnosACrear, token));
-        dispatch(getTurnos(token))
+        await dispatch(subirTurnos(turnosACrear, token));
+        dispatch(getTurnos(token));
         NotificationManager.success("Turnos Creados", "Excelente!", 3000);
         setPost({
           date: [],
@@ -172,27 +177,26 @@ function CrearTurnos({token}) {
       // <ModalErrors error={'no se pudieron crear los turnos'}/>
     }
   }
- 
 
   return (
     <>
-      <h4>PRUEBA 2 CREAR TURNO</h4>
       <SelectProfesionales
         onChange={handleSelect}
         options={seleccionSelect}
         idProfesional={post.profesionalIdProfesional}
       />
-      <br></br>
+
       <SelectFecha multi={true} date={post.date} onChange={handleChangeDate} />
-      <br></br>
+
       <SelectDuracion onChange={handleChange} duracion={post.duracion} />
-      <br></br>
+
       <SelectHora
         onChange={handleChange}
         inicio={post.tiempoInicio}
         final={post.tiempoFinal}
       />
-      <button onClick={submitTime}>Confirme rango horario</button>
+
+      <button className={styles.botonRangoHorario} onClick={submitTime}>Confirme rango horario</button>
       {post.horariosCreados &&
         horasParaMostrar.map((h, i) => (
           <div>

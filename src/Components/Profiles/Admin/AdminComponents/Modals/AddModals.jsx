@@ -12,7 +12,7 @@ function AddModals({
   titleBotton,
   nameBottom,
   type,
-  style,
+  
 }) {
   const [show, setShow] = useState(false);
   
