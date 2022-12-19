@@ -70,7 +70,7 @@ function ReservaTurnos() {
       // console.log('idProfesional', post.profesionalIdProfesional);
       // console.log('TURNOS DISPONIBLES', turnosDisponibles);
       console.log('TurnosDiaElegido===>', TurnosDiaElegido);
-    }
+    } 
     console.log('turnos mostrar===>', post.turnosMostrar);
   return (
     <>

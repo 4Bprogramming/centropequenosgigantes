@@ -19,6 +19,6 @@ function SelectProfesionales({onChange, options, idProfesional}) {
     />
       </>
     )
-}
+} 
 
 export default SelectProfesionales

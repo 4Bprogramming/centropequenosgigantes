@@ -14,7 +14,7 @@ function AñadirHistoria({info}) {
        <div>AñadirHistoria</div>
        <div>
         <h2>Paciente:</h2>
-        <h2>Edad</h2>
+        <h2>Edad</h2> 
         <h2>Día Consulta:</h2>
        </div>
     <CKEditor

@@ -11,7 +11,7 @@ function SelectDuracion({onChange, duracion}) {
       <option value ={40}>40 mins</option>
       <option value ={50}>50 mins</option>
       <option value ={60}>60 mins</option>
-    </select></div>
+    </select></div> 
   )
 }
 

@@ -6,4 +6,4 @@ function TurnosDisponibles() {
   )
 }
 
-export default TurnosDisponibles
+export default TurnosDisponibles;

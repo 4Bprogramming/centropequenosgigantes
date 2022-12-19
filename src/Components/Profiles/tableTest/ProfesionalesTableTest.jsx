@@ -13,7 +13,7 @@ function ProfesionalesTableResponsive({ data, columns, detail, title,token }) {
 
 
   let dispatch= useDispatch()
-  useEffect(()=>{
+  useEffect(()=>{ 
     dispatch(getProfesionales(token))
     // dispatch(getTurnos())
   },[dispatch])

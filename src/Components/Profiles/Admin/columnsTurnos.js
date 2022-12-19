@@ -32,7 +32,7 @@ export const columns=[
         text:'Estado',
         sort:true,
        
-    },
+    }, 
     {
         dataField:'profesional.fullName',
         text:'Profesional',

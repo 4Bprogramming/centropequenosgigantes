@@ -7,12 +7,12 @@ function SelectFecha({date, setDate, onChange}) {
   console.log('selectFecha');
   return (
     <div>
-      <p>Elegí sus días de trabajo</p>
+      <p>Elegí sus días de trabajo</p> 
                   <DatePicker
                     placeholder="elige las fechas"
                     name='date'
                     value={date}
-                    onChange={onChange}
+                    onChange={onChange} 
                     multiple
                     sort
                     format={format}

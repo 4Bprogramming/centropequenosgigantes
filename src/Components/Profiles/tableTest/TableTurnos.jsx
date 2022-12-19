@@ -119,7 +119,7 @@ function TableTurnos({ data, columns, detail, title,token, estado }) {
                        Array.isArray(c)?
                           y = el[c[0]][c[1]]:
                           y = el[c]
-
+ 
                         return (
                           <Td className="tdEdit" key={el.id}>
                             {y ? y : "Sin Completar"}

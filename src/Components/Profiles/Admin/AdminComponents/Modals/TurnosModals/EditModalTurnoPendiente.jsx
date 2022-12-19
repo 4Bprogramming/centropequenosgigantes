@@ -117,4 +117,4 @@ const EditModalTurnoPendiente = (props) => {
     </>
   );
 };
-export default EditModalTurnoPendiente;
+export default EditModalTurnoPendiente; 

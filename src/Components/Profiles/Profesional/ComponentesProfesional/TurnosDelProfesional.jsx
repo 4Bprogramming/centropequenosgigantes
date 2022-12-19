@@ -14,7 +14,7 @@ function TurnosDelProfesional({ selectTurnos }) {
     //todos los turnos
     arrayDeTurnos = profesionalPorId.turnos;
   } else if (selectTurnos === "disponible") {
-    //solo los disponibles
+    //solo los disponibles 
     arrayDeTurnos = profesionalPorId?.turnos?.filter(
       (element) => element.estado === selectTurnos
     );

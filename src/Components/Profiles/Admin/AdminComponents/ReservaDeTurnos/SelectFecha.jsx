@@ -19,7 +19,7 @@ function SelectFecha({date, setDate, onChange}) {
                     // format={format}
                     // calendarPosition="bottom-center"
                     // otherDays=
-                    // plugins={[<DatePanel />]}
+                    // plugins={[<DatePanel />]} 
                   />
       {/* <ul>
                 {date.map((date, index) => (

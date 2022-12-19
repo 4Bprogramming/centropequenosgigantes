@@ -27,7 +27,7 @@ function ReservaForm(props) {
     }
     {
       props.habilitarCalendario &&
-      <div>
+      <div> 
         <p>Elegir Fecha</p>
 
         <SelectFecha date={props.date} onChange={props.onChangeDate} />

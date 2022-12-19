@@ -10,7 +10,7 @@ const ModalFormEdit = ({editFormInput, optionsDefault,  handleOnChange, handleIm
   return (
     <>
       
-      <Modal show={show} onHide={onHide}>
+      <Modal show={show} onHide={onHide}> 
         <Modal.Header closeButton>
           <Modal.Title>Edite la informacion del Profesional </Modal.Title>
         </Modal.Header>
