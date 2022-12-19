@@ -21,7 +21,7 @@ export const columns=[
         sortable:'false',
         // grow:1.5
     },
-    {
+    { 
         dataField:'endTime',
         text:'Hora Finalización',
         sortable:'false',

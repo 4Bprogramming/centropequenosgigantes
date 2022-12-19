@@ -6,7 +6,7 @@ import { especialidades } from "../../SelectMultipleEspecialidades/Controllers";
 import SelectEspecialidades from "../../SelectMultipleEspecialidades/SelectEspecialidades";
 
 const ModalFormEdit = ({editFormInput, optionsDefault,  handleOnChange, handleImageId,handleSelect, handleSubmit, show, onHide, profesionalData, onClick}) => {
-
+ 
   return (
     <>
       

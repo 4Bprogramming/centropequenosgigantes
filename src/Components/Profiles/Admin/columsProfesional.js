@@ -5,7 +5,7 @@ export const defaultSorted = [{
     dataField: 'fullName',
     order: 'desc',
    
-  }];
+  }]; 
 export const columns=[
     {
         dataField: 'fullName',// es el identificador de la columna, asi que cada atributo debe coincidir con el dataField

@@ -7,7 +7,7 @@ function AñadirHistoria({info}) {
 
     
   return (
-    <>
+    <> 
     <div className="App">
        
        <div className='editor'>

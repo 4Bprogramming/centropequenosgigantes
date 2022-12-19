@@ -13,4 +13,4 @@ function TurnosCancelados({token}) {
 
 }
 
-export default TurnosCancelados 
+export default TurnosCancelados  

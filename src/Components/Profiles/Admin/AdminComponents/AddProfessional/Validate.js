@@ -12,7 +12,7 @@ export function validate(input) {
   if (input.nombre?.length < 3) {
     errors.nombre = "Debe agregar Nombre";
   }
-
+ 
   if (input.apellido?.length < 3) {
     errors.apellido = "Debe agregar Apellido";
   }

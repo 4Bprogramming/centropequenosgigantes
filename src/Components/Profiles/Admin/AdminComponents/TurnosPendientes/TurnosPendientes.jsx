@@ -10,7 +10,7 @@ function TurnosPendientes({token}) {
     <>
     <TableTurnos token={token} data={turnos}columns={columns} title={'Todos Pendientes'} estado={'pendiente'}/>
     </>
-  )
+  ) 
 }
 
 export default TurnosPendientes;

@@ -7,7 +7,7 @@ const animatedComponents= makeAnimates()
 function SelectEspecialidades({handleSelelect, options, defaultValue}) {
 
     return (
-      <>
+      <> 
     <Select 
       closeMenuOnSelect={false}
       components={animatedComponents}

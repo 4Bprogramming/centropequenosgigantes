@@ -5,7 +5,7 @@ import DatePanel from "react-multi-date-picker/plugins/date_panel";
 const format = "DD/MM/YYYY";
 function SelectFecha({date, setDate, onChange}) {
   console.log('selectFecha');
-  return (
+  return ( 
     <div>
       <p>Elegí sus días de trabajo</p>
                   <Calendar

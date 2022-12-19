@@ -10,7 +10,7 @@ function ModalReserva({editFormInput, optionsDefault,  handleOnChange, handleIma
     </Modal.Header>
     <Modal.Body>
     <div>ModalReserva</div>
-    </Modal.Body>
+    </Modal.Body> 
     </Modal>
     </>
   )

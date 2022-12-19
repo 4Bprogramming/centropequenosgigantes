@@ -13,7 +13,7 @@ import { deleteProfesional, getProfesionales } from "../../../../../../Redux/Act
 
 
 
-function DeleteTurnos(props) {
+function DeleteTurnos(props) { 
   let profesionales = useSelector((state) => state.allProfesionales);
   // console.log('props==>', props);
   // const profData = props?.profesionalData[0]

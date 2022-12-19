@@ -22,7 +22,7 @@ function ReservaForm(props) {
       <p>Profesional: {props.nombreProfesional}</p>
       <button onClick={props.handleClickChange}>
         Cambiar Profesional
-      </button>
+      </button> 
       </>
     }
     {

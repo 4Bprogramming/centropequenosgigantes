@@ -105,7 +105,7 @@ const EditModalTurnoPendiente = (props) => {
     } catch (error) {console.log('error de catch',e)}
   }
 
-  return (
+  return ( 
     <>
       <ModalFormEdit editFormInput={editFormInput} handleOnChange={handleOnChange}
        handleSubmit={handleSubmit} show={props.show} onHide={props.close} TurnoData={props.TurnoData} onClick={props.close}/>

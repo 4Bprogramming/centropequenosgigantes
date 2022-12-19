@@ -16,7 +16,7 @@ function SelectProfesionales({onChange, options, idProfesional}) {
       options={options}
       onChange={onChange}
       // value={idProfesional}
-    />
+    /> 
       </>
     )
 } 

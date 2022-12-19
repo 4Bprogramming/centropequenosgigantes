@@ -44,7 +44,7 @@ const EditModalProfesional = (props) => {
       setEditFormInput({...editFormInput,[e.target.name]:profesionalData[e.target.name]})
     }
   }
-
+ 
   const handleImageId = async (e) => {
   
     try {

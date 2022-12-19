@@ -11,7 +11,7 @@ function TodosTurnos({token}) {
     <h1></h1>
     <TableTurnos token={token} data={turnos}columns={columns} title={'TodosTurnos'}/>
     </>
-  )
+  ) 
 }
 
 export default TodosTurnos 

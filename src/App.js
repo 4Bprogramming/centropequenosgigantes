@@ -66,7 +66,7 @@ function App() {
         <Route exact path="/detalleProfesional/:idProfesional" element={<DetalleDeProfesional />} />
         <Route exact path="/historia" element={<AñadirHistoria/>} />
         {/* <Route exact path="/turnos" element={<TodosTurnos/>} /> */}
-           
+            
         <Route exact path="/psicologia" element={<Psicologia />} />
         <Route exact path="/lenguaje" element={<TerapiaLenguaje />} />
         <Route exact path="/aprendizaje" element={<TerapiAprendizaje />} />

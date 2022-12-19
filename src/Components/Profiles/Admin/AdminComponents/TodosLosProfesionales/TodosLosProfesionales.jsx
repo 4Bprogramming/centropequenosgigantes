@@ -12,7 +12,7 @@ function TodosProfesionales({token}) {
   let profesionales=profesionales1.filter(e=>e.active===true)
   // console.log('profesionales=>', profesionales1)
 
-  return (
+  return ( 
     <ProfesionalesTableResponsive columns={columns} data={profesionales} title={'Lista de Profesionales'} token={token}/>
   )
 } 

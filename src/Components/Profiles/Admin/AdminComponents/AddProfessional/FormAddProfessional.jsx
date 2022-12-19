@@ -13,7 +13,7 @@ function FormAddProfessional({
   handleImageId,
   post,
   profesional,
-  errors,
+  errors, 
 }) {
 
   

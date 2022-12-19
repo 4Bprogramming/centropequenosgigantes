@@ -37,7 +37,7 @@ useEffect(()=>{
   async function handleClick() {
     // e.preventDefault();
     
-    try {
+    try { 
       let body={select:'profesional'}
       // console.log('idProfesional',profData.email )
       // console.log('body',body )

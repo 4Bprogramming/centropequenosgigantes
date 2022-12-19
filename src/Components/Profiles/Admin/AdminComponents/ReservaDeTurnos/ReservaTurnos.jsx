@@ -60,7 +60,7 @@ function ReservaTurnos() {
         setPost({
           ...post,
           date: eleccion,
-        });
+        }); 
        let TurnosDiaElegido=turnosDisponibles.filter(turnos=> turnos.profesionalIdProfesional=== post.profesionalIdProfesional && turnos.date===eleccion)
         setPost({
           ...post,
