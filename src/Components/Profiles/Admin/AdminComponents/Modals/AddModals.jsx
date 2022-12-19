@@ -78,6 +78,6 @@ AddModals.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-AddModals.defaultProps = {
+AddModals.defaultProps = { 
   details: null,
 };

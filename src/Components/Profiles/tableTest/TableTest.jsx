@@ -16,7 +16,7 @@ function TableResponsive({ data, columns, detail, title, rol }) {
   let dispatch = useDispatch()
 
   //this function dispatches getPeritos(), getCases and PeritosByname
-  function Actualizacion() {
+  function Actualizacion() { 
     // console.log('entré en Actualizacion');
     dispatch(getPeritos())
     dispatch(getCasesAction())

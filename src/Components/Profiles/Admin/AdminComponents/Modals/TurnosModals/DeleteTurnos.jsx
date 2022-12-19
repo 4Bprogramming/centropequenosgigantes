@@ -22,7 +22,7 @@ function DeleteTurnos(props) {
   const  [editFormInput, setEditFormInput] = useState({});
   const dispatch = useDispatch();
 useEffect(()=>{
-      setEditFormInput({
+      setEditFormInput({ 
           // nombre:profData[]?.nombre,
           // email:profData?.email,
           // celular:profData?.celular,

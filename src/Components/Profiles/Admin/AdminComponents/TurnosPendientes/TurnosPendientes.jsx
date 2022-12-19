@@ -13,4 +13,4 @@ function TurnosPendientes({token}) {
   )
 }
 
-export default TurnosPendientes
+export default TurnosPendientes;

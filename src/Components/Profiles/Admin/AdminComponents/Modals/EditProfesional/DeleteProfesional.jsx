@@ -46,7 +46,7 @@ useEffect(()=>{
      await dispatch(getProfesionales(token)   ) 
       await dispatch(getTurnos(token))
       //it closes the Modal after submit
-      props.close()
+      props.close() 
       
       //this commando triggers the alert! 
     NotificationManager.success('Bien Hecho!', 'Profesional eliminado!',3000);  

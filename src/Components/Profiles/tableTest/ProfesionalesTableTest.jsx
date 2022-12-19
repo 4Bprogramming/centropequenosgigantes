@@ -9,10 +9,14 @@ import EditModalProfesional from "../Admin/AdminComponents/Modals/EditProfesiona
 import DeleteProfesional from "../Admin/AdminComponents/Modals/EditProfesional/DeleteProfesional";
 import { getProfesionales } from "../../../Redux/Action/Actions";
 
-function ProfesionalesTableResponsive({ data, columns, detail, title, token }) {
-  let dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProfesionales(token));
+
+function ProfesionalesTableResponsive({ data, columns, detail, title,token }) {
+
+
+  let dispatch= useDispatch()
+  useEffect(()=>{ 
+    dispatch(getProfesionales(token))
+
     // dispatch(getTurnos())
   }, [dispatch]);
 

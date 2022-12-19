@@ -136,7 +136,7 @@ export function horariosTurnosCreados(payload) {
   //Guardar turnos en base de Datos
   export function subirTurnos(payload,token){
     axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
-    console.log('payload====>', payload);
+    console.log('payload====>', payload); 
     return async function (dispatch) {
         try {
           var json = await axios.post(`${BASE_URL}/turnos`, payload);

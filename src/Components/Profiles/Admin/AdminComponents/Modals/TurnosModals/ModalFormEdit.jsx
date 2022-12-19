@@ -21,7 +21,7 @@ const ModalFormEdit = ({editFormInput, optionsDefault,  handleOnChange, handleIm
             onChange={handleOnChange}
             type="text"
             value={editFormInput.idProfesional}
-            name={"idProfesional"}
+            name={"idProfesional"} 
           />
         <br />
         <Form.Label>Nombre: </Form.Label>

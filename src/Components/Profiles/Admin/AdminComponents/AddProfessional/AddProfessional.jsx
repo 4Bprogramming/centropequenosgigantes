@@ -4,7 +4,7 @@ import FormAddProfessional from "./FormAddProfessional";
 import { validate } from "./Validate";
 //Alert notifications
 import {
-  NotificationContainer,
+  NotificationContainer, 
   NotificationManager,
 } from "react-notifications";
 import "react-notifications/lib/notifications.css";

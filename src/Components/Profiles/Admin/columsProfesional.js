@@ -18,7 +18,7 @@ export const columns=[
     {
         dataField:'idProfesional',
         text:'D.N.I',
-        sortable:'false',
+        sortable:'false', 
         // grow:1.5
     },
     {

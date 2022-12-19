@@ -19,7 +19,7 @@ function Admin() {
   useEffect(()=>{
     dispatch(getProfesionales(token))
     dispatch(getTurnos(token))
-  },[])
+  },[]) 
     const [select, setSelect]=useState("");
 
     const handleClick=(value)=>{

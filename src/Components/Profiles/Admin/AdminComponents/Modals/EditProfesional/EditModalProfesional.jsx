@@ -51,7 +51,7 @@ const EditModalProfesional = (props) => {
       let url = await uploadFile(e);
       setEditFormInput({ ...editFormInput,imageId:url});
     } catch (err) {
-      console.log(err);
+      console.log(err); 
     }
   };
   //========== HANDLE SELECT =======

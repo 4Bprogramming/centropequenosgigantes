@@ -18,7 +18,7 @@ const initialState = {
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     //todos los profesionales
-    case GET_PROFESIONALES:
+    case GET_PROFESIONALES: 
       if (action.payload.message) {
         return {
           ...state,

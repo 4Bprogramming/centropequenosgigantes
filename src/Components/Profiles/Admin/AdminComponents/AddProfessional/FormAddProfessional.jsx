@@ -7,7 +7,7 @@ import SelectEspecialidades from "../SelectMultipleEspecialidades/SelectEspecial
 import { especialidades } from "../SelectMultipleEspecialidades/Controllers";
 
 function FormAddProfessional({
-  handleChange,
+  handleChange, 
   handleSubmit,
   handleSelelect,
   handleImageId,

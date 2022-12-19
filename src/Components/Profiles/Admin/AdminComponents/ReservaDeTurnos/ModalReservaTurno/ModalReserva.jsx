@@ -16,4 +16,4 @@ function ModalReserva({editFormInput, optionsDefault,  handleOnChange, handleIma
   )
 }
 
-export default ModalReserva
+export default ModalReserva;

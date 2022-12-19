@@ -17,9 +17,8 @@ import {
   NotificationContainer,
   NotificationManager,
 } from "react-notifications";
-import "react-notifications/lib/notifications.css";
-import styles from './CrearTurnos.module.css';
-  
+import "react-notifications/lib/notifications.css"; 
+
 
 
 

@@ -14,7 +14,7 @@ function Profesional() {
   const data = localStorage.getItem("usuarioDB");
   const token = localStorage.getItem("token");
   const {
-    celular,
+    celular, 
     email,
     fullName,
     idProfesional,

@@ -15,7 +15,7 @@ function SelectEspecialidades({handleSelelect, options, defaultValue}) {
       closeMenuOnSelect={false}
       components={animatedComponents}
       defaultValue={defaultValue}
-      isMulti
+      isMulti 
       options={options}
       onChange={handleSelelect}
       name={'especialidades'}

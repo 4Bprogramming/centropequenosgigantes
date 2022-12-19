@@ -15,6 +15,6 @@ function TodosProfesionales({token}) {
   return (
     <ProfesionalesTableResponsive columns={columns} data={profesionales} title={'Lista de Profesionales'} token={token}/>
   )
-}
+} 
 
 export default TodosProfesionales;

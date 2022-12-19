@@ -20,6 +20,6 @@ function SelectProfesionales({onChange, options, idProfesional}) {
     />
       </div>
     )
-}
+} 
 
 export default SelectProfesionales
