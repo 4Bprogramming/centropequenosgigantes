@@ -13,6 +13,7 @@ const rango={
   borderRadius:"10px",
 }
 
+
 const format = "DD/MM/YYYY";
 function SelectFecha({ date, setDate, onChange }) {
   return (
