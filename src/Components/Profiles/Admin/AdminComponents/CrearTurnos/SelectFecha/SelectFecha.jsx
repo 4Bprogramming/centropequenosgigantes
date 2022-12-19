@@ -10,7 +10,7 @@ const rango={
   fontFamily:"monospace",
   padding:"5px",
   margin:"5px",
-  borderRadius:"10px",
+  "borderRadius":"10px",
 }
 
 
