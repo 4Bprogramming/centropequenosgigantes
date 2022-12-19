@@ -1,6 +1,6 @@
 import React from 'react'
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import { CKEditor } from '@ckeditor/ckeditor5-react';
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useState } from 'react';
 function AñadirHistoria({info}) {
     const [historia, setHistoria]= useState('')
@@ -8,7 +8,7 @@ function AñadirHistoria({info}) {
     
   return (
     <>
-    <div className="App">
+    {/* <div className="App">
        
        <div className='editor'>
        <div>AñadirHistoria</div>
@@ -29,7 +29,7 @@ function AñadirHistoria({info}) {
 
     />
     </div>
-    </div>
+    </div> */}
     </>
   )
 }
