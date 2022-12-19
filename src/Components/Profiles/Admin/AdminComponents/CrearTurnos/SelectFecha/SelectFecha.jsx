@@ -15,7 +15,7 @@ const rango={
 
 
 const format = "DD/MM/YYYY";
-function SelectFecha({ date, setDate, onChange }) {
+function SelectFecha({ date, setDate, onChange, multi }) {
   return (
     <div>
       <div
