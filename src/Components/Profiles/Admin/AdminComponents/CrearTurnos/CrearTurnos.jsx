@@ -18,11 +18,7 @@ import {
   NotificationManager,
 } from "react-notifications";
 import "react-notifications/lib/notifications.css";
-import styles from './CrearTurnos.module.css';
-  
-
-
-
+import styles from "./CrearTurnos.module.css";
 
 //comienza componente
 function CrearTurnos({ token }) {
@@ -196,15 +192,22 @@ function CrearTurnos({ token }) {
         final={post.tiempoFinal}
       />
 
-      <button className={styles.botonRangoHorario} onClick={submitTime}>Confirme rango horario</button>
+      <button className={styles.botonRangoHorario} onClick={submitTime}>
+        Confirme rango horario
+      </button>
+      <div className={styles.horarioTurnoCreado}>
       {post.horariosCreados &&
         horasParaMostrar.map((h, i) => (
-          <div>
-            <p key={i}>{h.start};</p>
-          </div>
-        ))}
+            <div classkey={i}  className={styles.horarioContainer}>{h.start}</div>
+            ))}
+      </div>
       {post.horariosCreados ? (
-        <button onClick={(e) => submitAll(e)}>Confirma tus turnos</button>
+        <button
+          className={styles.confirmaTurnosBtn}
+          onClick={(e) => submitAll(e)}
+        >
+          Confirma tus turnos
+        </button>
       ) : null}
 
       <NotificationContainer />
