@@ -15,7 +15,7 @@ import About from "./Components/About/About";
 import Contact from "./Components/Contact/Contact";
 import Services from "./Components/Services/Services";
 import NavScroll from "./Components/Navbar/NavScroll";
-import Admin from "./Components/Profiles/Admin/Admin";
+// import Admin from "./Components/Profiles/Admin/Admin";
 import Psicologia from "./Components/Psicologia/Psicologia";
 import TerapiaLenguaje from "./Components/TerapiaLenguaje/TerapiaLenguaje";
 import TerapiAprendizaje from "./Components/TerapiAprendizaje/TerapiAprendizaje";
@@ -28,11 +28,11 @@ import TerapiaFamiliar from './Components/TerapiaFamiliar/TerapiaFamiliar'
 import Psicomotricidad from './Components/Psicomotricidad/Psicomotricidad'
 import EstimulacionTemprana from './Components/EstimulacionTemprana/EstimulacionTemprana'
 import Footer2 from "./Components/Footer/Footer2";
-import UsuarioPaciente from "./Components/Profiles/UsuarioPaciente/UsuarioPaciente";
-import Profesional from "./Components/Profiles/Profesional/Profesional";
-import DetalleDeProfesional from "./Components/DetalleDelProfesional/DetalleDeProfesional";
-import AñadirHistoria from "./Components/Profiles/HistoriaClinica/AñadirHistoria/AñadirHistoria";
-import TodosTurnos from "./Components/Profiles/Admin/AdminComponents/TodosLosTurnos/TodosTurnos";
+// import UsuarioPaciente from "./Components/Profiles/UsuarioPaciente/UsuarioPaciente";
+// import Profesional from "./Components/Profiles/Profesional/Profesional";
+// import DetalleDeProfesional from "./Components/DetalleDelProfesional/DetalleDeProfesional";
+// import AñadirHistoria from "./Components/Profiles/HistoriaClinica/AñadirHistoria/AñadirHistoria";
+// import TodosTurnos from "./Components/Profiles/Admin/AdminComponents/TodosLosTurnos/TodosTurnos";
 
 
 function App() {
@@ -60,11 +60,11 @@ function App() {
         <Route exact path="/reserva" element={<Services />} />
         <Route exact path="/contacto" element={<Contact />} />
         
-        <Route exact path="/administrador" element={<Admin />} />
-        <Route exact path="/usuario" element={<UsuarioPaciente />} />
-        <Route exact path="/profesional" element={<Profesional />} />
-        <Route exact path="/detalleProfesional/:idProfesional" element={<DetalleDeProfesional />} />
-        <Route exact path="/historia" element={<AñadirHistoria/>} />
+//         <Route exact path="/administrador" element={<Admin />} />
+//         <Route exact path="/usuario" element={<UsuarioPaciente />} />
+//         <Route exact path="/profesional" element={<Profesional />} />
+//         <Route exact path="/detalleProfesional/:idProfesional" element={<DetalleDeProfesional />} />
+//         <Route exact path="/historia" element={<AñadirHistoria/>} />
         {/* <Route exact path="/turnos" element={<TodosTurnos/>} /> */}
              
         <Route exact path="/psicologia" element={<Psicologia />} />
