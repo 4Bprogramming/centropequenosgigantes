@@ -112,7 +112,7 @@ function TableTurnos({ data, columns, detail, title,token, estado }) {
                 (el) =>
                   // Patente is a notnull field meaning that an empty register won't be allowed.
 
-                  el.id && (
+                  el.id && (  
                     <Tr>
                       {columns2.map((c) => {
                         let y

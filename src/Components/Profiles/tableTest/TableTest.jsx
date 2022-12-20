@@ -13,7 +13,7 @@ import DeleteCase from "../InputsSelects/EditCase/BySuperAdmin/DeleteCase";
 
 function TableResponsive({ data, columns, detail, title, rol }) {
 
-  let dispatch = useDispatch()
+  let dispatch = useDispatch()  
 
   //this function dispatches getPeritos(), getCases and PeritosByname
   function Actualizacion() { 
