@@ -60,11 +60,11 @@ function App() {
         <Route exact path="/reserva" element={<Services />} />
         <Route exact path="/contacto" element={<Contact />} />
         
-//         <Route exact path="/administrador" element={<Admin />} />
+{/* //         <Route exact path="/administrador" element={<Admin />} />
 //         <Route exact path="/usuario" element={<UsuarioPaciente />} />
 //         <Route exact path="/profesional" element={<Profesional />} />
 //         <Route exact path="/detalleProfesional/:idProfesional" element={<DetalleDeProfesional />} />
-//         <Route exact path="/historia" element={<AñadirHistoria/>} />
+//         <Route exact path="/historia" element={<AñadirHistoria/>} /> */}
         {/* <Route exact path="/turnos" element={<TodosTurnos/>} /> */}
              
         <Route exact path="/psicologia" element={<Psicologia />} />
