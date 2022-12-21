@@ -9,7 +9,7 @@ import styles from './Admin.module.css';
 // import TodosProfesionales from './AdminComponents/TodosLosProfesionales/TodosLosProfesionales';
 import { getProfesionales, getTurnos } from '../../../Redux/Action/Actions';
 import { useDispatch } from 'react-redux';
-// import CrearTurnos from './AdminComponents/CrearTurnos/CrearTurnos';
+import CrearTurnos from './AdminComponents/CrearTurnos/CrearTurnos';
  
 function Admin() { 
   const token= JSON.parse(window.localStorage.getItem('token'))
@@ -47,7 +47,9 @@ function Admin() {
     {
       select==="profesional" &&
       <AddProfessional token={token}/> 
-      // ||
+      ||
+      select === "CrearTurnos" &&
+      <CrearTurnos token={token}/>
       // select==="todosProfesionales" &&
       // <TodosProfesionales token={token}/> ||
       // select === "todosTurnos" &&
@@ -60,8 +62,6 @@ function Admin() {
       // <TurnosDisponibles token={token}/> ||
       // select === "TurnosCancelados" &&
       // <TurnosCancelados token={token}/>||
-      // select === "CrearTurnos" &&
-      // <CrearTurnos token={token}/>
       
       
     }
