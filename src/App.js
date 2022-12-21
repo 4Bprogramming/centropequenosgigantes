@@ -28,11 +28,11 @@ import TerapiaFamiliar from './Components/TerapiaFamiliar/TerapiaFamiliar'
 import Psicomotricidad from './Components/Psicomotricidad/Psicomotricidad'
 import EstimulacionTemprana from './Components/EstimulacionTemprana/EstimulacionTemprana'
 import Footer2 from "./Components/Footer/Footer2";
-// import UsuarioPaciente from "./Components/Profiles/UsuarioPaciente/UsuarioPaciente";
-// import Profesional from "./Components/Profiles/Profesional/Profesional";
+import UsuarioPaciente from "./Components/Profile/UsuarioPaciente/UsuarioPaciente";
+// import Profesional from "./Components/Profile/Profesional/Profesional";
 // import DetalleDeProfesional from "./Components/DetalleDelProfesional/DetalleDeProfesional";
-// import AñadirHistoria from "./Components/Profiles/HistoriaClinica/AñadirHistoria/AñadirHistoria";
-// import TodosTurnos from "./Components/Profiles/Admin/AdminComponents/TodosLosTurnos/TodosTurnos";
+// import AñadirHistoria from "./Components/Profile/HistoriaClinica/AñadirHistoria/AñadirHistoria";
+// import TodosTurnos from "./Components/Profile/Admin/AdminComponents/TodosLosTurnos/TodosTurnos";
 
 
 function App() {
@@ -61,11 +61,11 @@ function App() {
         <Route exact path="/contacto" element={<Contact />} />
         
 {/* //         <Route exact path="/administrador" element={<Admin />} />
-//         <Route exact path="/usuario" element={<UsuarioPaciente />} />
 //         <Route exact path="/profesional" element={<Profesional />} />
 //         <Route exact path="/detalleProfesional/:idProfesional" element={<DetalleDeProfesional />} />
 //         <Route exact path="/historia" element={<AñadirHistoria/>} /> */}
         {/* <Route exact path="/turnos" element={<TodosTurnos/>} /> */}
+<Route exact path="/usuario" element={<UsuarioPaciente />} />
              
         <Route exact path="/psicologia" element={<Psicologia />} />
         <Route exact path="/lenguaje" element={<TerapiaLenguaje />} />
