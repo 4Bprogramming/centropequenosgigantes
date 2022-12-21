@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AddProfessional from './AdminComponents/AddProfessional/AddProfessional';
 import TodosTurnos from './AdminComponents/TodosLosTurnos/TodosTurnos';
-// import ReservaTurnos from './AdminComponents/ReservaDeTurnos/ReservaTurnos';
+import ReservaTurnos from './AdminComponents/ReservaDeTurnos/ReservaTurnos';
 import TurnosPendientes from './AdminComponents/TurnosPendientes/TurnosPendientes';
 import TurnosDisponibles from './AdminComponents/TurnosDisponibles/TurnosDisponibles';
 import TurnosCancelados from './AdminComponents/TurnosCancelados/TurnosCancelados';
@@ -60,9 +60,9 @@ function Admin() {
       <TurnosDisponibles token={token}/> ||
       select === "TurnosCancelados" &&
       <TurnosCancelados token={token}/>
-      // ||
-      // select==="reservarTurnos" &&
-      // <ReservaTurnos token={token}/> 
+      ||
+      select==="reservarTurnos" &&
+      <ReservaTurnos token={token}/> 
       
       
     }
