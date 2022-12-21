@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import AddProfessional from './AdminComponents/AddProfessional/AddProfessional';
-// import TodosTurnos from './AdminComponents/TodosLosTurnos/TodosTurnos';
+import TodosTurnos from './AdminComponents/TodosLosTurnos/TodosTurnos';
 // import ReservaTurnos from './AdminComponents/ReservaDeTurnos/ReservaTurnos';
-// import TurnosPendientes from './AdminComponents/TurnosPendientes/TurnosPendientes';
-// import TurnosDisponibles from './AdminComponents/TurnosDisponibles/TurnosDisponibles';
-// import TurnosCancelados from './AdminComponents/TurnosCancelados/TurnosCancelados';
+import TurnosPendientes from './AdminComponents/TurnosPendientes/TurnosPendientes';
+import TurnosDisponibles from './AdminComponents/TurnosDisponibles/TurnosDisponibles';
+import TurnosCancelados from './AdminComponents/TurnosCancelados/TurnosCancelados';
 import styles from './Admin.module.css';
-// import TodosProfesionales from './AdminComponents/TodosLosProfesionales/TodosLosProfesionales';
+import TodosProfesionales from './AdminComponents/TodosLosProfesionales/TodosLosProfesionales';
 import { getProfesionales, getTurnos } from '../../../Redux/Action/Actions';
 import { useDispatch } from 'react-redux';
 import CrearTurnos from './AdminComponents/CrearTurnos/CrearTurnos';
@@ -49,19 +49,20 @@ function Admin() {
       <AddProfessional token={token}/> 
       ||
       select === "CrearTurnos" &&
-      <CrearTurnos token={token}/>
-      // select==="todosProfesionales" &&
-      // <TodosProfesionales token={token}/> ||
-      // select === "todosTurnos" &&
-      // <TodosTurnos token={token}/> ||
+      <CrearTurnos token={token}/>||
+      select==="todosProfesionales" &&
+      <TodosProfesionales token={token}/> ||
+      select === "todosTurnos" &&
+      <TodosTurnos token={token}/> ||
+      select === "TurnosPendientes" &&
+      <TurnosPendientes token={token}/> ||
+      select === "TurnosDisponibles" &&
+      <TurnosDisponibles token={token}/> ||
+      select === "TurnosCancelados" &&
+      <TurnosCancelados token={token}/>
+      // ||
       // select==="reservarTurnos" &&
-      // <ReservaTurnos token={token}/> ||
-      // select === "TurnosPendientes" &&
-      // <TurnosPendientes token={token}/> ||
-      // select === "TurnosDisponibles" &&
-      // <TurnosDisponibles token={token}/> ||
-      // select === "TurnosCancelados" &&
-      // <TurnosCancelados token={token}/>||
+      // <ReservaTurnos token={token}/> 
       
       
     }
