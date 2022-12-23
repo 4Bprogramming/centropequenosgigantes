@@ -11,7 +11,7 @@ import foto8 from "../../assets/servicios/integracion_sensorial.jpeg";
 import foto9 from "../../assets/servicios/terapia_familia.jpeg";
 import foto10 from "../../assets/servicios/psicomotricidad.jpeg";
 import foto11 from "../../assets/servicios/estimulacion_temprana.jpeg";
-import  styles from './ServiceCard.module.css';
+import styles from "./ServiceCard.module.css";
 
 export const blog = [
   {
@@ -22,6 +22,7 @@ export const blog = [
     title: "Psicología",
     desc: "Evaluaciones a niños, niñas, adolescentes y adultos.",
     cover: foto1,
+    path: "psicologia",
   },
   {
     id: 2,
@@ -31,6 +32,7 @@ export const blog = [
     title: "Terapia de lenguaje",
     desc: "Queremos que los niños puedan desarrollar y construir una autoestima sana, mejorando sus habilidades sociales y la comunicación..",
     cover: foto2,
+    path: "lenguaje",
   },
   {
     id: 3,
@@ -40,6 +42,7 @@ export const blog = [
     title: "Terapia de aprendizaje",
     desc: "Analizar las variables y procesos de atención memorísticos y comprensivos que optimizan el proceso de enseñanza-aprendizaje y que pueden estar generando el o los trastornos de aprendizaje.",
     cover: foto3,
+    path: "apendizaje",
   },
   {
     id: 4,
@@ -49,6 +52,7 @@ export const blog = [
     title: "Asesoramiento psicológico en el aula",
     desc: "Mejorar los procesos de aprendizaje y así lograr una mejor educación para niños y niñas..",
     cover: foto4,
+    path: "asesoramiento",
   },
   {
     id: 5,
@@ -58,6 +62,7 @@ export const blog = [
     title: "Terapia ocupacional",
     desc: "Ayudar a los niños a jugar, a rendir más en los estudios y a desempeñar sus actividades cotidianas. También mejora su autoestima y su sensación de logro.",
     cover: foto5,
+    path: "ocupacional",
   },
   {
     id: 6,
@@ -67,6 +72,7 @@ export const blog = [
     title: "Modificación de conducta",
     desc: "Crear mejores relaciones interpersonales como así también promover la confianza en sí mismo.",
     cover: foto6,
+    path: "conducta",
   },
   {
     id: 7,
@@ -76,6 +82,7 @@ export const blog = [
     title: "Terapia física",
     desc: "Aborda el conocimiento del cuerpo y el movimiento del ser humano en su ciclo vital, en situación de salud y condición de enfermedad, con base en los conocimientos científicos y tecnológicos de los diferentes sistemas que influyen en el movimiento corporal humano.",
     cover: foto7,
+    path: "fisica",
   },
   {
     id: 8,
@@ -85,6 +92,7 @@ export const blog = [
     title: "Integración sensorial",
     desc: "Expresión que se usa para describir los procesos del cerebro que nos permiten tomar la información que recibimos de nuestros 5 sentidos, organizarla y responder adecuadamente.",
     cover: foto8,
+    path: "sensorial",
   },
   {
     id: 9,
@@ -94,6 +102,7 @@ export const blog = [
     title: "Terapia de familia",
     desc: "Un espacio seguro en el cual la familia podrá reconocer las diferentes problemáticas presentes en la relación y a su vez, adquirir y fortalecer herramientas que les permitan una adecuada comunicación, toma de decisiones y manejo de emociones dentro de la dinámica familiar.",
     cover: foto9,
+    path: "familia",
   },
   {
     id: 10,
@@ -103,6 +112,7 @@ export const blog = [
     title: "Psicomotricidad",
     desc: "Técnica que ayuda a niños y bebés a dominar sus movimientos corporales de una forma sana, así como a mejorar su relación y comunicación con los demás.",
     cover: foto10,
+    path: "psicomotricidad",
   },
   {
     id: 11,
@@ -112,6 +122,7 @@ export const blog = [
     title: "Estimulación temprana",
     desc: "Técnicas educativas que pretende impulsar el desarrollo cognitivo, social y emocional del niño durante la etapa infantil (de 0 a 6 años).",
     cover: foto11,
+    path: "estimulacion_temprana"
   },
 ];
 
@@ -119,23 +130,18 @@ function SevicesCard() {
   return (
     <>
       {blog.map((val) => (
-
         <div className={styles.mainCardContainer}>
-          
-
           <div className={styles.imageServicioContainer}>
-            <Link to={`/${val.title}`}>
+            <Link to={`/${val.path}`}>
               <img src={val.cover} alt={val.title} />
             </Link>
           </div>
           <div className={styles.cardContent}>
-            <Link to={`/${val.title}`}>
+            <Link to={`/${val.path}`}>
               <h4>{val.title}</h4>
             </Link>
             <p>{val.desc}</p>
           </div>
-          
-          
         </div>
       ))}
     </>
