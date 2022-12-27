@@ -8,14 +8,14 @@ function SelectProfesionales({onChange, options, idProfesional}) {
   // console.log('options', options);
     return (
       <div style={{"width":"98%"}}>
-       <h2 style={{"fontFamily":"monospace","textShadow":"3px 2px 5px grey"}}>Elige un Profesional</h2>
+       
     <Select 
       closeMenuOnSelect={false}
       components={animatedComponents}
       defaultValue={''}
       options={options}
       onChange={onChange}
-      placeholder = "Elegí una opción"
+      placeholder = "Elegí un profesional"
       // value={idProfesional}
     /> 
       </div>

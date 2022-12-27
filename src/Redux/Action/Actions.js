@@ -6,7 +6,8 @@ import {
   MESSAGE,
   GET_PROFESIONAL_ID,
   HORAS_CREADAS,
-  POST_TURNOS
+  POST_TURNOS,
+  POST_HISTORIA
 } from "../constants";
 
 const BASE_URL = "http://localhost:3001";
@@ -140,16 +141,38 @@ export function horariosTurnosCreados(payload) {
     return async function (dispatch) {
         try {
           var json = await axios.post(`${BASE_URL}/turnos`, payload);
-          console.log("recibo en action==>", json.data);
+          // console.log("recibo en action==>", json.data);
           //ACA LLAMO A getTurnos()
           return dispatch({
             type: POST_TURNOS,
             payload: json.data,
           });
         } catch (error) {
-          console.log("no recibo en action por este error==>", error);
+          // console.log("no recibo en action por este error==>", error);
           return dispatch({
             type: POST_TURNOS,
+            payload: json.data,
+          });
+        }
+      }
+    }
+  //Guardar historia clinica en base de Datos
+  export function guardarHistoria(payload,token){
+    axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+    // console.log('payload historia====>', payload); 
+    return async function (dispatch) {
+        try {
+          var json = await axios.post(`${BASE_URL}/historia`, payload);
+          console.log("recibo en action historia posteada==>", json.data);
+         
+          return dispatch({
+            type: POST_HISTORIA,
+            payload: json.data,
+          });
+        } catch (error) {
+          // console.log("no recibo en action por este error de historia==>", error);
+          return dispatch({
+            type: POST_HISTORIA,
             payload: json.data,
           });
         }

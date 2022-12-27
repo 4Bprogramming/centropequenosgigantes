@@ -4,6 +4,7 @@ import {
   POST_TURNOS,
   GET_PROFESIONAL_ID,
   GET_TURNOS,
+  POST_HISTORIA,
 } from "../constants";
 
 const initialState = {
@@ -32,7 +33,7 @@ export const rootReducer = (state = initialState, action) => {
       }
 
     case HORAS_CREADAS:
-      console.log("REDUCER HORAS_CREADAS===>", action.payload);
+      // console.log("REDUCER HORAS_CREADAS===>", action.payload);
       if (action.payload.message) {
         return {
           ...state,
@@ -41,7 +42,7 @@ export const rootReducer = (state = initialState, action) => {
       } else {
         let horas = [...action.payload];
         horas.pop();
-        console.log("horas reducidas", horas);
+        // console.log("horas reducidas", horas);
         return {
           ...state,
           horasCreadas: action.payload,
@@ -49,7 +50,20 @@ export const rootReducer = (state = initialState, action) => {
         };
       }
     case POST_TURNOS:
-      console.log("REDUCER POST_TURNOS===>", action.payload);
+      // console.log("REDUCER POST_TURNOS===>", action.payload);
+      if (action.payload.message) {
+        return {
+          ...state,
+          message: action.payload.message,
+        };
+      } else {
+        return {
+          ...state,
+          message: action.payload,
+        };
+      }
+    case POST_HISTORIA:
+      console.log("REDUCER POST_HISTORIA===>", action.payload);
       if (action.payload.message) {
         return {
           ...state,

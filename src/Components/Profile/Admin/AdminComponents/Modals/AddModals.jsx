@@ -20,6 +20,8 @@ function AddModals({
   if (body) {
     bodyA = Object.values(body);
   }
+  console.log('bodyA', bodyA);
+  console.log('body', body);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   // const handleSubmit=functionBottonAgree()

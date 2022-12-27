@@ -11,3 +11,27 @@
     margin-left: 5px;
     transition: 500ms;
 }
+
+.horarioTurnoCreado{
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+}
+.horarioContainer{
+    background-color: rgb(104, 105, 105);
+    color: white;
+    font-family: monospace;
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+    width: 55px;
+}
+.confirmaTurnosBtn{
+    font-family: monospace;
+    background-color: darkcyan;
+    color: white;
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 15px;
+}

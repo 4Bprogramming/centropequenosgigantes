@@ -31,6 +31,7 @@ import Footer2 from "./Components/Footer/Footer2";
 import UsuarioPaciente from "./Components/Profile/UsuarioPaciente/UsuarioPaciente";
 import Profesional from "./Components/Profile/Profesional/Profesional";
 import DetalleDeProfesional from "./Components/DetalleDelProfesional/DetalleDeProfesional";
+import AñadirHistoriaClinica from "./Components/Profile/HistoriaClinica/AñadirHistoriaClinica";
 // import AñadirHistoria from "./Components/Profile/HistoriaClinica/AñadirHistoria/AñadirHistoria";
 // import TodosTurnos from "./Components/Profile/Admin/AdminComponents/TodosLosTurnos/TodosTurnos";
 
@@ -59,10 +60,8 @@ function App() {
         <Route exact path="/servicios" element={<Services />} />
         <Route exact path="/reserva" element={<Services />} />
         <Route exact path="/contacto" element={<Contact />} />
-        
-{/* //         
-//         <Route exact path="/historia" element={<AñadirHistoria/>} /> */}
-        {/* <Route exact path="/turnos" element={<TodosTurnos/>} /> */}
+        <Route exact path="/historia" element={<AñadirHistoriaClinica fecha={'5-5-2022'} hora={'12:30'} usuarioEmail={'benja@gmail.com'} documento={'58963254'} paciente={'Maria de los Rosarios'} />} /> 
+ 
 <Route exact path="/administrador" element={<Admin />} />
 <Route exact path="/profesional" element={<Profesional />} />
 <Route exact path="/detalleProfesional/:idProfesional" element={<DetalleDeProfesional />} />
