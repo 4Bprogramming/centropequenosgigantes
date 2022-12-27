@@ -195,17 +195,24 @@ function CrearTurnos({ token }) {
         inicio={post.tiempoInicio}
         final={post.tiempoFinal}
       />
-
-      <button className={styles.botonRangoHorario} onClick={submitTime}>Confirme rango horario</button>
+      <button className={styles.botonRangoHorario} onClick={submitTime}>
+        Confirme rango horario
+      </button>
+      <div className={styles.horarioTurnoCreado}>
       {post.horariosCreados &&
         horasParaMostrar.map((h, i) => (
-          <div>
-            <p key={i}>{h.start};</p>
-          </div>
-        ))}
+            <div classkey={i}  className={styles.horarioContainer}>{h.start}</div>
+            ))}
+      </div>
       {post.horariosCreados ? (
-        <button onClick={(e) => submitAll(e)}>Confirma tus turnos</button>
-      ) : null}
+        <button
+          className={styles.confirmaTurnosBtn}
+          onClick={(e) => submitAll(e)}
+        >
+          Confirma tus turnos
+        </button>
+      ) : null}
+     
 
       <NotificationContainer />
     </>

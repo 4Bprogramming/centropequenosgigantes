@@ -15,7 +15,7 @@ import { useEffect } from "react";
  
  
 function AddProfessional(props) {
-  console.log('token',props.token);
+  // console.log('token',props.token);
   const [errors, setErrors] = useState({});
   const [imageId, setImageId] = useState({});
   const dispatch=useDispatch()
@@ -46,11 +46,11 @@ function AddProfessional(props) {
   const handleSelelect = (seletedOptions) => {
     const selection = seletedOptions.map((e) => e.value).toString();
     setPost({ ...post, especialidad: selection });
-    // console.log('Options selected', seletedOptions);
-    // console.log("Options selections======>", selection);
-    // console.log('Options selections2', selection.toString().split(','));
+    console.log('Options selected', seletedOptions);
+    console.log("Options selections======>", selection);
+    // console.log('Options selections2', selection.toString().split(' ,'));
   };
-
+console.log('post-especialidad==>',post.especialidad);
   // // ===================HANDLE IMAGE===============================================
 
   const handleImageId = async (e) => {
@@ -101,7 +101,7 @@ function AddProfessional(props) {
 //==========================================================================
 
   let body = [
-      `DNI:${newProfesional.idProfesional},`,`Nombre:${newProfesional.nombre},`,`Apellido:${newProfesional.apellido},`,`Celular: ${ newProfesional.celular},`,`Email: ${newProfesional.email},`,`Password:${newProfesional.password},`,`Matricula:${newProfesional.matricula},`,`Especialidad: "${newProfesional.especialidad},`
+      `DNI:${newProfesional.idProfesional}`,`Nombre:${newProfesional.nombre}`,`Apellido:${newProfesional.apellido}`,`Celular: ${ newProfesional.celular}`,`Email: ${newProfesional.email}`,`Password:${newProfesional.password}`,`Matricula:${newProfesional.matricula}`,`Especialidad: "${newProfesional.especialidad}`
     ];
   
 
@@ -122,17 +122,17 @@ function AddProfessional(props) {
        
         // Actualizar(props.token)
         NotificationManager.success("Bien Hecho!", "Profesional Añadido", 3000);
-        // setPost({
-        //     idProfesional: "",
-        //     nombre: "",
-        //     apellido: "",
-        //     celular: "",
-        //     email: "",
-        //     password: "",
-        //     matricula: "",
-        //     especialidad: "",
-        //     imagenProfesional: "",
-        //  });
+        setPost({
+            idProfesional: "",
+            nombre: "",
+            apellido: "",
+            celular: "",
+            email: "",
+            password: "",
+            matricula: "",
+            especialidad: "",
+            imagenProfesional: "",
+         });
       } catch (e) {
         console.log("error de firebase", error);
       }

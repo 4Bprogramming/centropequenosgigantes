@@ -7,43 +7,28 @@ function ReservaForm(props) {
 
   // console.log('esto traer el props n click',props)
   return (
-
-    <>
-    <div>Reserva Form</div>
-    {
-      props.cambioProfesional &&
-    <SelectProfesionales 
-    options={props.options}
-    onChange={props.onChangeSelect}
-    idProfesional={props.idProfesional}
-    />
-    }
-    {
-      props.habilitarBoton &&
-      <>
-      <p>Profesional: {props.nombreProfesional}</p>
-      <button onClick={props.handleClickChange}>
-        Cambiar Profesional
-      </button> 
-      </>
-    }
-    {/* {
-      props.habilitarCalendario &&
-      <div> 
-        <p>Elegir Fecha</p>
-
-        <SelectFecha date={props.date} onChange={props.onChangeDate} />
-        <p>elegir turnos</p>
-        {
-      props.turnos?.length>0 &&
-      props.turnos?.map(e=>{
-        return(
-          <button onClick={props.onClick} value={e.id} key={e.id}>
-            {e.startTime}
-
+    <div className={styles.mainReservarTurnoContainer}>
+      <h2 style={{"fontFamily":"monospace","textShadow":"3px 2px 5px grey"}}>Reserva un turno</h2>
+      {props.cambioProfesional && (
+        <SelectProfesionales
+          options={props.options}
+          onChange={props.onChangeSelect}
+          idProfesional={props.idProfesional}
+        />
+      )}
+      {props.habilitarBoton && (
+        <>
+          <div className={styles.nombreProfesionalReserva}>
+            <strong>Profesional:</strong> <span>{props.nombreProfesional}</span>
+          </div>
+          <button
+            className={styles.botonesReservarTurno}
+            onClick={props.handleClickChange}
+          >
+            Otro Profesional
           </button>
         </>
-      )} */}
+      )}
       {props.habilitarCalendario && (
         <div>
           <SelectFecha date={props.date} onChange={props.onChangeDate} />
@@ -62,7 +47,7 @@ function ReservaForm(props) {
           }
         </div>
       )}
-    </>
+    </div>
   );
 }
 
