@@ -47,6 +47,20 @@ export const columns=[
         // grow:'2',
         highlightOnHover:true
     },
+    {
+        dataField:'formaPago',
+        text:'Forma de Pago',
+        // sortable:true,
+        // grow:'2',
+        highlightOnHover:true
+    },
+    {
+        dataField:'valor',
+        text:'Valor',
+        // sortable:true,
+        // grow:'2',
+        highlightOnHover:true
+    },
   ]
  
   export  const sizePerPageRenderer = ({
