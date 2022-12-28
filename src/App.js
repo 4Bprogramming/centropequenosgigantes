@@ -48,6 +48,8 @@ function App() {
   }, []);
 
   return (
+    
+    
     <div className="App">
   
       <NavScroll />
@@ -81,6 +83,7 @@ function App() {
       </Routes>
       <Footer2 />
     </div>
+    
   );
 }
 
