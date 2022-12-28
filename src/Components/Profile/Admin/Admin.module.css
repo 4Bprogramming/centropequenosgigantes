@@ -1,5 +1,6 @@
 .mainAdminContainer {
   display: flex;
+  min-height: 600px;
 }
 
 .menuAdmin {
@@ -46,6 +47,9 @@
         width: 55%;
         
       }
+      .mainAdminContainer {
+        min-height: 100px;
+      }
 
 }
 
@@ -53,6 +57,7 @@
     .mainAdminContainer {
         flex-direction: column;
         align-items: center;
+        
       }
       .mainRenderAdmin {
         width: 90%;
