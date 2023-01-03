@@ -1,86 +1,90 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import InputControl from '../ImputControl/InputControl'
-import { auth } from '../../Firebase/Firebase'
+import InputControl from "../ImputControl/InputControl";
+
 import styles from "./Signup.module.css";
 
 function Register() {
-  const navigate = useNavigate();
   const [values, setValues] = useState({
-    name: "",
+    idUsuario: "",
+    nombre: "",
+    apellido: "",
     email: "",
-    pass: "",
+    password: "",
+    celular: "",
   });
-  const [errorMsg, setErrorMsg] = useState("");
-  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
 
-  const handleSubmission = () => {
-    if (!values.name || !values.email || !values.pass) {
-      setErrorMsg("Fill all fields");
-      return;
-    }
-    setErrorMsg("");
-
-    setSubmitButtonDisabled(true);
-    createUserWithEmailAndPassword(auth, values.email, values.pass)
-      .then(async (res) => {
-        setSubmitButtonDisabled(false);
-        const user = res.user;
-        await updateProfile(user, {
-          displayName: values.name,
-        });
-        navigate("/");
-      })
-      .catch((err) => {
-        setSubmitButtonDisabled(false);
-        setErrorMsg(err.message);
-      });
-  };
+  function handleSubmit() {}
 
   return (
     <div className={styles.container}>
-    <div className={styles.innerBox}>
-      <h1 className={styles.heading}>Registrarse</h1>
+      <div className={styles.innerBox}>
+        <h1 className={styles.heading}>Registrarse</h1>
+        <InputControl
+          label="DNI"
+          placeholder="Ingrese su documento de Identidad"
+          required
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, idUsuario: event.target.value }))
+          }
+        />
 
-      <InputControl
-        label="Nombre"
-        placeholder="Nombre del Paciente"
-        onChange={(event) =>
-          setValues((prev) => ({ ...prev, name: event.target.value }))
-        }
-      />
-      <InputControl
-        label="Email"
-        placeholder="Correo Electronico"
-        onChange={(event) =>
-          setValues((prev) => ({ ...prev, email: event.target.value }))
-        }
-      />
-      <InputControl
-        label="Password"
-        placeholder="Ingrese su COntraseña"
-        type="password"
-        onChange={(event) =>
-          setValues((prev) => ({ ...prev, pass: event.target.value }))
-        }
-      />
+        <InputControl
+          label="Nombre"
+          placeholder="Ingrese su nombre"
+          required
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, nombre: event.target.value }))
+          }
+        />
+        <InputControl
+          label="Apellido"
+          placeholder="Ingrese su apellido"
+          required
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, apellido: event.target.value }))
+          }
+        />
+        <InputControl
+          label="Teléfono"
+          placeholder="Ingrese su número de contacto"
+          required
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, celular: event.target.value }))
+          }
+        />
+        <InputControl
+          label="Email"
+          placeholder="Ingrese correo"
+          required
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, email: event.target.value }))
+          }
+        />
 
-      <div className={styles.footer}>
-        <b className={styles.error}>{errorMsg}</b>
-        <button onClick={handleSubmission} disabled={submitButtonDisabled}>
-          Registrarse
-        </button>
+        <InputControl
+          label="Password"
+          placeholder="Ingrese su Contraseña"
+          type="password"
+          required
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, password: event.target.value }))
+          }
+        />
+
+      < div className={styles.footer}>
+          <button onClick={handleSubmit}>Registrarse</button>
+
         <p>
           ¿Ya tienes cuenta?{" "}
           <span>
             <Link to="/login">Inicia Sesión</Link>
           </span>
         </p>
+        </div>  
       </div>
     </div>
-  </div>
-  )
-} 
+  );
+}
 
-export default Register
+export default Register;
