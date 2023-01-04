@@ -1,9 +1,18 @@
 import React, { useState } from "react";
+import { useDispatch,useSelector } from "react-redux";
+import {NotificationContainer,NotificationManager,} from "react-notifications";
+import "react-notifications/lib/notifications.css"; 
 import { Link, useNavigate } from "react-router-dom";
+import { registerAction } from "../../Redux/Action/Actions";
 import InputControl from "../ImputControl/InputControl";
 import styles from "./Signup.module.css";
 
 function Register() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const usuarioRegistrado = useSelector(state=>state?.usuarioRegistrado);
+
   const [values, setValues] = useState({
     idUsuario: "",
     nombre: "",
@@ -12,35 +21,50 @@ function Register() {
     password: "",
     celular: "",
   });
+  //estado si hay campos vacios
   const [campoVacio,setCampoVacio] = useState("");
-  
+  //estado si password es erroneo
   const [isValid, setIsValid] = useState(true);
+  //estado para ver si hay error o no en la DB
 
+ //validador de mail con regex
   const validateEmail = (event) => {
     const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     setIsValid(emailRegex.test(event.target.value));
   };
 
+  //si los campos estan vacios o no.
   function completarCampo (valorCampoVacio){
     setCampoVacio(valorCampoVacio)
   }
+    
 
-  function handleSubmit(e) {
+    //funcion para mensaje de error o success
+    function errorOrSucces(verdaderoOfalso){
+      if(verdaderoOfalso===true){
+          NotificationManager.success("Usuario registado correctamente", "Excelente!", 3000);
+      }else{
+        NotificationManager.error("¡Error! será dirigido a Home!", "Atención!", 3000);       
+      }
+    }
+
+    async function handleSubmit(e) {
     e.preventDefault();  
     if(!values.idUsuario || !values.nombre || !values.apellido || !values.email || !values.password || !values.celular){
       completarCampo("Los campos no pueden estar vacíos")
     }else{
-      
+      const dbResponse = await dispatch(registerAction(values))
       completarCampo("")
-      
-      // aca se mandara la info a la action y de ahi a la base de datos
-      //1. crear action
-      //2. llamarla desde aqui
+      if(dbResponse !== undefined){
+        usuarioRegistrado==="Usuario creado con exito!" ? errorOrSucces(true) : errorOrSucces(false)
+      }
     }
   }
  
 
   return (
+    <>
+    
     <div className={styles.container}>
       <div className={styles.innerBox}>
         <h1 className={styles.heading}>Registrarse</h1>
@@ -112,6 +136,8 @@ function Register() {
         </div>  
       </div>
     </div>
+    <NotificationContainer />
+    </>
   );
 }
 

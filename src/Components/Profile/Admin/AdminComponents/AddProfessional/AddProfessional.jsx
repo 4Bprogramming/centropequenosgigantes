@@ -37,7 +37,7 @@ function AddProfessional(props) {
   const token= JSON.parse(window.localStorage.getItem('token'))
   // console.log('token', token)
   async function Actualizar(token){
-    console.log('entro actualizar');
+    // console.log('entro actualizar');
    dispatch(getProfesionales(token));
    dispatch(getTurnos(token));
 }
@@ -46,8 +46,8 @@ function AddProfessional(props) {
   const handleSelelect = (seletedOptions) => {
     const selection = seletedOptions.map((e) => e.value).toString();
     setPost({ ...post, especialidad: selection });
-    console.log('Options selected', seletedOptions);
-    console.log("Options selections======>", selection);
+    // console.log('Options selected', seletedOptions);
+    // console.log("Options selections======>", selection);
     // console.log('Options selections2', selection.toString().split(' ,'));
   };
 console.log('post-especialidad==>',post.especialidad);
