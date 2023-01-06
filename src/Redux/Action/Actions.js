@@ -7,7 +7,8 @@ import {
   GET_PROFESIONAL_ID,
   HORAS_CREADAS,
   POST_TURNOS,
-  POST_HISTORIA
+  POST_HISTORIA,
+  REGISTER
 } from "../constants";
 
 const BASE_URL = "http://localhost:3001";
@@ -106,7 +107,7 @@ export function getTurnos(token) {
   return async function (dispatch) {
     try {
       let res = await axios.get(`${BASE_URL}/turnos`);
-      console.log('respuesta get turnos', res);
+      // console.log('respuesta get turnos', res);
       return dispatch({ type: GET_TURNOS, payload: res.data });
     } catch (error) {
       console.log(error);
@@ -115,7 +116,7 @@ export function getTurnos(token) {
 }
 //Muestra turnos creados
 export function horariosTurnosCreados(payload) {
-  console.log('payload action', payload);
+  // console.log('payload action', payload);
   return async function (dispatch) {
       try {
         var json = await axios.post(`${BASE_URL}/turnos/horas`, payload);
@@ -179,7 +180,28 @@ export function horariosTurnosCreados(payload) {
       }
     }
     
-    
+    //REGISTER
+    export function registerAction(regirsterData){
+     return async function (dispatch){
+      try {
+        const dbResponse = await axios.post(`${BASE_URL}/usuarios`,regirsterData);
+        console.log('resgister devuelve esto-->',dbResponse)
+        return dispatch({
+          type: REGISTER,
+          payload:dbResponse.data
+        })
+
+      } catch (e) {
+         console.log('error en el register****>',e.response.data)
+        return dispatch({
+          type:REGISTER,
+          payload: e.response.data 
+        })
+      }
+     }
+    }
+
+
     //LOGIN
     export async function loginAction(loginData) {
       try {

@@ -5,6 +5,7 @@ import {
   GET_PROFESIONAL_ID,
   GET_TURNOS,
   POST_HISTORIA,
+  REGISTER
 } from "../constants";
 
 const initialState = {
@@ -14,6 +15,7 @@ const initialState = {
   horasCreadasParaMostar: [],
   turnosCreados: [],
   todosTurnos: [],
+  usuarioRegistrado:{}
 };  
 
 export const rootReducer = (state = initialState, action) => {
@@ -101,6 +103,15 @@ export const rootReducer = (state = initialState, action) => {
           ...state,
           todosTurnos: action.payload,
         }
-  }
 
+
+        //usuario registrado
+        case REGISTER:
+          return{
+            ...state,
+            usuarioRegistrado:action.payload
+          }
+
+
+  }//LLAVE QUE CIERRA EL SWITCH
 };

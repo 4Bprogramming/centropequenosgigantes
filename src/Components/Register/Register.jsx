@@ -1,86 +1,167 @@
 import React, { useState } from "react";
+import { useDispatch,useSelector } from "react-redux";
+import {NotificationContainer,NotificationManager,} from "react-notifications";
+import "react-notifications/lib/notifications.css"; 
 import { Link, useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import InputControl from '../ImputControl/InputControl'
-import { auth } from '../../Firebase/Firebase'
+import { registerAction } from "../../Redux/Action/Actions";
+import InputControl from "../ImputControl/InputControl";
 import styles from "./Signup.module.css";
 
 function Register() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const usuarioRegistrado = useSelector(state=>state?.usuarioRegistrado);
+
   const [values, setValues] = useState({
-    name: "",
+    idUsuario: "",
+    nombre: "",
+    apellido: "",
     email: "",
-    pass: "",
+    password: "",
+    celular: "",
   });
-  const [errorMsg, setErrorMsg] = useState("");
-  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
+  //estado si hay campos vacios
+  const [campoVacio,setCampoVacio] = useState("");
+  //estado si el correo es erroneo
+  const [isValid, setIsValid] = useState(true);
 
-  const handleSubmission = () => {
-    if (!values.name || !values.email || !values.pass) {
-      setErrorMsg("Fill all fields");
-      return;
-    }
-    setErrorMsg("");
+  //estado para ver si el DNI son solo numeros.
+  const [dniIsValid, setDniIsValid] = useState(true);
 
-    setSubmitButtonDisabled(true);
-    createUserWithEmailAndPassword(auth, values.email, values.pass)
-      .then(async (res) => {
-        setSubmitButtonDisabled(false);
-        const user = res.user;
-        await updateProfile(user, {
-          displayName: values.name,
-        });
-        navigate("/");
-      })
-      .catch((err) => {
-        setSubmitButtonDisabled(false);
-        setErrorMsg(err.message);
-      });
+ //validador de mail con regex
+  const validateEmail = (event) => {
+    const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    setIsValid(emailRegex.test(event.target.value));
   };
 
+//validador de DNI con regex
+const validateDNI = (event) => {
+  const dniRegex = /^[0-9]+$/;
+  setDniIsValid(dniRegex.test(event.target.value));
+};
+
+
+
+
+  //si los campos estan vacios o no.
+  function completarCampo (valorCampoVacio){
+    setCampoVacio(valorCampoVacio)
+  }
+    
+
+    //funcion para mensaje de error o success
+    function errorOrSucces(verdaderoOfalso){
+      if(verdaderoOfalso===true){
+          NotificationManager.success("Usuario registado correctamente", "¡Excelente!", 2000);
+          NotificationManager.success("Serás dirigido a LOGIN", 3000);
+          setTimeout(() => {
+            navigate('/login')
+          }, 4000);
+      }else{
+        if(usuarioRegistrado){
+          
+          NotificationManager.error(`${usuarioRegistrado.errors[0]?.msg}`, "¡Atención!", 3000);
+        }
+             
+      }
+    }
+    // HANDLE SUBMIT
+    async function handleSubmit(e) {
+    e.preventDefault();  
+    if(!values.idUsuario || !values.nombre || !values.apellido || !values.email || !values.password || !values.celular){
+      completarCampo("Los campos no pueden estar vacíos")
+    }else{
+      const dbResponse = await dispatch(registerAction(values))
+      completarCampo("")
+      
+      if(dbResponse !== undefined){
+        dbResponse.payload.message==="Usuario creado con exito!" ? errorOrSucces(true) : errorOrSucces(false)
+      }
+    }
+  }
+ 
+
   return (
+    <>
+    
     <div className={styles.container}>
-    <div className={styles.innerBox}>
-      <h1 className={styles.heading}>Registrarse</h1>
+      <div className={styles.innerBox}>
+        <h1 className={styles.heading}>Registrarse</h1>
+        {campoVacio ? <h4 style={{color:"red",fontStyle:"italic"}}>{campoVacio}</h4> :null}
+        <InputControl
+          label="DNI"
+          placeholder="Ingrese su documento"
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, idUsuario: event.target.value }))
+          }
+          onBlur={validateDNI}
+          />
+          {!dniIsValid && <p style={{color:"red",fontStyle:'italic'}}>Ingresa solo números</p>}
 
-      <InputControl
-        label="Nombre"
-        placeholder="Nombre del Paciente"
-        onChange={(event) =>
-          setValues((prev) => ({ ...prev, name: event.target.value }))
-        }
-      />
-      <InputControl
-        label="Email"
-        placeholder="Correo Electronico"
-        onChange={(event) =>
-          setValues((prev) => ({ ...prev, email: event.target.value }))
-        }
-      />
-      <InputControl
-        label="Password"
-        placeholder="Ingrese su COntraseña"
-        type="password"
-        onChange={(event) =>
-          setValues((prev) => ({ ...prev, pass: event.target.value }))
-        }
-      />
+        <InputControl
+          label="Nombre"
+          placeholder="Ingrese su nombre"
+          required
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, nombre: event.target.value }))
+          }
+         
+        />
+        <InputControl
+          label="Apellido"
+          placeholder="Ingrese su apellido"
+          required
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, apellido: event.target.value }))
+          }
+        />
+        <InputControl
+          
+          label="Teléfono"
+          placeholder="Ingrese su número"
+          required
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, celular: event.target.value }))
+          }
+        />
+        <InputControl
+          label="Email"
+          placeholder="Ingrese correo"
+          type="email"
+          id="email"
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, email: event.target.value }))
+          }
+          onBlur={validateEmail}
+        />
+        {!isValid && <p style={{color:"red",fontStyle:'italic'}}>Ingresa un email válido</p>}
 
-      <div className={styles.footer}>
-        <b className={styles.error}>{errorMsg}</b>
-        <button onClick={handleSubmission} disabled={submitButtonDisabled}>
-          Registrarse
-        </button>
+        <InputControl
+          label="Password"
+          placeholder="Ingrese su Contraseña"
+          type="password"
+          required
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, password: event.target.value }))
+          }
+        />
+
+      < div className={styles.footer}>
+          <button onClick={handleSubmit}>Registrarse</button>
+
         <p>
           ¿Ya tienes cuenta?{" "}
           <span>
             <Link to="/login">Inicia Sesión</Link>
           </span>
         </p>
+        </div>  
       </div>
     </div>
-  </div>
-  )
-} 
+    <NotificationContainer />
+    </>
+  );
+}
 
-export default Register
+export default Register;
