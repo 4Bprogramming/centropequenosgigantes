@@ -11,7 +11,7 @@ function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const usuarioRegistrado = useSelector(state=>state?.usuarioRegistrado);
+  const usuarioRegistrado = useSelector(state=>state?.usuarioRegistrado);
 
   const [values, setValues] = useState({
     idUsuario: "",
@@ -23,15 +23,26 @@ function Register() {
   });
   //estado si hay campos vacios
   const [campoVacio,setCampoVacio] = useState("");
-  //estado si password es erroneo
+  //estado si el correo es erroneo
   const [isValid, setIsValid] = useState(true);
-  //estado para ver si hay error o no en la DB
+
+  //estado para ver si el DNI son solo numeros.
+  const [dniIsValid, setDniIsValid] = useState(true);
 
  //validador de mail con regex
   const validateEmail = (event) => {
     const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     setIsValid(emailRegex.test(event.target.value));
   };
+
+//validador de DNI con regex
+const validateDNI = (event) => {
+  const dniRegex = /^[0-9]+$/;
+  setDniIsValid(dniRegex.test(event.target.value));
+};
+
+
+
 
   //si los campos estan vacios o no.
   function completarCampo (valorCampoVacio){
@@ -42,12 +53,20 @@ function Register() {
     //funcion para mensaje de error o success
     function errorOrSucces(verdaderoOfalso){
       if(verdaderoOfalso===true){
-          NotificationManager.success("Usuario registado correctamente", "Excelente!", 3000);
+          NotificationManager.success("Usuario registado correctamente", "¡Excelente!", 2000);
+          NotificationManager.success("Serás dirigido a LOGIN", 3000);
+          setTimeout(() => {
+            navigate('/login')
+          }, 4000);
       }else{
-        NotificationManager.error("¡Error! será dirigido a Home!", "Atención!", 3000);       
+        if(usuarioRegistrado){
+          
+          NotificationManager.error(`${usuarioRegistrado.errors[0]?.msg}`, "¡Atención!", 3000);
+        }
+             
       }
     }
-
+    // HANDLE SUBMIT
     async function handleSubmit(e) {
     e.preventDefault();  
     if(!values.idUsuario || !values.nombre || !values.apellido || !values.email || !values.password || !values.celular){
@@ -55,7 +74,7 @@ function Register() {
     }else{
       const dbResponse = await dispatch(registerAction(values))
       completarCampo("")
-      console.log('este es el objeto en el handle submit',dbResponse)
+      
       if(dbResponse !== undefined){
         dbResponse.payload.message==="Usuario creado con exito!" ? errorOrSucces(true) : errorOrSucces(false)
       }
@@ -72,12 +91,13 @@ function Register() {
         {campoVacio ? <h4 style={{color:"red",fontStyle:"italic"}}>{campoVacio}</h4> :null}
         <InputControl
           label="DNI"
-          placeholder="Ingrese su documento de Identidad"
-          required
+          placeholder="Ingrese su documento"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, idUsuario: event.target.value }))
           }
-        />
+          onBlur={validateDNI}
+          />
+          {!dniIsValid && <p style={{color:"red",fontStyle:'italic'}}>Ingresa solo números</p>}
 
         <InputControl
           label="Nombre"
@@ -86,6 +106,7 @@ function Register() {
           onChange={(event) =>
             setValues((prev) => ({ ...prev, nombre: event.target.value }))
           }
+         
         />
         <InputControl
           label="Apellido"
@@ -96,8 +117,9 @@ function Register() {
           }
         />
         <InputControl
+          
           label="Teléfono"
-          placeholder="Ingrese su número de contacto"
+          placeholder="Ingrese su número"
           required
           onChange={(event) =>
             setValues((prev) => ({ ...prev, celular: event.target.value }))
@@ -113,7 +135,7 @@ function Register() {
           }
           onBlur={validateEmail}
         />
-        {!isValid && <p style={{color:"red"}}>Ingresa un email válido</p>}
+        {!isValid && <p style={{color:"red",fontStyle:'italic'}}>Ingresa un email válido</p>}
 
         <InputControl
           label="Password"

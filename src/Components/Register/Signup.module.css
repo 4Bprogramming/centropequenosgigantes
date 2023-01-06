@@ -70,3 +70,20 @@
     font-size: 1rem;
     text-decoration: none;
   }
+
+
+  @media screen and (max-width: 620px) {
+    .innerBox {
+     
+      min-width: 380px;
+      
+    }
+    
+  }
+  @media screen and (max-width: 414px) {
+    .innerBox {
+     
+      min-width: 290px;
+      
+    }
+  }

@@ -5,9 +5,18 @@ import Container from "react-bootstrap/Container";
 import logo from "../../assets/logo.png";
 import Nav from "react-bootstrap/Nav";
 import styles from "./Navbar.module.css";
+import { CgProfile } from "react-icons/cg";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 function NavScroll() {
-  /*     const navigate = useNavigate(); */
+  //funcion para que aparezca el OVERLAY
+
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Iniciar Sesión / Registrarse
+    </Tooltip>
+  );
 
   return (
     <Navbar className={styles.navBarContainer} expand="lg">
@@ -40,9 +49,18 @@ function NavScroll() {
                 <NavLink to="/contacto">CONTACTO</NavLink>
               </div>
               <div className={styles.navBarLinks}>
-                <NavLink to="/login">Inicia Sesión</NavLink>
+                <OverlayTrigger
+                  placement="top"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={renderTooltip}
+                  style={{backgroundColor: 'red'}}
+                >
+                  <NavLink to="/login">
+                    <CgProfile color="#0d6efd" />
+                  </NavLink>
+                </OverlayTrigger>
               </div>
-              <div>
+              <div className={styles.reservarCitaBoton}>
                 <NavLink className={styles.buttonContact} to="/reserva" exact>
                   Reserva tu cita
                 </NavLink>
