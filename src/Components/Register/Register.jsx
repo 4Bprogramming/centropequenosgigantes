@@ -11,7 +11,7 @@ function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const usuarioRegistrado = useSelector(state=>state?.usuarioRegistrado);
+  // const usuarioRegistrado = useSelector(state=>state?.usuarioRegistrado);
 
   const [values, setValues] = useState({
     idUsuario: "",
@@ -55,8 +55,9 @@ function Register() {
     }else{
       const dbResponse = await dispatch(registerAction(values))
       completarCampo("")
+      console.log('este es el objeto en el handle submit',dbResponse)
       if(dbResponse !== undefined){
-        usuarioRegistrado==="Usuario creado con exito!" ? errorOrSucces(true) : errorOrSucces(false)
+        dbResponse.payload.message==="Usuario creado con exito!" ? errorOrSucces(true) : errorOrSucces(false)
       }
     }
   }
