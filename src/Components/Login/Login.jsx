@@ -97,7 +97,10 @@ function Login() {
 
         <div className={styles.footer}>
           <button onClick={handleSubmit} disabled={!loginData.email || !loginData.password ? true : false}>Inicia Sesión</button>
-
+          {/* Si no recuerda contraseña */}
+          <Link to="/forgoten-password">
+            ¿Olvido su contraseña?
+          </Link>
           <p>
             ¿No Tienes cuenta?{" "}
             <span>

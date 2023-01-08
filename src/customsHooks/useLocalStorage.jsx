@@ -28,7 +28,7 @@ export function useLocalStorage(key, initialValue){
 /*
 para utilizarlo lo importamos en el componente a utilizar: import{useLocalStarorage} from '(donde esta guardado)'
 si quiero guardar un email ejemplo:
-    const[email, setEmail]= useLocalStorage('text, '')
+    const[email, setEmail]= useLocalStorage('email, '')
 
     en el onChange ejecuto setEmail(e.targe.value)
 */
