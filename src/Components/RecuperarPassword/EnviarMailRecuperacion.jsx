@@ -1,7 +1,10 @@
 import React,{useState} from 'react'
 import styles from './recuperar.module.css'
 import InputControl from "../ImputControl/InputControl";
-
+import { passwordOlvidado } from '../../Redux/Action/Actions';
+import {NotificationContainer,NotificationManager,} from "react-notifications";
+import "react-notifications/lib/notifications.css"; 
+import { useNavigate } from "react-router-dom";
 
 
 function EnviarMailRecuperacion() {
@@ -9,7 +12,8 @@ function EnviarMailRecuperacion() {
     const [email, setEmail] = useState('');
     const [emailValido,setEmailvalido] = useState(true);
     const [selectedOption, setSelectedOption] = useState('usuario');
-  
+    
+    const navigate =useNavigate();
 
     //validando email
      //validador de mail con regex
@@ -26,12 +30,23 @@ function EnviarMailRecuperacion() {
     };
     
     //onSubmit
-    const handleSubmit = e =>{
+    const handleSubmit = async (e)=>{
         e.preventDefault();
-        // console.log('opcion seleccionada',selectedOption);
-        // console.log('email',email);
-        // 1. Crear Action
-        // 2. Tomar respuesta
+
+        let respuestaPasswordOlvidado = await passwordOlvidado({email:email,select:selectedOption})
+       
+        if(!respuestaPasswordOlvidado?.token){
+            
+            NotificationManager.error(`${respuestaPasswordOlvidado.message}`, "¡Atención!", 3000);
+            
+            
+        }else{
+            NotificationManager.success(`Chequea tu correo!`,"Enhorabuena!", 5000);
+            NotificationManager.success(`Seras dirigido a Home`,'', 2000);
+            setTimeout(() => {
+                navigate('/')
+            }, 4000);
+        }
         //3. Usar la respuesta para dar un mensaje
         //4. Mandar TOKEN a localStorage
         //5. redirigir a otro componente para recuperar contraseña
@@ -65,6 +80,7 @@ function EnviarMailRecuperacion() {
              <button onClick={handleSubmit} disabled={!emailValido || !email} >Enviar</button>
           </div>
         </form>
+        <NotificationContainer />
       </div>
     );
 }
