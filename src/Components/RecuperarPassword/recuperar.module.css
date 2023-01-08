@@ -60,6 +60,11 @@
     background-color: #aa2aff;
   }
 
+
+   
+  .submit button:disabled {
+    background-color: gray !important;
+  }
   @media screen and (max-width: 620px) {
     
     .formRecovery {
