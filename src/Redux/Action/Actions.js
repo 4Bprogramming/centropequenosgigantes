@@ -225,3 +225,13 @@ export function horariosTurnosCreados(payload) {
 
 
     //RESET-PASSWORD
+   export async function resetPassword(body,token){
+    console.log('esto llega a la action--->',body,token)
+    axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+    try {
+      let respuestaResetPassword = await axios.post(`${BASE_URL}/resetPassword`,body)
+      return respuestaResetPassword.data;
+    } catch (e) {
+      return e.response.data;
+    }
+   }

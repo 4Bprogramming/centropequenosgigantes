@@ -15,6 +15,8 @@ function EnviarMailRecuperacion() {
     const [selectedOption, setSelectedOption] = useState('usuario');
      //TOKEN --> se alamcena en el Navegador
      const [token,setToken] = useLocalStorage("token","");
+     //almaceno en el navegador el SELECT y EL EMAIL tambien. Son necesarios para el RESET
+     const [usuarioReset,setUsuarioReset]=useLocalStorage("usuarioReset",{})
     
     const navigate =useNavigate();
 
@@ -48,6 +50,7 @@ function EnviarMailRecuperacion() {
             NotificationManager.success(`Seras dirigido a Home`,'', 2000);
             //seteamos token en LS
             setToken(respuestaPasswordOlvidado.token)
+            setUsuarioReset({email:email,select:selectedOption})
             setTimeout(() => {
                 navigate('/')
             }, 4000);
