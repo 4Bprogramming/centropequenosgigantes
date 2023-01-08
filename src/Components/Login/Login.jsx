@@ -97,7 +97,12 @@ function Login() {
 
         <div className={styles.footer}>
           <button onClick={handleSubmit} disabled={!loginData.email || !loginData.password ? true : false}>Inicia Sesión</button>
-
+          {/* Si no recuerda contraseña */}
+          <div style={{width:"170px"}}>
+            <Link to="/forgoten-password">
+              ¿Olvido su contraseña?
+            </Link>
+          </div>
           <p>
             ¿No Tienes cuenta?{" "}
             <span>
@@ -113,15 +118,4 @@ function Login() {
 
 export default Login;
 
-// codigo que se puede reutilizar con google
-{
-  /* <Link to='/user' >
-          <button style={{backgroundColor:'blue'}} 
-          variant="info"
-          size="sm"
-          type="submit"
-          onClick={() => signInWithPopup(auth, googleProvider)}>
-            Inicia con Google
-          </button>
-          </Link> */
-}
+

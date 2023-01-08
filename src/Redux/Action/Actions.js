@@ -164,7 +164,7 @@ export function horariosTurnosCreados(payload) {
     return async function (dispatch) {
         try {
           var json = await axios.post(`${BASE_URL}/historia`, payload);
-          console.log("recibo en action historia posteada==>", json.data);
+          // console.log("recibo en action historia posteada==>", json.data);
          
           return dispatch({
             type: POST_HISTORIA,
@@ -181,18 +181,18 @@ export function horariosTurnosCreados(payload) {
     }
     
     //REGISTER
-    export function registerAction(regirsterData){
+    export function registerAction(resgisterData){
      return async function (dispatch){
       try {
-        const dbResponse = await axios.post(`${BASE_URL}/usuarios`,regirsterData);
-        console.log('resgister devuelve esto-->',dbResponse)
+        const dbResponse = await axios.post(`${BASE_URL}/usuarios`,resgisterData);
+        // console.log('resgister devuelve esto-->',dbResponse)
         return dispatch({
           type: REGISTER,
           payload:dbResponse.data
         })
 
       } catch (e) {
-         console.log('error en el register****>',e.response.data)
+        //  console.log('error en el register****>',e.response.data)
         return dispatch({
           type:REGISTER,
           payload: e.response.data 
@@ -211,3 +211,27 @@ export function horariosTurnosCreados(payload) {
         return e.response.data.message;
       }
     }
+
+    //RECUPERAR PASSWORD
+    export async function passwordOlvidado(body){
+    
+      try {
+        let respuestaPasswordOlvidado = await axios.post(`${BASE_URL}/password-olvidado`,body);
+        return respuestaPasswordOlvidado.data
+      } catch (e) {
+        return e.response.data;
+      }
+    }
+
+
+    //RESET-PASSWORD
+   export async function resetPassword(body,token){
+    console.log('esto llega a la action--->',body,token)
+    axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+    try {
+      let respuestaResetPassword = await axios.post(`${BASE_URL}/resetPassword`,body)
+      return respuestaResetPassword.data;
+    } catch (e) {
+      return e.response.data;
+    }
+   }
