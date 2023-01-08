@@ -33,6 +33,7 @@ import Profesional from "./Components/Profile/Profesional/Profesional";
 import DetalleDeProfesional from "./Components/DetalleDelProfesional/DetalleDeProfesional";
 import AñadirHistoriaClinica from "./Components/Profile/HistoriaClinica/AñadirHistoriaClinica";
 import EnviarMailRecuperacion from "./Components/RecuperarPassword/EnviarMailRecuperacion";
+import ResetPassword from "./Components/ResetPassword/ResetPassword";
 // import AñadirHistoria from "./Components/Profile/HistoriaClinica/AñadirHistoria/AñadirHistoria";
 // import TodosTurnos from "./Components/Profile/Admin/AdminComponents/TodosLosTurnos/TodosTurnos";
 
@@ -97,6 +98,7 @@ function App() {
         <Route exact path="/familia" element={<TerapiaFamiliar />} />
         <Route exact path="/psicomotricidad" element={<Psicomotricidad />} />
         <Route exact path="/forgoten-password" element={<EnviarMailRecuperacion/>}/>
+        <Route exact path="/reset-password" element={<ResetPassword/>}/>
         <Route
           exact
           path="/estimulacion_temprana"

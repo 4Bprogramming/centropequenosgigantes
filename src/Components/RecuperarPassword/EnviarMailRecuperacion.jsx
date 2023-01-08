@@ -5,6 +5,7 @@ import { passwordOlvidado } from '../../Redux/Action/Actions';
 import {NotificationContainer,NotificationManager,} from "react-notifications";
 import "react-notifications/lib/notifications.css"; 
 import { useNavigate } from "react-router-dom";
+import { useLocalStorage } from '../../customsHooks/useLocalStorage';
 
 
 function EnviarMailRecuperacion() {
@@ -12,6 +13,8 @@ function EnviarMailRecuperacion() {
     const [email, setEmail] = useState('');
     const [emailValido,setEmailvalido] = useState(true);
     const [selectedOption, setSelectedOption] = useState('usuario');
+     //TOKEN --> se alamcena en el Navegador
+     const [token,setToken] = useLocalStorage("token","");
     
     const navigate =useNavigate();
 
@@ -43,13 +46,14 @@ function EnviarMailRecuperacion() {
         }else{
             NotificationManager.success(`Chequea tu correo!`,"Enhorabuena!", 5000);
             NotificationManager.success(`Seras dirigido a Home`,'', 2000);
+            //seteamos token en LS
+            setToken(respuestaPasswordOlvidado.token)
             setTimeout(() => {
                 navigate('/')
             }, 4000);
         }
-        //3. Usar la respuesta para dar un mensaje
-        //4. Mandar TOKEN a localStorage
-        //5. redirigir a otro componente para recuperar contraseña
+      
+       
     }
     
 
