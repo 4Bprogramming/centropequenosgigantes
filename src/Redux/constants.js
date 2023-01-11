@@ -9,6 +9,7 @@ export const MESSAGE= 'message'
 export const POST_ADMIN= 'post_admin'
 export const HORAS_CREADAS='horas_creadas'
 export const GET_PROFESIONAL_ID = 'GET_PROFESIONAL_ID'
+export const RESERVA_TURNO_ADMIN = 'reserva_turno_admin'
 export const REGISTER = 'REGISTER'
 
  

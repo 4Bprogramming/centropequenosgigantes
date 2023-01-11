@@ -50,7 +50,7 @@ function AddProfessional(props) {
     // console.log("Options selections======>", selection);
     // console.log('Options selections2', selection.toString().split(' ,'));
   };
-console.log('post-especialidad==>',post.especialidad);
+// console.log('post-especialidad==>',post.especialidad);
   // // ===================HANDLE IMAGE===============================================
 
   const handleImageId = async (e) => {
@@ -117,6 +117,7 @@ console.log('post-especialidad==>',post.especialidad);
     if (Object.keys(error).length === 0) {
       try {
         // console.log('entre en el try del submit');
+        // console.log('IMAGEN===>', newProfesional.imagenProfesional);
        let doc= await postProfesionales(newProfesional,props.token)
         // setShow(true);
        

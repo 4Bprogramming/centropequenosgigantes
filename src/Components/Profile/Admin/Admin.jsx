@@ -1,27 +1,30 @@
-import React, { useEffect, useState } from "react";
-import AddProfessional from "./AdminComponents/AddProfessional/AddProfessional";
-import TodosTurnos from "./AdminComponents/TodosLosTurnos/TodosTurnos";
-import ReservaTurnos from "./AdminComponents/ReservaDeTurnos/ReservaTurnos";
-import TurnosPendientes from "./AdminComponents/TurnosPendientes/TurnosPendientes";
-import TurnosDisponibles from "./AdminComponents/TurnosDisponibles/TurnosDisponibles";
-import TurnosCancelados from "./AdminComponents/TurnosCancelados/TurnosCancelados";
-import styles from "./Admin.module.css";
-import TodosProfesionales from "./AdminComponents/TodosLosProfesionales/TodosLosProfesionales";
-import { getProfesionales, getTurnos } from "../../../Redux/Action/Actions";
-import { useDispatch } from "react-redux";
-import CrearTurnos from "./AdminComponents/CrearTurnos/CrearTurnos";
+import React, { useEffect, useState } from 'react'
+import AddProfessional from './AdminComponents/AddProfessional/AddProfessional';
+import TodosTurnos from './AdminComponents/TodosLosTurnos/TodosTurnos';
+import ReservaTurnos from './AdminComponents/ReservaDeTurnos/ReservaTurnos';
+import TurnosPendientes from './AdminComponents/TurnosPendientes/TurnosPendientes';
+import TurnosDisponibles from './AdminComponents/TurnosDisponibles/TurnosDisponibles';
+import TurnosCancelados from './AdminComponents/TurnosCancelados/TurnosCancelados';
+import styles from './Admin.module.css';
+import TodosProfesionales from './AdminComponents/TodosLosProfesionales/TodosLosProfesionales';
+import { getProfesionales, getTurnos, getUsuarios } from '../../../Redux/Action/Actions';
+import { useDispatch } from 'react-redux';
+import CrearTurnos from './AdminComponents/CrearTurnos/CrearTurnos';
 import GifDeEspera from "../../GifsDeEspera/GifDeEspera";
 import adminGif from "../../../assets/gifAdmin.gif";
-
-function Admin() {
-  const token = JSON.parse(window.localStorage.getItem("token"));
+ 
+function Admin() { 
+  const token= JSON.parse(window.localStorage.getItem('token'))
   // console.log('admin token', token);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProfesionales(token));
-    dispatch(getTurnos(token));
-  }, []);
-  const [select, setSelect] = useState("");
+  const dispatch=useDispatch()
+  useEffect(()=>{
+    dispatch(getProfesionales(token))
+    dispatch(getTurnos(token))
+    dispatch(getUsuarios(token))
+  },[]) 
+    const [select, setSelect]=useState("");
+
+
 
   const handleClick = (value) => {
     setSelect(value);

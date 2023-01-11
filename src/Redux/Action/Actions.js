@@ -8,6 +8,8 @@ import {
   HORAS_CREADAS,
   POST_TURNOS,
   POST_HISTORIA,
+  RESERVA_TURNO_ADMIN,
+  GET_USUARIOS,
   REGISTER
 } from "../constants";
 
@@ -38,7 +40,10 @@ return async function(dispatch){
     return res;
     // return dispatch({type:MESSAGE, payload: res.data})
   } catch (e) {
-    console.log("error", e.response.data.message);
+    return dispatch({
+      type: MESSAGE,
+      payload: e.response.data,
+    });
   }
 
 }
@@ -55,7 +60,10 @@ export  function deleteProfesional(email, body) {
           // console.log("res delete", res);
           return res.data.message;
         } catch (error) {
-          console.log(error);
+          return dispatch({
+            type: MESSAGE,
+            payload: error.response.data,
+          });
         }
         
       }
@@ -73,10 +81,13 @@ export  function deleteProfesional(email, body) {
           
           return dispatch({type:GET_PROFESIONALES, payload:res.data});
           
-        } catch (e) {
+        } catch (error) {
           // console.log('error getPRofesionales===>', e);
           
-          return dispatch({type:GET_PROFESIONALES, payload:e.response.data})
+          return dispatch({
+            type: MESSAGE,
+            payload: error.response.data,
+          });
         }        
 }
 }
@@ -94,9 +105,9 @@ export function getProfesionaPorId(idProfesional, token) {
         payload:res.data
       })
     } catch (e) {
-      return dispatch({ 
-        type: GET_PROFESIONAL_ID, 
-        payload: e.response.data 
+      return dispatch({
+        type: MESSAGE,
+        payload: e.response.data,
       });
     }
   };
@@ -110,7 +121,27 @@ export function getTurnos(token) {
       // console.log('respuesta get turnos', res);
       return dispatch({ type: GET_TURNOS, payload: res.data });
     } catch (error) {
-      console.log(error);
+      return dispatch({
+        type: MESSAGE,
+        payload: error.response.data,
+      });
+    }
+  };
+}
+//modificar Turnos
+export function modificarTurnos(payload,token) {
+  axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+  return async function (dispatch) {
+    try {
+      // console.log('payload reserva==>>>', payload);
+      let res = await axios.put(`${BASE_URL}/turnos`, payload);
+      // console.log('respuesta modificar turnos', res);
+      return dispatch({ type: RESERVA_TURNO_ADMIN, payload: res.data });
+    } catch (error) {
+      return dispatch({
+        type: MESSAGE,
+        payload: error.response.data,
+      });
     }
   };
 }
@@ -120,7 +151,7 @@ export function horariosTurnosCreados(payload) {
   return async function (dispatch) {
       try {
         var json = await axios.post(`${BASE_URL}/turnos/horas`, payload);
-        console.log("recibo en action==>", json.data);
+        // console.log("recibo en action==>", json.data);
         return dispatch({
           type: HORAS_CREADAS,
           payload: json.data,
@@ -128,8 +159,8 @@ export function horariosTurnosCreados(payload) {
       } catch (error) {
         // console.log("no recibo en action por este error==>", error);
         return dispatch({
-          type: HORAS_CREADAS,
-          payload: json.data,
+          type: MESSAGE,
+          payload: error.response.data,
         });
       }
     };  
@@ -138,7 +169,7 @@ export function horariosTurnosCreados(payload) {
   //Guardar turnos en base de Datos
   export function subirTurnos(payload,token){
     axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
-    console.log('payload====>', payload); 
+    // console.log('payload====>', payload); 
     return async function (dispatch) {
         try {
           var json = await axios.post(`${BASE_URL}/turnos`, payload);
@@ -149,10 +180,10 @@ export function horariosTurnosCreados(payload) {
             payload: json.data,
           });
         } catch (error) {
-          // console.log("no recibo en action por este error==>", error);
+          // console.log("no recibo en action por este error==>", error.response.data);
           return dispatch({
-            type: POST_TURNOS,
-            payload: json.data,
+            type: MESSAGE,
+            payload: error.response.data,
           });
         }
       }
@@ -173,8 +204,8 @@ export function horariosTurnosCreados(payload) {
         } catch (error) {
           // console.log("no recibo en action por este error de historia==>", error);
           return dispatch({
-            type: POST_HISTORIA,
-            payload: json.data,
+            type: MESSAGE,
+            payload: error.response.data,
           });
         }
       }
@@ -212,6 +243,23 @@ export function horariosTurnosCreados(payload) {
       }
     }
 
+    //USUARIOS
+    export function getUsuarios(token){
+      axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+      // console.log('ENTRE A LA ACTIONS USUARIOS');
+      return async function (dispatch) {
+        try {
+          let res = await axios.get(`${BASE_URL}/usuarios`);
+          // console.log('respuesta get usuarios', res);
+          return dispatch({ type: GET_USUARIOS, payload: res.data });
+        } catch (error) {
+          return dispatch({
+            type: MESSAGE,
+            payload: error.response.data,
+          });
+        }
+      };
+    }
     //RECUPERAR PASSWORD
     export async function passwordOlvidado(body){
     

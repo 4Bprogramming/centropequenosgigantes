@@ -69,8 +69,8 @@ function TableTurnos({ data, columns, detail, title,token, estado }) {
         dato.especialidad.toLowerCase().includes(filter.toLocaleLowerCase())         
     );
   }
-  console.log('dataFiltered', dataFiltered)
-  console.log('DATAAAA===>', data)
+  // console.log('dataFiltered', dataFiltered)
+  // console.log('DATAAAA===>', data)
   return (
     <>
       <input

@@ -34,6 +34,7 @@ export function validate(input) {
   //   errors.matrícula = "Falta matrícula";
   // }
   if (input.especialidad?.length < 1) {
+    console.log('input especialidad en error==>', input.especialidad);
     errors.especialidad = "Agregue una o más especialidades por favor";
   }
   return errors;

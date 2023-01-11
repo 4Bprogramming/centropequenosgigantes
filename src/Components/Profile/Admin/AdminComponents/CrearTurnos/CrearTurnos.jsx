@@ -173,6 +173,7 @@ function CrearTurnos({ token }) {
         );
       }
     } catch (error) {
+      console.log('Error', message);
       NotificationManager.error("Error", "ATENCION!", 3000);
       // <ModalErrors error={'no se pudieron crear los turnos'}/>
     }

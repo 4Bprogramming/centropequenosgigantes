@@ -8,6 +8,7 @@ import InputEmailPaciente from './InputEmailPaciente';
 
 function ModalReserva({body, title, handlePago, editFormInput, optionsDefault,  handleOnChange, handleImageId,handleSelect, handleSubmit, show, onHide, profesionalData, onClick}) {
   console.log('BODY MODAL====>>>>',body);
+  
   return (
     <>
     <Modal show={show} onHide={onHide}  backdrop="static"
@@ -17,9 +18,6 @@ function ModalReserva({body, title, handlePago, editFormInput, optionsDefault,  
     </Modal.Header>
     <Modal.Body>
     <BodyModal body={body} />
-    <SelectFormaPago handlePago={handlePago}/>
-    <InputValorPago handlePago={handlePago}/>
-    <InputEmailPaciente  handlePago={handlePago}/>
     </Modal.Body>  
     <Modal.Footer>
       <Button variant="secondary" onClick={onHide}>

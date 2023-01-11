@@ -20,10 +20,12 @@ const firebaseApp = initializeApp(firebaseConfig);
 export const storage = getStorage(app)
 
 export async function uploadFile (file){
+  // console.log('entre en UPÑOADFILE');
   const storageRef = ref(storage , v4()) 
+  // console.log('STARAGErEF==>', storageRef);
   await uploadBytes(storageRef , file)
   const url = await getDownloadURL(storageRef)
-  console.log('funcion uoloadFiles URL', url);
+  // console.log('funcion uoloadFiles URL', url);
   return url
 }
 
