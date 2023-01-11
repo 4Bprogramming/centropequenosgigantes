@@ -4,7 +4,7 @@ import SelectFecha from "./SelectFecha";
 import styles from "./RerservaTurno.module.css";
 import ModalReserva from "./ModalReservaTurno/ModalReserva";
 import SelectFecha2 from "./SelectFechaMUI";
-import ModalPagoReserva from "../../../UsuarioPaciente/ReservaDeTurnos/ModalPAgoReserva";
+import ModalPagoReserva from "../../../UsuarioPaciente/ReservaDeTurnos/ModalPagoReserva";
 
 function ReservaForm(props) {
 
