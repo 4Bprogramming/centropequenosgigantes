@@ -4,6 +4,7 @@ import SelectFecha from "./SelectFecha";
 import styles from "./RerservaTurno.module.css";
 import ModalReserva from "./ModalReservaTurno/ModalReserva";
 import SelectFecha2 from "./SelectFechaMUI";
+import ModalPagoReserva from "../../../UsuarioPaciente/ReservaDeTurnos/ModalPagoReserva";
 
 function ReservaForm(props) {
 
@@ -49,6 +50,19 @@ function ReservaForm(props) {
           }
         </div>
       )}
+      {
+        props.rol==='usuario' && 
+        <ModalPagoReserva 
+        body={props.eleccion}
+      handleSubmit={props.handleSubmit}
+      show={props.show}
+      title={"Desea Reservar el siguiente turno:"}
+      type={"submit"}
+      titleBotton={"Guardar"}
+      onHide={props.onHide}
+      handlePago={props.handlePago}
+        />
+      }
       <ModalReserva
       body={props.eleccion}
       handleSubmit={props.handleSubmit}

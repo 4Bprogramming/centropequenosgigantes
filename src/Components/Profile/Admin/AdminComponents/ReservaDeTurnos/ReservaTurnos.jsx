@@ -10,7 +10,7 @@ import {
 } from "react-notifications";
 import "react-notifications/lib/notifications.css"; 
 
-function ReservaTurnos({token}) {
+function ReservaTurnos({token, rol}) {
   const dispatch = useDispatch();
   const profesionales = useSelector((state) => state.allProfessional);
   const usuarios = useSelector((state) => state.todosUsuarios);
@@ -146,6 +146,7 @@ function ReservaTurnos({token}) {
     eleccion={post.turnoElegido}
     handlePago={handlePago}
     diasConTurnos={filterDay}
+    rol={rol}
     />
     <NotificationContainer/>
     </>

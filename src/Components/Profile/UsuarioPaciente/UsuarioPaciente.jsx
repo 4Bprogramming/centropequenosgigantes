@@ -6,11 +6,13 @@ import CardsProfesionales from "../../CardsProfesionales/CardsProfesionales";
 import GifDeEspera from "../../GifsDeEspera/GifDeEspera";
 import styles from "./UsuarioPaciente.module.css";
 import snoopy from "../../../assets/snoopyDoc.gif";
+import ReservaTurnos from "../Admin/AdminComponents/ReservaDeTurnos/ReservaTurnos";
 
 function UsuarioPaciente() {
   //traigo data del Local Storage
   const data = localStorage.getItem("usuarioDB");
   const token = localStorage.getItem("token");
+  const rol = localStorage.getItem("rol");
   const { celular, email, fullName } = JSON.parse(data);
   const tokenSinComillas = JSON.parse(token);
 
@@ -53,6 +55,13 @@ function UsuarioPaciente() {
             >
               Lista Profesionales
             </div>
+            <div
+              className={styles.options}
+              onClick={() => handleClick("reservarTurno")}
+            >
+              Reservar Turnos
+            </div>
+
           </div>
         </div>
 
@@ -69,6 +78,8 @@ function UsuarioPaciente() {
 
           {/* opciones elegidas */}
           {select === "todosProfesionales" && <CardsProfesionales />}
+          {select === "reservarTurno" && <ReservaTurnos rol={rol} token={token}/>}
+
         </div>
       </div>
     </>
