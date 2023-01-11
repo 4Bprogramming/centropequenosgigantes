@@ -10,7 +10,8 @@ import TodosProfesionales from './AdminComponents/TodosLosProfesionales/TodosLos
 import { getProfesionales, getTurnos, getUsuarios } from '../../../Redux/Action/Actions';
 import { useDispatch } from 'react-redux';
 import CrearTurnos from './AdminComponents/CrearTurnos/CrearTurnos';
- 
+import GifDeEspera from "../../GifsDeEspera/GifDeEspera";
+import adminGif from "../../../assets/gifAdmin.gif";
 function Admin() { 
   const token= JSON.parse(window.localStorage.getItem('token'))
   // console.log('admin token', token);

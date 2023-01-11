@@ -5,8 +5,9 @@ import BodyModal from './BodyModal';
 import SelectFormaPago from './SelectFormaPago/SelectFormaPago';
 import InputValorPago from './InputValorPago';
 import InputEmailPaciente from './InputEmailPaciente';
+import Pasarela from './Pasarela';
 
-function ModalReserva({body, title, handlePago, editFormInput, optionsDefault,  handleOnChange, handleImageId,handleSelect, handleSubmit, show, onHide, profesionalData, onClick}) {
+function ModalPagoReserva({body, title, handlePago, editFormInput, optionsDefault,  handleOnChange, handleImageId,handleSelect, handleSubmit, show, onHide, profesionalData, onClick}) {
   console.log('BODY MODAL====>>>>',body);
   
   return (
@@ -18,6 +19,7 @@ function ModalReserva({body, title, handlePago, editFormInput, optionsDefault,  
     </Modal.Header>
     <Modal.Body>
     <BodyModal body={body} />
+    <Pasarela/>
     </Modal.Body>  
     <Modal.Footer>
       <Button variant="secondary" onClick={onHide}>
@@ -34,4 +36,4 @@ function ModalReserva({body, title, handlePago, editFormInput, optionsDefault,  
   )
 }
 
-export default ModalReserva;
+export default ModalPagoReserva;

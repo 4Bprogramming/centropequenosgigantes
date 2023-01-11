@@ -17,6 +17,7 @@ function Login() {
 
   //usuario traido desde la DB
   const [usuarioDB,setUsuarioDB] = useLocalStorage("usuarioDB",{});
+  const [rol, setRol]= useLocalStorage("rol",'');
 
   //datos de la form
   const [loginData, setLoginData] = useState({
@@ -32,6 +33,10 @@ function Login() {
       ...loginData,
       [e.target.name]: e.target.value,
     });
+    if(e.target.name==='select'){
+     const value=e.target.value
+      setRol(value)
+    }
   };
 
 
