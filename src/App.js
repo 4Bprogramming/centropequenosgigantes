@@ -21,20 +21,21 @@ import TerapiaLenguaje from "./Components/TerapiaLenguaje/TerapiaLenguaje";
 import TerapiAprendizaje from "./Components/TerapiAprendizaje/TerapiAprendizaje";
 import AsesoramientoPsicologico from "./Components/AsesoramientoPsicologico/AsesoramientoPsicologico";
 import TerapiaOcupacional from "./Components/TerapiaOcupacional/TerapiaOcupacional";
-import ModificacionConducta from './Components/ModificacionConducta/ModificacionConducta'
-import TerapiaFisica from './Components/TerapiaFisica/TerapiaFisica'
-import IntegracionSensorial from './Components/IntegracionSensorial/IntegracionSensorial'
-import TerapiaFamiliar from './Components/TerapiaFamiliar/TerapiaFamiliar'
-import Psicomotricidad from './Components/Psicomotricidad/Psicomotricidad'
-import EstimulacionTemprana from './Components/EstimulacionTemprana/EstimulacionTemprana'
+import ModificacionConducta from "./Components/ModificacionConducta/ModificacionConducta";
+import TerapiaFisica from "./Components/TerapiaFisica/TerapiaFisica";
+import IntegracionSensorial from "./Components/IntegracionSensorial/IntegracionSensorial";
+import TerapiaFamiliar from "./Components/TerapiaFamiliar/TerapiaFamiliar";
+import Psicomotricidad from "./Components/Psicomotricidad/Psicomotricidad";
+import EstimulacionTemprana from "./Components/EstimulacionTemprana/EstimulacionTemprana";
 import Footer2 from "./Components/Footer/Footer2";
 import UsuarioPaciente from "./Components/Profile/UsuarioPaciente/UsuarioPaciente";
 import Profesional from "./Components/Profile/Profesional/Profesional";
 import DetalleDeProfesional from "./Components/DetalleDelProfesional/DetalleDeProfesional";
 import AñadirHistoriaClinica from "./Components/Profile/HistoriaClinica/AñadirHistoriaClinica";
+import EnviarMailRecuperacion from "./Components/RecuperarPassword/EnviarMailRecuperacion";
+import ResetPassword from "./Components/ResetPassword/ResetPassword";
 // import AñadirHistoria from "./Components/Profile/HistoriaClinica/AñadirHistoria/AñadirHistoria";
 // import TodosTurnos from "./Components/Profile/Admin/AdminComponents/TodosLosTurnos/TodosTurnos";
-
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -49,7 +50,6 @@ function App() {
 
   return (
     <div className="App">
-  
       <NavScroll />
       <Routes>
         <Route exact path="/" element={<Home />} />
@@ -60,24 +60,50 @@ function App() {
         <Route exact path="/servicios" element={<Services />} />
         <Route exact path="/reserva" element={<Services />} />
         <Route exact path="/contacto" element={<Contact />} />
-        <Route exact path="/historia" element={<AñadirHistoriaClinica fecha={'5-5-2022'} hora={'12:30'} usuarioEmail={'benja@gmail.com'} documento={'58963254'} paciente={'Maria de los Rosarios'} />} /> 
- 
-<Route exact path="/administrador" element={<Admin />} />
-<Route exact path="/profesional" element={<Profesional />} />
-<Route exact path="/detalleProfesional/:idProfesional" element={<DetalleDeProfesional />} />
-<Route exact path="/usuario" element={<UsuarioPaciente />} />
-             
+        <Route
+          exact
+          path="/historia"
+          element={
+            <AñadirHistoriaClinica
+              fecha={"5-5-2022"}
+              hora={"12:30"}
+              usuarioEmail={"benja@gmail.com"}
+              documento={"58963254"}
+              paciente={"Maria de los Rosarios"}
+            />
+          }
+        />
+
+        <Route exact path="/administrador" element={<Admin />} />
+        <Route exact path="/profesional" element={<Profesional />} />
+        <Route
+          exact
+          path="/detalleProfesional/:idProfesional"
+          element={<DetalleDeProfesional />}
+        />
+        <Route exact path="/usuario" element={<UsuarioPaciente />} />
+
         <Route exact path="/psicologia" element={<Psicologia />} />
         <Route exact path="/lenguaje" element={<TerapiaLenguaje />} />
         <Route exact path="/aprendizaje" element={<TerapiAprendizaje />} />
-        <Route exact path="/asesoramiento" element={<AsesoramientoPsicologico />} />
+        <Route
+          exact
+          path="/asesoramiento"
+          element={<AsesoramientoPsicologico />}
+        />
         <Route exact path="/ocupacional" element={<TerapiaOcupacional />} />
         <Route exact path="/conducta" element={<ModificacionConducta />} />
         <Route exact path="/fisica" element={<TerapiaFisica />} />
         <Route exact path="/sensorial" element={<IntegracionSensorial />} />
         <Route exact path="/familia" element={<TerapiaFamiliar />} />
         <Route exact path="/psicomotricidad" element={<Psicomotricidad />} />
-        <Route exact path="/estimulacion_temprana" element={<EstimulacionTemprana/>} />
+        <Route exact path="/forgoten-password" element={<EnviarMailRecuperacion/>}/>
+        <Route exact path="/reset-password" element={<ResetPassword/>}/>
+        <Route
+          exact
+          path="/estimulacion_temprana"
+          element={<EstimulacionTemprana />}
+        />
       </Routes>
       <Footer2 />
     </div>

@@ -64,7 +64,7 @@
   }
 }
 
-@media screen and (max-width: 762px) {
+@media screen and (max-width: 740px) {
   .listNavBar {
     display: flex;
     flex-direction: column;
@@ -76,13 +76,20 @@
   .buttonContact {
     margin-left: -2rem;
   }
+  .reservarCitaBoton{
+    margin-top: 1rem; 
+  }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
   .navbar-nav {
     margin-left: none !important;
   }
   .LogoNavBar {
     width: 85px;
   }
+  .reservarCitaBoton{
+    margin-top: 1rem; 
+  }
+  
   
 }

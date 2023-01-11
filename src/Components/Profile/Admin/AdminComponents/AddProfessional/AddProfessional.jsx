@@ -37,7 +37,7 @@ function AddProfessional(props) {
   const token= JSON.parse(window.localStorage.getItem('token'))
   // console.log('token', token)
   async function Actualizar(token){
-    console.log('entro actualizar');
+    // console.log('entro actualizar');
    dispatch(getProfesionales(token));
    dispatch(getTurnos(token));
 }

@@ -6,6 +6,7 @@ import {
   GET_TURNOS,
   POST_HISTORIA,
   GET_USUARIOS,
+  REGISTER
 } from "../constants";
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   turnosCreados: [],
   todosTurnos: [],
   todosUsuarios:[],
+  usuarioRegistrado:{}
 };  
 
 export const rootReducer = (state = initialState, action) => {
@@ -108,6 +110,16 @@ export const rootReducer = (state = initialState, action) => {
           ...state,
           todosUsuarios: action.payload,
         }
-  }
+  
 
+
+        //usuario registrado
+        case REGISTER:
+          return{
+            ...state,
+            usuarioRegistrado:action.payload
+          }
+
+
+  }//LLAVE QUE CIERRA EL SWITCH
 };
