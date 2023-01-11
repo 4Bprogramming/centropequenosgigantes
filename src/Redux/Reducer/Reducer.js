@@ -5,6 +5,7 @@ import {
   GET_PROFESIONAL_ID,
   GET_TURNOS,
   POST_HISTORIA,
+  GET_USUARIOS,
 } from "../constants";
 
 const initialState = {
@@ -14,6 +15,7 @@ const initialState = {
   horasCreadasParaMostar: [],
   turnosCreados: [],
   todosTurnos: [],
+  todosUsuarios:[],
 };  
 
 export const rootReducer = (state = initialState, action) => {
@@ -100,6 +102,11 @@ export const rootReducer = (state = initialState, action) => {
         return{
           ...state,
           todosTurnos: action.payload,
+        }
+      case GET_USUARIOS:
+        return{
+          ...state,
+          todosUsuarios: action.payload,
         }
   }
 

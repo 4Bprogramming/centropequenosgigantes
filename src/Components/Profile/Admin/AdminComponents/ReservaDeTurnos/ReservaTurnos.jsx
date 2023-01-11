@@ -2,11 +2,21 @@ import React, { useState } from 'react'
 import ReservaForm from './ReservaForm';
 import { seleccionProfesional } from '../CrearTurnos/SelectMultipleEspecialidades/Controllers';
 import { useDispatch, useSelector } from 'react-redux';
+import { getTurnos, modificarTurnos } from '../../../../../Redux/Action/Actions';
+//Alert notifications
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import "react-notifications/lib/notifications.css"; 
 
-function ReservaTurnos() {
+function ReservaTurnos({token}) {
   const dispatch = useDispatch();
   const profesionales = useSelector((state) => state.allProfessional);
+  const usuarios = useSelector((state) => state.todosUsuarios);
   const turnosTodos=useSelector(state=>state.todosTurnos)
+  const filterDay=Array.from(turnosTodos.map(turnos=>turnos.date.split('-').reverse().join('-')))
+ console.log('FILTERdAY==>',filterDay);
   const turnosDisponibles=turnosTodos.filter(turno=>turno.estado==='disponible')
   const [habilitarCalendario, setHabilitarCalendario]=useState(false)
   const [cambioProfesional, setCambioProfesional]=useState(true)
@@ -19,6 +29,9 @@ function ReservaTurnos() {
     nombreProfesional: "",
     turnoElegido: [],
     horariosCreados: false,
+    formaPago:'',
+    valorPago:'',
+    emailPaciente:''
   });
     //FUNCION PARA CREAR {VALUE, LABEL} DEL SELECT DE PROFESIONALES
     const seleccionSelect = seleccionProfesional(profesionales);
@@ -52,11 +65,12 @@ function ReservaTurnos() {
       let value=e.target.value
       let miTurno= post.turnosMostrar.filter(turno=> turno.id===value)
       setPost({ ...post, turnoElegido:miTurno});
+      setShow(true)
     }
-    console.log('turno elegido===>',post.turnoElegido);
+    // console.log('turno elegido===>',post.turnoElegido);
     function handleChangeDate(e) {
-      // console.log('me llamaron');
-      let eleccion= `${e.day}-${e.month.number}-${e.year}`
+      console.log('me llamaron', e);
+      let eleccion= `${e.date()}-${e.month()+1}-${e.year()}`
         setPost({
           ...post,
           date: eleccion,
@@ -71,10 +85,50 @@ function ReservaTurnos() {
       // console.log('TURNOS DISPONIBLES', turnosDisponibles);
       // console.log('TurnosDiaElegido===>', TurnosDiaElegido);
     } 
+    function handlePago(e){
+      let name=e.target.name
+      let value= e.target.value
+      if(name==='formaPago'){
+        setPost({...post, formaPago:value})
+      }
+      if(name==='valor'){
+        // console.log('valor===>', typeof value);
+        setPost({...post, valorPago:value})
+      }
+      if(name==='email'){
+        setPost({...post, emailPaciente:value})   
+      }
+    }
+    function handleSubmit(e){
+      // console.log('turnoElegido',post.turnoElegido);
+      e.preventDefault()
+      if(post.turnoElegido.length>0 && post.formaPago!=='' && post.valorPago!=='' && post.emailPaciente!==''){
+        const existe=usuarios.filter(el=>el.email===post.emailPaciente)
+        if(existe.length<1){
+        return NotificationManager.error('email no registrado','ATENCION',5000)
+        }
+       
+        const turnoReservado={
+          id:post.turnoElegido[0].id,
+          formaPago:post.formaPago,
+          valor:post.valorPago,
+          estado:'pendiente',
+          email:post.emailPaciente
+        }
+        // console.log('SUBMIT ENVIADO==>>>', turnoReservado);
+         dispatch(modificarTurnos(turnoReservado, token))
+         dispatch(getTurnos(token))
+         NotificationManager.success('Turno Reservado','EXCELENTE',3000)
+         setShow(false)
+         handleClickChange()
+      }
+    }
+
     // console.log('turnos mostrar===>', post.turnosMostrar);
   return (
     <>
     <ReservaForm 
+    handleSubmit={handleSubmit}
     options={seleccionSelect}
     onChangeSelect={handleSelect}
     idProfesional={post.profesionalIdProfesional}
@@ -88,8 +142,12 @@ function ReservaTurnos() {
     show={show}
     turnos={post.turnosMostrar}
     onClick={handleClick}
+    onHide={() => setShow(false)}
+    eleccion={post.turnoElegido}
+    handlePago={handlePago}
+    diasConTurnos={filterDay}
     />
-    
+    <NotificationContainer/>
     </>
   )
 }

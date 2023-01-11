@@ -2,6 +2,8 @@ import React from "react";
 import SelectProfesionales from "../CrearTurnos/SelectMultipleEspecialidades/SelectProfesionales";
 import SelectFecha from "./SelectFecha";
 import styles from "./RerservaTurno.module.css";
+import ModalReserva from "./ModalReservaTurno/ModalReserva";
+import SelectFecha2 from "./SelectFechaMUI";
 
 function ReservaForm(props) {
 
@@ -31,7 +33,7 @@ function ReservaForm(props) {
       )}
       {props.habilitarCalendario && (
         <div>
-          <SelectFecha date={props.date} onChange={props.onChangeDate} />
+          <SelectFecha2 date={props.date} onChange={props.onChangeDate} diasConTurnos={props.diasConTurnos}/>
 
           <div className={styles.elegiTurno}>Elegir turnos</div>
           {props.turnos?.length > 0 &&
@@ -47,6 +49,16 @@ function ReservaForm(props) {
           }
         </div>
       )}
+      <ModalReserva
+      body={props.eleccion}
+      handleSubmit={props.handleSubmit}
+      show={props.show}
+      title={"Desea Reservar el siguiente turno:"}
+      type={"submit"}
+      titleBotton={"Guardar"}
+      onHide={props.onHide}
+      handlePago={props.handlePago}
+      />
     </div>
   );
 }

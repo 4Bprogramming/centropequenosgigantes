@@ -7,7 +7,7 @@ import TurnosDisponibles from './AdminComponents/TurnosDisponibles/TurnosDisponi
 import TurnosCancelados from './AdminComponents/TurnosCancelados/TurnosCancelados';
 import styles from './Admin.module.css';
 import TodosProfesionales from './AdminComponents/TodosLosProfesionales/TodosLosProfesionales';
-import { getProfesionales, getTurnos } from '../../../Redux/Action/Actions';
+import { getProfesionales, getTurnos, getUsuarios } from '../../../Redux/Action/Actions';
 import { useDispatch } from 'react-redux';
 import CrearTurnos from './AdminComponents/CrearTurnos/CrearTurnos';
  
@@ -18,6 +18,7 @@ function Admin() {
   useEffect(()=>{
     dispatch(getProfesionales(token))
     dispatch(getTurnos(token))
+    dispatch(getUsuarios(token))
   },[]) 
     const [select, setSelect]=useState("");
 
