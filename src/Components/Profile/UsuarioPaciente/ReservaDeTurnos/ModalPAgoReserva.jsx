@@ -1,10 +1,8 @@
 import React from 'react'
 import { Button } from 'react-bootstrap';
 import Modal from "react-bootstrap/Modal"
-import BodyModal from './BodyModal';
-import SelectFormaPago from './SelectFormaPago/SelectFormaPago';
-import InputValorPago from './InputValorPago';
-import InputEmailPaciente from './InputEmailPaciente';
+//import BodyModal from './BodyModal';
+
 import Pasarela from './Pasarela';
 
 function ModalPagoReserva({body, title, handlePago, editFormInput, optionsDefault,  handleOnChange, handleImageId,handleSelect, handleSubmit, show, onHide, profesionalData, onClick}) {
@@ -18,7 +16,7 @@ function ModalPagoReserva({body, title, handlePago, editFormInput, optionsDefaul
       <Modal.Title> {title} </Modal.Title>
     </Modal.Header>
     <Modal.Body>
-    <BodyModal body={body} />
+    {/* <BodyModal body={body} /> */}
     <Pasarela/>
     </Modal.Body>  
     <Modal.Footer>
