@@ -41,7 +41,9 @@ function CrearTurnos({ token }) {
   });
 
   //FUNCION PARA CREAR {VALUE, LABEL} DEL SELECT DE PROFESIONALES
-  const seleccionSelect = seleccionProfesional(profesionales);
+  const proFiltrado=profesionales?.filter(e=>e.active===true)
+  // console.log('profFiltrado', proFiltrado);
+  const seleccionSelect = seleccionProfesional(proFiltrado);
   ///////////======HANDLE SELECT PROFESIONAL/////////////
   const handleSelect = (seletedOptions) => {
     let seleccion = [];
