@@ -1,29 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState} from "react";
+import { useDispatch} from "react-redux";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import "./tabletest.css";
 import { TbEdit } from "react-icons/tb";
 import { RiDeleteBin6Line } from "react-icons/ri";
-// import EditModalProfesional from "../Admin/AdminComponents/Modals/EditProfesional/EditModalProfesional";
 import EditModalTurnoPendiente from "../Admin/AdminComponents/Modals/TurnosModals/EditModalTurnoPendiente";
 import DeleteTurnos from "../Admin/AdminComponents/Modals/TurnosModals/DeleteTurnos";
-// import { getProfesionales } from "../../../Redux/Action/Actions";
+
 
 function TableTurnos({ data, columns, detail, title,token, estado }) {
-
-  let dispatch= useDispatch()
-  useEffect(()=>{
-    // dispatch(getProfesionales(token))
-    // dispatch(getTurnos())
-  },[dispatch])
-
+ 
+ 
   //filter
-  const [filter, setFilter] = React.useState("");
+  const [filter, setFilter] = useState("");
 
   //cases from Redux (store)
-  // const cases = useSelector((state) => state.cases)
+ 
   const columns1 = columns?.map((el) => {
+    
     return el.text;
   });
   const columns2 = columns.map((el) => {
@@ -31,7 +26,7 @@ function TableTurnos({ data, columns, detail, title,token, estado }) {
 
       return el.dataField.split('.')
     }
-    // console.log('incluye punto?', el.dataField.includes('.'));
+    //console.log('incluye punto?', el.dataField.includes('.'));
     return el.dataField;
   });
   // console.log("columns1", columns1);
@@ -41,36 +36,36 @@ function TableTurnos({ data, columns, detail, title,token, estado }) {
   const [turnoData, setTurnoData] = React.useState([]);
 
   //modal state
-  const [showModal, setShowModal] = React.useState(false);
   const [showModalPendiente, setShowModalPendiente] = React.useState(false);
-  const [showModalDisponible, setShowModalDisponible] = React.useState(false);
   const [showModalD, setShowModalD] = React.useState(false);
+
   //when Edit button is clicked
   function showModalEdit(id) {
       setTurnoData(data.length > 0 && data.filter((el) => el.id === id));//son los peritos
       setShowModalPendiente(true);
   }
   function showModalDelete(id) {
-    // console.log('id==>', id);
+   
     setTurnoData(data.length > 0 && data.filter((el) => el.id === id));//son los peritos
     setShowModalD(true);
   }
 
   //Filter method
   let dataFiltered = [];
+
   if (!filter) {
     dataFiltered = data;
   } else {
+    
     dataFiltered = data.filter(
       (dato) =>
-        dato.fullName.toLowerCase().includes(filter.toLocaleLowerCase()) ||
-        dato.email.toLowerCase().includes(filter.toLocaleLowerCase()) ||
-        dato.celular.toLowerCase().includes(filter.toLocaleLowerCase()) ||
-        dato.especialidad.toLowerCase().includes(filter.toLocaleLowerCase())         
+        dato?.profesional?.fullName?.toLowerCase().includes(filter?.toLocaleLowerCase()) ||
+        dato?.date?.toLowerCase().includes(filter?.toLocaleLowerCase()) ||
+        dato?.usuarioEmail?.toLowerCase().includes(filter?.toLocaleLowerCase()) 
+             
     );
   }
-  // console.log('dataFiltered', dataFiltered)
-  // console.log('DATAAAA===>', data)
+  
   return (
     <>
       <input
@@ -110,8 +105,6 @@ function TableTurnos({ data, columns, detail, title,token, estado }) {
             <Tbody>
               {dataFiltered?.map(
                 (el) =>
-                  // Patente is a notnull field meaning that an empty register won't be allowed.
-
                   el.id && (  
                     <Tr>
                       {columns2.map((c) => {

@@ -14,18 +14,18 @@ import GifDeEspera from "../../GifsDeEspera/GifDeEspera";
 import adminGif from "../../../assets/gifAdmin.gif";
  
 function Admin() { 
-  const token= JSON.parse(window.localStorage.getItem('token'))
-  // console.log('admin token', token);
   const dispatch=useDispatch()
+
+ 
+  const token= JSON.parse(window.localStorage.getItem('token'));
+
   useEffect(()=>{
+    
     dispatch(getProfesionales(token))
     dispatch(getTurnos(token))
     dispatch(getUsuarios(token))
   },[]) 
-    const [select, setSelect]=useState("");
-
-
-
+  const [select, setSelect]=useState("");
   const handleClick = (value) => {
     setSelect(value);
   };

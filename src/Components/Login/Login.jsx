@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import InputControl from "../ImputControl/InputControl";
-import { loginAction } from "../../Redux/Action/Actions";
+import { loginAction, sesionActiva } from "../../Redux/Action/Actions";
 import { useLocalStorage } from "../../customsHooks/useLocalStorage";
 import { NotificationContainer,NotificationManager,} from "react-notifications";
+import { useDispatch} from "react-redux";
 import "react-notifications/lib/notifications.css";
 
 
 function Login() {
   const navigate = useNavigate();
- 
+  const dispatch = useDispatch();
 
   //TOKEN
   const [token,setToken] = useLocalStorage("token","");
@@ -59,6 +60,7 @@ function Login() {
       }
 
       setUsuarioDB(usuario);
+      dispatch(sesionActiva(respuestaDBLogin.token));
       navigate(`/${loginData.select}`)//me lleva al perfil en el cual me logueo segun el select.
 
     }else{

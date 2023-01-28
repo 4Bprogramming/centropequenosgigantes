@@ -1,3 +1,5 @@
+
+
 import {
   GET_PROFESIONALES,
   HORAS_CREADAS,
@@ -6,7 +8,8 @@ import {
   GET_TURNOS,
   POST_HISTORIA,
   GET_USUARIOS,
-  REGISTER
+  REGISTER,
+  SESIONACTIVA
 } from "../constants";
 
 const initialState = {
@@ -17,7 +20,8 @@ const initialState = {
   turnosCreados: [],
   todosTurnos: [],
   todosUsuarios:[],
-  usuarioRegistrado:{}
+  usuarioRegistrado:{},
+  sesionAbierta: ''
 };  
 
 export const rootReducer = (state = initialState, action) => {
@@ -120,6 +124,13 @@ export const rootReducer = (state = initialState, action) => {
             usuarioRegistrado:action.payload
           }
 
+       //sesion activa
+       case SESIONACTIVA:
+          
+          return {
+            ...state,
+            sesionAbierta: action.payload
+          }
 
   }//LLAVE QUE CIERRA EL SWITCH
 };
