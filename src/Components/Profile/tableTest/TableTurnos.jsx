@@ -11,7 +11,6 @@ import DeleteTurnos from "../Admin/AdminComponents/Modals/TurnosModals/DeleteTur
 
 function TableTurnos({ data, columns, detail, title,token, estado }) {
  
- console.log('todo el array de objetos--->', data)
  
   //filter
   const [filter, setFilter] = useState("");
