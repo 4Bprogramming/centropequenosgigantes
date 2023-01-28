@@ -18,14 +18,12 @@ function Admin() {
   // console.log('admin token', token);
   const dispatch=useDispatch()
   useEffect(()=>{
+    
     dispatch(getProfesionales(token))
     dispatch(getTurnos(token))
     dispatch(getUsuarios(token))
   },[]) 
-    const [select, setSelect]=useState("");
-
-
-
+  const [select, setSelect]=useState("");
   const handleClick = (value) => {
     setSelect(value);
   };

@@ -8,15 +8,40 @@ import styles from "./Navbar.module.css";
 import { CgProfile } from "react-icons/cg";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { useDispatch, useSelector } from "react-redux";
+import { sesionActiva } from "../../Redux/Action/Actions";
+import { useEffect } from "react";
+import { useState } from "react";
 
 function NavScroll() {
-  //funcion para que aparezca el OVERLAY
+ 
+  const dispatch = useDispatch();
+  const sesion = useSelector((state)=> state?.sesionAbierta)
+  const [sesionIniciada,setSesionIniciada] = useState('');
 
+  const token= JSON.parse(window.localStorage.getItem('token'))
+    
+  useEffect(() => {
+    
+    setSesionIniciada(sesion)
+  
+  }, [token])
+  
+
+
+  //funcion para que aparezca el OVERLAY
   const renderTooltip = (props) => (
+    
     <Tooltip id="button-tooltip" {...props}>
       Iniciar Sesión / Registrarse
     </Tooltip>
   );
+
+
+const logOut = ()=> {
+  dispatch(sesionActiva(''));
+  window.localStorage.clear();
+}
 
   return (
     <Navbar className={styles.navBarContainer} expand="lg">
@@ -48,6 +73,10 @@ function NavScroll() {
               <div className={styles.navBarLinks}>
                 <NavLink to="/contacto">CONTACTO</NavLink>
               </div>
+
+
+          {}
+              {/* Boton inicia / cierra sesion */}
               <div className={styles.navBarLinks}>
                 <OverlayTrigger
                   placement="top"
@@ -55,11 +84,20 @@ function NavScroll() {
                   overlay={renderTooltip}
                   style={{backgroundColor: 'red'}}
                 >
-                  <NavLink to="/login">
-                    <CgProfile color="#0d6efd" />
+                  {!sesionIniciada ? 
+                    <NavLink to="/login">
+                      <CgProfile color="#0d6efd" />
+                    </NavLink>
+                  : 
+                  <NavLink to="/">
+                    <div onClick={logOut}>CERRAR SESI&#211;N</div>
                   </NavLink>
+                  }
+                  
                 </OverlayTrigger>
               </div>
+
+
               <div className={styles.reservarCitaBoton}>
                 <NavLink className={styles.buttonContact} to="/reserva" exact>
                   Reserva tu cita
