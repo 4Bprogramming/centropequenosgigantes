@@ -87,7 +87,7 @@ function ReservaForm(props) {
           body={props.eleccion}
           handleSubmit={props.handleSubmit}
           show={props.show}
-          title={"Desea Reservar el siguiente turno:"}
+          title={"Reservar el siguiente turno:"}
           type={"submit"}
           titleBotton={"Guardar"}
           onHide={props.onHide}
@@ -98,7 +98,7 @@ function ReservaForm(props) {
         body={props.eleccion}
         handleSubmit={props.handleSubmit}
         show={props.show}
-        title={"Desea Reservar el siguiente turno:"}
+        title={"Reservar el siguiente turno:"}
         type={"submit"}
         titleBotton={"Guardar"}
         onHide={props.onHide}
