@@ -18,7 +18,6 @@ function ReservaTurnos({token, rol}) {
   const usuarios = useSelector((state) => state.todosUsuarios);
   const turnosTodos=useSelector(state=>state.todosTurnos)
   const filterDay=Array.from(turnosTodos.map(turnos=>turnos.date.split('-').reverse().join('-')))
-
   const turnosDisponibles=turnosTodos.filter(turno=>turno.estado==='disponible')
   const [habilitarCalendario, setHabilitarCalendario]=useState(false)
   const [cambioProfesional, setCambioProfesional]=useState(true)
@@ -97,7 +96,37 @@ function ReservaTurnos({token, rol}) {
       }
     }
     function handleSubmit(e){
-      
+      console.log('turnoElegido',post.turnoElegido);
+      console.log('e',e);
+      e.preventDefault()
+      console.log('post.turnoElegido.length===>', post.turnoElegido)
+      if(post.turnoElegido.length>0 && post.formaPago!=='' && post.valorPago!=='' && post.emailPaciente!==''){
+        const existe=usuarios.filter(el=>el.email===post.emailPaciente)
+        if(existe.length<1){
+        return NotificationManager.error('email no registrado','ATENCION',5000)
+        }
+       
+        const turnoReservado={
+          id:post.turnoElegido[0].id,
+          formaPago:post.formaPago,
+          valor:post.valorPago,
+          estado:'pendiente',
+          email:post.emailPaciente
+        }
+
+        dispatch(getTurnos(token))
+        console.log('SUBMIT ENVIADO==>>>', turnoReservado);
+         dispatch(modificarTurnos(turnoReservado, token))
+         NotificationManager.success('Turno Reservado','EXCELENTE',3000)
+         setShow(false)
+         handleClickChange()
+      }
+      else if(post.turnoElegido.length===0){
+        NotificationManager.error('Tiene que elegir un metodo de pago')
+      }
+    }
+    function handleSubmitUser(e){
+      // console.log('turnoElegido',post.turnoElegido);
       e.preventDefault()
       if(post.turnoElegido.length>0 && post.formaPago!=='' && post.valorPago!=='' && post.emailPaciente!==''){
         const existe=usuarios.filter(el=>el.email===post.emailPaciente)
@@ -125,25 +154,26 @@ function ReservaTurnos({token, rol}) {
   return (
     <>
     <ReservaForm 
-      handleSubmit={handleSubmit}
-      options={seleccionSelect}
-      onChangeSelect={handleSelect}
-      idProfesional={post.profesionalIdProfesional}
-      date={post.date}
-      onChangeDate={handleChangeDate}
-      habilitarCalendario={habilitarCalendario}
-      habilitarBoton={habilitarBoton}
-      cambioProfesional={cambioProfesional}
-      handleClickChange={handleClickChange}
-      nombreProfesional={post.nombreProfesional}
-      show={show}
-      turnos={post.turnosMostrar}
-      onClick={handleClick}
-      onHide={() => setShow(false)}
-      eleccion={post.turnoElegido}
-      handlePago={handlePago}
-      diasConTurnos={filterDay}
-      rol={rol}
+    handleSubmit={handleSubmit}
+    handleSubmitUser={handleSubmitUser}
+    options={seleccionSelect}
+    onChangeSelect={handleSelect}
+    idProfesional={post.profesionalIdProfesional}
+    date={post.date}
+    onChangeDate={handleChangeDate}
+    habilitarCalendario={habilitarCalendario}
+    habilitarBoton={habilitarBoton}
+    cambioProfesional={cambioProfesional}
+    handleClickChange={handleClickChange}
+    nombreProfesional={post.nombreProfesional}
+    show={show}
+    turnos={post.turnosMostrar}
+    onClick={handleClick}
+    onHide={() => setShow(false)}
+    eleccion={post.turnoElegido}
+    handlePago={handlePago}
+    diasConTurnos={filterDay}
+    rol={rol}
     />
     <NotificationContainer/>
     </>

@@ -134,6 +134,7 @@ function AddProfessional(props) {
             especialidad: "",
             imagenProfesional: "",
          });
+         getProfesionales(token)
       } catch (e) {
         console.log("error de firebase", error);
       }
