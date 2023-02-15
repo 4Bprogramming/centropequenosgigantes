@@ -10,7 +10,8 @@ import {
   POST_HISTORIA,
   RESERVA_TURNO_ADMIN,
   GET_USUARIOS,
-  REGISTER
+  REGISTER,
+  SESIONACTIVA
 } from "../constants";
 
 const BASE_URL = "http://localhost:3001";
@@ -274,7 +275,7 @@ export function horariosTurnosCreados(payload) {
 
     //RESET-PASSWORD
    export async function resetPassword(body,token){
-    console.log('esto llega a la action--->',body,token)
+    // console.log('esto llega a la action--->',body,token)
     axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
     try {
       let respuestaResetPassword = await axios.post(`${BASE_URL}/resetPassword`,body)
@@ -283,3 +284,16 @@ export function horariosTurnosCreados(payload) {
       return e.response.data;
     }
    }
+
+   //sesion activa
+   export function sesionActiva (token){
+
+
+    return async function (dispatch) {
+    try {
+      return dispatch({ type: SESIONACTIVA, payload: token });
+    } catch (e) {
+      console.log(e);
+    }
+   }
+  }

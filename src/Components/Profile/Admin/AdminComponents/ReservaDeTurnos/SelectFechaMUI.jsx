@@ -1,12 +1,11 @@
 import * as React from 'react';
-import dayjs from 'dayjs';
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 
 
-export default function SelectFecha2({date, setDate, onChange, diasConTurnos}) {
+export default function SelectFecha2({date, onChange, diasConTurnos}) {
     const turnos1=new Set(diasConTurnos)
    const turnos= [...turnos1]
     // console.log('diasConTurnos',turnos);
@@ -33,7 +32,7 @@ export default function SelectFecha2({date, setDate, onChange, diasConTurnos}) {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <StaticDatePicker
-         displayStaticWrapperAs="desktop"
+        displayStaticWrapperAs="desktop"
         openTo="day"
         value={date}
         shouldDisableDate={isWeekend}
