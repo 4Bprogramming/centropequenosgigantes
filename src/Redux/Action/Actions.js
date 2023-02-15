@@ -130,12 +130,12 @@ export function getTurnos(token) {
 }
 //modificar Turnos
 export function modificarTurnos(payload,token) {
+  console.log('payload reserva==>>>', payload);
   axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
   return async function (dispatch) {
     try {
-      // console.log('payload reserva==>>>', payload);
       let res = await axios.put(`${BASE_URL}/turnos`, payload);
-      // console.log('respuesta modificar turnos', res);
+      console.log('respuesta modificar turnos', res);
       return dispatch({ type: RESERVA_TURNO_ADMIN, payload: res.data });
     } catch (error) {
       return dispatch({

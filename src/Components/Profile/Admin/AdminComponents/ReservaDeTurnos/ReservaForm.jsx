@@ -8,7 +8,7 @@ import ModalPagoReserva from "../../../UsuarioPaciente/ReservaDeTurnos/ModalPAgo
 
 function ReservaForm(props) {
 
-  // console.log('esto traer el props n click',props)
+  console.log('esto traer el props n click',props.rol)
   return (
     <div className={styles.mainReservarTurnoContainer}>
       <h2 style={{"fontFamily":"monospace","textShadow":"3px 2px 5px grey"}}>Reserva un turno</h2>
@@ -51,10 +51,10 @@ function ReservaForm(props) {
         </div>
       )}
       {
-        props.rol==='usuario' && 
+      props.rol==="usuario" && 
         <ModalPagoReserva 
         body={props.eleccion}
-      handleSubmit={props.handleSubmit}
+      handleSubmit={props.handleSubmitUser}
       show={props.show}
       title={"Desea Reservar el siguiente turno:"}
       type={"submit"}
@@ -63,6 +63,8 @@ function ReservaForm(props) {
       handlePago={props.handlePago}
         />
       }
+      {
+        props.rol==="administrador" && 
       <ModalReserva
       body={props.eleccion}
       handleSubmit={props.handleSubmit}
@@ -73,6 +75,7 @@ function ReservaForm(props) {
       onHide={props.onHide}
       handlePago={props.handlePago}
       />
+      }
     </div>
   );
 }

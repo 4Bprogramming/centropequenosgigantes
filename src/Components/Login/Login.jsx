@@ -17,7 +17,8 @@ function Login() {
 
   //usuario traido desde la DB
   const [usuarioDB,setUsuarioDB] = useLocalStorage("usuarioDB",{});
-  const [rol, setRol]= useLocalStorage("rol",'');
+  const [rol, setRol]= useLocalStorage("rol","usuario");
+  // console.log('ROL==>',rol);
 
   //datos de la form
   const [loginData, setLoginData] = useState({
@@ -39,7 +40,7 @@ function Login() {
     }
   };
 
-
+  // console.log('ROL',rol);
   //On Submit
   const handleSubmit = async (e)=> {
     e.preventDefault();    

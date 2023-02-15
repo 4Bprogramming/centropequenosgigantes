@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProfesionales } from "../../../Redux/Action/Actions";
+import { getProfesionales, getTurnos } from "../../../Redux/Action/Actions";
 import CardsProfesionales from "../../CardsProfesionales/CardsProfesionales";
 import GifDeEspera from "../../GifsDeEspera/GifDeEspera";
 import styles from "./UsuarioPaciente.module.css";
@@ -12,7 +12,8 @@ function UsuarioPaciente() {
   //traigo data del Local Storage
   const data = localStorage.getItem("usuarioDB");
   const token = localStorage.getItem("token");
-  const rol = localStorage.getItem("rol");
+  const rol =JSON.parse(localStorage.getItem("rol")) ;
+
   const { celular, email, fullName } = JSON.parse(data);
   const tokenSinComillas = JSON.parse(token);
 
@@ -21,6 +22,7 @@ function UsuarioPaciente() {
   useEffect(() => {
     //llamo action y le paso token
     dispatch(getProfesionales(tokenSinComillas));
+    dispatch(getTurnos(token))
   }, []);
 
   //opciones seleccionadas

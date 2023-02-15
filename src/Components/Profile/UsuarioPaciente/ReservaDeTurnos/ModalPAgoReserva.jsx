@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal"
 //import BodyModal from './BodyModal';
 
 import Pasarela from './Pasarela';
+import BodyModal from '../../Admin/AdminComponents/ReservaDeTurnos/ModalReservaTurno/BodyModal';
 
 function ModalPagoReserva({body, title, handlePago, editFormInput, optionsDefault,  handleOnChange, handleImageId,handleSelect, handleSubmit, show, onHide, profesionalData, onClick}) {
   console.log('BODY MODAL====>>>>',body);
@@ -15,8 +16,8 @@ function ModalPagoReserva({body, title, handlePago, editFormInput, optionsDefaul
     <Modal.Header closeButton>
       <Modal.Title> {title} </Modal.Title>
     </Modal.Header>
-    <Modal.Body>
-    {/* <BodyModal body={body} /> */}
+    <Modal.Body> 
+    <BodyModal body={body} />
     <Pasarela/>
     </Modal.Body>  
     <Modal.Footer>
