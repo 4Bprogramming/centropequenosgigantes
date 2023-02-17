@@ -83,6 +83,7 @@ function ReservaForm(props) {
         </div>
       )}
 
+
       {
       props.rol==="usuario" && 
         <ModalPagoReserva 
@@ -94,6 +95,7 @@ function ReservaForm(props) {
       titleBotton={"Guardar"}
       onHide={props.onHide}
       handlePago={props.handlePago}
+
         />
       }
       {
@@ -102,7 +104,7 @@ function ReservaForm(props) {
         body={props.eleccion}
         handleSubmit={props.handleSubmit}
         show={props.show}
-        title={"Desea Reservar el siguiente turno:"}
+        title={"Reservar el siguiente turno:"}
         type={"submit"}
         titleBotton={"Guardar"}
         onHide={props.onHide}
