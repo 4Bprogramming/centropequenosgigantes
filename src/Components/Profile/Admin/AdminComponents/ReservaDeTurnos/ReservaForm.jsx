@@ -82,18 +82,24 @@ function ReservaForm(props) {
           </div>
         </div>
       )}
-      {props.rol === "usuario" && (
-        <ModalPagoReserva
-          body={props.eleccion}
-          handleSubmit={props.handleSubmit}
-          show={props.show}
-          title={"Reservar el siguiente turno:"}
-          type={"submit"}
-          titleBotton={"Guardar"}
-          onHide={props.onHide}
-          handlePago={props.handlePago}
+
+
+      {
+      props.rol==="usuario" && 
+        <ModalPagoReserva 
+        body={props.eleccion}
+      handleSubmit={props.handleSubmitUser}
+      show={props.show}
+      title={"Desea Reservar el siguiente turno:"}
+      type={"submit"}
+      titleBotton={"Guardar"}
+      onHide={props.onHide}
+      handlePago={props.handlePago}
+
         />
-      )}
+      }
+      {
+        props.rol==="administrador" && 
       <ModalReserva
         body={props.eleccion}
         handleSubmit={props.handleSubmit}
@@ -104,7 +110,8 @@ function ReservaForm(props) {
         onHide={props.onHide}
         handlePago={props.handlePago}
       />
-    </div>
+      }
+   </div>
   );
 }
 

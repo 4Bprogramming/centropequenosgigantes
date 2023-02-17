@@ -2,7 +2,9 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 
-import Pasarela from "./Pasarela";
+import Pasarela from './Pasarela';
+import BodyModal from '../../Admin/AdminComponents/ReservaDeTurnos/ModalReservaTurno/BodyModal';
+
 
 function ModalPagoReserva({
   body,
@@ -21,16 +23,19 @@ function ModalPagoReserva({
 }) {
   return (
     <>
-      <Modal show={show} onHide={onHide} backdrop="static" keyboard={false}>
-        <Modal.Header closeButton>
-          <Modal.Title> {title} </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {/* <BodyModal body={body} /> */}
-          <Pasarela />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={onHide}>
+
+    <Modal show={show} onHide={onHide}  backdrop="static"
+        keyboard={false}>
+    <Modal.Header closeButton>
+      <Modal.Title> {title} </Modal.Title>
+    </Modal.Header>
+    <Modal.Body> 
+    <BodyModal body={body} />
+    <Pasarela/>
+    </Modal.Body>  
+    <Modal.Footer>
+      <Button variant="secondary" onClick={onHide}>
+
             Cancelar
           </Button>
           <Button

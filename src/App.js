@@ -34,6 +34,7 @@ import DetalleDeProfesional from "./Components/DetalleDelProfesional/DetalleDePr
 import AñadirHistoriaClinica from "./Components/Profile/HistoriaClinica/AñadirHistoriaClinica";
 import EnviarMailRecuperacion from "./Components/RecuperarPassword/EnviarMailRecuperacion";
 import ResetPassword from "./Components/ResetPassword/ResetPassword";
+import Pasarela from "./Components/Profile/UsuarioPaciente/ReservaDeTurnos/Pasarela";
 // import AñadirHistoria from "./Components/Profile/HistoriaClinica/AñadirHistoria/AñadirHistoria";
 // import TodosTurnos from "./Components/Profile/Admin/AdminComponents/TodosLosTurnos/TodosTurnos";
 
