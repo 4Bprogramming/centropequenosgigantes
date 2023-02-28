@@ -94,7 +94,10 @@ function Login() {
 
         <div className={styles.selectLogin}>
           <div className={styles.labelSelect}>Ingresa como:</div>
-          <select name="select" onChange={handleOnChange}>
+          <select name="select" onChange={handleOnChange}  defaultValue="all">
+          <option value="all" disabled hidden>
+              Seleccione...
+            </option>
             <option value="usuario">Paciente</option>
             <option value="profesional" >
               Profesional

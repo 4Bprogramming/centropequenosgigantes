@@ -41,14 +41,14 @@ function Footer2() {
       {/* novedades */}
       <div className={styles.novedades}>
         <span>Novedades</span>
+        {/* <div className={styles.linksFooter}>
+          <Link to="/login">Reserva de Citas</Link>
+        </div> */}
         <div className={styles.linksFooter}>
-          <Link to="/">Reserva de Citas</Link>
+          <Link to="/servicios">Servicios</Link>
         </div>
         <div className={styles.linksFooter}>
-          <Link to="/">Servicios</Link>
-        </div>
-        <div className={styles.linksFooter}>
-          <Link to="/">Contacto</Link>
+          <Link to="/contacto">Contacto</Link>
         </div>
       </div>
     </div>

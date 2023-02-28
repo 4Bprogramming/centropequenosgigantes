@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import styles from "./Cuadro.module.css";
 import { AiFillHeart,AiFillStar } from "react-icons/ai";
 import { FaUserGraduate } from "react-icons/fa";
+import { Link } from 'react-router-dom'
 
 //
 
@@ -11,12 +12,14 @@ function Cuadro() {
     {
       icon: <AiFillHeart/>,
       title: "Psicología",
+      path:"psicologia",
       desc: "Psicología para niños y adultos.",
       active: false,
     },
     {
       icon:<FaUserGraduate/>,
       title: "Terápia de lenguaje",
+      path: "lenguaje",
       desc: "Para niños desde 2 años en adelante.",
       active: true,
     },
@@ -24,6 +27,7 @@ function Cuadro() {
       icon: <AiFillStar/> ,
       title: "Asesoramiento psicológico en el aula",
       desc: "Para todas las edades. ",
+      path: "asesoramiento",
       active: false,
     },
   ]);
@@ -35,7 +39,9 @@ function Cuadro() {
               <div className={styles.SvgContainer}>{service.icon}</div>
               <div className={styles.titleCard}>{service.title}</div>
               <p>{service.desc}</p>
+              <Link to={`/${service.path}`}>
               <button className={styles.btnVerMas}>Ver más</button>
+              </Link>
             </div>
           ))}
         </div>
