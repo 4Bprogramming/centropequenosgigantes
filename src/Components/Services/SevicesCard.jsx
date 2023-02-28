@@ -20,6 +20,7 @@ export const blog = [
     date: "JAN. 18, 2021",
     com: "3 COMMENTS ",
     title: "Psicología",
+    path:"psicologia",
     desc: "Evaluaciones a niños, niñas, adolescentes y adultos.",
     cover: foto1,
   },
@@ -29,6 +30,7 @@ export const blog = [
     date: "API. 25, 2022",
     com: "5 COMMENTS ",
     title: "Terapia de lenguaje",
+    path: "lenguaje",
     desc: "Queremos que los niños puedan desarrollar y construir una autoestima sana, mejorando sus habilidades sociales y la comunicación..",
     cover: foto2,
   },
@@ -38,6 +40,7 @@ export const blog = [
     date: "MAY. 15, 2022",
     com: "10 COMMENTS ",
     title: "Terapia de aprendizaje",
+    path: "lenguaje",
     desc: "Analizar las variables y procesos de atención memorísticos y comprensivos que optimizan el proceso de enseñanza-aprendizaje y que pueden estar generando el o los trastornos de aprendizaje.",
     cover: foto3,
   },
@@ -47,6 +50,7 @@ export const blog = [
     date: "JAN. 02, 2022",
     com: "3 COMMENTS ",
     title: "Asesoramiento psicológico en el aula",
+    path: "asesoramiento",
     desc: "Mejorar los procesos de aprendizaje y así lograr una mejor educación para niños y niñas..",
     cover: foto4,
   },
@@ -56,6 +60,7 @@ export const blog = [
     date: "DEC. 14, 2022",
     com: "3 COMMENTS ",
     title: "Terapia ocupacional",
+    path:"ocupacional",
     desc: "Ayudar a los niños a jugar, a rendir más en los estudios y a desempeñar sus actividades cotidianas. También mejora su autoestima y su sensación de logro.",
     cover: foto5,
   },
@@ -65,6 +70,7 @@ export const blog = [
     date: "JAN. 18, 2021",
     com: "12 COMMENTS ",
     title: "Modificación de conducta",
+    path: "conducta",
     desc: "Crear mejores relaciones interpersonales como así también promover la confianza en sí mismo.",
     cover: foto6,
   },
@@ -74,6 +80,7 @@ export const blog = [
     date: "JAN. 18, 2021",
     com: "12 COMMENTS ",
     title: "Terapia física",
+    path: "fisica",
     desc: "Aborda el conocimiento del cuerpo y el movimiento del ser humano en su ciclo vital, en situación de salud y condición de enfermedad, con base en los conocimientos científicos y tecnológicos de los diferentes sistemas que influyen en el movimiento corporal humano.",
     cover: foto7,
   },
@@ -83,6 +90,7 @@ export const blog = [
     date: "JAN. 18, 2021",
     com: "12 COMMENTS ",
     title: "Integración sensorial",
+    path: "sensorial",
     desc: "Expresión que se usa para describir los procesos del cerebro que nos permiten tomar la información que recibimos de nuestros 5 sentidos, organizarla y responder adecuadamente.",
     cover: foto8,
   },
@@ -92,6 +100,7 @@ export const blog = [
     date: "JAN. 18, 2021",
     com: "12 COMMENTS ",
     title: "Terapia de familia",
+    path: "familia",
     desc: "Un espacio seguro en el cual la familia podrá reconocer las diferentes problemáticas presentes en la relación y a su vez, adquirir y fortalecer herramientas que les permitan una adecuada comunicación, toma de decisiones y manejo de emociones dentro de la dinámica familiar.",
     cover: foto9,
   },
@@ -101,6 +110,7 @@ export const blog = [
     date: "JAN. 18, 2021",
     com: "12 COMMENTS ",
     title: "Psicomotricidad",
+    path: "psicomotricidad",
     desc: "Técnica que ayuda a niños y bebés a dominar sus movimientos corporales de una forma sana, así como a mejorar su relación y comunicación con los demás.",
     cover: foto10,
   },
@@ -110,6 +120,7 @@ export const blog = [
     date: "JAN. 18, 2021",
     com: "12 COMMENTS ",
     title: "Estimulación temprana",
+    path: "estimulacion_temprana",
     desc: "Técnicas educativas que pretende impulsar el desarrollo cognitivo, social y emocional del niño durante la etapa infantil (de 0 a 6 años).",
     cover: foto11,
   },
@@ -124,12 +135,12 @@ function SevicesCard() {
           
 
           <div className={styles.imageServicioContainer}>
-            <Link to={`/${val.title}`}>
+            <Link to={`/${val.path}`}>
               <img src={val.cover} alt={val.title} />
             </Link>
           </div>
           <div className={styles.cardContent}>
-            <Link to={`/${val.title}`}>
+            <Link to={`/${val.path}`}>
               <h4>{val.title}</h4>
             </Link>
             <p>{val.desc}</p>
