@@ -85,7 +85,7 @@ console.log('valor==<', valor);
 
   
   
-  return (
+  return ( 
     <div>
       <button onClick={startForm}>Ingresar datos de tarjeta</button>
       <div id="paymentForm" ></div>

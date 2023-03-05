@@ -28,6 +28,7 @@ function NavScroll() {
     dispatch(sesionActiva(""));
     window.localStorage.clear();
     navigate("/")
+    
   };
 
   return (
