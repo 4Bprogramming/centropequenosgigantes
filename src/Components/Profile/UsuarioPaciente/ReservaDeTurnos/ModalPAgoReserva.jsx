@@ -35,7 +35,7 @@ function ModalPagoReserva({
     <Pasarela body={body[0]} handleSubmit={handleSubmit}/>
     </Modal.Body>  
     <Modal.Footer>
-      <Button variant="secondary" onClick={onHide}>
+      {/* <Button variant="secondary" onClick={onHide}>
 
             Cancelar
           </Button>
@@ -47,7 +47,7 @@ function ModalPagoReserva({
           >
             {" "}
             Guardar
-          </Button>
+          </Button> */}
         </Modal.Footer>
       </Modal>
     </>

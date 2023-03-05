@@ -57,12 +57,12 @@ function UsuarioPaciente() {
             >
               Lista Profesionales
             </div>
-            <div
+            {/* <div
               className={styles.options}
               onClick={() => handleClick("reservarTurno")}
             >
               Reservar Turnos
-            </div>
+            </div> */}
 
           </div>
         </div>
