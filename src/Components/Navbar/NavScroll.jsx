@@ -9,27 +9,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { sesionActiva } from "../../Redux/Action/Actions";
 import { useEffect } from "react";
 
-
 function NavScroll() {
-  
   const dispatch = useDispatch();
-  
-  const token= JSON.parse(window.localStorage.getItem('token'))
-  const sesion = useSelector((state)=> state?.sesionAbierta)
+
+  const token = JSON.parse(window.localStorage.getItem("token"));
+  const rol = JSON.parse(window.localStorage.getItem("rol"));
+  const sesion = useSelector((state) => state?.sesionAbierta);
 
   useEffect(() => {
     //actualizando estado para la navbar
-    if(token){
+    if (token) {
       dispatch(sesionActiva(token));
     }
-  }, [])
-  
-  
-    
-const logOut = ()=> {
-  dispatch(sesionActiva(''));
-  window.localStorage.clear(); 
-}
+  }, []);
+
+  const logOut = () => {
+    dispatch(sesionActiva(""));
+    window.localStorage.clear();
+  };
 
   return (
     <Navbar className={styles.navBarContainer} expand="lg">
@@ -62,29 +59,27 @@ const logOut = ()=> {
                 <NavLink to="/contacto">CONTACTO</NavLink>
               </div>
 
-
-          
               {/* Boton inicia / cierra sesion */}
               <div className={styles.navBarLinks}>
-               
-                  {!sesion ? 
-                    <NavLink to="/login">
-                      <div>INICIAR SESION</div>
-                    </NavLink>
-                  : 
-                  <NavLink to="/">
-                    <div onClick={logOut}>CERRAR SESION</div>
+                {!sesion ? (
+                  <NavLink to="/login">
+                    <div>INICIAR SESION</div>
                   </NavLink>
-                  }
-                  
-          
+                ) : (
+                  <NavLink to={`/${rol}`}>
+                    <div>PERFIL</div>
+                  </NavLink>
+                )}
               </div>
 
-
-              <div className={styles.reservarCitaBoton}>
-                <NavLink className={styles.buttonContact} to="/reserva" exact>
-                  Reserva tu cita
-                </NavLink>
+              <div>
+                {sesion ? (
+                  <NavLink to="/">
+                    <div className={styles.buttonContact} onClick={logOut}>
+                      CERRAR SESION
+                    </div>
+                  </NavLink>
+                ) : null}
               </div>
             </div>
           </Nav>
