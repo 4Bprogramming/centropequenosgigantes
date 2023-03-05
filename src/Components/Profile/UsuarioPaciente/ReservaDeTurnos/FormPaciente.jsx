@@ -1,39 +1,21 @@
 import React from "react";
-import SelectProfesionales from "../CrearTurnos/SelectMultipleEspecialidades/SelectProfesionales";
+import styles from "../../Admin/AdminComponents/ReservaDeTurnos/RerservaTurno.module.css";
+import SelectFecha2 from "../../Admin/AdminComponents/ReservaDeTurnos/SelectFechaMUI";
+import ModalPagoReserva from "./ModalPAgoReserva";
 
-import styles from "./RerservaTurno.module.css";
-import ModalReserva from "./ModalReservaTurno/ModalReserva";
-import SelectFecha2 from "./SelectFechaMUI";
-import ModalPagoReserva from "../../../UsuarioPaciente/ReservaDeTurnos/ModalPAgoReserva";
-
-function ReservaForm(props) {
-  // console.log('esto traer el props n click',props)
+function FormPaciente(props) {
+  console.log('esto traer el props n click==>',props)
+  const profesional=props.profesional[0]
   return (
     <div className={styles.mainReservarTurnoContainer}>
       <h2 style={{ fontFamily: "monospace", textShadow: "3px 2px 5px grey" }}>
         Reserva un turno
       </h2>
-      {props.cambioProfesional && (
-        <SelectProfesionales
-          options={props.options}
-          onChange={props.onChangeSelect}
-          idProfesional={props.idProfesional}
-        />
-      )}
-      {props.habilitarBoton && (
-        <>
+      
           <div className={styles.nombreProfesionalReserva}>
-            <strong>Profesional:</strong> <span>{props.nombreProfesional}</span>
+            <strong>Profesional:</strong> <span>{profesional.fullName}</span>
           </div>
-          <button
-            className={styles.botonesReservarTurno}
-            onClick={props.handleClickChange}
-          >
-            Otro Profesional
-          </button>
-        </>
-      )}
-      {props.habilitarCalendario && (
+
         <div style={{ 
           display: "flex ",
           flexWrap: "wrap",
@@ -81,22 +63,23 @@ function ReservaForm(props) {
               </div>
           </div>
         </div>
-      )}
 
-     
-      <ModalReserva
+        <ModalPagoReserva 
         body={props.eleccion}
-        handleSubmit={props.handleSubmit}
-        show={props.show}
-        title={"Reservar el siguiente turno:"}
-        type={"submit"}
-        titleBotton={"Guardar"}
-        onHide={props.onHide}
-        handlePago={props.handlePago}
-      />
+        profesional={profesional.fullName}
+      handleSubmit={props.handleSubmitUser}
+      show={props.show}
+      title={"Desea Reservar el siguiente turno:"}
+      type={"submit"}
+      titleBotton={"Guardar"}
+      onHide={props.onHide}
+      handlePago={props.handlePago}
+
+        />
+     
      
    </div>
   );
 }
 
-export default ReservaForm;
+export default FormPaciente;

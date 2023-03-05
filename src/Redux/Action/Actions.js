@@ -139,6 +139,7 @@ export function modificarTurnos(payload,token) {
       console.log('respuesta modificar turnos', res);
       return dispatch({ type: RESERVA_TURNO_ADMIN, payload: res.data });
     } catch (error) {
+      console.log('error', error.response.data);
       return dispatch({
         type: MESSAGE,
         payload: error.response.data,

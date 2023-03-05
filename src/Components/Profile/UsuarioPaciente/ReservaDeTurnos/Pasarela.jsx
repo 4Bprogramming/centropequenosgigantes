@@ -1,10 +1,9 @@
 import React from 'react'
 import KR from '@lyracom/embedded-form-glue'
-import { useNavigate } from "react-router-dom"
-function Pasarela() {
+function Pasarela({body, handleSubmit}) {
 
- 
-
+ const valor= Number(body.valor)*100
+console.log('valor==<', valor);
 
   const header = {
     method: "POST",
@@ -12,7 +11,7 @@ function Pasarela() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      amount: 8000, //al colocar 9000 se cobran 90 soles
+      amount: valor, //al colocar 9000 se cobran 90 soles
       currency: "PEN",
       customer: {
         email: "example9@gmail.com",
@@ -76,11 +75,10 @@ function Pasarela() {
       body: JSON.stringify(event),
     })
       .then((res) => res.json())
-     .then((res)=>console.log('res====>>>>>',res)) 
       .then((res) => {
         if (res == "Valid Payment") {
-          document.getElementById("paymentForm").innerHTML =
-            "<h1>Pago exitoso</h2>";
+          console.log('validado==>', res);
+          handleSubmit(res)
         }
       });
   };

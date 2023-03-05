@@ -79,7 +79,7 @@ function UsuarioPaciente() {
           }
 
           {/* opciones elegidas */}
-          {select === "todosProfesionales" && <CardsProfesionales />}
+          {select === "todosProfesionales" && <CardsProfesionales rol={rol} token={token} />}
           {select === "reservarTurno" && <ReservaTurnos rol={rol} token={token}/>}
 
         </div>
