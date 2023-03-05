@@ -80,7 +80,7 @@ function App() {
         <Route
           exact
           path="/detalleProfesional/:idProfesional"
-          element={<DetalleDeProfesional />}
+          element={<DetalleDeProfesional/>}
         />
         <Route exact path="/usuario" element={<UsuarioPaciente />} />
 

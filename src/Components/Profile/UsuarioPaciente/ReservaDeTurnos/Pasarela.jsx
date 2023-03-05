@@ -1,9 +1,9 @@
 import React from 'react'
 import KR from '@lyracom/embedded-form-glue'
-function Pasarela() {
+function Pasarela({body, handleSubmit}) {
 
- 
-
+ const valor= Number(body.valor)*100
+console.log('valor==<', valor);
 
   const header = {
     method: "POST",
@@ -11,7 +11,7 @@ function Pasarela() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      amount: 8000, //al colocar 9000 se cobran 90 soles
+      amount: valor, //al colocar 9000 se cobran 90 soles
       currency: "PEN",
       customer: {
         email: "example9@gmail.com",
@@ -23,7 +23,7 @@ function Pasarela() {
     fetch("http://localhost:3001/api/createPayment", header)
       .then((res) => res.json())
       .then((res) => {
-        console.log('respuesta==>',res)
+        // console.log('respuesta==>',res)
         KR.loadLibrary("https://api.micuentaweb.pe","99230689:testpublickey_JufZDB7BdtsOYHnpaVJ2FACUkbuHbtbSu1rEZMsAG6YKj")
         .then(({KR}) => KR.setFormConfig({
           formToken: res.formToken
@@ -32,7 +32,7 @@ function Pasarela() {
         .then(({ KR }) => KR.onSubmit(validatePayment))
         .then(({ KR }) => KR.addForm("#paymentForm"))
         .then(({ KR, result }) => KR.showForm(result.formId));
-        console.log('KR==>', KR)
+        // console.log('KR==>', KR)
       });
   };
 
@@ -43,11 +43,10 @@ function Pasarela() {
       body: JSON.stringify(event),
     })
       .then((res) => res.json())
-     .then((res)=>console.log('res====>>>>>',res)) 
       .then((res) => {
         if (res == "Valid Payment") {
-          document.getElementById("paymentForm").innerHTML =
-            "<h1>Pago exitoso</h2>";
+          console.log('validado==>', res);
+          handleSubmit(res)
         }
       });
   };

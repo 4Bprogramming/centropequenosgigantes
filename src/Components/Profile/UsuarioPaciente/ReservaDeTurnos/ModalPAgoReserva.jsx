@@ -18,9 +18,10 @@ function ModalPagoReserva({
   handleSubmit,
   show,
   onHide,
-  profesionalData,
+  profesional,
   onClick,
 }) {
+  console.log('body==>', body);
   return (
     <>
 
@@ -30,8 +31,8 @@ function ModalPagoReserva({
       <Modal.Title> {title} </Modal.Title>
     </Modal.Header>
     <Modal.Body> 
-    <BodyModal body={body} />
-    <Pasarela/>
+    <BodyModal body={body} profesional={profesional} />
+    <Pasarela body={body[0]} handleSubmit={handleSubmit}/>
     </Modal.Body>  
     <Modal.Footer>
       <Button variant="secondary" onClick={onHide}>
