@@ -1,13 +1,6 @@
 import React from 'react'
 import KR from '@lyracom/embedded-form-glue'
-<<<<<<< HEAD
 function Pasarela({body, handleSubmit}) {
-=======
-import { useNavigate } from "react-router-dom"
-function Pasarela() {
-
- 
->>>>>>> d22b49fe293474cc539c5fc3c43fa1d9475b4f55
 
  const valor= Number(body.valor)*100
 console.log('valor==<', valor);
