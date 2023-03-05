@@ -35,19 +35,7 @@ function ModalPagoReserva({
     <Pasarela body={body[0]} handleSubmit={handleSubmit}/>
     </Modal.Body>  
     <Modal.Footer>
-      <Button variant="secondary" onClick={onHide}>
-
-            Cancelar
-          </Button>
-          <Button
-            variant="primary"
-            onClick={(e) => {
-              handleSubmit(e);
-            }}
-          >
-            {" "}
-            Guardar
-          </Button>
+     
         </Modal.Footer>
       </Modal>
     </>
