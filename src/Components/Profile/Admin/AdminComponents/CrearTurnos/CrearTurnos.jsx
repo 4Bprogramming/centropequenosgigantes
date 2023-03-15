@@ -37,7 +37,8 @@ function CrearTurnos({ token }) {
     tiempoInicio: "",
     tiempoFinal: "",
     duracion: "",
-    horariosCreados: false,
+    valor:"",
+    horariosCreados: false
   });
 
   //FUNCION PARA CREAR {VALUE, LABEL} DEL SELECT DE PROFESIONALES
@@ -147,7 +148,8 @@ function CrearTurnos({ token }) {
           hours: horasCreadas.map((hr) => {
             return hr.start;
           }),
-          profesionalIdProfesional: post.profesionalIdProfesional,
+          profesionalIdProfesional: post.profesionalIdProfesional, 
+          valor: post.valor,
         };
         // console.log('TURNOS', turnosACrear);
         await dispatch(subirTurnos(turnosACrear, token));
@@ -159,6 +161,7 @@ function CrearTurnos({ token }) {
           tiempoInicio: "",
           tiempoFinal: "",
           duracion: "",
+          valor:"",
           horariosCreados: false,
         });
       } else if (post.date.length === 0) {
@@ -173,6 +176,12 @@ function CrearTurnos({ token }) {
           "ATENCION!",
           3000
         );
+      }else if (!post.valor){
+        NotificationManager.error(
+          "coloque el precio",
+          "ATENCION!",
+          3000
+        );
       }
     } catch (error) {
       console.log('Error', message);
@@ -180,6 +189,8 @@ function CrearTurnos({ token }) {
       // <ModalErrors error={'no se pudieron crear los turnos'}/>
     }
   }
+
+  
 
   return (
     <>
@@ -207,14 +218,22 @@ function CrearTurnos({ token }) {
             <div classkey={i}  className={styles.horarioContainer}>{h.start}</div>
             ))}
       </div>
-      {post.horariosCreados ? (
+    
+      <h3>Precio de la consulta: </h3>
+      <input id="number" type="number" value={post.valor}onChange={(e) => handleChange(e)} />
+    
+      {post.horariosCreados ? 
+        <div>
+       
         <button
           className={styles.confirmaTurnosBtn}
           onClick={(e) => submitAll(e)}
         >
+          
           Confirma tus turnos
         </button>
-      ) : null}
+        </div>
+       : null}
      
 
       <NotificationContainer />

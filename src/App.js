@@ -35,6 +35,7 @@ import AñadirHistoriaClinica from "./Components/Profile/HistoriaClinica/Añadir
 import EnviarMailRecuperacion from "./Components/RecuperarPassword/EnviarMailRecuperacion";
 import ResetPassword from "./Components/ResetPassword/ResetPassword";
 import Pasarela from "./Components/Profile/UsuarioPaciente/ReservaDeTurnos/Pasarela";
+import Boleta from './Components/Boleta/Boleta'
 // import AñadirHistoria from "./Components/Profile/HistoriaClinica/AñadirHistoria/AñadirHistoria";
 // import TodosTurnos from "./Components/Profile/Admin/AdminComponents/TodosLosTurnos/TodosTurnos";
 
@@ -82,6 +83,7 @@ function App() {
           path="/detalleProfesional/:idProfesional"
           element={<DetalleDeProfesional/>}
         />
+         <Route exact path="/boleta/:idTurno" element={<Boleta />} />
         <Route exact path="/usuario" element={<UsuarioPaciente />} />
 
         <Route exact path="/psicologia" element={<Psicologia />} />
