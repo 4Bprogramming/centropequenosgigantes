@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-function InputValorPago({handlePago}) {
+function InputValorPago({handlePago, turno}) {
     return (
         <>
         <div style={{
@@ -11,7 +11,7 @@ function InputValorPago({handlePago}) {
           }}
         >
           <label style={{fontFamily:"monospace", fontWeight:"600"}} > Valor del turno: S/</label>
-          <input style={{border:"2px solid black",borderRadius:"10px",padding:"3px"}} type="text" name='valor' onChange={handlePago}/>
+          <input style={{border:"2px solid black",borderRadius:"10px",padding:"3px"}} type="text" name='valor' placeholder={turno} onChange={handlePago}/>
           </div>
         </>
       );

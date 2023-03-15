@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReservaForm from './ReservaForm';
 import { seleccionProfesional } from '../CrearTurnos/SelectMultipleEspecialidades/Controllers';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTurnos, modificarTurnos } from '../../../../../Redux/Action/Actions';
+import { getProfesionales, getTurnos, modificarTurnos } from '../../../../../Redux/Action/Actions';
 import { useNavigate } from 'react-router-dom'
 //Alert notifications
 import {
@@ -35,6 +35,7 @@ function ReservaTurnos({token, rol, profesional, email}) {
     valorPago:'',
     emailPaciente:''
   });
+  
   if(profesional){
     let turnosProfesional=profesional[0].turnos
     // console.log('turnos==>', turnosProfesional);
@@ -72,13 +73,13 @@ function ReservaTurnos({token, rol, profesional, email}) {
 
     }
     function handleClick(e){
-      console.log('click a la fecha==>', e);
+      // console.log('click a la fecha==>', e);
       e.preventDefault()
       let value=e.target.value
-      console.log('value==>==>', value);
-      console.log('turnosMostrar==>', post.turnosMostrar);
+      // console.log('value==>==>', value);
+      // console.log('turnosMostrar==>', post.turnosMostrar);
       let miTurno= post.turnosMostrar?.filter(turno=> turno.id===value)
-      console.log('miTurno==>', miTurno);
+      // console.log('miTurno==>', miTurno);
       setPost({ ...post, turnoElegido:miTurno});
       setShow(true)
     }
@@ -114,8 +115,10 @@ function ReservaTurnos({token, rol, profesional, email}) {
         setPost({...post, formaPago:value})
       }
       if(name==='valor'){
-       
-        setPost({...post, valorPago:value})
+        
+          setPost({...post, valorPago:value})
+
+        
       }
       if(name==='email'){
         setPost({...post, emailPaciente:value})   
@@ -125,12 +128,17 @@ function ReservaTurnos({token, rol, profesional, email}) {
       console.log('turnoElegido',post.turnoElegido);
       console.log('e',e);
       e.preventDefault()
-      console.log('post.turnoElegido.length===>', post.turnoElegido)
+      if(!post.valorPago){
+        setPost({...post, valorPago:post.turnoElegido[0]?.valor})
+      }
+      
+      console.log('post.valorPago===>', post.valorPago)
       if(post.turnoElegido.length>0 && post.formaPago!=='' && post.valorPago!=='' && post.emailPaciente!==''){
         const existe=usuarios.filter(el=>el.email===post.emailPaciente)
         if(existe.length<1){
         return NotificationManager.error('email no registrado','ATENCION',5000)
         }
+        
        
         const turnoReservado={
           id:post.turnoElegido[0].id,
@@ -140,9 +148,10 @@ function ReservaTurnos({token, rol, profesional, email}) {
           email:post.emailPaciente
         }
 
-        dispatch(getTurnos(token))
         console.log('SUBMIT ENVIADO==>>>', turnoReservado);
-         dispatch(modificarTurnos(turnoReservado, token))
+        dispatch(modificarTurnos(turnoReservado, token))
+        dispatch(getTurnos(token))
+        dispatch(getProfesionales(token))
          NotificationManager.success('Turno Reservado','EXCELENTE',3000)
          setShow(false)
       
@@ -150,7 +159,7 @@ function ReservaTurnos({token, rol, profesional, email}) {
         
         
       }
-      else if(post.turnoElegido.length===0){
+      else if(!post.formaPago){
         NotificationManager.error('Tiene que elegir un metodo de pago')
       }
     }

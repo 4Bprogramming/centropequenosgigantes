@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import styles from "./CardProfesionales.module.css";
 
-function CardsProfesionales() {
+function CardsProfesionales({rol, token, data}) {
   //traigo profesionales
   const profesionales = useSelector((state) => state.allProfessional);
   const mensajeError = useSelector((state)=>state.message)
