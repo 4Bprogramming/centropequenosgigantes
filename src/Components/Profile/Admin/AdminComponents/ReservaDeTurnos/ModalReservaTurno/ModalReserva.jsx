@@ -20,8 +20,9 @@ function ModalReserva({
   onHide,
   profesionalData,
   onClick,
+  turno
 }) {
-  
+  // console.log('body==>', body);
   return (
     <>
       <Modal show={show} onHide={onHide} backdrop="static" keyboard={false}>
@@ -31,7 +32,7 @@ function ModalReserva({
         <Modal.Body>
           <BodyModal body={body} />
           <SelectFormaPago handlePago={handlePago} />
-          <InputValorPago handlePago={handlePago} />
+          <InputValorPago handlePago={handlePago} turno={body[0]?.valor} />
           <InputEmailPaciente handlePago={handlePago} />
         </Modal.Body>
         <Modal.Footer>

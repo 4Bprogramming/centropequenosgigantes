@@ -220,7 +220,8 @@ function CrearTurnos({ token }) {
       </div>
     
       <h3>Precio de la consulta: </h3>
-      <input id="number" type="number" value={post.valor}onChange={(e) => handleChange(e)} />
+      <span>s/</span>
+      <input type='number' name="valor" value={post.valor}onChange={(e) => handleChange(e)} />
     
       {post.horariosCreados ? 
         <div>

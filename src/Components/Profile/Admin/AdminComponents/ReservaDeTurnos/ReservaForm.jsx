@@ -93,6 +93,7 @@ function ReservaForm(props) {
         titleBotton={"Guardar"}
         onHide={props.onHide}
         handlePago={props.handlePago}
+        turno={props.elección}
       />
      
    </div>
