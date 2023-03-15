@@ -1,10 +1,16 @@
 import React from 'react'
 import KR from '@lyracom/embedded-form-glue'
+import { useParams, useNavigate } from "react-router-dom";
 function Pasarela({body, handleSubmit}) {
 
- const valor= Number(body.valor)*100
-console.log('valor==<', valor);
+  const navigate = useNavigate();
 
+ const valor= Number(body.valor)*100
+ console.log('boyquetrae==<', body)
+console.log('valor==<', valor);
+const data = localStorage.getItem("usuarioDB");
+const { email } = JSON.parse(data);
+console.log('data==<', email)
   const header = {
     method: "POST",
     headers: {
@@ -14,7 +20,7 @@ console.log('valor==<', valor);
       amount: valor, //al colocar 9000 se cobran 90 soles
       currency: "PEN",
       customer: {
-        email: "example9@gmail.com",
+        email: email,
       },
       orderId: "pedido-9",
     }),
@@ -42,31 +48,6 @@ console.log('valor==<', valor);
       });
   };
 
-//   const docum = (event) => {
-    
-
-//   }
-
-
-//   <script type="text/javascript">
-//   $(document).ready(function() {
-//         KR.onError( function(event) {
-//           var code = event.errorCode;
-//           var message = event.errorMessage;
-//           var myMessage = code + ": " + message;
-
-//           try {
-//             /* if client answer exists, a refused transaction has been created */
-//             /* it's not always the case. For example, if the form is empty,    */
-//             /* error is raised before transaction creation                     */
-//             var uuid = event.metadata.answer.clientAnswer.transactions[0].uuid;
-//             myMessage += "\ntansaction uuid: " + uuid;
-//           } catch{}
-
-//           document.getElementsByClassName("customerror")[0].innerText = myMessage;
-//         });
-//   });
-// </script>
 
   const validatePayment = (event) => {
     fetch("http://localhost:3001/api/validatePayment", {
@@ -79,7 +60,9 @@ console.log('valor==<', valor);
         if (res == "Valid Payment") {
           console.log('validado==>', res);
           handleSubmit(res)
+          
         }
+        // navigate('/boleta')
       });
   };
 

@@ -1,0 +1,32 @@
+.mainButton{
+    color:black;
+    border-color: black;
+    background-color: unset;
+}
+.correoFormContainer input{
+    width: 50%;
+    height: 50px;
+    border: none;
+    margin: 10px 0;
+    font-size: 14px;
+    padding-left: 10px;
+    background-color: unset;
+}
+.correoMainContainer{
+    background-color: lightblue;
+    margin: 2rem;
+    border: 4px solid rgb(49, 78, 209) !important;
+    padding: 2rem;
+}
+.correoFormContainer{
+    margin-top: 2rem;
+}
+
+.PaymentTitle{
+    font-size: 200%;
+  font-weight: bold;
+  letter-spacing: 10px;
+  text-align: center;
+  text-shadow: black 6px 6px 8px;
+  text-transform: uppercase;
+}

@@ -3,6 +3,7 @@ import ReservaForm from './ReservaForm';
 import { seleccionProfesional } from '../CrearTurnos/SelectMultipleEspecialidades/Controllers';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTurnos, modificarTurnos } from '../../../../../Redux/Action/Actions';
+import { useNavigate } from 'react-router-dom'
 //Alert notifications
 import {
   NotificationContainer,
@@ -12,6 +13,7 @@ import "react-notifications/lib/notifications.css";
 import FormPaciente from '../../../UsuarioPaciente/ReservaDeTurnos/FormPaciente';
 
 function ReservaTurnos({token, rol, profesional, email}) {
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const profesionales = useSelector((state) => state.allProfessional);
   const usuarios = useSelector((state) => state.todosUsuarios);
@@ -143,7 +145,10 @@ function ReservaTurnos({token, rol, profesional, email}) {
          dispatch(modificarTurnos(turnoReservado, token))
          NotificationManager.success('Turno Reservado','EXCELENTE',3000)
          setShow(false)
+      
          handleClickChange()
+        
+        
       }
       else if(post.turnoElegido.length===0){
         NotificationManager.error('Tiene que elegir un metodo de pago')
@@ -160,6 +165,7 @@ function ReservaTurnos({token, rol, profesional, email}) {
         estado:'pendiente',
         email:email
       }
+      let idTurno = turnoReservado.id
       console.log('Turno Reservado==>', turnoReservado);
       
       dispatch(modificarTurnos(turnoReservado, token))
@@ -167,6 +173,7 @@ function ReservaTurnos({token, rol, profesional, email}) {
       NotificationManager.success('Turno Reservado','EXCELENTE',4000)
       setShow(false)
       // handleClickChange()
+      navigate('/boleta/' + idTurno)
       e.preventDefault()
       
     }
