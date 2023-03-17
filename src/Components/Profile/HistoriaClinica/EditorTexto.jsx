@@ -1,9 +1,9 @@
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 
-function EditorTexto({handleChange, handleSubmit, post, data}) {
+function EditorTexto({handleChange, handleSubmit, post}) {
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form >
         <Form.Label>Nombre: {post.paciente}</Form.Label>
         <br/>
         <Form.Label>Documento N°: {post.documento}</Form.Label>
@@ -22,7 +22,8 @@ function EditorTexto({handleChange, handleSubmit, post, data}) {
         placeholder="Escriba aquí"
         />
       </Form.Group>
-      <Button >GUARDAR HISTORIA CLINICA</Button>
+      <Button  onClick={(e) => {
+              handleSubmit(e)}}> {" "}GUARDAR HISTORIA CLINICA</Button>
     </Form>
   );
 }

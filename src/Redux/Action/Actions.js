@@ -11,7 +11,8 @@ import {
   RESERVA_TURNO_ADMIN,
   GET_USUARIOS,
   REGISTER,
-  SESIONACTIVA
+  SESIONACTIVA,
+  GET_HISTORIAS
 } from "../constants";
 
 const BASE_URL = "http://localhost:3001";
@@ -96,10 +97,11 @@ export  function deleteProfesional(email, body) {
 
 //get profesional by ID
 export function getProfesionaPorId(idProfesional, token) {
-  axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
-  
+  // axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+  console.log('entre a llamar al vago');
   return async function (dispatch) {
     try {
+      console.log('res.data- traigo idprofesional===>');
       let res = await axios.get(`${BASE_URL}/profesionales/${idProfesional}`);
       return dispatch({
         type:GET_PROFESIONAL_ID,
@@ -131,12 +133,12 @@ export function getTurnos(token) {
 }
 //modificar Turnos
 export function modificarTurnos(payload,token) {
-  console.log('payload reserva==>>>', payload);
-  axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
-  return async function (dispatch) {
+  // axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+  return async function(dispatch) {
     try {
+      console.log('payload reserva modificacion turnos==>>>', payload);
       let res = await axios.put(`${BASE_URL}/turnos`, payload);
-      console.log('respuesta modificar turnos', res);
+      console.log('respuesta modificar turnos', res.data);
       return dispatch({ type: RESERVA_TURNO_ADMIN, payload: res.data });
     } catch (error) {
       console.log('error', error.response.data);
@@ -192,19 +194,20 @@ export function horariosTurnosCreados(payload) {
     }
   //Guardar historia clinica en base de Datos
   export function guardarHistoria(payload,token){
-    axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
-    // console.log('payload historia====>', payload); 
+    // axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+    console.log('payload historia====>', payload); 
     return async function (dispatch) {
         try {
-          var json = await axios.post(`${BASE_URL}/historia`, payload);
-          // console.log("recibo en action historia posteada==>", json.data);
+          console.log('holaaaa');
+          var json = await axios.post(`${BASE_URL}/historiaclinica`, payload);
+          console.log("recibo en action historia posteada==>", json.data);
          
           return dispatch({
             type: POST_HISTORIA,
             payload: json.data,
           });
         } catch (error) {
-          // console.log("no recibo en action por este error de historia==>", error);
+          console.log("no recibo en action por este error de historia==>", error.response.data);
           return dispatch({
             type: MESSAGE,
             payload: error.response.data,
@@ -212,6 +215,24 @@ export function horariosTurnosCreados(payload) {
         }
       }
     }
+
+    export function getHistorias(token){
+      // axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+      // console.log('ENTRE A LA ACTIONS USUARIOS');
+      return async function (dispatch) {
+        try {
+          let res = await axios.get(`${BASE_URL}/historiaclinica`);
+          // console.log('respuesta get usuarios', res);
+          return dispatch({ type: GET_HISTORIAS, payload: res.data });
+        } catch (error) {
+          return dispatch({
+            type: MESSAGE,
+            payload: error.response.data,
+          });
+        }
+      };
+    }
+
     
     //REGISTER
     export function registerAction(resgisterData){
@@ -247,7 +268,7 @@ export function horariosTurnosCreados(payload) {
 
     //USUARIOS
     export function getUsuarios(token){
-      axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+      // axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
       // console.log('ENTRE A LA ACTIONS USUARIOS');
       return async function (dispatch) {
         try {

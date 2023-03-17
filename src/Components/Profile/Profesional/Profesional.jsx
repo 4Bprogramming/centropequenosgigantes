@@ -4,7 +4,7 @@ import GifDeEspera from "../../GifsDeEspera/GifDeEspera";
 import reloj from "../../../assets/gifReloj.gif";
 import TurnosDelProfesional from "./ComponentesProfesional/TurnosDelProfesional";
 import { useDispatch } from "react-redux";
-import { getProfesionaPorId } from "../../../Redux/Action/Actions";
+import { getHistorias, getProfesionaPorId, getProfesionales, getTurnos, getUsuarios } from "../../../Redux/Action/Actions";
 
 function Profesional() {
   const dispatch = useDispatch()
@@ -33,7 +33,12 @@ function Profesional() {
 
   //Busco profesional por ID y lo paso por props
   useEffect(() => {
+    // dispatch(getProfesionales(tokenSinComillas))
+    // dispatch
     dispatch(getProfesionaPorId(idProfesional,tokenSinComillas))
+    dispatch(getHistorias(tokenSinComillas))
+    dispatch(getUsuarios(tokenSinComillas))
+    dispatch(getTurnos(tokenSinComillas))
   }, [])
 
 

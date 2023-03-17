@@ -4,7 +4,8 @@ import Modal from "react-bootstrap/Modal";
 import PropTypes from "prop-types";
 import "./addModal.css";
 
-function AddModals({
+function 
+AddModals({
   details,
   title,
   body,

@@ -9,7 +9,8 @@ import {
   POST_HISTORIA,
   GET_USUARIOS,
   REGISTER,
-  SESIONACTIVA
+  SESIONACTIVA,
+  GET_HISTORIAS
 } from "../constants";
 
 const initialState = {
@@ -21,7 +22,9 @@ const initialState = {
   todosTurnos: [],
   todosUsuarios:[],
   usuarioRegistrado:{},
-  sesionAbierta: ''
+  profesionalPorID:{},
+  sesionAbierta: '',
+  historiasClinicas:[]
 };  
 
 export const rootReducer = (state = initialState, action) => {
@@ -110,9 +113,15 @@ export const rootReducer = (state = initialState, action) => {
           todosTurnos: action.payload,
         }
       case GET_USUARIOS:
+        console.log('usuarios??===>', action.payload);
         return{
           ...state,
           todosUsuarios: action.payload,
+        }
+      case GET_HISTORIAS:
+        return{
+          ...state,
+          historiasClinicas: action.payload
         }
   
 

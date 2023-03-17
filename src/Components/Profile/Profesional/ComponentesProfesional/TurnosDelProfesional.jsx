@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import styles from './TurnoDelProfesional.module.css';
+import Button  from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 function TurnosDelProfesional({ selectTurnos }) {
   const profesionalPorId = useSelector((state) => state.profesionalPorID);
@@ -46,6 +48,11 @@ function TurnosDelProfesional({ selectTurnos }) {
               <div><strong>Termina:</strong> <span>{turno.endTime}</span></div>
               {turno.usuarioEmail && 
                 <div><strong>Email del paciente:</strong> <span>{turno.usuarioEmail}</span></div>  
+              }
+              {
+                selectTurnos === "pendiente"&&
+                
+                <Button><Link to={`/historialpaciente/${turno.id}`}>Ver Hc</Link></Button>
               }
             </div>
           ))}
