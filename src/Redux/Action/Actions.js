@@ -101,8 +101,8 @@ export function getProfesionaPorId(idProfesional, token) {
   console.log('entre a llamar al vago');
   return async function (dispatch) {
     try {
-      console.log('res.data- traigo idprofesional===>');
       let res = await axios.get(`${BASE_URL}/profesionales/${idProfesional}`);
+      console.log('res.data- traigo idprofesional===>', res.data);
       return dispatch({
         type:GET_PROFESIONAL_ID,
         payload:res.data
@@ -117,16 +117,17 @@ export function getProfesionaPorId(idProfesional, token) {
 }
 //get Turnos
 export function getTurnos(token) {
-  axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+  // axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
   return async function (dispatch) {
     try {
       let res = await axios.get(`${BASE_URL}/turnos`);
       // console.log('respuesta get turnos', res);
       return dispatch({ type: GET_TURNOS, payload: res.data });
     } catch (error) {
+      console.log('error al traer turnos=>', error);
       return dispatch({
         type: MESSAGE,
-        payload: error.response.data,
+        payload: error
       });
     }
   };
