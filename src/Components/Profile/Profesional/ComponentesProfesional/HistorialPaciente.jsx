@@ -9,10 +9,35 @@ function HistorialPaciente() {
     const usuarios=useSelector((state)=>state.todosUsuarios)
     const pacienteEmail= turnos.filter(e=>e.id===idTurno)[0].usuarioEmail
     const paciente= usuarios.filter(e=>e.email===pacienteEmail)
+    console.log('paciente==>', paciente);
 
     
   return (
     <>
+    <div>Paciente: {paciente[0].fullName}</div>
+    {
+      paciente.length >0 && !paciente[0].historiaclinica ?
+      <div> No posee historia clínica</div>:
+      <div>
+        {
+          paciente && paciente.map(e=>{
+            return(
+            <div>
+              Fecha: {e.historiaclinica.fecha}
+              Profesional que antendió: {e.historiaclinica.nombreProfesional}
+              Evaluación:{e.historiaclinica.mensaje}
+            </div>
+
+            )
+        
+        
+         
+          }) 
+
+        }
+      </div>
+      
+    }
     <Button><Link to={`/historiaclinica/${idTurno}`}>hola</Link></Button>
     </>
   )

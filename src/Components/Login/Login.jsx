@@ -52,7 +52,7 @@ function Login() {
       
       //usuario que viaja a localStorage
       const usuario = {
-        fullName: respuestaDBLogin.usuario.fullName,
+        fullName: respuestaDBLogin.usuario.fullName.toUpperCase(),
         celular:respuestaDBLogin.usuario.celular,
         email:respuestaDBLogin.usuario.email,
         imagenProfesional:respuestaDBLogin.usuario.imagenProfesional,
