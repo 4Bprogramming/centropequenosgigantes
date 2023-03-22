@@ -54,10 +54,10 @@ const validateDNI = (event) => {
     function errorOrSucces(verdaderoOfalso){
       if(verdaderoOfalso===true){
           NotificationManager.success("Usuario registado correctamente", "¡Excelente!", 2000);
-          NotificationManager.success("Serás dirigido a LOGIN", 3000);
+          // NotificationManager.success("Serás dirigido a LOGIN", 3000);
           setTimeout(() => {
             navigate('/login')
-          }, 4000);
+          }, 2000);
       }else{
         if(usuarioRegistrado){
           
@@ -69,16 +69,50 @@ const validateDNI = (event) => {
     // HANDLE SUBMIT
     async function handleSubmit(e) {
     e.preventDefault();  
-    if(!values.idUsuario || !values.nombre || !values.apellido || !values.email || !values.password || !values.celular){
-      completarCampo("Los campos no pueden estar vacíos")
-    }else{
+    
+    if(!values.idUsuario)NotificationManager.error(
+      "Falta DNI",
+      "ERROR",
+      2000
+    ); 
+    if(!values.nombre)NotificationManager.error(
+      "Falta Nombre",
+      "ERROR",
+      2000
+    ); 
+    if(!values.apellido)NotificationManager.error(
+      "Falta Apellido",
+      "ERROR",
+      2000
+    ); 
+    if(!values.email)NotificationManager.error(
+      "Falta Email",
+      "ERROR",
+      2000
+    ); 
+    if(!values.password)NotificationManager.error(
+      "Falta Password",
+      "ERROR",
+      2000
+    ); 
+    if(!values.celular)NotificationManager.error(
+      "Falta Celular",
+      "ERROR",
+      2000
+    ); 
+ 
+      
+     //if(values.idUsuario && values.nombre && values.apellido && values.celular && values.email && values.password)
+    else{
       const dbResponse = await dispatch(registerAction(values))
       completarCampo("")
-      
       if(dbResponse !== undefined){
         dbResponse.payload.message==="Usuario creado con exito!" ? errorOrSucces(true) : errorOrSucces(false)
       }
+      
+
     }
+    
   }
  
 
@@ -104,7 +138,7 @@ const validateDNI = (event) => {
           placeholder="Ingrese su nombre"
           required
           onChange={(event) =>
-            setValues((prev) => ({ ...prev, nombre: event.target.value }))
+            setValues((prev) => ({ ...prev, nombre: event.target.value.toUpperCase() }))
           }
          
         />
@@ -113,7 +147,7 @@ const validateDNI = (event) => {
           placeholder="Ingrese su apellido"
           required
           onChange={(event) =>
-            setValues((prev) => ({ ...prev, apellido: event.target.value }))
+            setValues((prev) => ({ ...prev, apellido: event.target.value.toUpperCase()}))
           }
         />
         <InputControl

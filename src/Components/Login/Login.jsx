@@ -18,14 +18,14 @@ function Login() {
 
   //usuario traido desde la DB
   const [usuarioDB,setUsuarioDB] = useLocalStorage("usuarioDB",{});
-  const [rol, setRol]= useLocalStorage("rol","usuario");
+  const [rol, setRol]= useLocalStorage("rol","");
   // console.log('ROL==>',rol);
 
   //datos de la form
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
-    select: "usuario",
+    select: "",
   });
 
   //On Change
@@ -35,34 +35,55 @@ function Login() {
       ...loginData,
       [e.target.name]: e.target.value,
     });
-    if(e.target.name==='select'){
-     const value=e.target.value
-      setRol(value)
-    }
+    // if(e.target.name==='select'){
+    //  const value=e.target.value
+    //   setRol(value)
+    // }
   };
 
   // console.log('ROL',rol);
   //On Submit
+  let rolLocal=JSON.parse(window.localStorage.getItem("rol"));
   const handleSubmit = async (e)=> {
     e.preventDefault();    
     const respuestaDBLogin = await loginAction(loginData);
-
+    console.log('respuestaDB==>', respuestaDBLogin);
+    
     if(respuestaDBLogin.token){
       setToken(respuestaDBLogin.token);
       
       //usuario que viaja a localStorage
       const usuario = {
-        fullName: respuestaDBLogin.usuario.fullName.toUpperCase(),
+        fullName: respuestaDBLogin.usuario.fullName,
         celular:respuestaDBLogin.usuario.celular,
         email:respuestaDBLogin.usuario.email,
         imagenProfesional:respuestaDBLogin.usuario.imagenProfesional,
         matricula:respuestaDBLogin.usuario.matricula,
         idProfesional:respuestaDBLogin.usuario.idProfesional
       }
+     
+      
+     console.log('rol Local', rol);
 
       setUsuarioDB(usuario);
       dispatch(sesionActiva(respuestaDBLogin.token));
-      navigate(`/${loginData.select}`)//me lleva al perfil en el cual me logueo segun el select.
+      if(respuestaDBLogin){
+        console.log('tiene idprofesional??', respuestaDBLogin.usuario.hasOwnProperty('idProfesional') );
+          if(respuestaDBLogin.usuario.hasOwnProperty('idProfesional')){
+            setRol('profesional')
+            navigate(`/profesional`)
+          }
+          if(!respuestaDBLogin.usuario.hasOwnProperty('fullName') ){
+            setRol('administrador')
+            navigate(`/administrador`)
+          }
+        else if(respuestaDBLogin.usuario.idUsuario){
+          setRol('usuario')
+          navigate(`/usuario`)
+        }
+      }
+      // setTimeout(()=>{console.log('rol??', setRol)},10);
+      // setTimeout(()=>{navigate(`/${rol}`)},4000)//me lleva al perfil en el cual me logueo segun el select.
 
     }else{
       NotificationManager.error(`${respuestaDBLogin}`, "ATENCION!", 7000);
@@ -92,9 +113,9 @@ function Login() {
           
         />
 
-        <div className={styles.selectLogin}>
-          <div className={styles.labelSelect}>Ingresa como:</div>
-          <select name="select" onChange={handleOnChange}  defaultValue="all">
+        {/* <div className={styles.selectLogin}> */}
+          {/* <div className={styles.labelSelect}>Ingresa como:</div> */}
+          {/* <select name="select" onChange={handleOnChange}  defaultValue="all">
           <option value="all" disabled hidden>
               Seleccione...
             </option>
@@ -103,8 +124,8 @@ function Login() {
               Profesional
             </option>
             <option value="administrador">Administrador</option>
-          </select>
-        </div>
+          </select> */}
+        {/* </div> */}
 
         <div className={styles.footer}>
           <button onClick={handleSubmit} disabled={!loginData.email || !loginData.password ? true : false}>Inicia Sesión</button>

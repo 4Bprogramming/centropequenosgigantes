@@ -79,7 +79,7 @@ export  function deleteProfesional(email, body) {
         
         try {
           let res = await axios.get(`${BASE_URL}/profesionales`)
-          // console.log('actualizo get profesionales==>',res);
+          console.log('actualizo get profesionales==>',res);
           
           return dispatch({type:GET_PROFESIONALES, payload:res.data});
           
@@ -98,7 +98,7 @@ export  function deleteProfesional(email, body) {
 //get profesional by ID
 export function getProfesionaPorId(idProfesional, token) {
   // axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
-  console.log('entre a llamar al vago');
+  // console.log('entre a llamar al vago');
   return async function (dispatch) {
     try {
       let res = await axios.get(`${BASE_URL}/profesionales/${idProfesional}`);
@@ -124,7 +124,7 @@ export function getTurnos(token) {
       // console.log('respuesta get turnos', res);
       return dispatch({ type: GET_TURNOS, payload: res.data });
     } catch (error) {
-      console.log('error al traer turnos=>', error);
+      // console.log('error al traer turnos=>', error);
       return dispatch({
         type: MESSAGE,
         payload: error
@@ -137,9 +137,9 @@ export function modificarTurnos(payload,token) {
   // axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
   return async function(dispatch) {
     try {
-      console.log('payload reserva modificacion turnos==>>>', payload);
+      // console.log('payload reserva modificacion turnos==>>>', payload);
       let res = await axios.put(`${BASE_URL}/turnos`, payload);
-      console.log('respuesta modificar turnos', res.data);
+      // console.log('respuesta modificar turnos', res.data);
       return dispatch({ type: RESERVA_TURNO_ADMIN, payload: res.data });
     } catch (error) {
       console.log('error', error.response.data);
@@ -261,6 +261,7 @@ export function horariosTurnosCreados(payload) {
     export async function loginAction(loginData) {
       try {
         let respuestaLogin = await axios.post(`${BASE_URL}/login`, loginData);
+        console.log('resp login=>',respuestaLogin.data );
         return respuestaLogin.data;
       } catch (e) {
         return e.response.data.message;
