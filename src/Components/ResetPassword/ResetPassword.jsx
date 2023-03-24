@@ -3,7 +3,7 @@ import InputControl from "../ImputControl/InputControl";
 import styles from "./resetPassword.module.css";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { resetPassword } from "../../Redux/Action/Actions";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {NotificationContainer,NotificationManager,} from "react-notifications";
 import "react-notifications/lib/notifications.css"; 
 
@@ -12,17 +12,18 @@ import "react-notifications/lib/notifications.css";
 
 const ResetPassword = () => {
     const navigate = useNavigate();
+    const {email,token} = useParams();
+    
+    
   // Creamos dos estados para almacenar la contraseña y la confirmación de la contraseña
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   //tomo el token desde Local Storage
-  const token= JSON.parse(window.localStorage.getItem('token'))
+  // const token= JSON.parse(window.localStorage.getItem('token'))
 
   //tomo el select y el mail desde local storage
-  const usuarioReset = JSON.parse(window.localStorage.getItem('usuarioReset'))
-
-
+  // const usuarioReset = JSON.parse(window.localStorage.getItem('usuarioReset'))
 
   //tipo de input
   const [inputType, setInputType] = useState("password");
@@ -30,7 +31,7 @@ const ResetPassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let respuestaDeAction = await resetPassword({...usuarioReset,password:password},token)
+    let respuestaDeAction = await resetPassword({email,password:password},token)
     if(respuestaDeAction?.message == '¡El cambio de su contraseña fue exitoso!'){
         NotificationManager.success(`${respuestaDeAction.message}`,"Enhorabuena!", 5000);
         NotificationManager.info(`Dirigiendo a LOGIN...`,"Sera redirigido!", 5000);

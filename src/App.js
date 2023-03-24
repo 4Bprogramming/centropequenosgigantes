@@ -98,7 +98,7 @@ function App() {
         <Route exact path="/familia" element={<TerapiaFamiliar />} />
         <Route exact path="/psicomotricidad" element={<Psicomotricidad />} />
         <Route exact path="/forgoten-password" element={<EnviarMailRecuperacion/>}/>
-        <Route exact path="/reset-password" element={<ResetPassword/>}/>
+        <Route exact path="/reset-password/:email/:token" element={<ResetPassword/>}/>
         <Route
           exact
           path="/estimulacion_temprana"
