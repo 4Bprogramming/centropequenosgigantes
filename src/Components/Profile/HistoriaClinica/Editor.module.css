@@ -1,0 +1,26 @@
+.formContiner {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.paciente {
+  font-size: 30px;
+  text-transform: uppercase;
+  margin-top: 15px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.formLabel {
+  font-size: 20px;
+  text-transform: uppercase;
+  margin-top: 15px;
+  font-weight: 500;
+}
+.button {
+  margin-bottom: 20px;
+}
+.placeHolder{
+  
+    border:3px solid blue
+}

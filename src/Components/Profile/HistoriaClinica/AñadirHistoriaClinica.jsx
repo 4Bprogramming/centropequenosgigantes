@@ -45,7 +45,7 @@ function AñadirHistoriaClinica(props) {
     hora: turno.startTime,
     usuarioEmail: paciente.email,
     paciente: paciente.fullName.toUpperCase(),
-    documento: paciente.documento,
+    documento: paciente.idUsuario,
     profesional: fullName,
   });
   // console.log('cambio==>', post)
@@ -94,7 +94,6 @@ function AñadirHistoriaClinica(props) {
   }
   return (
     <>
-      AñadirHistoriaClinica
       <EditorTexto
         handleChange={handleChange}
         handleSubmit={handleSubmit}
