@@ -14,8 +14,10 @@
     text-shadow:  2px 1px 5px black;
 }
 .turnosMapContainer{
-    display: flex; 
-    flex-direction: column;
+    /* display: flex;  */
+    /* flex-direction: column; */
+    position: relative;
+    display: inline-block;
     align-items:flex-start;
     background-color: rgba(97, 92, 92, 0.527);
     border-radius: 15px;
