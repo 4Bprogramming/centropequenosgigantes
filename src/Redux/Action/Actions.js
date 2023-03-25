@@ -289,9 +289,12 @@ export function horariosTurnosCreados(payload) {
     export async function passwordOlvidado(body){
     
       try {
+        // console.log('envio desde la action al back este mail=>', body);
         let respuestaPasswordOlvidado = await axios.post(`${BASE_URL}/password-olvidado`,body);
         return respuestaPasswordOlvidado.data
       } catch (e) {
+        
+        // console.log('el back me responde del email',e.response);
         return e.response.data;
       }
     }
