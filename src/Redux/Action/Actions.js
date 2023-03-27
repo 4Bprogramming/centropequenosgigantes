@@ -121,7 +121,7 @@ export function getTurnos(token) {
   return async function (dispatch) {
     try {
       let res = await axios.get(`${BASE_URL}/turnos`);
-      // console.log('respuesta get turnos', res);
+      console.log('respuesta get turnos', res.data);
       return dispatch({ type: GET_TURNOS, payload: res.data });
     } catch (error) {
       // console.log('error al traer turnos=>', error);

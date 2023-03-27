@@ -5,12 +5,13 @@ import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import "./tabletest.css";
 import { TbEdit } from "react-icons/tb";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { BsFillArrowLeftSquareFill, BsFillArrowRightSquareFill } from "react-icons/bs";
 import EditModalTurnoPendiente from "../Admin/AdminComponents/Modals/TurnosModals/EditModalTurnoPendiente";
 import DeleteTurnos from "../Admin/AdminComponents/Modals/TurnosModals/DeleteTurnos";
 
 
 function TableTurnos({ data, columns, detail, title,token, estado }) {
- 
+ console.log('todos los turnos paginacion', data);
  
   //filter
   const [filter, setFilter] = useState("");
@@ -65,7 +66,38 @@ function TableTurnos({ data, columns, detail, title,token, estado }) {
              
     );
   }
-  
+  //PAGINACION DE LA TABLA
+  const [pagina, setPagina]=useState(1)
+  function onClickPage(e){
+    console.log('paginaElegida=>', e.target.value);
+    setPagina(e.target.value)
+  }
+  const filasPorPagina=20
+ const totalPaginas=Math.ceil(dataFiltered.length/filasPorPagina)
+ 
+ function crearArr(n){
+  let arr=[]
+for(let i=1;i<=n;i++){
+  arr.push(i)
+}
+return arr
+ }
+ 
+ let numeros=crearArr(totalPaginas)
+
+   //aca parte la tabla
+   const indiceInicial= (pagina-1)*filasPorPagina
+   const indiceFinal=indiceInicial + filasPorPagina
+   const datosAMostrar= dataFiltered.slice(indiceInicial,indiceFinal)
+console.log('indiceInicial=>', indiceInicial);
+console.log('indiceFinal=>', indiceFinal);
+
+   console.log('datos a mostrar',datosAMostrar);
+ console.log('dataFiltered=>', dataFiltered)
+//  console.log('numeros=>', numeros);
+//  console.log('total paginas=>', totalPaginas);
+//  console.log('setea pagina=>', pagina);
+
   return (
     <>
       <input
@@ -78,13 +110,23 @@ function TableTurnos({ data, columns, detail, title,token, estado }) {
         onChange={(e) => setFilter(e.target.value)}
       />
 
-      {dataFiltered?.length === 0 ? (
+      {datosAMostrar?.length === 0 ? (
         <div className="noRegistersFound">No se encontraron registros...</div>
       ) : (
         <>
         {/* Tabler Title */}
           <h3 className="tableTitle">{title}</h3>
-
+        {/* PAGINADO*/}
+          <label htmlFor="">Página:</label>
+          <BsFillArrowLeftSquareFill/>
+          <select name='select-paginacion' id="select-paginacion" onClick={onClickPage}>
+            {
+             numeros.map(pag=>{
+              return <option value={pag}>{pag}</option>
+             }) 
+            }
+          </select>
+          <BsFillArrowRightSquareFill/>
           {/* Table */}
           <Table>
             <Thead>
@@ -103,7 +145,7 @@ function TableTurnos({ data, columns, detail, title,token, estado }) {
             </Thead>
 
             <Tbody>
-              {dataFiltered?.map(
+              {datosAMostrar?.map(
                 (el) =>
                   el.id && (  
                     <Tr>

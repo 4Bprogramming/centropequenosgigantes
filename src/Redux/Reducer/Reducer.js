@@ -108,6 +108,7 @@ export const rootReducer = (state = initialState, action) => {
         };
       }
       case GET_TURNOS:
+        console.log('action.payload=>', action.payload);
         return{
           ...state,
           todosTurnos: action.payload,
