@@ -46,7 +46,7 @@ function ReservaTurnos({ token, rol, profesional, email }) {
 
   if (profesional) {
     let turnosProfesional = profesional[0].turnos;
-    // console.log('turnos==>', turnosProfesional);
+  
     filterDay = Array.from(
       turnosProfesional.map((turnos) =>
         turnos.date.split("-").reverse().join("-")
@@ -84,13 +84,12 @@ function ReservaTurnos({ token, rol, profesional, email }) {
     setCambioProfesional(true);
   }
   function handleClick(e) {
-    // console.log('click a la fecha==>', e);
+   
     e.preventDefault();
     let value = e.target.value;
-    // console.log('value==>==>', value);
-    // console.log('turnosMostrar==>', post.turnosMostrar);
+    
     let miTurno = post.turnosMostrar?.filter((turno) => turno.id === value);
-    // console.log('miTurno==>', miTurno);
+    
     setPost({ ...post, turnoElegido: miTurno });
     setShow(true);
   }
@@ -135,13 +134,12 @@ function ReservaTurnos({ token, rol, profesional, email }) {
     }
   }
   function handleSubmit(e) {
-    console.log("turnoElegido", post.turnoElegido);
-    console.log("e", e);
+  
     e.preventDefault();
     if (!post.valorPago) {
       setPost({ ...post, valorPago: post.turnoElegido[0]?.valor });
     }
-    console.log("post.valorPago===>", post.valorPago);
+   
     if (
       post.turnoElegido.length > 0 &&
       post.formaPago !== "" &&
@@ -164,7 +162,7 @@ function ReservaTurnos({ token, rol, profesional, email }) {
         email: post.emailPaciente,
       };
 
-      console.log("SUBMIT ENVIADO==>>>", turnoReservado);
+     
       dispatch(modificarTurnos(turnoReservado, token));
       dispatch(getTurnos(token));
       dispatch(getProfesionales(token));
@@ -177,7 +175,7 @@ function ReservaTurnos({ token, rol, profesional, email }) {
     }
   }
   function handleSubmitUser(e) {
-    console.log("turnoElegido handle entro", post.turnoElegido);
+   
 
     let turnoReservado = {
       id: post.turnoElegido[0].id,
@@ -186,7 +184,7 @@ function ReservaTurnos({ token, rol, profesional, email }) {
       email: email,
     };
     let idTurno = turnoReservado.id;
-    console.log("Turno Reservado==>", turnoReservado);
+  
 
     dispatch(modificarTurnos(turnoReservado, token));
     // dispatch(getTurnos(token))

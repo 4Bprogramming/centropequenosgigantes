@@ -80,7 +80,7 @@ function CreateAppointments({user}) {
    if(morningTimeS){
      let hrS=morningTimeS.split(':')[0]
      let min= morningTimeS.split(':')[1]
-          //  console.log('hrS', hrS);
+        
      if(hrS.length===1){
        let x= hrS
        hrS= '0'+ x
@@ -115,8 +115,7 @@ function CreateAppointments({user}) {
         endTime:`${end1.hour()}:${end1.minute()}`,
         duration:duration
       }
-      // console.log('morningHours mando a crear', morningHoursCreate)
-      // dispatch(createMorningHours(morningHoursCreate))
+       // dispatch(createMorningHours(morningHoursCreate))
       
    }
 
@@ -128,7 +127,7 @@ function CreateAppointments({user}) {
   //  if(afternoonTimeS){
   //   let hrS=afternoonTimeS.split(':')[0]
   //   let min= afternoonTimeS.split(':')[1]
-  //         // console.log('hrS', hrS);
+  //        
   //   if(hrS.length===1){
   //     let x= hrS
   //     hrS= '0'+ x
@@ -238,7 +237,7 @@ function CreateAppointments({user}) {
           // dispatch(postAppointments(appointmentsAfternoon, !reload))
         // }
          
-          // console.log('mando reload, created', !reload)
+          
              
             // navigate(`/home/`+ adId)
           
@@ -256,17 +255,6 @@ function CreateAppointments({user}) {
       // let veremos1=  myTimeAfternoon.includes(afternoonTimeE)
 
       // let veremos2=  myTimeAfternoon.includes(afternoonTimeS)
-      // console.log('afternoonsTime', myTimeAfternoon)
-      // console.log('MORNING_HOURS', morningHours)
-      // console.log('AFTERNOON_HOURS', afternoonHours)
-      // console.log('MORNING_HOURS_BY_RENDER', hourMornbyRender)
-      // console.log('AFTERNOON_HOURS_BY_RENDER', hourAftbyRender)
-      
-      //console.log('veremos', veremos);
-      //console.log('hora q elijo', afternoonTimeS)
-    //  console.log('morningTime', myTimeMorning)
-      //console.log('veremos', veremos1);
-      //console.log('hora q elijo', afternoonTimeE)
       return (
     <>
      

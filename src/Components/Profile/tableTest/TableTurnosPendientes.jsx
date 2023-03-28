@@ -12,12 +12,18 @@ import {
 import EditModalTurnoPendiente from "../Admin/AdminComponents/Modals/TurnosModals/EditModalTurnoPendiente";
 import DeleteTurnos from "../Admin/AdminComponents/Modals/TurnosModals/DeleteTurnos";
 
-function TableTurnos({ data, columns, detail, title, token, estado }) {
+function TableTurnosPendientes({
+  data,
+  columns,
+  detail,
+  title,
+  token,
+  estado,
+}) {
   //filter
   const [filter, setFilter] = useState("");
 
   //ordenar por fecha
-
   const orderFecha = data.sort((a, b) => {
     let y = new Date(
       b.date.split("-")[2],
@@ -59,15 +65,11 @@ function TableTurnos({ data, columns, detail, title, token, estado }) {
 
   //when Edit button is clicked
   function showModalEdit(id) {
-    setTurnoData(
-      orderFecha.length > 0 && orderFecha.filter((el) => el.id === id)
-    ); //son los peritos
+    setTurnoData(orderFecha.length > 0 && orderFecha.filter((el) => el.id === id)); //son los peritos
     setShowModalPendiente(true);
   }
   function showModalDelete(id) {
-    setTurnoData(
-      orderFecha.length > 0 && orderFecha.filter((el) => el.id === id)
-    ); //son los peritos
+    setTurnoData(orderFecha.length > 0 && orderFecha.filter((el) => el.id === id)); //son los peritos
     setShowModalD(true);
   }
 
@@ -154,13 +156,6 @@ function TableTurnos({ data, columns, detail, title, token, estado }) {
           <h3 className="tableTitle">{title}</h3>
           {/* PAGINADO*/}
           <label htmlFor="">Página:</label>
-          {/* <select name='select-paginacion' id="select-paginacion" onClick={onClickPage}>
-            {
-             numeros.map(pag=>{
-              return <option value={pag}>{pag}</option>
-             }) 
-            }
-          </select> */}
           {pagina === 1 ? null : (
             <a
               onClick={() => onClickPage(pagina - 1)}
@@ -196,12 +191,8 @@ function TableTurnos({ data, columns, detail, title, token, estado }) {
                 {columns1.map((e) => {
                   return <Th className="thEdit">{e}</Th>;
                 })}
-                {estado === "pendiente" && (
-                  <>
-                    <Th className="thEdit">Editar</Th>
-                    <Th className="thEdit">Eliminar</Th>
-                  </>
-                )}
+                <Th className="thEdit">Editar</Th>
+                <Th className="thEdit">Eliminar</Th>
               </Tr>
             </Thead>
 
@@ -221,26 +212,22 @@ function TableTurnos({ data, columns, detail, title, token, estado }) {
                         );
                       })}
 
-                      {estado === "pendiente" && (
-                        <>
-                          <Td className="tdEdit" key={el.id}>
-                            <div
-                              className="editBtn"
-                              onClick={() => showModalEdit(el.id)}
-                            >
-                              <TbEdit />
-                            </div>
-                          </Td>
-                          <Td className="tdEdit" key={el.id}>
-                            <div
-                              className="editBtn"
-                              onClick={() => showModalDelete(el.id)}
-                            >
-                              <RiDeleteBin6Line />
-                            </div>
-                          </Td>
-                        </>
-                      )}
+                      <Td className="tdEdit" key={el.id}>
+                        <div
+                          className="editBtn"
+                          onClick={() => showModalEdit(el.id)}
+                        >
+                          <TbEdit />
+                        </div>
+                      </Td>
+                      <Td className="tdEdit" key={el.id}>
+                        <div
+                          className="editBtn"
+                          onClick={() => showModalDelete(el.id)}
+                        >
+                          <RiDeleteBin6Line />
+                        </div>
+                      </Td>
                     </Tr>
                   )
               )}
@@ -268,4 +255,4 @@ function TableTurnos({ data, columns, detail, title, token, estado }) {
     </>
   );
 }
-export default TableTurnos;
+export default TableTurnosPendientes;

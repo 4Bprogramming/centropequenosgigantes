@@ -11,7 +11,7 @@ function DetalleDeProfesional({props}) {
   const profesionales=useSelector((state) => state.allProfessional);
   const {idProfesional}=useParams()
   const profesional=profesionales.filter(e=>e.idProfesional===idProfesional)
-  console.log('id-profesional==>',idProfesional);
+  
 
   return (
    <ReservaTurnos rol={rol} profesional={profesional} email={email}

@@ -2,7 +2,7 @@ import { fontFamily } from '@mui/system'
 import React from 'react'
 
 function BodyModal({body, profesional}) {
-console.log('body==>', body);
+
   return (
     <div className='DiaHoraProfesional'>
         <p  style={{fontFamily:"monospace",fontWeight:"600  "}}> El dia: <span style={{fontStyle:"italic",fontWeight:"200"}}>{body[0]?.date}</span></p>

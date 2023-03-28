@@ -43,7 +43,7 @@ function CrearTurnos({ token }) {
 
   //FUNCION PARA CREAR {VALUE, LABEL} DEL SELECT DE PROFESIONALES
   const proFiltrado=profesionales?.filter(e=>e.active===true)
-  // console.log('profFiltrado', proFiltrado);
+ 
   const seleccionSelect = seleccionProfesional(proFiltrado);
   ///////////======HANDLE SELECT PROFESIONAL/////////////
   const handleSelect = (seletedOptions) => {
@@ -118,8 +118,7 @@ function CrearTurnos({ token }) {
     month: d.month.number,
     year: d.year,
   }));
-  // console.log('POST.DATE===>', post.date);
-  // console.log('DATE2 QUE HAGO MAP==>',date2);
+  
   let dateArray = [];
   let noDay = [];
   for (let i = 0; i < date2.length; i++) {
@@ -128,14 +127,14 @@ function CrearTurnos({ token }) {
     let dayNext = new moment(
       `${date2[i].year}-${date2[i].month}-${date2[i].day}`
     );
-    console.log("dayNext");
+    
     if (dayNext > dayCurrent) {
       dateArray.push(date2[i]);
     } else {
       noDay.push(post.date[i]);
     }
   }
-  // console.log('Horas que envío al back==>', dateArray);
+  
   async function submitAll(e) {
     try {
       if (
@@ -151,7 +150,7 @@ function CrearTurnos({ token }) {
           profesionalIdProfesional: post.profesionalIdProfesional, 
           valor: post.valor,
         };
-        // console.log('TURNOS', turnosACrear);
+        
         await dispatch(subirTurnos(turnosACrear, token));
         dispatch(getTurnos(token));
         NotificationManager.success("Turnos Creados", "Excelente!", 3000);
@@ -184,7 +183,6 @@ function CrearTurnos({ token }) {
         );
       }
     } catch (error) {
-      console.log('Error', message);
       NotificationManager.error("Error", "ATENCION!", 3000);
       // <ModalErrors error={'no se pudieron crear los turnos'}/>
     }

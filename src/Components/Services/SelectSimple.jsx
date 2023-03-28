@@ -4,8 +4,6 @@ import makeAnimates from "react-select/animated";
 const animatedComponents = makeAnimates();
 
 function SelectSimple({ onChange, options }) {
-  // console.log("options", options);
-
   return (
     <>
       <Select

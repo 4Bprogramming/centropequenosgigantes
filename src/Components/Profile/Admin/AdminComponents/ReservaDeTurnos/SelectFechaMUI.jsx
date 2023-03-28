@@ -8,21 +8,19 @@ import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 export default function SelectFecha2({date, onChange, diasConTurnos}) {
     const turnos1=new Set(diasConTurnos)
    const turnos= [...turnos1]
-    // console.log('diasConTurnos',turnos);
+    
 
     const isWeekend = (date) => {
-        // console.log('DATE==>>', date);
+       
       const day = date.date();
-    //   console.log('day==>', day);
+    
       const month = date.month()
-    //   console.log('month==>', month);
+    
       const year = date.year()
-    //   console.log('year==>', year);
+  
 
       const dia=`${year}-${month+1}-${day}`
-    //   console.log('DIAAAA===>>>', dia);
-    //   console.log('TURNOS', turnos);
-        // const turno1= turnos.filter(e=>e===dia).toString()
+   
      if(!turnos.some(e=>e===dia)){
 
          return date
