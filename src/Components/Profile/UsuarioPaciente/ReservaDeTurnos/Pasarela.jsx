@@ -6,11 +6,10 @@ function Pasarela({body, handleSubmit}) {
   const navigate = useNavigate();
 
  const valor= Number(body.valor)*100
- console.log('boyquetrae==<', body)
-console.log('valor==<', valor);
+
 const data = localStorage.getItem("usuarioDB");
 const { email } = JSON.parse(data);
-console.log('data==<', email)
+
   const header = {
     method: "POST",
     headers: {

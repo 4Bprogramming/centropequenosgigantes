@@ -60,8 +60,7 @@ const EditModalTurnoPendiente = (props) => {
     setEditFormInput({ ...editFormInput, especialidades: selection });
   };
   let esto=editFormInput.especialidades
-  // console.log('que es??==>', typeof esto);
-  // console.log('Array.isArray(esto)==>',Array.isArray(esto));
+ 
   if(Array.isArray(editFormInput.especialidades)){
     let especialidadesSinCambios = editFormInput.especialidades?.map((e) => e.value).toString();
     setEditFormInput({ ...editFormInput, especialidades: especialidadesSinCambios })
@@ -84,14 +83,13 @@ const EditModalTurnoPendiente = (props) => {
     // imagenProfesional: editFormInput.imageId,
   };
   
-  // console.log('editForm Especialidades==>', editFormInput.especialidades);
-  //========== HANDLE SUBMIT =======
-  /* console.log('editForm', editFormInput) */
+   //========== HANDLE SUBMIT =======
+ 
   async function handleSubmit(e) {
     e.preventDefault();
-    // console.log('evento trae===>',e);
+   
     try {
-        // console.log('newProfesional==>', newProfesional);
+       
 
         //it closes the Modal after submit
         // await dispatch(editProfesionales(TurnoData.idProfesional, newProfesional, token)) 

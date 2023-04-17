@@ -22,7 +22,7 @@ function ModalReserva({
   onClick,
   turno
 }) {
-  // console.log('body==>', body);
+ 
   return (
     <>
       <Modal show={show} onHide={onHide} backdrop="static" keyboard={false}>

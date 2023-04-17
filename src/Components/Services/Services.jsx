@@ -11,7 +11,7 @@ function Services() {
 
   function handleSelect(value) {
     const selected = value;
-    console.log(selected.value, "value");
+
     navigate(`/${selected.value}`);
   }
 
@@ -27,16 +27,14 @@ function Services() {
       <div className={styles.mainServiceContainer}>
         <h1 className={styles.tituloPrincipalServicio}>Servicios</h1>
         <p className={styles.serviciosParrafo}>
-          Acá encontrarás todos los servicios que ofrecemos en el centro <strong>Pequeños Gigantes</strong> los cuales son:
+          Acá encontrarás todos los servicios que ofrecemos en el centro{" "}
+          <strong>Pequeños Gigantes</strong> los cuales son:
         </p>
         <div className={styles.selectSimpleContainer}>
           <SelectSimple onChange={handleSelect} options={newOptions} />
         </div>
         <div className={styles.flex}>
-          
-            <SevicesCard />
-
-          
+          <SevicesCard />
         </div>
       </div>
     </>

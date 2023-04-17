@@ -12,12 +12,18 @@ import {
 import EditModalTurnoPendiente from "../Admin/AdminComponents/Modals/TurnosModals/EditModalTurnoPendiente";
 import DeleteTurnos from "../Admin/AdminComponents/Modals/TurnosModals/DeleteTurnos";
 
-function TableTurnos({ data, columns, detail, title, token, estado }) {
+function TableTurnosPendientes({
+  data,
+  columns,
+  detail,
+  title,
+  token,
+  estado,
+}) {
   //filter
   const [filter, setFilter] = useState("");
 
   //ordenar por fecha
-
   const orderFecha = data.sort((a, b) => {
     let y = new Date(
       b.date.split("-")[2],
@@ -59,15 +65,11 @@ function TableTurnos({ data, columns, detail, title, token, estado }) {
 
   //when Edit button is clicked
   function showModalEdit(id) {
-    setTurnoData(
-      orderFecha.length > 0 && orderFecha.filter((el) => el.id === id)
-    ); //son los peritos
+    setTurnoData(orderFecha.length > 0 && orderFecha.filter((el) => el.id === id)); //son los peritos
     setShowModalPendiente(true);
   }
   function showModalDelete(id) {
-    setTurnoData(
-      orderFecha.length > 0 && orderFecha.filter((el) => el.id === id)
-    ); //son los peritos
+    setTurnoData(orderFecha.length > 0 && orderFecha.filter((el) => el.id === id)); //son los peritos
     setShowModalD(true);
   }
 
@@ -152,65 +154,36 @@ function TableTurnos({ data, columns, detail, title, token, estado }) {
         <>
           {/* Tabler Title */}
           <h3 className="tableTitle">{title}</h3>
-
           {/* PAGINADO*/}
-          <div
+          <label htmlFor="">Página:</label>
+          {pagina === 1 ? null : (
+            <a
+              onClick={() => onClickPage(pagina - 1)}
+              style={{ marginLeft: "7px" }}
+            >
+              <BsFillArrowLeftSquareFill />{" "}
+            </a>
+          )}
+          <input
             style={{
-              display: "flex",
-              margin: "9px 0px",
-              width: "230px",
-              justifyContent: "space-evenly",
-              fontWeight: "bold",
-              alignItems: "center",
+              border: "1px solid black",
+              height: "30px",
+              width: "45px",
+              padding: "5px ",
+              borderRadius: "6px",
             }}
-          >
-            <label htmlFor="" style={{ fontFamily: "monospace" }}>
-              Página:
-            </label>
-            {/* <select name='select-paginacion' id="select-paginacion" onClick={onClickPage}>
-            {
-             numeros.map(pag=>{
-              return <option value={pag}>{pag}</option>
-             }) 
-            }
-          </select> */}
-            {pagina === 1 ? null : (
-              <a
-                onClick={() => onClickPage(pagina - 1)}
-                style={{ marginLeft: "7px" }}
-              >
-                <BsFillArrowLeftSquareFill
-                  color="#20c997"
-                  size="25px"
-                  cursor="pointer"
-                />{" "}
-              </a>
-            )}
-            <input
-              style={{
-                border: "1px solid black",
-                width: "60px",
-                padding: "5px ",
-                height: "26px",
-                textAlign: "center",
-              }}
-              onChange={(e) => onChange(e)}
-              onKeyDown={(e) => enter(e)}
-              name="pagina"
-              autoComplete="off"
-              value={input}
-            />{" "}
-            <span style={{ marginRight: "7px" }}> de {totalPaginas}</span>
-            {pagina === totalPaginas ? null : (
-              <a onClick={() => onClickPage(pagina + 1)}>
-                <BsFillArrowRightSquareFill
-                  color="#20c997"
-                  size="25px"
-                  cursor="pointer"
-                />{" "}
-              </a>
-            )}
-          </div>
+            onChange={(e) => onChange(e)}
+            onKeyDown={(e) => enter(e)}
+            name="pagina"
+            autoComplete="off"
+            value={input}
+          />{" "}
+          <span style={{ marginRight: "7px" }}> de {totalPaginas}</span>
+          {pagina === totalPaginas ? null : (
+            <a onClick={() => onClickPage(pagina + 1)}>
+              <BsFillArrowRightSquareFill />{" "}
+            </a>
+          )}
           {/* Table */}
           <Table>
             <Thead>
@@ -218,12 +191,8 @@ function TableTurnos({ data, columns, detail, title, token, estado }) {
                 {columns1.map((e) => {
                   return <Th className="thEdit">{e}</Th>;
                 })}
-                {estado === "pendiente" && (
-                  <>
-                    <Th className="thEdit">Editar</Th>
-                    <Th className="thEdit">Eliminar</Th>
-                  </>
-                )}
+                <Th className="thEdit">Editar</Th>
+                <Th className="thEdit">Eliminar</Th>
               </Tr>
             </Thead>
 
@@ -243,26 +212,22 @@ function TableTurnos({ data, columns, detail, title, token, estado }) {
                         );
                       })}
 
-                      {estado === "pendiente" && (
-                        <>
-                          <Td className="tdEdit" key={el.id}>
-                            <div
-                              className="editBtn"
-                              onClick={() => showModalEdit(el.id)}
-                            >
-                              <TbEdit />
-                            </div>
-                          </Td>
-                          <Td className="tdEdit" key={el.id}>
-                            <div
-                              className="editBtn"
-                              onClick={() => showModalDelete(el.id)}
-                            >
-                              <RiDeleteBin6Line />
-                            </div>
-                          </Td>
-                        </>
-                      )}
+                      <Td className="tdEdit" key={el.id}>
+                        <div
+                          className="editBtn"
+                          onClick={() => showModalEdit(el.id)}
+                        >
+                          <TbEdit />
+                        </div>
+                      </Td>
+                      <Td className="tdEdit" key={el.id}>
+                        <div
+                          className="editBtn"
+                          onClick={() => showModalDelete(el.id)}
+                        >
+                          <RiDeleteBin6Line />
+                        </div>
+                      </Td>
                     </Tr>
                   )
               )}
@@ -290,4 +255,4 @@ function TableTurnos({ data, columns, detail, title, token, estado }) {
     </>
   );
 }
-export default TableTurnos;
+export default TableTurnosPendientes;

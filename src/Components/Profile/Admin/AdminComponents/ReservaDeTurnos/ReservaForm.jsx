@@ -7,7 +7,7 @@ import SelectFecha2 from "./SelectFechaMUI";
 import ModalPagoReserva from "../../../UsuarioPaciente/ReservaDeTurnos/ModalPAgoReserva";
 
 function ReservaForm(props) {
-  // console.log('esto traer el props n click',props)
+
   return (
     <div className={styles.mainReservarTurnoContainer}>
       <h2 style={{ fontFamily: "monospace", textShadow: "3px 2px 5px grey" }}>

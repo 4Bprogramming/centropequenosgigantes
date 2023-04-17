@@ -22,8 +22,8 @@ function AñadirHistoriaClinica(props) {
   const { idTurno } = useParams();
   const dispatch = useDispatch();
   const profesional = useSelector((state) => state.profesionalPorID);
-  console.log('profesional==>', profesional);
-  const turnos=profesional.turnos
+
+  const turnos = profesional.turnos;
   const usuarios = useSelector((state) => state.todosUsuarios);
   const turno = turnos?.filter((e) => e.id === idTurno)[0];
   const paciente = usuarios.filter((e) => e.email === turno.usuarioEmail)[0];
@@ -48,17 +48,15 @@ function AñadirHistoriaClinica(props) {
     documento: paciente.idUsuario,
     profesional: fullName,
   });
-  // console.log('cambio==>', post)
+
   function handleChange(e) {
     setPost({ ...post, mensaje: e.target.value });
   }
   function handleSubmit(e) {
     // e.preventDefault();
-   
-    
+
     if (post.mensaje !== "") {
       try {
-        
         let body = {
           mensaje: post.mensaje,
           fecha: post.fecha,
@@ -66,22 +64,24 @@ function AñadirHistoriaClinica(props) {
           usuarioEmail: post.usuarioEmail,
           nombreProfesional: post.profesional,
         };
-        console.log("mensaje==>", post.mensaje);
+
         const turnoReservado = {
           id: turno.id,
-          formaPago: '',
-          valor: '',
+          formaPago: "",
+          valor: "",
           estado: "finalizado",
           email: post.usuarioEmail,
         };
-        // console.log("turnoModificar==>", turno);
-        dispatch(guardarHistoria(body, token))
-        dispatch(getProfesionaPorId(idProfesional,token))
-        dispatch(getHistorias(token))
-        dispatch(getUsuarios(token))
-        dispatch(getTurnos(token))
+
+        dispatch(guardarHistoria(body, token));
+        dispatch(getProfesionaPorId(idProfesional, token));
+        dispatch(getHistorias(token));
+        dispatch(getUsuarios(token));
+        dispatch(getTurnos(token));
         dispatch(modificarTurnos(turnoReservado));
-        setTimeout(()=>{navigate('/profesional')},2000)
+        setTimeout(() => {
+          navigate("/profesional");
+        }, 2000);
         NotificationManager.success(
           "Historia Clinica Guardada",
           "EXCELENTE",
@@ -89,7 +89,6 @@ function AñadirHistoriaClinica(props) {
         );
       } catch (error) {}
     } else {
-      console.log("voy a subir e==>", e);
     }
   }
   return (
