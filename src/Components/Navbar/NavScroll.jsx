@@ -75,10 +75,10 @@ function NavScroll() {
                 )}
               </div>
 
-              <div>
+              <div className={styles.navBarLinks}>
                 {rol ? (
                   <NavLink to="/">
-                    <div className={styles.buttonContact} onClick={logOut}>
+                    <div  onClick={logOut}>
                       CERRAR SESION
                     </div>
                   </NavLink>

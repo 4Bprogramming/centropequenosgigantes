@@ -152,43 +152,65 @@ function TableTurnos({ data, columns, detail, title, token, estado }) {
         <>
           {/* Tabler Title */}
           <h3 className="tableTitle">{title}</h3>
+
           {/* PAGINADO*/}
-          <label htmlFor="">Página:</label>
-          {/* <select name='select-paginacion' id="select-paginacion" onClick={onClickPage}>
+          <div
+            style={{
+              display: "flex",
+              margin: "9px 0px",
+              width: "230px",
+              justifyContent: "space-evenly",
+              fontWeight: "bold",
+              alignItems: "center",
+            }}
+          >
+            <label htmlFor="" style={{ fontFamily: "monospace" }}>
+              Página:
+            </label>
+            {/* <select name='select-paginacion' id="select-paginacion" onClick={onClickPage}>
             {
              numeros.map(pag=>{
               return <option value={pag}>{pag}</option>
              }) 
             }
           </select> */}
-          {pagina === 1 ? null : (
-            <a
-              onClick={() => onClickPage(pagina - 1)}
-              style={{ marginLeft: "7px" }}
-            >
-              <BsFillArrowLeftSquareFill />{" "}
-            </a>
-          )}
-          <input
-            style={{
-              border: "1px solid black",
-              height: "30px",
-              width: "45px",
-              padding: "5px ",
-              borderRadius: "6px",
-            }}
-            onChange={(e) => onChange(e)}
-            onKeyDown={(e) => enter(e)}
-            name="pagina"
-            autoComplete="off"
-            value={input}
-          />{" "}
-          <span style={{ marginRight: "7px" }}> de {totalPaginas}</span>
-          {pagina === totalPaginas ? null : (
-            <a onClick={() => onClickPage(pagina + 1)}>
-              <BsFillArrowRightSquareFill />{" "}
-            </a>
-          )}
+            {pagina === 1 ? null : (
+              <a
+                onClick={() => onClickPage(pagina - 1)}
+                style={{ marginLeft: "7px" }}
+              >
+                <BsFillArrowLeftSquareFill
+                  color="#20c997"
+                  size="25px"
+                  cursor="pointer"
+                />{" "}
+              </a>
+            )}
+            <input
+              style={{
+                border: "1px solid black",
+                width: "60px",
+                padding: "5px ",
+                height: "26px",
+                textAlign: "center",
+              }}
+              onChange={(e) => onChange(e)}
+              onKeyDown={(e) => enter(e)}
+              name="pagina"
+              autoComplete="off"
+              value={input}
+            />{" "}
+            <span style={{ marginRight: "7px" }}> de {totalPaginas}</span>
+            {pagina === totalPaginas ? null : (
+              <a onClick={() => onClickPage(pagina + 1)}>
+                <BsFillArrowRightSquareFill
+                  color="#20c997"
+                  size="25px"
+                  cursor="pointer"
+                />{" "}
+              </a>
+            )}
+          </div>
           {/* Table */}
           <Table>
             <Thead>
