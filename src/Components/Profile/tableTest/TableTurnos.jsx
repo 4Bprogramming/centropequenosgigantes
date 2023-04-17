@@ -1,31 +1,31 @@
-import React, { useState} from "react";
-import { useDispatch} from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import "./tabletest.css";
 import { TbEdit } from "react-icons/tb";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { BsFillArrowLeftSquareFill, BsFillArrowRightSquareFill } from "react-icons/bs";
+import {
+  BsFillArrowLeftSquareFill,
+  BsFillArrowRightSquareFill,
+} from "react-icons/bs";
 import EditModalTurnoPendiente from "../Admin/AdminComponents/Modals/TurnosModals/EditModalTurnoPendiente";
 import DeleteTurnos from "../Admin/AdminComponents/Modals/TurnosModals/DeleteTurnos";
 
+function TableTurnos({ data, columns, detail, title, token, estado }) {
+  console.log("todos los turnos paginacion", data);
 
-function TableTurnos({ data, columns, detail, title,token, estado }) {
- console.log('todos los turnos paginacion', data);
- 
   //filter
   const [filter, setFilter] = useState("");
 
   //cases from Redux (store)
- 
+
   const columns1 = columns?.map((el) => {
-    
     return el.text;
   });
   const columns2 = columns.map((el) => {
-    if(el.dataField.includes('.')){
-
-      return el.dataField.split('.')
+    if (el.dataField.includes(".")) {
+      return el.dataField.split(".");
     }
     //console.log('incluye punto?', el.dataField.includes('.'));
     return el.dataField;
@@ -42,12 +42,11 @@ function TableTurnos({ data, columns, detail, title,token, estado }) {
 
   //when Edit button is clicked
   function showModalEdit(id) {
-      setTurnoData(data.length > 0 && data.filter((el) => el.id === id));//son los peritos
-      setShowModalPendiente(true);
+    setTurnoData(data.length > 0 && data.filter((el) => el.id === id)); //son los peritos
+    setShowModalPendiente(true);
   }
   function showModalDelete(id) {
-   
-    setTurnoData(data.length > 0 && data.filter((el) => el.id === id));//son los peritos
+    setTurnoData(data.length > 0 && data.filter((el) => el.id === id)); //son los peritos
     setShowModalD(true);
   }
 
@@ -57,46 +56,37 @@ function TableTurnos({ data, columns, detail, title,token, estado }) {
   if (!filter) {
     dataFiltered = data;
   } else {
-    
     dataFiltered = data.filter(
       (dato) =>
-        dato?.profesional?.fullName?.toLowerCase().includes(filter?.toLocaleLowerCase()) ||
+        dato?.profesional?.fullName
+          ?.toLowerCase()
+          .includes(filter?.toLocaleLowerCase()) ||
         dato?.date?.toLowerCase().includes(filter?.toLocaleLowerCase()) ||
-        dato?.usuarioEmail?.toLowerCase().includes(filter?.toLocaleLowerCase()) 
-             
+        dato?.usuarioEmail?.toLowerCase().includes(filter?.toLocaleLowerCase())
     );
   }
   //PAGINACION DE LA TABLA
-  const [pagina, setPagina]=useState(1)
-  function onClickPage(e){
-    console.log('paginaElegida=>', e.target.value);
-    setPagina(e.target.value)
+  const [pagina, setPagina] = useState(1);
+  function onClickPage(e) {
+    setPagina(e.target.value);
   }
-  const filasPorPagina=20
- const totalPaginas=Math.ceil(dataFiltered.length/filasPorPagina)
- 
- function crearArr(n){
-  let arr=[]
-for(let i=1;i<=n;i++){
-  arr.push(i)
-}
-return arr
- }
- 
- let numeros=crearArr(totalPaginas)
+  const filasPorPagina = 20;
+  const totalPaginas = Math.ceil(dataFiltered.length / filasPorPagina);
 
-   //aca parte la tabla
-   const indiceInicial= (pagina-1)*filasPorPagina
-   const indiceFinal=indiceInicial + filasPorPagina
-   const datosAMostrar= dataFiltered.slice(indiceInicial,indiceFinal)
-console.log('indiceInicial=>', indiceInicial);
-console.log('indiceFinal=>', indiceFinal);
+  function crearArr(n) {
+    let arr = [];
+    for (let i = 1; i <= n; i++) {
+      arr.push(i);
+    }
+    return arr;
+  }
 
-   console.log('datos a mostrar',datosAMostrar);
- console.log('dataFiltered=>', dataFiltered)
-//  console.log('numeros=>', numeros);
-//  console.log('total paginas=>', totalPaginas);
-//  console.log('setea pagina=>', pagina);
+  let numeros = crearArr(totalPaginas);
+
+  //aca parte la tabla
+  const indiceInicial = (pagina - 1) * filasPorPagina;
+  const indiceFinal = indiceInicial + filasPorPagina;
+  const datosAMostrar = dataFiltered.slice(indiceInicial, indiceFinal);
 
   return (
     <>
@@ -114,47 +104,49 @@ console.log('indiceFinal=>', indiceFinal);
         <div className="noRegistersFound">No se encontraron registros...</div>
       ) : (
         <>
-        {/* Tabler Title */}
+          {/* Tabler Title */}
           <h3 className="tableTitle">{title}</h3>
-        {/* PAGINADO*/}
-          <label htmlFor="">Página:</label>
-          <BsFillArrowLeftSquareFill/>
-          <select name='select-paginacion' id="select-paginacion" onClick={onClickPage}>
-            {
-             numeros.map(pag=>{
-              return <option value={pag}>{pag}</option>
-             }) 
-            }
-          </select>
-          <BsFillArrowRightSquareFill/>
+          {/* PAGINADO*/}
+          <div style={{display:"flex",margin:"9px 0px",width: "160px",justifyContent: "space-evenly"}}>
+            <label htmlFor="" style={{fontFamily: "monospace"}}>Página:</label>
+            <BsFillArrowLeftSquareFill color="#20c997" size="25px" />
+            <select
+              name="select-paginacion"
+              id="select-paginacion"
+              onClick={onClickPage}
+            >
+              {numeros.map((pag) => {
+                return <option value={pag}>{pag}</option>;
+              })}
+            </select>
+            <BsFillArrowRightSquareFill color="#20c997" size="25px" />
+          </div>
+
           {/* Table */}
           <Table>
             <Thead>
               <Tr>
                 {columns1.map((e) => {
                   return <Th className="thEdit">{e}</Th>;
-                })} 
-                  {
-                    estado==='pendiente' &&
-                    <>
-                <Th className="thEdit">Editar</Th>
-                <Th className="thEdit">Eliminar</Th>
-                    </>
-                  }
+                })}
+                {estado === "pendiente" && (
+                  <>
+                    <Th className="thEdit">Editar</Th>
+                    <Th className="thEdit">Eliminar</Th>
+                  </>
+                )}
               </Tr>
             </Thead>
 
             <Tbody>
               {datosAMostrar?.map(
                 (el) =>
-                  el.id && (  
+                  el.id && (
                     <Tr>
                       {columns2.map((c) => {
-                        let y
-                       Array.isArray(c)?
-                          y = el[c[0]][c[1]]:
-                          y = el[c]
- 
+                        let y;
+                        Array.isArray(c) ? (y = el[c[0]][c[1]]) : (y = el[c]);
+
                         return (
                           <Td className="tdEdit" key={el.id}>
                             {y ? y : "Sin Completar"}
@@ -162,26 +154,26 @@ console.log('indiceFinal=>', indiceFinal);
                         );
                       })}
 
-                      { 
-                      estado==='pendiente' && <>
-                       <Td className="tdEdit" key={el.id}>
-                        <div
-                          className="editBtn"
-                          onClick={() => showModalEdit(el.id)}
-                          >
-                          <TbEdit />
-                        </div>
-                      </Td>
-                      <Td className="tdEdit" key={el.id}>
-                        <div
-                          className="editBtn"
-                          onClick={() => showModalDelete(el.id)}
-                          >
-                          <RiDeleteBin6Line />
-                        </div>
-                      </Td> 
-                          </>
-                      }
+                      {estado === "pendiente" && (
+                        <>
+                          <Td className="tdEdit" key={el.id}>
+                            <div
+                              className="editBtn"
+                              onClick={() => showModalEdit(el.id)}
+                            >
+                              <TbEdit />
+                            </div>
+                          </Td>
+                          <Td className="tdEdit" key={el.id}>
+                            <div
+                              className="editBtn"
+                              onClick={() => showModalDelete(el.id)}
+                            >
+                              <RiDeleteBin6Line />
+                            </div>
+                          </Td>
+                        </>
+                      )}
                     </Tr>
                   )
               )}
@@ -190,26 +182,23 @@ console.log('indiceFinal=>', indiceFinal);
         </>
       )}
       {/* Modal rendering */}
-  
-     <EditModalTurnoPendiente
-      show={showModalPendiente}
-      close={() => setShowModalPendiente(false)}
-      turnoData={turnoData}
-      token={token}
-      detail={detail}/>
-      
-      
+
+      <EditModalTurnoPendiente
+        show={showModalPendiente}
+        close={() => setShowModalPendiente(false)}
+        turnoData={turnoData}
+        token={token}
+        detail={detail}
+      />
+
       <DeleteTurnos
-      show={showModalD}
-      close={() => setShowModalD(false)}
-      turnoData={turnoData}
-      token={token}
-      detail={detail}
-    
+        show={showModalD}
+        close={() => setShowModalD(false)}
+        turnoData={turnoData}
+        token={token}
+        detail={detail}
       />
     </>
   );
 }
 export default TableTurnos;
-
-
