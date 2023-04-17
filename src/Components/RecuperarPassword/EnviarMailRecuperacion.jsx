@@ -13,7 +13,6 @@ import { useLocalStorage } from "../../customsHooks/useLocalStorage";
 function EnviarMailRecuperacion() {
   const [email, setEmail] = useState("");
   const [emailValido, setEmailvalido] = useState(true);
-  
 
   const navigate = useNavigate();
 
@@ -25,34 +24,31 @@ function EnviarMailRecuperacion() {
     setEmailvalido(emailRegex.test(e.target.value));
   };
 
- 
-
   //onSubmit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log('email para recuperación de password==>', email);
+
     try {
       let respuestaPasswordOlvidado = await passwordOlvidado({ email: email });
-      // console.log('respuesta obtenida', respuestaPasswordOlvidado);
-      if(respuestaPasswordOlvidado.message==='El email no fue encontrado.'){
+
+      if (respuestaPasswordOlvidado.message === "El email no fue encontrado.") {
         return NotificationManager.error(
           `${respuestaPasswordOlvidado.message}`,
           "¡Atención!",
           3000
-          );
-        }
-        // NotificationManager.info(`Estamos verificando el email`, "Espera unos segundos!", 3000);
-        NotificationManager.success(`Chequea tu correo! Seras dirigido a Home`, "Enhorabuena!", 3000);
+        );
+      }
+      // NotificationManager.info(`Estamos verificando el email`, "Espera unos segundos!", 3000);
+      NotificationManager.success(
+        `Chequea tu correo! Seras dirigido a Home`,
+        "Enhorabuena!",
+        3000
+      );
       // NotificationManager.success(, "", 2000);
       setTimeout(() => {
         navigate("/");
       }, 3500);
-    } catch (error) {
-      
-      
-    }
-
-    
+    } catch (error) {}
   };
 
   return (

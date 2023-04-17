@@ -15,7 +15,7 @@ import { deleteProfesional, getProfesionales, getTurnos } from "../../../../../.
 
 function DeleteProfesional(props) {
   let profesionales = useSelector((state) => state.allProfesionales);
-  // console.log('props==>', props);
+ 
   const profData = props?.profesionalData[0]
 
  
@@ -33,14 +33,13 @@ useEffect(()=>{
 
 
   //========== HANDLE SUBMIT =======
-  /* console.log('editForm', editFormInput) */
+  
   async function handleClick() {
     // e.preventDefault();
     
     try { 
       let body={select:'profesional'}
-      // console.log('idProfesional',profData.email )
-      // console.log('body',body )
+    
       let token= props.token
      let edit = await dispatch(deleteProfesional(profData.email,body));
      await dispatch(getProfesionales(token)   ) 

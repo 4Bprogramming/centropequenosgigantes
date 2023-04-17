@@ -16,7 +16,7 @@ import adminGif from "../../../assets/gifAdmin.gif";
 function Admin() { 
   const token= JSON.parse(window.localStorage.getItem('token'))
   const rol= JSON.parse(window.localStorage.getItem('rol'))
-  // console.log('admin token', token);
+ 
   const dispatch=useDispatch()
 
 

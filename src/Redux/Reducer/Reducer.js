@@ -1,5 +1,3 @@
-
-
 import {
   GET_PROFESIONALES,
   HORAS_CREADAS,
@@ -10,7 +8,7 @@ import {
   GET_USUARIOS,
   REGISTER,
   SESIONACTIVA,
-  GET_HISTORIAS
+  GET_HISTORIAS,
 } from "../constants";
 
 const initialState = {
@@ -20,17 +18,17 @@ const initialState = {
   horasCreadasParaMostar: [],
   turnosCreados: [],
   todosTurnos: [],
-  todosUsuarios:[],
-  usuarioRegistrado:{},
-  profesionalPorID:{},
-  sesionAbierta: '',
-  historiasClinicas:[]
-};  
+  todosUsuarios: [],
+  usuarioRegistrado: {},
+  profesionalPorID: {},
+  sesionAbierta: "",
+  historiasClinicas: [],
+};
 
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     //todos los profesionales
-    case GET_PROFESIONALES: 
+    case GET_PROFESIONALES:
       if (action.payload.message) {
         return {
           ...state,
@@ -44,7 +42,6 @@ export const rootReducer = (state = initialState, action) => {
       }
 
     case HORAS_CREADAS:
-      // console.log("REDUCER HORAS_CREADAS===>", action.payload);
       if (action.payload.message) {
         return {
           ...state,
@@ -53,7 +50,7 @@ export const rootReducer = (state = initialState, action) => {
       } else {
         let horas = [...action.payload];
         horas.pop();
-        // console.log("horas reducidas", horas);
+
         return {
           ...state,
           horasCreadas: action.payload,
@@ -61,7 +58,6 @@ export const rootReducer = (state = initialState, action) => {
         };
       }
     case POST_TURNOS:
-      // console.log("REDUCER POST_TURNOS===>", action.payload);
       if (action.payload.message) {
         return {
           ...state,
@@ -74,7 +70,6 @@ export const rootReducer = (state = initialState, action) => {
         };
       }
     case POST_HISTORIA:
-      console.log("REDUCER POST_HISTORIA===>", action.payload);
       if (action.payload.message) {
         return {
           ...state,
@@ -107,40 +102,34 @@ export const rootReducer = (state = initialState, action) => {
           message: action.payload.message,
         };
       }
-      case GET_TURNOS:
-        console.log('action.payload=>', action.payload);
-        return{
-          ...state,
-          todosTurnos: action.payload,
-        }
-      case GET_USUARIOS:
-        console.log('usuarios??===>', action.payload);
-        return{
-          ...state,
-          todosUsuarios: action.payload,
-        }
-      case GET_HISTORIAS:
-        return{
-          ...state,
-          historiasClinicas: action.payload
-        }
-  
+    case GET_TURNOS:
+      return {
+        ...state,
+        todosTurnos: action.payload,
+      };
+    case GET_USUARIOS:
+      return {
+        ...state,
+        todosUsuarios: action.payload,
+      };
+    case GET_HISTORIAS:
+      return {
+        ...state,
+        historiasClinicas: action.payload,
+      };
 
+    //usuario registrado
+    case REGISTER:
+      return {
+        ...state,
+        usuarioRegistrado: action.payload,
+      };
 
-        //usuario registrado
-        case REGISTER:
-          return{
-            ...state,
-            usuarioRegistrado:action.payload
-          }
-
-       //sesion activa
-       case SESIONACTIVA:
-          
-          return {
-            ...state,
-            sesionAbierta: action.payload
-          }
-
-  }//LLAVE QUE CIERRA EL SWITCH
+    //sesion activa
+    case SESIONACTIVA:
+      return {
+        ...state,
+        sesionAbierta: action.payload,
+      };
+  } //LLAVE QUE CIERRA EL SWITCH
 };

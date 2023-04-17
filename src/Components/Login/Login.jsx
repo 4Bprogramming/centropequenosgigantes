@@ -19,7 +19,7 @@ function Login() {
   //usuario traido desde la DB
   const [usuarioDB,setUsuarioDB] = useLocalStorage("usuarioDB",{});
   const [rol, setRol]= useLocalStorage("rol","");
-  // console.log('ROL==>',rol);
+
 
   //datos de la form
   const [loginData, setLoginData] = useState({
@@ -41,13 +41,13 @@ function Login() {
     // }
   };
 
-  // console.log('ROL',rol);
+  
   //On Submit
   let rolLocal=JSON.parse(window.localStorage.getItem("rol"));
   const handleSubmit = async (e)=> {
     e.preventDefault();    
     const respuestaDBLogin = await loginAction(loginData);
-    console.log('respuestaDB==>', respuestaDBLogin);
+    
     
     if(respuestaDBLogin.token){
       setToken(respuestaDBLogin.token);
@@ -63,12 +63,12 @@ function Login() {
       }
      
       
-     console.log('rol Local', rol);
+    
 
       setUsuarioDB(usuario);
       dispatch(sesionActiva(respuestaDBLogin.token));
       if(respuestaDBLogin){
-        console.log('tiene idprofesional??', respuestaDBLogin.usuario.hasOwnProperty('idProfesional') );
+       
           if(respuestaDBLogin.usuario.hasOwnProperty('idProfesional')){
             setRol('profesional')
             navigate(`/profesional`)
@@ -82,9 +82,7 @@ function Login() {
           navigate(`/usuario`)
         }
       }
-      // setTimeout(()=>{console.log('rol??', setRol)},10);
-      // setTimeout(()=>{navigate(`/${rol}`)},4000)//me lleva al perfil en el cual me logueo segun el select.
-
+     
     }else{
       NotificationManager.error(`${respuestaDBLogin}`, "ATENCION!", 7000);
     }

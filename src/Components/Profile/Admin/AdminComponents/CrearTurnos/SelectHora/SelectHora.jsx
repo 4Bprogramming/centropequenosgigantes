@@ -21,7 +21,7 @@ const label = {
 
 
 function SelectHora({ onChange, inicio, final }) {
-  console.log("SelectHora");
+ 
   return (
     <div>
       <div

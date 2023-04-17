@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 
 function TodosTurnos({token}) {
   const turnos=useSelector(state=>state.todosTurnos)
-  console.log('todoslos turnos=>', turnos);
+
   return (
     <>
    

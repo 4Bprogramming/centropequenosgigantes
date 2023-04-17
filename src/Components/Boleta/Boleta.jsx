@@ -34,7 +34,7 @@ function Boleta() {
       .catch((e) => console.log(e));
     navigate(`/${rol}`);
   }
-  console.log("algo antes del return");
+  
   return (
     <>
       <div className={style.correoMainContainer}>

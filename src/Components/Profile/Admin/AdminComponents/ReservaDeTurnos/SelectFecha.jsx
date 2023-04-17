@@ -11,7 +11,7 @@ const esDateTimeFormat = new Intl.DateTimeFormat("es-ES");
 // const format = "DD/MM/YYYY";
 function SelectFecha({date, setDate, onChange, diasConTurnos}) {
  const habilitados=diasConTurnos.map(el=> new Date (Number(el.split('-')[0]),Number(el.split('-')[1]-1),Number(el.split('-')[2])))
- console.log('HABILITADOS==>', habilitados);
+ 
   
   return ( 
     <div>

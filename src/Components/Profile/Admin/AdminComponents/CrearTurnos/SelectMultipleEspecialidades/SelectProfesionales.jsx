@@ -5,7 +5,7 @@ const animatedComponents= makeAnimates()
 
 
 function SelectProfesionales({onChange, options, idProfesional}) {   
-  // console.log('options', options);
+  
     return (
       <div style={{"width":"98%"}}>
        

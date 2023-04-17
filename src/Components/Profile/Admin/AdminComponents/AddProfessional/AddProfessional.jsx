@@ -15,7 +15,7 @@ import { useEffect } from "react";
  
  
 function AddProfessional(props) {
-  // console.log('token',props.token);
+  
   const [errors, setErrors] = useState({});
   const [imageId, setImageId] = useState({});
   const dispatch=useDispatch()
@@ -35,9 +35,9 @@ function AddProfessional(props) {
     imagenProfesional: "",
   });
   const token= JSON.parse(window.localStorage.getItem('token'))
-  // console.log('token', token)
+  
   async function Actualizar(token){
-    // console.log('entro actualizar');
+    
    dispatch(getProfesionales(token));
    dispatch(getTurnos(token));
 }
@@ -46,15 +46,12 @@ function AddProfessional(props) {
   const handleSelelect = (seletedOptions) => {
     const selection = seletedOptions.map((e) => e.value).toString();
     setPost({ ...post, especialidad: selection });
-    // console.log('Options selected', seletedOptions);
-    // console.log("Options selections======>", selection);
-    // console.log('Options selections2', selection.toString().split(' ,'));
-  };
-// console.log('post-especialidad==>',post.especialidad);
+    
+    };
+
   // // ===================HANDLE IMAGE===============================================
 
   const handleImageId = async (e) => {
-    // console.log('evento imagen',e);
     //e.preventDefault();
     try {
       let url = await uploadFile(e);
@@ -64,7 +61,7 @@ function AddProfessional(props) {
     }
   };
 
-  // console.log('imagen', imageId)
+ 
 
   // //======================= HANDLE CHANGE=========================================
   const handleChange = (e) => {
@@ -116,8 +113,6 @@ function AddProfessional(props) {
 
     if (Object.keys(error).length === 0) {
       try {
-        // console.log('entre en el try del submit');
-        // console.log('IMAGEN===>', newProfesional.imagenProfesional);
        let doc= await postProfesionales(newProfesional,props.token)
         // setShow(true);
        
