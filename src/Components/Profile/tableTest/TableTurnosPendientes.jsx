@@ -155,6 +155,16 @@ function TableTurnosPendientes({
           {/* Tabler Title */}
           <h3 className="tableTitle">{title}</h3>
           {/* PAGINADO*/}
+          <div
+            style={{
+              display: "flex",
+              margin: "9px 0px",
+              width: "230px",
+              justifyContent: "space-evenly",
+              fontWeight: "bold",
+              alignItems: "center",
+            }}
+          >
           <label htmlFor="">Página:</label>
           {pagina === 1 ? null : (
             <a
@@ -167,10 +177,10 @@ function TableTurnosPendientes({
           <input
             style={{
               border: "1px solid black",
-              height: "30px",
-              width: "45px",
+              width: "60px",
               padding: "5px ",
-              borderRadius: "6px",
+              height: "26px",
+              textAlign: "center",
             }}
             onChange={(e) => onChange(e)}
             onKeyDown={(e) => enter(e)}
@@ -184,6 +194,7 @@ function TableTurnosPendientes({
               <BsFillArrowRightSquareFill />{" "}
             </a>
           )}
+          </div>
           {/* Table */}
           <Table>
             <Thead>
