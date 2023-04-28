@@ -1,8 +1,10 @@
 .sliderDescription { 
 	bottom: 5rem;
-	width: 100%;
+	width: 98%;
+	margin: 0 auto;
 	text-align: center;
 	font-size: 1.25rem;
+	margin-bottom: 25px;
 }
 h5{
 	background-color: rgb(90, 84, 84);
@@ -10,13 +12,26 @@ h5{
 	margin: 10px 10px 10px 10px;
 
 }
+@media (min-width: 992px) and (max-width: 1380px) {
+	.sliderDescription{
+		font-size: 1.15rem;
+	}
+}
+@media screen and (max-width: 992px){
+		.sliderDescription{
+		font-size: 1.1rem;
+	}
+}
 
+@media screen and (max-width: 600px){
+		.sliderDescription{
+		font-size: 0.95rem;
+	}
+}
 @media only screen and (max-width: 400px) {
 	.sliderDescription { 
-		bottom: 5rem;
 		width: 100%;
-		text-align: center;
-		font-size: 0.95rem;
+		
 	}
 	h5 {
 		font-size: 0.98rem;

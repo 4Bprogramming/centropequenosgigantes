@@ -30,9 +30,9 @@
 .aboutBody {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    
     justify-content: space-around;
-    padding-top: 8rem;
+    padding-top: 3rem;
     height: fit-content;
 }
 
@@ -48,7 +48,7 @@
 
 .aboutDescription >h2 {
     margin-bottom: 40px;
-    font-size: 3.5rem;
+    
     font-family: var(--primaryFont);
     color: yellowgreen;
 }
@@ -72,7 +72,7 @@
 @media (min-width: 992px) and (max-width: 1380px) {
 
     .aboutDescription > h2 {
-      font-size: 3.3rem;
+      
       margin-bottom: 30px;
     }
     .aboutDescription > p {
@@ -93,7 +93,7 @@
     .aboutBody {
         padding-top: 2rem;
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
     }
@@ -107,7 +107,7 @@
     }
 
     .aboutDescription > h2 {
-        font-size: 3rem;
+        
         margin-bottom: 20px;
     }
 
@@ -148,7 +148,7 @@
   }
 
   .aboutDescription > h2 {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
   }
 
     .aboutDescription > p{

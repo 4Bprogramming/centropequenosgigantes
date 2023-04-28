@@ -23,7 +23,7 @@
 
 .StyledHeading {
   display: flex;
-  font-size: 2em;
+  font-size: 1.5rem;
   text-align: center;
   color: yellowgreen;
 }
@@ -32,7 +32,7 @@
 
 
 .TextSection {
-  font-size: 1em;
+  font-size: 1.2rem;
   padding-top: 1.3em;
   line-height: 1.4em;
   color: black;

@@ -48,12 +48,11 @@
 
 .aboutDescription >h2 {
     margin-bottom: 40px;
-    font-size: 3.5rem;
     font-family: var(--primaryFont);
     color: yellowgreen;
 }
 
-.aboutDescription > p {
+.aboutDescription > p,.aboutDescription > ul > li { 
     font-size: 1.25rem;
     color: black;
     font-family: var(--primaryFont);
@@ -72,10 +71,10 @@
 @media (min-width: 992px) and (max-width: 1380px) {
 
     .aboutDescription > h2 {
-      font-size: 3.3rem;
+     
       margin-bottom: 30px;
     }
-    .aboutDescription > p {
+    .aboutDescription > p,.aboutDescription > ul > li {
       font-size: 1.15rem;
     }
 
@@ -93,7 +92,7 @@
     .aboutBody {
         padding-top: 2rem;
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
     }
@@ -107,11 +106,11 @@
     }
 
     .aboutDescription > h2 {
-        font-size: 3rem;
+        
         margin-bottom: 20px;
     }
 
-    .aboutDescription > p {
+    .aboutDescription > p,.aboutDescription > ul > li {
         font-size: 1.1rem;
     }
 
@@ -148,10 +147,11 @@
   }
 
   .aboutDescription > h2 {
-    font-size: 2.5rem;
+    text-align: center;
+    font-size: 1.6rem;
   }
 
-    .aboutDescription > p{
+    .aboutDescription > p,.aboutDescription > ul > li{
       font-size: 0.95rem;
     }
 
