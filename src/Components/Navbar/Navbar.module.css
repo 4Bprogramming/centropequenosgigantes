@@ -8,6 +8,7 @@
 
 .listNavBar {
   display: flex;
+  justify-content: space-around;
 }
 .navBarLinks {
   margin-left: 5rem;
@@ -70,9 +71,7 @@
     flex-direction: column;
     align-items: center;
   }
-  .navBarLinks {
-    margin-left: -2rem;
-  }
+
   .buttonContact {
     margin-left: -2rem;
   }

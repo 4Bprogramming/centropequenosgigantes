@@ -8,7 +8,7 @@ function Caja() {
     <div className={styles.caja}>
       <div>
       
-        <h4 className="title pb-3 border-bottom">
+        <h4 className="title pb-3 border-bottom" style={{padding:"10px"}}>
           Solicita nuestros servicios aquí :
         </h4>
 

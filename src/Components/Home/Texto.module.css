@@ -1,20 +1,23 @@
 .mainTitleTextoHome2{
+	text-align:left;
+	
+	color: yellowgreen;
+	font-size: 1.5rem;
 	width: 95%;
 	margin: 0 auto;
-	text-align:left;
 }
 
 
 .sliderDescription { 
 	width: 95%;
 	text-align: justify;
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	margin: 0 auto;
 }
 
 @media only screen and (max-width: 400px) {
 	.sliderDescription { 
-		font-size: 1.3rem;
+		font-size: 1.2rem;
 		
 
 	}

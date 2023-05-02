@@ -31,7 +31,7 @@
 
 .StyledHeading {
   display: flex;
-  font-size: 2em;
+  font-size: 1.5rem;
   justify-content: center;
   color: yellowgreen;
 }
@@ -40,7 +40,7 @@
   margin-left: 10px;
   margin-right: 10px;
   text-align: justify;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   width:500px;
 }
 
