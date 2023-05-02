@@ -15,7 +15,8 @@ import {
   GET_HISTORIAS,
 } from "../constants";
 
-const BASE_URL = "http://localhost:3001";
+//const BASE_URL = "http://localhost:3001";
+const BASE_URL = "https://pequenos4b.onrender.com"
 
 //post profesionales
 export async function postProfesionales(body, token) {
