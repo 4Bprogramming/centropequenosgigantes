@@ -244,7 +244,7 @@ export async function loginAction(loginData) {
 
     return respuestaLogin.data;
   } catch (e) {
-    return e.response.data.message;
+    console.log("error delogin", e.response.data);
   }
 }
 
