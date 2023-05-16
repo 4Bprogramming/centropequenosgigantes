@@ -28,9 +28,9 @@ const { email } = JSON.parse(data);
     fetch("http://localhost:3001/api/createPayment", header)
       .then((res) => res.json())
       .then((res) => {
-        console.log('respuesta==>',res)
+        // console.log('respuesta==>',res)
         
-        KR.loadLibrary("https://api.micuentaweb.pe","99230689:testpublickey_JufZDB7BdtsOYHnpaVJ2FACUkbuHbtbSu1rEZMsAG6YKj")
+        KR.loadLibrary("https://api.micuentaweb.pe","21153887:testpublickey_x7XzvPMuzh7n8Cx5HXpHzSpjdTIjtlQgVIhoVezfTfdk0")
         .then(({KR}) => KR.setFormConfig({
           formToken: res.formToken, 
           
@@ -57,7 +57,7 @@ const { email } = JSON.parse(data);
       .then((res) => res.json())
       .then((res) => {
         if (res == "Valid Payment") {
-          console.log('validado==>', res);
+          // console.log('validado==>', res);
           handleSubmit(res)
           
         }
