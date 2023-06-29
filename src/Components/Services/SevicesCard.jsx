@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import foto1 from "../../assets/servicios/p13.jpg";
-import foto2 from "../../assets/servicios/terapia_lenguaje.jpg";
-import foto3 from "../../assets/servicios/terapia_aprendizaje.jpeg";
-import foto4 from "../../assets/servicios/asesoramiento.jpeg";
-import foto5 from "../../assets/servicios/terapia_ocupacional.jpeg";
-import foto6 from "../../assets/servicios/modificacion_conducta.jpeg";
-import foto7 from "../../assets/servicios/terapia_fisica.jpeg";
-import foto8 from "../../assets/servicios/integracion_sensorial.jpeg";
-import foto9 from "../../assets/servicios/terapia_familia.jpeg";
-import foto10 from "../../assets/servicios/psicomotricidad.jpeg";
-import foto11 from "../../assets/servicios/estimulacion_temprana.jpeg";
+import foto1 from "../../assets/servicios/p13.webp";
+import foto2 from "../../assets/servicios/terapia_lenguaje.webp";
+import foto3 from "../../assets/servicios/terapia_aprendizaje.webp";
+import foto4 from "../../assets/servicios/asesoramiento.webp";
+import foto5 from "../../assets/servicios/terapia_ocupacional.webp";
+import foto6 from "../../assets/servicios/modificacion_conducta.webp";
+import foto7 from "../../assets/servicios/terapia_fisica.webp";
+import foto8 from "../../assets/servicios/integracion_sensorial.webp";
+import foto9 from "../../assets/servicios/terapia_familia.webp";
+import foto10 from "../../assets/servicios/psicomotricidad.webp";
+import foto11 from "../../assets/servicios/estimulacion_temprana.webp";
 import  styles from './ServiceCard.module.css';
 
 export const blog = [
